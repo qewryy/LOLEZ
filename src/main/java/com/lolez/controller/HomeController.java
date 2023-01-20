@@ -17,44 +17,33 @@ import org.springframework.web.servlet.ModelAndView;
  */
 @Controller
 public class HomeController {
-	
+
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
-	
+
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home(Locale locale, Model model) {
-		logger.info("Welcome home! The client locale is {}.", locale);
-		
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-		
-		String formattedDate = dateFormat.format(date);
-		
-		model.addAttribute("serverTime", formattedDate );
-		
+	public String home() {
+		System.out.println("메인페이지 이동");
+
 		return "index";
 	}
-	
 
-	@RequestMapping(value = "/LoginForm")
-	public ModelAndView loginform() {
-		ModelAndView mav = new ModelAndView();
-		
-		mav.setViewName("Member/LoginForm");
-		
-		return mav;
-	}
-	
-	@RequestMapping(value = "/JoinForm")
-	public ModelAndView JoinForm() {
-		ModelAndView mav = new ModelAndView();
-		
-		mav.setViewName("Member/JoinForm");
-		
-		return mav;
-	}
-	
-	
+	/*
+	 * @RequestMapping(value = "/LoginForm") public ModelAndView loginform() {
+	 * ModelAndView mav = new ModelAndView();
+	 * 
+	 * mav.setViewName("Member/LoginForm");
+	 * 
+	 * return mav; }
+	 * 
+	 * @RequestMapping(value = "/JoinForm") public ModelAndView JoinForm() {
+	 * ModelAndView mav = new ModelAndView();
+	 * 
+	 * mav.setViewName("Member/JoinForm");
+	 * 
+	 * return mav; }
+	 */
+
 }
