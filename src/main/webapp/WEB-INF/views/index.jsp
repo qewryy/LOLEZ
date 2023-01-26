@@ -71,7 +71,7 @@
                         <!-- Logo -->
                         <div class="col-xl-2 col-lg-2">
                             <div class="logo">
-                                <a href="index.html"><img src="${pageContext.request.contextPath }/resources/assets/img/LOL/LOGO.jpg" style="width: 200px;" alt=""></a>
+                                <a href="${pageContext.request.contextPath }/"><img src="${pageContext.request.contextPath }/resources/assets/img/LOL/LOGO.jpg" style="width: 200px;" alt=""></a>
                             </div>
                         </div>
                         <div class="col-xl-10 col-lg-10">
@@ -80,7 +80,7 @@
                                 <div class="main-menu d-none d-lg-block">
                                     <nav> 
                                         <ul id="navigation">                                                                                          
-                                            <li><a href="index.html">홈</a></li>
+                                            <li><a href="${pageContext.request.contextPath }/">홈</a></li>
                                             <li><a href="about.html">챔피언 분석</a></li>
                                             <li><a href="services.html">통계</a></li>
                                             <li><a href="blog.html">랭킹</a>
@@ -90,7 +90,7 @@
                                                     <li><a href="elements.html">Element</a></li>
                                                 </ul> -->
                                             </li>
-                                            <li><a href="contact.html">Contact</a></li>
+                                            <li><a href="${pageContext.request.contextPath }/boardList">커뮤니티</a></li>
                                         </ul>
                                     </nav>
                                 </div>
