@@ -8,6 +8,9 @@
 		VALUES(#{memail}, #{mname},#{mpw},TO_DATE(#{mdate}, 'YYYY-MM-DD'),1,
 		1)
 	</insert>
+	
+	
+	
 
 	<!-- <select id="selectMaxMemberCode" resultType="String">
 		SELECT MAX(MCODE) FROM MEMBERS

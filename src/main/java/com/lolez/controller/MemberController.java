@@ -5,6 +5,7 @@ import java.io.IOException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -19,7 +20,7 @@ public class MemberController {
 	
 	@RequestMapping(value = "/JoinForm")
 	public ModelAndView memberJoinForm() {
-		System.out.println("È¸¿ø°¡ÀÔ ÆäÀÌÁö ÀÌµ¿");
+		System.out.println("È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½");
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("Member/JoinForm");
 		return mav;
@@ -27,7 +28,7 @@ public class MemberController {
 
 	@RequestMapping(value = "/LoginForm")
 	public ModelAndView LoginForm() {
-		System.out.println("·Î±×ÀÎ ÆäÀÌÁö ÀÌµ¿");
+		System.out.println("ï¿½Î±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½");
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("Member/LoginForm");
 		return mav;
@@ -36,16 +37,37 @@ public class MemberController {
 	@RequestMapping(value = "/memberJoin")
 	public ModelAndView memberJoin(MemberDto joinInfo, RedirectAttributes ra)
 			throws IllegalStateException, IOException {
-		System.out.println("È¸¿ø°¡ÀÔ ¿äÃ»");
+		System.out.println("È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ã»");
 		ModelAndView mav = new ModelAndView();
 		int joinResult = memsvc.memberJoin_svc(joinInfo);
 		if (joinResult > 0) {
-			ra.addFlashAttribute("redirectMsg", "Á¤»óÀûÀ¸·Î È¸¿ø°¡ÀÔ µÇ¾ú½À´Ï´Ù.");
+			ra.addFlashAttribute("redirectMsg", "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ç¾ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.");
 			mav.setViewName("redirect:/");
+			
+			
+			
+			
 		} else {
-			ra.addFlashAttribute("redirectMsg", "È¸¿ø°¡ÀÔ¿¡ ½ÇÆĞÇß½À´Ï´Ù.");
+			ra.addFlashAttribute("redirectMsg", "È¸ï¿½ï¿½ï¿½ï¿½ï¿½Ô¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ß½ï¿½ï¿½Ï´ï¿½.");
 			mav.setViewName("redirect:/JoinForm");
 		}
 		return mav;
 	}
+	
+	
+	@RequestMapping(value = "/MemberEmailCheck")
+	public @ResponseBody String MemberEmailCheck (String inputEmail) {
+		
+		System.out.println("íšŒì› ì´ë©”ì¼ ì¤‘ë³µí™•ì¸ ");
+		
+		System.out.println("ì…ë ¥ í™•ì¸ : " + inputEmail);
+		
+		String checkResult = memsvc.checkEmail(inputEmail);
+		
+		return checkResult;
+		
+	}
+	
+	
+	
 }

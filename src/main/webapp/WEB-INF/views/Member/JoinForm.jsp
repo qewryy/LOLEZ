@@ -74,8 +74,9 @@
 								<div class="row ">
 									<div class="col-lg-8 col-md-6">
 										<div class="input-form">
-											<input type="email" placeholder="이메일 주소" name="email">
-										<span>인증 상태</span>
+											<input type="email" placeholder="이메일 주소" name="email"
+												id="inputEmail" onkeyup="checkEmail(this.value)"> <span
+												class="small" id="emailMsg"></span>
 										</div>
 									</div>
 									<div class="col-lg-4">
@@ -83,7 +84,8 @@
 									</div>
 									<div class="col-lg-12 col-md-6">
 										<div class="input-form">
-											<input type="text" placeholder="닉네임" name="name">
+											<input type="text" placeholder="닉네임" name="name" id="inputname" onkeyup="checkName(this.value)"> 
+											<span class="small"	id="nameCheckMsg"></span>
 										</div>
 									</div>
 									<div class="col-lg-12 col-md-6">
@@ -91,10 +93,21 @@
 											<input type="date" placeholder="생년월일" name="date">
 										</div>
 									</div>
+
 									<div class="col-lg-12 col-md-6">
 										<div class="input-form">
-											<input type="password" placeholder="비밀번호" name="pw">
+											<input type="password" placeholder="비밀번호" name="pw"
+												id="inputPW" onkeyup="pwcheck(this.value)">
+											<div>
+												<h3 id="PWrule"></h3>
+												<ul>
+													<li id="pwcheckMsg1"></li>
+													<li id="pwcheckMsg2"></li>
+													<li id="pwcheckMsg3"></li>
+												</ul>
+											</div>
 										</div>
+
 									</div>
 									<!-- Radio Button -->
 
@@ -116,6 +129,8 @@
 			</div>
 		</section>
 	</main>
+
+
 
 	<!-- Scroll Up -->
 	<div id="back-top">
@@ -179,31 +194,219 @@
 			history.back();
 		}
 		
+		var emailok = 0;
+		var nameok = 0;
+		
+ 		function checkName(namevar) {
+			var SC = ["`", "!", "@","#", "$", "%", "^", "&", "*", "(", ")", "-", "_", "=", "+", "<", ">", "/", "?", "[", "]", "{", "}", "," , "."," "];
+			checkSC=0;
+			var name  = document.getElementById('inputname').value;
+			console.log(name);
+			
+			/* 사용자가 지정된 특수기호 사용하는지 확인하는 용도 */
+			for(var i=0; i<SC.length; i++ )	{
+				if(namevar.indexOf(SC[i])!= -1 ){
+					checkSC=1;
+				}
+			}
+			
+			
+			
+			//아무것도 입력 안할시 초기 상태 +  지정된 길이에 맞지 않을시 안내문
+/* 			if(name.length == 0){
+				document.getElementById('nameCheckMsg').innerText = '';
+				document.getElementById('nameCheckMsg').style.color = '';
+			}  */
+			
+			
+			if(name.length >= 8 || name.length <= 8){
+				document.getElementById('nameCheckMsg').innerText = '닉네임은 3자 이상 8자 이하로 작성해주세요!';
+				document.getElementById('nameCheckMsg').style.color = 'red';
+			}else{
+/* 				document.getElementById('nameCheckMsg').innerText = '';
+				document.getElementById('nameCheckMsg').style.color = ''; */
+			}
+
+
+			
+			/* 공백 특수기호 불가 안내문 */
+			 if(checkSC == 1){
+					document.getElementById('nameCheckMsg').innerText = '닉네임에는 띄어쓰기 혹은 특수문자는 사용이 불가능합니다!';
+					document.getElementById('nameCheckMsg').style.color = 'red';
+				}else{
+					document.getElementById('nameCheckMsg').innerText = '';
+					document.getElementById('nameCheckMsg').style.color = '';
+					emailok = 1;
+					
+				}
+	
+			
+		} 
+		
+		
+		
+		
+		function checkEmail(emailvar) {
+			
+			console.log('접속');
+			var domain = ["@gmail.com","@naver.com","@kakao.com","@nate.com","@yahoo.com","@daum.net"]; 
+			var checkEmail = 0;
+			
+			for(var i=0; i<domain.length; i++){
+				if(emailvar.indexOf(domain[i]) != -1){
+					checkEmail=1;
+				}
+			}
+
+			console.log(checkEmail);
+			
+			
+			if(emailvar.length == 0){
+				document.getElementById('emailMsg').innerText = '';
+				document.getElementById('emailMsg').style.color = '';
+			}else if(checkEmail == 0){
+				document.getElementById('emailMsg').innerText = '사용 가능한 이메일을 사용해주세요';
+				document.getElementById('emailMsg').style.color = 'red';
+			}
+			else{
+				document.getElementById('emailMsg').innerText = '';
+				document.getElementById('emailMsg').style.color = '';
+				emailok = 1;
+				
+			}
+			
+			if(emailok == 1){
+				$.ajax({
+					type : "get",
+					url : "${pageContext.request.contextPath }/MemberEmailCheck",
+					data : {"inputEmail" : emailvar},
+					success : function (checkResult) {
+						console.log(checkResult);
+						if(checkResult == 'OK'){
+							document.getElementById('emailMsg').innerText = '';
+							document.getElementById('emailMsg').style.color = '';
+							emailok = 0;
+						}else{
+							document.getElementById('emailMsg').innerText = '이미 사용중인 이메일 이거나 탈퇴한 이메일입니다!';
+							document.getElementById('emailMsg').style.color = 'red';
+						}
+					}
+					
+					
+				});
+				
+			}
+			
+			
+		}
+		
+		
+		function pwcheck(pwval) {
+			var pw = document.getElementById('inputPW').value;
+			var EN = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
+			var SC = ["`","~","!","@","#","$","%","^","&","*","(",")","-","_","=","/"];
+			
+			var email = document.getElementById('inputEmail').value;
+			var name  = document.getElementById('inputname').value;
+			
+			var checkEN=0;
+			var checkSC=0;
+			
+			document.getElementById('PWrule').innerText = '비밀번호 규칙사항';
+			document.getElementById('PWrule').style.color = '#c5bebe';
+			
+			document.getElementById('pwcheckMsg1').innerText = '비밀번호는 닉네임 또는 이메일과 같지 않게 해주세요';
+			document.getElementById('pwcheckMsg1').style.color = 'red';
+			
+			document.getElementById('pwcheckMsg2').innerText = '영문 숫자 기호 중 최소 2개 이상 같이 사용해주세요';
+			document.getElementById('pwcheckMsg2').style.color = 'red';
+			
+			document.getElementById('pwcheckMsg3').innerText = '비밀번호는 기본 6자 이상 16자 이하로 사용해주세요';
+			document.getElementById('pwcheckMsg3').style.color = 'red';
+			
+			
+			/* 사용자가 지정된 특수기호 사용하는지 확인하는 용도 */
+			for(var i=0; i<SC.length; i++ ){
+				if(pw.indexOf(SC[i])!= -1 ){
+					checkSC=1;
+				}
+			}
+			
+			/* 사용자가 지정된 영문을 사용하는지 확인하는 용도 */
+			for(var i=0; i<EN.length; i++ ){
+				if(pw.indexOf(EN[i])!= -1 ){
+					checkEN=1;
+				}
+			}
+
+			
+			/* 사용자가 이메일 또는 닉네임을 비밀번호랑 동일하게  사용하는지 확인후 처리하는 용도 */
+			if(pw!=email || pw!=name){
+				document.getElementById('pwcheckMsg1').style.color = '#c5bebe';
+				
+				if(checkSC != 0 || checkEN != 0){
+					document.getElementById('pwcheckMsg2').style.color = '#c5bebe';
+				}else{
+					document.getElementById('pwcheckMsg2').style.color = 'red';
+				}	
+				
+			}
+			else{
+				document.getElementById('pwcheckMsg1').style.color = 'red';
+			} 
+			
+ 			/* 사용자가 지정된 규칙에 부합하게  사용하는지 확인후 처리하는 용도 */
+			if(checkSC != 0 || checkEN != 0){
+				document.getElementById('pwcheckMsg2').style.color = '#c5bebe';
+			}else{
+				document.getElementById('pwcheckMsg2').style.color = 'red';
+			}
+			
+			
+			
+		var checkLength = 0;
+			/* 비밀번호 길이 확인 else면(비밀번호 길이가 옳바름을 의미) 지정된 색으로 변경 그렇지 않을 경우 지정된 색깔로 초기화   */
+			if(pw.length < 6 || pw.length > 16){
+			document.getElementById('pwcheckMsg3').style.color = 'red';
+			checkLength = 1;
+			}else{
+				document.getElementById('pwcheckMsg3').style.color = '#c5bebe';
+			}
+			
+			
+			
+		}
+		
+		
+		
 		function joinFormCheck(joinForm) {
+
+			
 			var formMemail = joinForm.email;
 			if (formMid.value == 0) {
 				alert('이메일을 입력 해주세요!');
 				formMemail.focus();
-				return false;
+				 return false; 
 			}
 			var formMname = joinForm.mname;
 			if (formMname.value == 0) {
 				alert('닉네임을 입력 해주세요!');
 				formMname.focus();
-				return false;
+				 return false; 
 			}
 			var formMdate = joinForm.mdate;
 			if (formMname.value == 0) {
 				alert('생일을 입력 해주세요!');
 				formMdate.focus();
-				return false;
+				 return false; 
 			}
+
 			var formMpw = joinForm.mpw;
 			if (formMpw.value == 0) {
 				alert('비밀번호를 입력 해주세요!');
 				formMpw.focus();
-				return false;
-			}
+				 return false; 
+			} 
 		}
 
 	</script>
