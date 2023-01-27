@@ -72,14 +72,11 @@
 								class="contact-form" method="post"
 								onsubmit="return joinFormCheck(this)">
 								<div class="row ">
-									<div class="col-lg-8 col-md-6">
+									<div class="col-lg-12 col-md-6">
 										<div class="input-form">
+											<span>인증 상태</span>
 											<input type="email" placeholder="이메일 주소" name="email">
-										<span>인증 상태</span>
 										</div>
-									</div>
-									<div class="col-lg-4">
-										<button name="button" class="submit-btn" onclick="">인증하기</button>
 									</div>
 									<div class="col-lg-12 col-md-6">
 										<div class="input-form">
@@ -181,30 +178,75 @@
 		
 		function joinFormCheck(joinForm) {
 			var formMemail = joinForm.email;
-			if (formMid.value == 0) {
+			if (formMemail.value == 0) {
 				alert('이메일을 입력 해주세요!');
 				formMemail.focus();
 				return false;
 			}
-			var formMname = joinForm.mname;
+			var formMname = joinForm.name;
 			if (formMname.value == 0) {
 				alert('닉네임을 입력 해주세요!');
 				formMname.focus();
 				return false;
 			}
-			var formMdate = joinForm.mdate;
-			if (formMname.value == 0) {
+			var formMdate = joinForm.date;
+			if (formMdate.value == 0) {
 				alert('생일을 입력 해주세요!');
 				formMdate.focus();
 				return false;
 			}
-			var formMpw = joinForm.mpw;
+			var formMpw = joinForm.pw;
 			if (formMpw.value == 0) {
 				alert('비밀번호를 입력 해주세요!');
 				formMpw.focus();
 				return false;
 			}
 		}
+		
+		/* 
+		<form action="${pageContext.request.contextPath }/memberJoin"
+								class="contact-form" method="post"
+								onsubmit="return joinFormCheck(this)">
+								<div class="row ">
+									<div class="col-lg-8 col-md-6">
+										<div class="input-form">
+											<input type="email" placeholder="이메일 주소" name="email">
+										<span>인증 상태</span>
+										</div>
+									</div>
+									<div class="col-lg-4">
+										<button name="button" class="submit-btn" onclick="">인증하기</button>
+									</div>
+									<div class="col-lg-12 col-md-6">
+										<div class="input-form">
+											<input type="text" placeholder="닉네임" name="name">
+										</div>
+									</div>
+									<div class="col-lg-12 col-md-6">
+										<div class="input-form">
+											<input type="date" placeholder="생년월일" name="date">
+										</div>
+									</div>
+									<div class="col-lg-12 col-md-6">
+										<div class="input-form">
+											<input type="password" placeholder="비밀번호" name="pw">
+										</div>
+									</div>
+									<!-- Radio Button -->
+
+									<!-- Button -->
+									<div class="col-lg-6">
+										<button name="button" class="submit-btn" onclick="back()">취소</button>
+									</div>
+									<div class="col-lg-6">
+										<button name="submit" class="submit-btn">가입하기</button>
+									</div>
+									<span">이미 회원이신가요? </span> <a
+										href="${pageContext.request.contextPath }/LoginForm"
+										style="color: #f15f22; text-align: left;">로그인 하기</a>
+								</div>
+							</form>
+		*/
 
 	</script>
 </body>

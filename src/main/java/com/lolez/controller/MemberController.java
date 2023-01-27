@@ -2,6 +2,8 @@ package com.lolez.controller;
 
 import java.io.IOException;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,13 +15,15 @@ import com.lolez.service.MemberService;
 
 @Controller
 public class MemberController {
+	@Autowired
+	private HttpSession session;
 	
 	@Autowired
 	private MemberService memsvc;
 	
 	@RequestMapping(value = "/JoinForm")
 	public ModelAndView memberJoinForm() {
-		System.out.println("ȸ������ ������ �̵�");
+		System.out.println("회원가입 페이지 이동 요청");
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("Member/JoinForm");
 		return mav;
@@ -27,7 +31,7 @@ public class MemberController {
 
 	@RequestMapping(value = "/LoginForm")
 	public ModelAndView LoginForm() {
-		System.out.println("�α��� ������ �̵�");
+		System.out.println("로그인 페이지 이동 요청");
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("Member/LoginForm");
 		return mav;
@@ -36,15 +40,45 @@ public class MemberController {
 	@RequestMapping(value = "/memberJoin")
 	public ModelAndView memberJoin(MemberDto joinInfo, RedirectAttributes ra)
 			throws IllegalStateException, IOException {
-		System.out.println("ȸ������ ��û");
+		System.out.println("회원가입 요청");
 		ModelAndView mav = new ModelAndView();
 		int joinResult = memsvc.memberJoin_svc(joinInfo);
 		if (joinResult > 0) {
-			ra.addFlashAttribute("redirectMsg", "���������� ȸ������ �Ǿ����ϴ�.");
+			ra.addFlashAttribute("redirectMsg", "회원가입 되었습니다.");
 			mav.setViewName("redirect:/");
 		} else {
-			ra.addFlashAttribute("redirectMsg", "ȸ�����Կ� �����߽��ϴ�.");
+			ra.addFlashAttribute("redirectMsg", "회원가입에 실패했습니다.");
 			mav.setViewName("redirect:/JoinForm");
+		}
+		return mav;
+	}
+	
+	@RequestMapping(value = "/memberLogin")
+	public ModelAndView memberLogin(String inputMemail, String inputMpw) {
+		System.out.println("로그인 요청");
+		ModelAndView mav = new ModelAndView();
+		//1. 로그인 페이지에서 전송한 아이디, 비밀번호 확인
+		System.out.println("입력한 이메일 : " + inputMemail);
+		System.out.println("입력한 비밀번호 : " + inputMpw);
+		
+		//2. 입력한 아이디, 비밀번호로 회원정보 조회( 아이디(mid), 프로필(mprofile) )
+		MemberDto loginInfo = memsvc.memberLogin(inputMemail, inputMpw);
+		if(loginInfo == null) { 
+			// 조회되는 회원정보가 없을 경우
+			System.out.println("로그인 실패");
+			
+			// 로그인 페이지 이동
+			mav.setViewName("redirect:/memberLoginForm");
+			
+		} else { 
+			// 조회되는 회원정보가 있을 경우
+			System.out.println("로그인 성공");
+			
+			//1. 세션에 로그인 정보 저장(MemberDto loginInfo >> [ memail ] )
+			session.setAttribute("loginEmail", loginInfo.getMemail());
+			
+			//2. 메인페이지 이동
+			mav.setViewName("redirect:/");
 		}
 		return mav;
 	}

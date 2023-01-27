@@ -55,7 +55,7 @@
                             </div>
                         </div>
                         <!-- form -->
-                        <form action="#" class="contact-form">
+                        <form action="${pageContext.request.contextPath }/memberLogin" class="contact-form" >
                             <div class="row ">
                                 <div class="col-lg-12 col-md-6">
                                 <span>이메일 로그인</span>
