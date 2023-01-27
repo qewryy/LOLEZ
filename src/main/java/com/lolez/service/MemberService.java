@@ -26,7 +26,10 @@ public class MemberService {
 			insertResult = memdao.insertMemberJoin(joinInfo);
 		} catch (Exception e) {
 			e.printStackTrace();
-			System.out.println("������ �߻��߽��ϴ�.");
+
+
+			System.out.println("회원가입 실패");
+
 		}
 		return insertResult;
 	}
@@ -47,6 +50,11 @@ public class MemberService {
 		
 	}
 	
+
+	public MemberDto memberLogin(String inputMemail, String inputMpw) {
+		MemberDto loginInfo = memdao.selectMemberLogin(inputMemail, inputMpw); 
+		return loginInfo;
+	}
 
 	/*
 	 * public MemberDto memberLogin_svc(String mid, String mpw) { MemberDto

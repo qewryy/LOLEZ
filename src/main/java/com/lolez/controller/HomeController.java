@@ -25,7 +25,7 @@ public class HomeController {
 	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home() {
-		System.out.println("¸ŞÀÎÆäÀÌÁö ÀÌµ¿");
+		System.out.println("ë©”ì¸ í˜ì´ì§€ ì´ë™");
 
 		return "index";
 	}
