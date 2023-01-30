@@ -95,7 +95,7 @@ public class MemberController {
 		System.out.println("입력한 이메일 : " + inputMemail);
 		System.out.println("입력한 비밀번호 : " + inputMpw);
 		
-		//2. 입력한 아이디, 비밀번호로 회원정보 조회( 아이디(mid), 프로필(mprofile) )
+		//2. 입력한 아이디, 비밀번호로 회원정보 조회( 아이디(mid) )
 		MemberDto loginInfo = memsvc.memberLogin(inputMemail, inputMpw);
 		if(loginInfo == null) { 
 			// 조회되는 회원정보가 없을 경우

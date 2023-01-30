@@ -12,13 +12,8 @@ public interface MemberDao {
 
 	int insertMemberJoin(MemberDto joinInfo);
 	
-	
-	@Select("SELECT * FROM MEMBERS WHERE MEMAIL= #{inputEmail}")
 	String checkEmail(String inputEmail);
 	
-	
-	
-
 	MemberDto selectMemberLogin(@Param("mid")String mid, @Param("mpw")String mpw);
 
 	/*
