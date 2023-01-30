@@ -76,7 +76,7 @@ public class MemberController {
 		
 		System.out.println("회원 이메일 중복확인 ");
 		
-		System.out.println("입력 확인 : " + inputEmail);
+		System.out.println("이메일 입력 확인 : " + inputEmail);
 		
 		String checkResult = memsvc.checkEmail(inputEmail);
 		
@@ -84,6 +84,19 @@ public class MemberController {
 		
 	}
 	
+
+	@RequestMapping(value = "/MemberNicknameCheck")
+	public @ResponseBody String MemberNicknameCheck (String inputNickname) {
+		
+		System.out.println("회원 닉네임 중복확인 ");
+		
+		System.out.println("닉네임 입력 확인 : " + inputNickname);
+		
+		String checkResult = memsvc.checkNickname(inputNickname);
+		
+		return checkResult;
+		
+	}
 	
 	
 

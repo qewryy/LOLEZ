@@ -9,10 +9,13 @@
 		1)
 	</insert>
 	
-	<select id="checkEmail" resultType="member">
-		SELECT * FROM MEMBERS WHERE MEMAIL= #{inputEmail}
+	<select id="checkEmail" resultType="String">
+		SELECT MEMAIL FROM MEMBERS WHERE MEMAIL= #{inputEmail}
 	</select>
 	
+	<select id="checkNickname" resultType="String">
+		SELECT MNAME FROM MEMBERS WHERE MNAME= #{inputNickname}
+	</select>
 
 	<!-- <select id="selectMaxMemberCode" resultType="String">
 		SELECT MAX(MCODE) FROM MEMBERS

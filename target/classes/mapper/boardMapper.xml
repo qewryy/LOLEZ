@@ -5,7 +5,7 @@
 
 	<select id="selectBoardList" resultType="board">
 	  		SELECT * FROM BOARDS WHERE BSTATE = '0' ORDER BY BDATE DESC
-	  	</select>
+	 </select>
 	
 	
 	

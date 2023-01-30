@@ -16,6 +16,8 @@ public interface MemberDao {
 	
 	MemberDto selectMemberLogin(@Param("mid")String mid, @Param("mpw")String mpw);
 
+	String checkNickname(String inputNickname);
+
 	/*
 	 * String selectMaxMemberCode();
 	 * 

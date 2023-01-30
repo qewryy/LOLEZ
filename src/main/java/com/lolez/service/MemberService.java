@@ -50,11 +50,26 @@ public class MemberService {
 		
 	}
 	
+	public String checkNickname(String inputNickname) {
+		System.out.println("Member Service : checkNickname = " + inputNickname);
+		String checkEmail = memdao.checkNickname(inputNickname);
+		
+		String Result = "OK";
+		
+		if(checkEmail != null) {
+			Result = "NO";
+		}
+		
+		
+		return Result;
+	}
 
 	public MemberDto memberLogin(String inputMemail, String inputMpw) {
 		MemberDto loginInfo = memdao.selectMemberLogin(inputMemail, inputMpw); 
 		return loginInfo;
 	}
+
+
 
 	/*
 	 * public MemberDto memberLogin_svc(String mid, String mpw) { MemberDto
