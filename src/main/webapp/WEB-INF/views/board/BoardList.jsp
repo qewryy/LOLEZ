@@ -124,13 +124,13 @@
 				<!-- End of Main Content -->
 
 				<!-- Footer -->
-<<<<<<< HEAD
+
 				<footer class="sticky-footer bg-white">
 					<div class="copyright text-center my-auto">
 						<span>Copyright &copy; Your Website 2020</span>
 					</div>
 				</footer>
-=======
+
 				<!-- 			<footer class="sticky-footer bg-white">
 				<div class="container my-auto">
 					<div class="copyright text-center my-auto">
@@ -138,7 +138,7 @@
 					</div>
 				</div>
 			</footer> -->
->>>>>>> ad4c41ba384d304e2a85b82586cb9ce559e997a5
+
 				<!-- End of Footer -->
 
 			</div>
