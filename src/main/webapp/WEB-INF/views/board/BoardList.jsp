@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!doctype html>
@@ -89,11 +90,11 @@
 										</tfoot>
 
 										<tbody>
-											<c:forEach items="${boardList }" var="board">
+											<c:forEach items="${boardList}" var="board">
 												<tr>
 													<td>${board.bno }</td>
-													<td><a
-														href="${pageContext.request.contextPath }/BoardView?viewBno=${board.bno }">
+													<td><a style="color: black;"
+														href="${pageContext.request.contextPath }/boardView?viewBno=${board.bno }">
 															${board.btitle } </a></td>
 													<td>${board.bwriter }</td>
 													<td>${board.bdate }</td>
@@ -111,7 +112,9 @@
 								<!-- btn-lolezColor -> resources/assets/css/bootstarp.min.css line:2309 -->
 
 							</div>
+				
 					</div>
+					
 					<!-- /.container-fluid -->
 
 				</div>
@@ -130,7 +133,10 @@
 						<span>Copyright &copy; Your Website 2020</span>
 					</div>
 				</footer>
+<<<<<<< HEAD
 
+=======
+>>>>>>> bc34b2a005a1e0f3f2840cbfcd6b7fb8e4a292b6
 				<!-- 			<footer class="sticky-footer bg-white">
 				<div class="container my-auto">
 					<div class="copyright text-center my-auto">

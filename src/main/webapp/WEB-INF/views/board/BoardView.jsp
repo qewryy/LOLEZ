@@ -50,28 +50,39 @@
 				<div class="row">
 					<div class="col-lg-12 ">
 						<div class="p-5">
-							<form class="user" action="${pageContext.request.contextPath }/boardWrite" method="post">
+							<form class="user" action="" method="post">
 								<div class="form-group row">
-									<div class="col-sm-12">
-										<label for="inputTitle" class="font-weight-bold">글제목</label>
-										<input name="btitle" type="text" id="inputTitle" class="form-control form-control-user">
+									<div class="col-sm-4">
+										<label for="inputTitle" class="font-weight-bold">글제목</label> <input
+											name="btitle" type="text" id="inputTitle"
+											class="form-control form-control-user" readonly="readonly"
+											value="${board.btitle }">
+									</div>
+
+									<div class="col-md-4">
+										<label for="inputbwriter" class="form-label">작성자</label> <input
+											type="text" name="bwriter" class="form-control"
+											id="inputbwriter" value="${board.bwriter}"
+											readonly="readonly">
+									</div>
+
+									<div class="col-md-4">
+										<label for="inputbdate" class="form-label">작성일</label> <input
+											type="text" name="bdate" class="form-control" id="inputbdate"
+											value="${board.bdate}" readonly="readonly">
 									</div>
 								</div>
 								<div class="form-group">
-										<label for="inputContent" class="font-weight-bold">글내용</label>
-										<textarea name="bcontent" id="inputContent" class="form-control" rows="20" cols="5"></textarea>
+									<label for="inputContent" class="font-weight-bold">글내용</label>
+									<textarea name="bcontent" id="inputContent"
+										class="form-control" rows="20" cols="5" readonly="readonly">${board.bcontent }</textarea>
 								</div>
 
-								<div class="form-group row">
-									<div class="col-sm-6">
-										<button class="btn btn-primary btn-user btn-block" type="submit">
-											 작성하기
-										</button>
-									</div>
-									<div class="col-sm-6">
-										<a href="${pageContext.request.contextPath }/boardList"
-											class="btn btn-primary btn-user btn-block"> 취소하기 </a>
-									</div>
+								<div class="form-group row" style=text-align: center;"">
+										<button class="btn btn-primary btn-user btn-block"
+											type="button">수정하기</button>
+
+
 								</div>
 
 
