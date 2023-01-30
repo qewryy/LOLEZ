@@ -122,7 +122,7 @@ public class MemberController {
 			System.out.println("로그인 성공");
 			
 			//1. 세션에 로그인 정보 저장(MemberDto loginInfo >> [ memail ] )
-			session.setAttribute("loginEmail", loginInfo.getMemail());
+			session.setAttribute("loginNickname", loginInfo.getMname());
 			
 			//2. 메인페이지 이동
 			mav.setViewName("redirect:/");
