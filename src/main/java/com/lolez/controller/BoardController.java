@@ -56,23 +56,18 @@ public class BoardController {
 		ModelAndView mav = new ModelAndView();
 
 		// 1. session에서 로그인 아이디 확인
-<<<<<<< HEAD
 		if (session.getAttribute("loginNickname") == null) {
-			mav.setViewName("redirect:/LoginForm");  
+			mav.setViewName("redirect:/LoginForm");
 			return mav;
 		}
 
 		String loginNickname = (String) session.getAttribute("loginNickname");
-=======
-		/*
-		 * if (session.getAttribute("loginNickname") == null) {
-		 * mav.setViewName("redirect:/memberLoginForm"); return mav; }
-		 */
 
-		/* String loginNickname = (String) session.getAttribute("loginNickname"); */
-		
-		String loginNickname ="test001";
->>>>>>> bc34b2a005a1e0f3f2840cbfcd6b7fb8e4a292b6
+		if (session.getAttribute("loginNickname") == null) {
+			mav.setViewName("redirect:/memberLoginForm");
+			return mav;
+		}
+
 		// 2.board.bwriter(작성자)에 저장
 		board.setBwriter(loginNickname);
 		System.out.println(board);
@@ -92,44 +87,44 @@ public class BoardController {
 
 		return mav;
 	}
-	
+
 	@RequestMapping(value = "/boardView")
 	public ModelAndView boardView(int viewBno) {
 		System.out.println("상세보기 페이지 이동 요청");
 		ModelAndView mav = new ModelAndView();
 		System.out.println("상세보기 글번호 : " + viewBno);
-		
-		//1. 글 상세 정보 조회
+
+		// 1. 글 상세 정보 조회
 		BoardDto board = bsvc.boardView(viewBno);
 		System.out.println(board);
 		mav.addObject("board", board);
-		
+
 		/*
 		 * //2. 추천수 조회 int blikeCount = bsvc.boardLikeCount(viewBno);
 		 * mav.addObject("blikeCount", blikeCount);
 		 */
-		
+
 		/* String loginNickname = (String)session.getAttribute("loginNickname"); */
-		
+
 		/*
 		 * //3. 댓글 목록 조회 ArrayList<ReplyDto> replyList =
 		 * bsvc.boardReplyList(viewBno,loginId); mav.addObject("replyList", replyList);
 		 */
-		
-		//. 글 상세보기 페이지 이동
+
+		// . 글 상세보기 페이지 이동
 		mav.setViewName("board/BoardView");
 		return mav;
 	}
-	
-	/*@RequestMapping(value = "/boardLike")
-	public @ResponseBody String boardLike(int lbno, String lmid) {
-		System.out.println("게시글 추천 처리 요청");
-		System.out.println("추천할 글번호 : " + lbno);
-		System.out.println("추천자 아이디 : " + lmid);
-		
-		String result = bsvc.boardLike(lbno, lmid);
-		
-		return result;
-	}*/
+
+	/*
+	 * @RequestMapping(value = "/boardLike") public @ResponseBody String
+	 * boardLike(int lbno, String lmid) { System.out.println("게시글 추천 처리 요청");
+	 * System.out.println("추천할 글번호 : " + lbno); System.out.println("추천자 아이디 : " +
+	 * lmid);
+	 * 
+	 * String result = bsvc.boardLike(lbno, lmid);
+	 * 
+	 * return result; }
+	 */
 
 }
