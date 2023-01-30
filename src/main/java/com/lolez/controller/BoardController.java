@@ -38,9 +38,17 @@ public class BoardController {
 	public ModelAndView BoardWrite() {
 		System.out.println("글 작성 페이지 요청");
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("board/BoardWrite");
+		
+		if(session.getAttribute("loginNickname") == null) {
+			mav.setViewName("redirect:/memberLoginForm");
+			return mav;
+		}else {
+			mav.setViewName("board/BoardWrite");
+		}
 
 		return mav;
 	}
+	
+	
 
 }
