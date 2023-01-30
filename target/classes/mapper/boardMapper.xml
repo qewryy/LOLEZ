@@ -4,12 +4,33 @@
 <mapper namespace="com.lolez.dao.BoardDao">
 
 	<select id="selectBoardList" resultType="board">
-	  		SELECT * FROM BOARDS WHERE BSTATE = '0' ORDER BY BDATE DESC
-	 </select>
-	
-	
-	
+		SELECT * FROM BOARDS
+		WHERE BSTATE = '0' ORDER BY BDATE DESC
+	</select>
 
+	<select id="selectMaxBno" resultType="int">
+		SELECT NVL( MAX(BNO),0 )
+		FROM BOARDS
+	</select>
 
+	<insert id="insertBoard" parameterType="board">
+		INSERT INTO BOARDS(BNO,
+		BTITLE, BWRITER, BCONTENT, BDATE, BHITS, BREC,
+		BSTATE )
+		VALUES(#{bno},
+		#{btitle}, #{bwriter}, #{bcontent}, SYSDATE, 0, 0, 0)
+	</insert>
 
+	<update id="updateBoardHits" parameterType="int">
+		UPDATE BOARDS SET
+		BHITS = BHITS + 1 WHERE BNO = #{viewBno}
+	</update>
+
+	<select id="selectBoardView" resultType="board">
+		SELECT * FROM BOARDS WHERE BNO = #{viewBno}
+	</select>
+
+	<!-- <select id="selectLikeCheck" resultType="String">
+		SELECT * FROM BOARDS WHERE LBNO = #{lbno} AND LMID = #{lmid}
+	</select> -->
 </mapper> 
