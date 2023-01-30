@@ -50,29 +50,26 @@
                             <div class="col-lg-12">
                                 <!-- Section Tittle -->
                                 <div class="section-tittle mb-50 ">
-                                    <h2  style="color: #f15f22">LOL.EZ</h2>
+                                    <h2  style="color: #f15f22">Hey Bro I'm Pro</h2>
                                 </div>
                             </div>
                         </div>
                         <!-- form -->
-                        <form action="${pageContext.request.contextPath }/memberLogin" class="contact-form" >
+                        <form action="${pageContext.request.contextPath }/memberLogin" class="contact-form"  method="post" onsubmit="return LoginFormCheck(this)">
                             <div class="row ">
                                 <div class="col-lg-12 col-md-6">
                                 <span>이메일 로그인</span>
                                     <div class="input-form">
-                                        <input type="text" placeholder="이메일 주소">
+                                        <input type="text" name="inputMemail" id="inputMemail" placeholder="이메일 주소">
                                     </div>
                                 </div>
                                 <div class="col-lg-12 col-md-6">
                                     <div class="input-form">
-                                        <input type="text" placeholder="비밀번호">
+                                        <input type="password" name="inputMpw" id = "inputMpw" placeholder="비밀번호">
                                     </div>
                                 </div>
-                                <!-- Radio Button -->
-
-                                <!-- Button -->
                                 <div class="col-lg-12">
-                                    <button name="submit" class="submit-btn">로그인</button>
+                                    <button type="submit" class="submit-btn">로그인</button>
                                 </div>
                                 <span">LOL.EZ에 처음 오셨나요? </span> <a href="${pageContext.request.contextPath }/JoinForm" style="color: #f15f22; text-align: left;">회원가입하기</a>
                             </div>
@@ -121,6 +118,29 @@
     <!-- Jquery Plugins, main Jquery -->	
     <script src="${pageContext.request.contextPath }/resources//assets/js/plugins.js"></script>
     <script src="${pageContext.request.contextPath }/resources//assets/js/main.js"></script>
+    
+    	<script type="text/javascript">
+		function LonginFormCheck(LoginForm) {
+			var memail= LoginForm.inputMemail;
+			var mpw= LoginForm.inputMemail;
+			
+			if(memail.length==0){
+				// 아이디 입력이 없는 상태 의미
+				memail.focus();
+				alert('아이디를 입력해주세요!');
+				return false;
+			}
+			
+			if(mpw.length == 0){
+				// 비밀번호 입력이 없는 상태를 의미
+				mpw.focus();
+				alert('비밀번호를 입력해주세요!');
+				return false;
+			}
+			
+			return false;
+		}
+    
     
 </body>
 </html>

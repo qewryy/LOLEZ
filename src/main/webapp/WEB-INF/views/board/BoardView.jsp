@@ -1,4 +1,3 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!doctype html>
@@ -36,121 +35,74 @@
 	href="${pageContext.request.contextPath }/resources/assets/css/nice-select.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath }/resources/assets/css/style.css">
-
-<!-- Custom styles for this page -->
-<link
-	href="${pageContext.request.contextPath }/resources/assets/datatables/dataTables.bootstrap4.min.css"
-	rel="stylesheet">
-
 </head>
 <body>
-	<!--? Preloader Start -->
 	<header>
 		<!-- Header Start -->
 		<%@ include file="/WEB-INF/views/includes/header.jsp"%>
 		<!-- Header End -->
 	</header>
 	<main>
-		<div id="wrapper">
 
-			<!-- Content Wrapper -->
-			<div id="content-wrapper" class="d-flex flex-column">
+		<div class="card o-hidden border-0 shadow-lg my-5">
+			<div class="card-body p-0 ">
+				<!-- Nested Row within Card Body -->
+				<div class="row">
+					<div class="col-lg-12 ">
+						<div class="p-5">
+							<form class="user" action="" method="post">
+								<div class="form-group row">
+									<div class="col-sm-4">
+										<label for="inputTitle" class="font-weight-bold">글제목</label> <input
+											name="btitle" type="text" id="inputTitle"
+											class="form-control form-control-user" readonly="readonly"
+											value="${board.btitle }">
+									</div>
 
-				<!-- Main Content -->
-				<div id="content">
+									<div class="col-md-4">
+										<label for="inputbwriter" class="form-label">작성자</label> <input
+											type="text" name="bwriter" class="form-control"
+											id="inputbwriter" value="${board.bwriter}"
+											readonly="readonly">
+									</div>
 
-					<!-- Begin Page Content -->
-					<div class="container-fluid">
-
-						<!-- Page Heading -->
-						<h1 class="h3 mb-2 text-gray-800">커뮤니티</h1>
-						<!-- DataTales Example -->
-
-						<form class="card shadow mb-4"
-							action="${pageContext.request.contextPath }/boardWriteForm"
-							enctype="multipart/form-data" method="post" class="user">
-							<!-- <div class="card shadow mb-4">  -->
-							<div class="card-body">
-								<div class="table-responsive">
-									<table class="table table-bordered" id="dataTable" width="100%"
-										cellspacing="0">
-										<thead>
-											<tr>
-												<th>번호</th>
-												<th>제목</th>
-												<th>작성자</th>
-												<th>날짜</th>
-												<th>조회수</th>
-												<th>추천수</th>
-											</tr>
-										</thead>
-										<tfoot>
-											<tr>
-											</tr>
-										</tfoot>
-
-										<tbody>
-											<c:forEach items="${boardList}" var="board">
-												<tr>
-													<td>${board.bno }</td>
-													<td><a style="color: black;"
-														href="${pageContext.request.contextPath }/boardView?viewBno=${board.bno }">
-															${board.btitle } </a></td>
-													<td>${board.bwriter }</td>
-													<td>${board.bdate }</td>
-													<td>${board.bhits }</td>
-													<td>${board.brec }</td>
-												</tr>
-											</c:forEach>
-										</tbody>
-									</table>
+									<div class="col-md-4">
+										<label for="inputbdate" class="form-label">작성일</label> <input
+											type="text" name="bdate" class="form-control" id="inputbdate"
+											value="${board.bdate}" readonly="readonly">
+									</div>
 								</div>
-							</div>
-							<!-- </div> -->
-							<div class="row">
+								<div class="form-group">
+									<label for="inputContent" class="font-weight-bold">글내용</label>
+									<textarea name="bcontent" id="inputContent"
+										class="form-control" rows="20" cols="5" readonly="readonly">${board.bcontent }</textarea>
+								</div>
 
-								<!-- btn-lolezColor -> resources/assets/css/bootstarp.min.css line:2309 -->
+								<div class="form-group row" style=text-align: center;"">
+										<button class="btn btn-primary btn-user btn-block"
+											type="button">수정하기</button>
 
-							</div>
-				
-					</div>
-					
-					<!-- /.container-fluid -->
 
-				</div>
-				<div class="col-sm-6 col-md-5">
-					<button type="submit" class="btn btn-lolezColor btn-icon-split">글
-						작성하기</button>
+								</div>
 
-				</div>
-				</form>
-				<!-- End of Main Content -->
 
-				<!-- Footer -->
+							</form>
 
-				<footer class="sticky-footer bg-white">
-					<div class="copyright text-center my-auto">
-						<span>Copyright &copy; Your Website 2020</span>
-					</div>
-				</footer>
-				<!-- 			<footer class="sticky-footer bg-white">
-				<div class="container my-auto">
-					<div class="copyright text-center my-auto">
-						<span>Copyright &copy; Your Website 2020</span>
+						</div>
 					</div>
 				</div>
-			</footer> -->
-
-				<!-- End of Footer -->
-
 			</div>
-			<!-- End of Content Wrapper -->
+		</div>
 
 		</div>
-		<!-- End of Page Wrapper -->
-
 
 	</main>
+	<footer>
+		<!--? Footer Start-->
+		<%@ include file="/WEB-INF/views/includes/footer.jsp"%>
+		<!-- Footer End-->
+	</footer>
+	<!-- Scroll Up -->
 
 
 	<!-- JS here -->
@@ -204,17 +156,6 @@
 		src="${pageContext.request.contextPath }/resources//assets/js/plugins.js"></script>
 	<script
 		src="${pageContext.request.contextPath }/resources//assets/js/main.js"></script>
-
-
-	<!-- Page level plugins -->
-	<script
-		src="${pageContext.request.contextPath }/resources/assets/datatables/jquery.dataTables.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath }/resources/assets/datatables/dataTables.bootstrap4.min.js"></script>
-
-	<!-- Page level custom scripts -->
-	<script
-		src="${pageContext.request.contextPath }/resources/assets/js/demo/datatables-demo.js"></script>
 
 </body>
 </html>

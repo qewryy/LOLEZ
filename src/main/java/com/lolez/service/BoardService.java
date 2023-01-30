@@ -18,11 +18,13 @@ public class BoardService {
 
 	@Autowired
 	private BoardDao bdao;
+	
 	public ArrayList<BoardDto> boardList() {
 		System.out.println("BoardService boardList()");
 		ArrayList<BoardDto> boardList = bdao.selectBoardList();
 		return boardList;
 	}
+	
 	public int boardWrite(BoardDto board) {
 		System.out.println("BoardService boardWrite()");
 		// 글번호 생성

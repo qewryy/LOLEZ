@@ -194,6 +194,7 @@
 					checkSC=1;
 				}
 			}
+			console.log(checkSC);
 			var nameOK = 0;
 			
 			
@@ -212,7 +213,11 @@
                     document.getElementById('nameMsg').style.color = 'red';
                 }
                 
+            }else if(checkSC == 1){
+                document.getElementById('nameMsg').innerText = '닉네임에는 띄어쓰기 혹은 특수문자는 사용이 불가능합니다!';
+                document.getElementById('nameMsg').style.color = 'red';
             }else{
+            	
                 document.getElementById('nameMsg').innerText = '';
                 document.getElementById('nameMsg').style.color = '';
                 nameOK = 1;

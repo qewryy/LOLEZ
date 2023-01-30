@@ -50,40 +50,33 @@
 				<div class="row">
 					<div class="col-lg-12 ">
 						<div class="p-5">
-							<form class="user">
+							<form class="user" action="${pageContext.request.contextPath }/boardWrite" method="post">
 								<div class="form-group row">
 									<div class="col-sm-12">
-										<input type="text" class="form-control form-control-user"
-											id="exampleLastName" placeholder="제목">
+										<label for="inputTitle" class="font-weight-bold">글제목</label>
+										<input name="btitle" type="text" id="inputTitle" class="form-control form-control-user">
 									</div>
 								</div>
 								<div class="form-group">
-									<textarea class="form-control form-control-user" rows="20"
-										cols="" id=""></textarea>
+										<label for="inputContent" class="font-weight-bold">글내용</label>
+										<textarea name="bcontent" id="inputContent" class="form-control" rows="20" cols="5"></textarea>
 								</div>
 
 								<div class="form-group row">
 									<div class="col-sm-6">
-										<a href="login.html"
-											class="btn btn-primary btn-user btn-block"> 작성하기 </a>
+										<button class="btn btn-primary btn-user btn-block" type="submit">
+											 작성하기
+										</button>
 									</div>
 									<div class="col-sm-6">
-										<a href="login.html"
+										<a href="${pageContext.request.contextPath }/boardList"
 											class="btn btn-primary btn-user btn-block"> 취소하기 </a>
 									</div>
 								</div>
 
 
 							</form>
-							<hr>
-							<div class="text-center">
-								<a class="small" href="forgot-password.html">Forgot
-									Password?</a>
-							</div>
-							<div class="text-center">
-								<a class="small" href="login.html">Already have an account?
-									Login!</a>
-							</div>
+
 						</div>
 					</div>
 				</div>

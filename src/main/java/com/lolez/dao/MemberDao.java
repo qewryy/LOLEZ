@@ -14,7 +14,7 @@ public interface MemberDao {
 	
 	String checkEmail(String inputEmail);
 	
-	MemberDto selectMemberLogin(@Param("mid")String mid, @Param("mpw")String mpw);
+	MemberDto selectMemberLogin(@Param("memail")String inputMemail, @Param("mpw")String inputMpw);
 
 	String checkNickname(String inputNickname);
 

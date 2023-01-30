@@ -56,13 +56,14 @@ public class BoardController {
 		ModelAndView mav = new ModelAndView();
 
 		// 1. session에서 로그인 아이디 확인
-		if (session.getAttribute("loginNickname") == null) {
-			mav.setViewName("redirect:/memberLoginForm");
-			return mav;
-		}
+		/*
+		 * if (session.getAttribute("loginNickname") == null) {
+		 * mav.setViewName("redirect:/memberLoginForm"); return mav; }
+		 */
 
-		String loginNickname = (String) session.getAttribute("loginNickname");
-
+		/* String loginNickname = (String) session.getAttribute("loginNickname"); */
+		
+		String loginNickname ="test001";
 		// 2.board.bwriter(작성자)에 저장
 		board.setBwriter(loginNickname);
 		System.out.println(board);
