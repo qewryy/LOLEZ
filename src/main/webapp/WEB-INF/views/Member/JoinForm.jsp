@@ -37,19 +37,6 @@
 	href="${pageContext.request.contextPath }/resources/assets/css/style.css">
 </head>
 <body>
-	<!--? Preloader Start -->
-	<div id="preloader-active">
-		<div
-			class="preloader d-flex align-items-center justify-content-center">
-			<div class="preloader-inner position-relative">
-				<div class="preloader-circle"></div>
-				<div class="preloader-img pere-text">
-					<%-- <img src="${pageContext.request.contextPath }/resources/assets/img/LOL/Loader.jpg" style="width: 100px;" alt="" > --%>
-				</div>
-			</div>
-		</div>
-	</div>
-
 
 	<main>
 		<section class="contact-form-area section-bg  pt-115 pb-120 fix">
