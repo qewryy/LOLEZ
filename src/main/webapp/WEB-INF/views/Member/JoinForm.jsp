@@ -83,7 +83,7 @@
 									<div class="col-lg-12 col-md-6">
 										<div class="input-form">
 											<input type="text" placeholder="닉네임" name="name" id="inputname" onkeyup="checkName(this.value)"> 
-											<span class="small"	id="nameCheckMsg"></span>
+											<span class="small"	id=nameMsg></span>
 										</div>
 									</div>
 									<div class="col-lg-12 col-md-6">
@@ -207,36 +207,50 @@
 					checkSC=1;
 				}
 			}
+			var nameOK = 0;
 			
 			
-			
-			//아무것도 입력 안할시 초기 상태 +  지정된 길이에 맞지 않을시 안내문
-/* 			if(name.length == 0){
-				document.getElementById('nameCheckMsg').innerText = '';
-				document.getElementById('nameCheckMsg').style.color = '';
-			}  */
-			
-			
-			if(name.length >= 8 || name.length <= 8){
-				document.getElementById('nameCheckMsg').innerText = '닉네임은 3자 이상 8자 이하로 작성해주세요!';
-				document.getElementById('nameCheckMsg').style.color = 'red';
-			}else{
-/* 				document.getElementById('nameCheckMsg').innerText = '';
-				document.getElementById('nameCheckMsg').style.color = ''; */
-			}
-
-
-			
-			/* 공백 특수기호 불가 안내문 */
-			 if(checkSC == 1){
-					document.getElementById('nameCheckMsg').innerText = '닉네임에는 띄어쓰기 혹은 특수문자는 사용이 불가능합니다!';
-					document.getElementById('nameCheckMsg').style.color = 'red';
-				}else{
-					document.getElementById('nameCheckMsg').innerText = '';
-					document.getElementById('nameCheckMsg').style.color = '';
-					emailok = 1;
+            // 아이디 입력칸 초기상태가 0 일 경우 출력문은 표시하지 않는다.
+            if(name.length == 0){
+                document.getElementById('nameMsg').innerText = '';
+                document.getElementById('nameMsg').style.color = '';
+                // 아이디 입력칸이 3자 미만 8자 이상일 경우 제한 메세지를 출력한다.
+            }else if(name.length < 3 || name.length > 8){
+                document.getElementById('nameMsg').innerText = '닉네임은 3자 이상 8자 이하로 작성해주세요!';
+                document.getElementById('nameMsg').style.color = 'red';
+                
+                //공백 또는 특수기호가 있으면 제한 메세지를 출력한다.
+                if(checkSC == 1){
+                    document.getElementById('nameMsg').innerText = '닉네임에는 띄어쓰기 혹은 특수문자는 사용이 불가능합니다!';
+                    document.getElementById('nameMsg').style.color = 'red';
+                }
+                
+            }else{
+                document.getElementById('nameMsg').innerText = '';
+                document.getElementById('nameMsg').style.color = '';
+                nameOK = 1;
+            }
+            
+            if(nameOK == 1 ){
+				$.ajax({
+					type : "get",
+					url : "${pageContext.request.contextPath }/MemberNicknameCheck",
+					data : {"inputNickname" : namevar},
+					success : function (checkResult) {
+						console.log(checkResult);
+						if(checkResult == 'OK'){
+							document.getElementById('nameMsg').innerText = '';
+							document.getElementById('nameMsg').style.color = '';
+							emailok = 0;
+						}else{
+							document.getElementById('nameMsg').innerText = '이미 사용중인 이름입니다!';
+							document.getElementById('nameMsg').style.color = 'red';
+						}
+					}
 					
-				}
+					
+				});
+            }
 	
 			
 		} 
@@ -247,7 +261,7 @@
 		function checkEmail(emailvar) {
 			
 			console.log('접속');
-			var domain = ["@gmail.com","@naver.com","@kakao.com","@nate.com","@yahoo.com","@daum.net"]; 
+			var domain = ["@gmail.com","@naver.com","@kakao.com","@nate.com","@yahoo.com","@daum.net","@gmail.co","@naver.co","@kakao.co","@nate.co","@yahoo.co"]; 
 			var checkEmail = 0;
 			
 			for(var i=0; i<domain.length; i++){
