@@ -50,8 +50,23 @@ public class EmailService {
 
 	public EmailDto ProveCheck(String email) {
 		System.out.println("EmailService ProveCheck() 실행");
-		EmailDto ck = edao.ProveCheck(email);
-		return ck;
+		EmailDto rs = edao.ProveCheck(email);
+		
+		return rs;
+	}
+
+	public String selectToken(String token) {
+		System.out.println("EmailService selectToken() 실행");
+		String rs = edao.selectToken(token);
+		
+		return rs;
+	}
+
+	public int updateEmailProve(String token) {
+		System.out.println("EmailService updateEmailProve() 실행");
+		int us = edao.updateEmailProve(token);
+		
+		return us;
 	}
 
 }

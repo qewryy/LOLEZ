@@ -10,4 +10,8 @@ public interface EmailDao {
 
 	EmailDto ProveCheck(@Param("email")String email);
 
+	String selectToken(String token);
+
+	int updateEmailProve(String token);
+
 }

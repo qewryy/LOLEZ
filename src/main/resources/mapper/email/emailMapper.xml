@@ -11,5 +11,13 @@
 	<select id="ProveCheck" resultType="email">
 		SELECT * FROM EMAILPROVE WHERE PEMAIL = #{email}
 	</select>
+	
+	<select id="selectToken" resultType="String">
+		SELECT PTOKEN FROM EMAILPROVE WHERE PTOKEN = #{token}
+	</select>
 
+	<update id="updateEmailProve" parameterType="String">
+		UPDATE EMAILPROVE SET PSTASUS = 1 WHERE PTOKEN = #{token};
+	</update>
+	
 </mapper> 
