@@ -69,7 +69,7 @@
 							<div class="login__l-sign-up">
 								이미 회원이신가요?
 								<a href="${pageContext.request.contextPath }/LoginForm"
-									class="member-button link-button age__link-btn">로그인으로
+									class="member-button link-button age__link-btn" style="position: relative; color: #1ea1f7; text-decoration: underline; padding: 0; background-color: transparent; border: 0; margin-left: 12px;">로그인으로
 									돌아가기</a>
 							</div>
 						</div>
