@@ -43,7 +43,7 @@
 			<div class="container">
 				<div class="row justify-content-end">
 					<!-- Contact wrapper -->
-					<div class="col-xl-8 col-lg-9">
+					<div class="col-xl-16 col-lg-8" style="height: 100%">
 						<div class="contact-form-wrapper">
 							<!-- From tittle -->
 							<div class="row">
@@ -69,8 +69,9 @@
 									</div>
 									<div class="col-lg-12 col-md-6">
 										<div class="input-form">
-											<input type="text" placeholder="닉네임" name="name" id="inputname" onkeyup="checkName(this.value)"> 
-											<span class="small"	id=nameMsg></span>
+											<input type="text" placeholder="닉네임" name="name"
+												id="inputname" onkeyup="checkName(this.value)"> <span
+												class="small" id=nameMsg></span>
 										</div>
 									</div>
 									<div class="col-lg-12 col-md-6">
@@ -83,7 +84,7 @@
 										<div class="input-form">
 											<input type="password" placeholder="비밀번호" name="pw"
 												id="inputPW" onkeyup="pwcheck(this.value)">
-											<div>
+											<div class="password-condition">
 												<h3 id="PWrule"></h3>
 												<ul>
 													<li id="pwcheckMsg1"></li>

@@ -71,7 +71,7 @@
                                 <div class="col-lg-12">
                                     <button type="submit" class="submit-btn">로그인</button>
                                 </div>
-                                <span">LOL.EZ에 처음 오셨나요? </span> <a href="${pageContext.request.contextPath }/JoinForm" style="color: #f15f22; text-align: left;">회원가입하기</a>
+                                <span">LOL.EZ에 처음 오셨나요? </span> <a href="${pageContext.request.contextPath }/JoinFormEmail" style="color: #f15f22; text-align: left;">회원가입하기</a>
                             </div>
                         </form>	
                     </div>

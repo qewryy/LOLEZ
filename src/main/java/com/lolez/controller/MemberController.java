@@ -22,13 +22,39 @@ public class MemberController {
 	@Autowired
 	private MemberService memsvc;
 	
-	@RequestMapping(value = "/JoinForm")
-	public ModelAndView memberJoinForm() {
+	@RequestMapping(value = "/EmailAuthentication")
+	public ModelAndView memberJoinForm(String email) {
 
-		System.out.println("회원가입 페이지 이동 요청");
+		System.out.println("인증대기창 페이지 이동 요청");
+		System.out.println("인증요청 이메일 : " + email);
+		
 
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("Member/JoinForm");
+		mav.addObject("memberEmail", email);
+		
+		mav.setViewName("Member/EmailAuthentication");
+		return mav;
+	}
+	
+	@RequestMapping(value = "/done")
+	public ModelAndView done( ) {
+
+		System.out.println("회원가입 완료 안내 페이지 요청");
+
+		ModelAndView mav = new ModelAndView();
+		
+		mav.setViewName("Member/done");
+		return mav;
+	}
+	
+	
+	@RequestMapping(value = "/JoinFormEmail")
+	public ModelAndView memberJoinFormEmail() {
+
+		System.out.println("회원가입 이메일 인증 페이지 요청");
+
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("Member/JoinFormEmail");
 		return mav;
 	}
 
