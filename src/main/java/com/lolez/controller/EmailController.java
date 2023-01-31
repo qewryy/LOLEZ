@@ -17,17 +17,6 @@ import com.lolez.service.EmailService;
 public class EmailController {
 
 	@Autowired
-<<<<<<< HEAD
-	private JavaMailSender mailSender;
-
-	@RequestMapping(value = "/email")
-	public int emailCertify(String email) throws Exception {
-		System.out.println("이메일 TEST");
-		MimeMessage message = mailSender.createMimeMessage();
-		MimeMessageHelper messageHelper = new MimeMessageHelper(message, true, "UTF-8");
-
-		String emailContent = "<!DOCTYPE html>" + "<html lang=\"en\">" + "<head>" + "    <meta charset=\"UTF-8\">"
-=======
 	private EmailService esvc;
 
 	@Autowired
@@ -45,15 +34,15 @@ public class EmailController {
 		String host = request.getServerName();
 		int port = request.getServerPort();
 		String contextPath = request.getContextPath();
-	
+
 		EmailDto ck = esvc.ProveCheck(email);
-		
+
 		System.out.println(ck);
 		if (ck == null) {
 			token = UUID.randomUUID().toString();
 		} else if (ck.getPstatus() == 0) {
 			token = ck.getPtoken();
-		}else if (ck.getPstatus() == 1) {
+		} else if (ck.getPstatus() == 1) {
 			System.out.println("이메일 인증 완료 대상입니다.");
 
 			session.setAttribute("Emailval", ck.getPemail());
@@ -65,7 +54,6 @@ public class EmailController {
 		String verificationUrl = "http://" + host + ":" + port + contextPath + "/verify?token=" + token;
 
 		String contect = "<!DOCTYPE html>" + "<html lang=\"en\">" + "<head>" + "    <meta charset=\"UTF-8\">"
->>>>>>> bc3e8b3787301c7fd4820f39750db1cd649b095e
 				+ "    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">"
 				+ "    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">"
 				+ "    <title>Document</title>" + "</head>" + "<body>"
@@ -102,21 +90,17 @@ public class EmailController {
 				+ "                <tr>" + "                    <td height=\"40\"></td>" + "                </tr>"
 				+ "                <tr>"
 				+ "                    <td height=\"40\" style=\"line-height:1.5;font-size:16px;word-break:keep-all\">"
-<<<<<<< HEAD
 				+ "                        <strong style=\"font-weight:bold\">안녕하세요 TESTUSER님,</strong><br>"
 				+ "                        회원님의 이메일 <a href=\"mailto:qewryy4@gmail.com\" target=\"_blank\">qewryy4@gmail.com</a>로 <a href=\"http://OP.GG\" target=\"_blank\" data-saferedirecturl=\"https://www.google.com/url?q=http://OP.GG&amp;source=gmail&amp;ust=1675210422515000&amp;usg=AOvVaw2Q7K4Zq6z1wC3Ivod3OVpC\">LOL.EZ</a>계정이 생성되었으며"
-=======
-				+ "                        <strong style=\"font-weight:bold\">안녕하세요 "+email+"님,</strong><br>"
-				+ "                        회원님의 이메일 <a href=\"mailto:"+email+"\" target=\"_blank\">"+email+"</a>로 인증메일이 발송되었습니다."
->>>>>>> bc3e8b3787301c7fd4820f39750db1cd649b095e
-				+ "                        <br>메일 인증을 위해 아래 링크(URL)을 클릭하시면 회원가입이 완료됩니다." + "                    </td>"
-				+ "                </tr>" + "                <tr>" + "                    <td height=\"40\"></td>"
-				+ "                </tr>" + "                <tr>"
+				+ "                        <strong style=\"font-weight:bold\">안녕하세요 " + email + "님,</strong><br>"
+				+ "                        회원님의 이메일 <a href=\"mailto:" + email + "\" target=\"_blank\">" + email
+				+ "</a>로 인증메일이 발송되었습니다." + "                        <br>메일 인증을 위해 아래 링크(URL)을 클릭하시면 회원가입이 완료됩니다."
+				+ "                    </td>" + "                </tr>" + "                <tr>"
+				+ "                    <td height=\"40\"></td>" + "                </tr>" + "                <tr>"
 				+ "                    <td height=\"21\" style=\"font-size:18px\">" + "                        인증 링크"
 				+ "                    </td>" + "                </tr>" + "                <tr>"
 				+ "                    <td height=\"8\"></td>" + "                </tr>" + "                <tr>"
 				+ "                    <td bgcolor=\"#f3f5f7\" style=\"padding: 16px;word-break: line-height: 1.43;/* font-size:14px; */"
-<<<<<<< HEAD
 				+ "                        					<a href=\"https://member.op.gg/auth/sign-up/link?key=9Ff7caJ_bPwnq_dipMdSx9Ra7LstDfY0SDxsmPZgMNUkk1WVJGSo0KDwOLS42Vpq5_9W4T2PFjA9Ts6nC5yLaw\" rel=\"noreferrer noopener\" target=\"_blank\">https://member.op.gg/auth/sign-up/link?key=9Ff7caJ_bPwnq_dipMdSx9Ra7LstDfY0SDxsmPZgMNUkk1WVJGSo0KDwOLS42Vpq5_9W4T2PFjA9Ts6nC5yLaw</a>"
 				+ "                    </td>" + "                </tr>" + "                <tr>"
 				+ "                    <td height=\"24\"></td>" + "                </tr>" + "                <tr>"
@@ -125,13 +109,11 @@ public class EmailController {
 				+ "                        개인정보 보호를 위해 인증메일 발송 후 1시간 이내에 인증이 완료되지 않으면 입력한 정보가 모두 DB에서 삭제됩니다."
 				+ "                    </td>" + "                </tr>" + "                <tr>"
 				+ "                    <td height=\"80\"></td>" + "                </tr>" + "                <tr>"
-=======
-				+ "                                       <a href=\"verificationUrl\" rel=\"noreferrer noopener\" target=\"_blank\">"+verificationUrl+"</a>"
-				+ "                    </td>" + "                </tr>" + "                <tr>"
-				+ "                    <td height=\"24\"></td>" + "                </tr>" + "                <tr>"
-				+ "                    <td height=\"16\"></td>" + "                </tr>" + "                <tr>"
->>>>>>> bc3e8b3787301c7fd4820f39750db1cd649b095e
-				+ "                    <td style=\"font-size:14px;color:#1e2022\">"
+				+ "                                       <a href=\"verificationUrl\" rel=\"noreferrer noopener\" target=\"_blank\">"
+				+ verificationUrl + "</a>" + "                    </td>" + "                </tr>"
+				+ "                <tr>" + "                    <td height=\"24\"></td>" + "                </tr>"
+				+ "                <tr>" + "                    <td height=\"16\"></td>" + "                </tr>"
+				+ "                <tr>" + "                    <td style=\"font-size:14px;color:#1e2022\">"
 				+ "                        인증 링크(URL)가 동작하지 않는다면?" + "                    </td>"
 				+ "                </tr>" + "                <tr>" + "                    <td height=\"8\"></td>"
 				+ "                </tr>" + "                <tr>"
@@ -155,7 +137,6 @@ public class EmailController {
 				+ "                            인천일보아카데미 <br>" + "                            사업자등록번호: NONE"
 				+ "                        </td>" + "                    </tr>" + "                    <tr>"
 				+ "                        <td height=\"24\"></td>" + "                    </tr>"
-<<<<<<< HEAD
 				+ "                    <tr>"
 				+ "                        <td style=\"padding:12px;font-size:12px;color:#7b858e;text-align:center;border:1px solid #dddfe4\">"
 				+ "                            본 메일은 발송전용 메일이오니 문의사항이 있으시면 <a href=\"mailto:service@op.gg\" style=\"color:#7b858e\" target=\"_blank\">고객센터</a>를 이용해주시기 바랍니다."
@@ -167,46 +148,25 @@ public class EmailController {
 				+ "    <tr>" + "        <td height=\"40\"></td>" + "    </tr>" + "    </tbody>" + "    </table>"
 				+ "</body>" + "</html>";
 
-		messageHelper.setFrom("loleasy2023@gmail.com"); // 보내는사람 생략하거나 하면 정상작동을 안함
-		messageHelper.setTo("pashu0991@gmail.com"); // 받는사람 이메일
-		messageHelper.setSubject("메일전송 test"); // 메일제목은 생략이 가능하다
-		messageHelper.setText(emailContent, true); // 메일 내용
-
-		mailSender.send(message);
-		return 0;
-
-	}
-
-
-
-}
-=======
-				+ "                    <tr>" + "                        <td height=\"64\"></td>"
-				+ "                    </tr>" + "                </tbody>" + "            </table>" + "        </td>"
-				+ "        <td></td>" + "    </tr>" + "    <tr>" + "    </tr><tr height=\"40\"></tr>"
-				+ "    <tr height=\"40\"></tr>" + "    <tr height=\"40\"></tr>" + "    </tbody>" + "    </table>"
-				+ "    </td>" + "    </tr>" + "    <tr>" + "        <td height=\"40\"></td>" + "    </tr>"
-				+ "    </tbody>" + "    </table>" + "</body>" + "</html>";
-		
 		if (ck == null) {
 			System.out.println("이메일 인증 기록이 없습니다.");
 			int ir = esvc.EmailProve(email, token, contect, -1);
 
 			if (ir == 1) {
 				System.out.println("이메일 인증 메일이 정상적으로 전송 되었습니다.");
- 
+
 				session.setAttribute("Emailval", email);
 
 				mav.setViewName("redirect:/수정중");
 
 			} else {
 				System.out.println("이메일 인증 메일 전송에 실패했습니다.");
- 
+
 				mav.setViewName("redirect:/수정중");
 
 			}
-			
-		}else if (ck.getPstatus() == 0) {
+
+		} else if (ck.getPstatus() == 0) {
 			System.out.println("이메일 인증 기록이 있습니다.");
 			int ir = esvc.EmailProve(email, token, contect, ck.getPstatus());
 
@@ -228,27 +188,27 @@ public class EmailController {
 		return mav;
 
 	}
-	
+
 	@RequestMapping(value = "/verify")
 	public ModelAndView verify(String token) {
 		System.out.println("이메일 인증 링크 접속");
-		ModelAndView mav = new ModelAndView(); 
+		ModelAndView mav = new ModelAndView();
 		System.out.println("접속 토큰 : " + token);
 		String Ptoken = esvc.selectToken(token);
-		
-		if(!(Ptoken.equals(null))) {
+
+		if (!(Ptoken.equals(null))) {
 			System.out.println("이메일 인증에 성공하셨습니다.");
 			int us = esvc.updateEmailProve(token);
 			mav.setViewName("redirect:/수정중");
-		}else {
+		} else {
 			System.out.println("이메일 인증에 실패하셨습니다.");
 			mav.setViewName("redirect:/수정중");
 			return mav;
 		}
-		
+
 		return mav;
 	}
-	
+
 	@RequestMapping(value = "/prove")
 	public ModelAndView prove() {
 		System.out.println("이메일 인증 성공 처리");
@@ -257,8 +217,5 @@ public class EmailController {
 		mav.setViewName("Member/JoinForm");
 		return mav;
 	}
-	
-	
-	
+
 }
->>>>>>> bc3e8b3787301c7fd4820f39750db1cd649b095e
