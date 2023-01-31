@@ -12,11 +12,13 @@
 		<typeAlias type="com.lolez.dto.MemberDto" alias="member" />
 		<typeAlias type="com.lolez.dto.BoardDto" alias="board" />
 		<typeAlias type="com.lolez.dto.ReplyDto" alias="reply" />
+		<typeAlias type="com.lolez.dto.EmailDto" alias="email" />
 	</typeAliases>
 
 
 	<mappers>
-		<mapper resource="mapper/memberMapper.xml" />
-		<mapper resource="mapper/boardMapper.xml" />
+		<mapper resource="mapper/member/memberMapper.xml" />
+		<mapper resource="mapper/board/boardMapper.xml" />
+		<mapper resource="mapper/email/emailMapper.xml" />
 	</mappers>
 </configuration>

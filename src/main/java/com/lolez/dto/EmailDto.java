@@ -7,89 +7,35 @@ import lombok.Data;
 @Data
 public class EmailDto {
 	
-	private Long emailid;
-	private String from;
-	private String to;
-	private String subject;
-	private String content;
-	private int status;
-	
-	public Long getEmailid() {
-		return emailid;
+	private String pemail;
+	private int pstatus;
+	private String ptoken;
+	public String getPemail() {
+		return pemail;
 	}
-
-
-
-	public void setEmailid(Long emailid) {
-		this.emailid = emailid;
+	public void setPemail(String pemail) {
+		this.pemail = pemail;
 	}
-
-
-
-	public String getFrom() {
-		return from;
+	public int getPstatus() {
+		return pstatus;
 	}
-
-
-
-	public void setFrom(String from) {
-		this.from = from;
+	public void setPstatus(int pstatus) {
+		this.pstatus = pstatus;
 	}
-
-
-
-	public String getTo() {
-		return to;
+	public String getPtoken() {
+		return ptoken;
 	}
-
-
-
-	public void setTo(String to) {
-		this.to = to;
+	public void setPtoken(String ptoken) {
+		this.ptoken = ptoken;
 	}
-
-
-
-	public String getSubject() {
-		return subject;
-	}
-
-
-
-	public void setSubject(String subject) {
-		this.subject = subject;
-	}
-
-
-
-	public String getContent() {
-		return content;
-	}
-
-
-
-	public void setContent(String content) {
-		this.content = content;
-	}
-
-
-	public int getStatus() {
-		return status;
-	}
-
-
-
-	public void setStatus(int status) {
-		this.status = status;
-	}
-
-
-
 	@Override
 	public String toString() {
-		return "EmailDto [emailid=" + emailid + ", from=" + from + ", to=" + to + ", subject=" + subject + ", content="
-				+ content + ", status=" + status + "]";
+		return "EmailDto [pemail=" + pemail + ", pstatus=" + pstatus + ", ptoken=" + ptoken + "]";
 	}
+	
+	
+	
+	
 	
 	
 }
