@@ -25,14 +25,16 @@
 	</beans:bean>
 	
 	<websocket:handlers>
-		<websocket:mapping handler="checkHandler" path="/checkProve"/>
+		<websocket:mapping handler="provecheckHandler" path="/checkProve"/>
+		<websocket:mapping handler="errorcheckHandler" path="/checkError"/>
 		<websocket:handshake-interceptors>
 			<beans:bean class="org.springframework.web.socket.server.support.HttpSessionHandshakeInterceptor"></beans:bean>
 		</websocket:handshake-interceptors>
         <websocket:sockjs></websocket:sockjs>
 	</websocket:handlers>
 	
-	<beans:bean id="checkHandler" class="com.lolez.webSock.EmailProveCheckHandler"></beans:bean>
+	<beans:bean id="provecheckHandler" class="com.lolez.webSock.EmailProveCheckHandler"></beans:bean>
+	<beans:bean id="errorcheckHandler" class="com.lolez.webSock.EmailErrorCheckHandler"></beans:bean>
 	
 	<context:component-scan base-package="com.lolez.controller" />
 	<context:component-scan base-package="com.lolez.service" />

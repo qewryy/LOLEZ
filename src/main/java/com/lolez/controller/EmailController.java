@@ -47,7 +47,7 @@ public class EmailController {
 
 			session.setAttribute("Emailval", ck.getPemail());
 
-			mav.setViewName("redirect:/memberJoinForm?email="+email);
+			mav.setViewName("redirect:/EmailAuthentication?email="+email);
 			return mav;
 		}
 
@@ -157,12 +157,12 @@ public class EmailController {
 
 				session.setAttribute("Emailval", email);
 
-				mav.setViewName("redirect:/수정중");
+				mav.setViewName("redirect:/EmailAuthentication?email="+email);
 
 			} else {
 				System.out.println("이메일 인증 메일 전송에 실패했습니다.");
 
-				mav.setViewName("redirect:/수정중");
+				mav.setViewName("redirect:/JoinFormEmail");
 
 			}
 
@@ -175,12 +175,12 @@ public class EmailController {
 
 				session.setAttribute("Emailval", ck.getPemail());
 
-				mav.setViewName("redirect:/수정중");
+				mav.setViewName("redirect:/EmailAuthentication?email="+email);
 
 			} else {
 				System.out.println("이메일 인증 메일 전송에 실패했습니다.");
 
-				mav.setViewName("redirect:/수정중");
+				mav.setViewName("redirect:/JoinFormEmail");
 
 			}
 		}
@@ -199,22 +199,13 @@ public class EmailController {
 		if (!(Ptoken.equals(null))) {
 			System.out.println("이메일 인증에 성공하셨습니다.");
 			int us = esvc.updateEmailProve(token);
-			mav.setViewName("redirect:/수정중");
+			mav.setViewName("redirect:/done");
 		} else {
 			System.out.println("이메일 인증에 실패하셨습니다.");
-			mav.setViewName("redirect:/수정중");
+			mav.setViewName("redirect:/error");
 			return mav;
 		}
 
-		return mav;
-	}
-
-	@RequestMapping(value = "/prove")
-	public ModelAndView prove() {
-		System.out.println("이메일 인증 성공 처리");
-		ModelAndView mav = new ModelAndView(); 
-		System.out.println("회원가입 페이지 이동 요청");
-		mav.setViewName("Member/JoinForm");
 		return mav;
 	}
 

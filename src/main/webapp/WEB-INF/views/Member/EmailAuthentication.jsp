@@ -38,47 +38,50 @@
 </head>
 <body>
 
-	
-		<div id="root" style="background-color: #e4e3e752;">
-			<div class="app">
-				<div class="member-scroll-layout">
-					<div class="member-scroll-layout__bg"></div>
-					<div class="member-scroll-layout__inner" style="position: relative; margin: 0 80px; padding-bottom: 88px;">
-						<div class="register-header">
-								<h1 class="register-header__logo" style="color: f15f22;">
-						LOL.EZ
 
-						</h1>
-						</div>
-						<div class="sent-mail">
-							<h2 class="sent-mail__title">이메일 인증 안내</h2>
-						<div class="sent-mail__sub">	
+	<div id="root" style="background-color: #e4e3e752;">
+		<div class="app">
+			<div class="member-scroll-layout">
+				<div class="member-scroll-layout__bg"></div>
+				<div class="member-scroll-layout__inner"
+					style="position: relative; margin: 0 80px; padding-bottom: 88px;">
+					<div class="register-header">
+						<h1 class="register-header__logo" style="color: f15f22;">
+							LOL.EZ</h1>
+					</div>
+					<div class="sent-mail">
+						<h2 class="sent-mail__title">이메일 인증 안내</h2>
+						<div class="sent-mail__sub">
 							${memberEmail }(으)로<br> 인증 메일이 발송되었습니다.
 						</div>
-							<div class="sent-mail__sub sent-mail__sub--small">
-								메일을 1시간 이내에 확인한 후 인증 링크를 클릭해야<br> LOL.EZ 회원가입을 완료하실 수 있습니다.
-							</div>
-							<div class="sent-mail__l-resend">
-							<a href=""
-								class="sent-mail__confirm-email" target="_blank" id="domainForID">메일 확인하러 가기</a>
-								<div class="sent-mail__resend">
-									메일을 받지 못하셨나요?
+						<div class="sent-mail__sub sent-mail__sub--small">
+							메일을 1시간 이내에 확인한 후 인증 링크를 클릭해야<br> LOL.EZ 회원가입을 완료하실 수 있습니다.
+						</div>
+						<div class="sent-mail__l-resend">
+							<a href="" class="sent-mail__confirm-email" target="_blank"
+								id="domainForID">메일 확인하러 가기</a>
+							<div class="sent-mail__resend">
+								메일을 받지 못하셨나요?
 								<button type="button" class="member-button link-button"
 									style="position: relative; color: #1ea1f7; text-decoration: underline; padding: 0; background-color: transparent; border: 0; margin-left: 12px;">다시
 									보내기</button>
-									<a href="${pageContext.request.contextPath }/done" class="member-button link-button"
-									style="position: relative; color: #1ea1f7; text-decoration: underline; padding: 0; background-color: transparent; border: 0; margin-left: 12px;">테스트 done</a>
-									<a href="${pageContext.request.contextPath }/JoinForm?email=${memberEmail}" class="member-button link-button"
-									style="position: relative; color: #1ea1f7; text-decoration: underline; padding: 0; background-color: transparent; border: 0; margin-left: 12px;">test 회원가입 작성부분 이동</a>
-								</div>
+								<a href="${pageContext.request.contextPath }/done"
+									class="member-button link-button"
+									style="position: relative; color: #1ea1f7; text-decoration: underline; padding: 0; background-color: transparent; border: 0; margin-left: 12px;">테스트
+									done</a> <a
+									href="${pageContext.request.contextPath }/JoinForm?email=${memberEmail}"
+									class="member-button link-button"
+									style="position: relative; color: #1ea1f7; text-decoration: underline; padding: 0; background-color: transparent; border: 0; margin-left: 12px;">test
+									회원가입 작성부분 이동</a>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
+	</div>
 
-	
+
 
 
 
@@ -197,6 +200,55 @@
 		}
 
 		console.log(domainPageIdx);
+	</script>
+
+	<script type="text/javascript">
+		var sock = new SockJS('${pageContext.request.contextPath }/checkProve');
+
+		var i = 0;
+		sock.onopen = function() {
+			console.log('open');
+		};
+
+		sock.onmessage = function(e) {
+			var msgData = JSON.parse(e.data);
+			if (msgData.option == null) {
+
+				console.log(msgData.type);
+				if (msgData.type == 'move') {
+					$.ajax({
+						type : "get",
+						url : "${pageContext.request.contextPath }/"+msgData.domain,
+						data : {
+							"email" : msgData.useremail
+						},
+						success : function(checkResult) {
+							
+						}
+					});
+				}
+
+			}
+		}
+
+		sock.onclose = function() {
+			console.log('close');
+		};
+
+		function sendMsgtest() {
+			var inputValue = document.getElementById('msg').value;
+			console.log("입력한 메세지 : " + inputValue);
+			sock.send(inputValue);
+
+			var output = "<div class=\"d-flex flex-row justify-content-end mb-4\">";
+			output += "<div class=\"p-3 me-3 border\"style=\"border-radius: 15px; background-color: #FFFF00;\">"
+			output += "<p class=\"small mb-0\">" + inputValue + "</p>"
+			output += "</div>"
+			output += "</div>"
+			$("#chatList").append(output);
+
+			document.getElementById('msg').value = null;
+		}
 	</script>
 </body>
 </html>

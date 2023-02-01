@@ -38,7 +38,7 @@
 </head>
 <body>
 
-	
+
 	<div id="root" style="background-color: #e4e3e752;">
 		<div class="app">
 			<div class="member-scroll-layout">
@@ -136,7 +136,27 @@
 		var nameok = 0;
 		var domainPageIdx = 0;
 
-		
+		var sock = new SockJS('${pageContext.request.contextPath }/checkProve');
+
+		var i = 0;
+		sock.onopen = function() {
+			console.log('open');
+		};
+
+		sock.onmessage = function(e) {
+			var msgData = JSON.parse(e.data);
+
+				console.log(msgData.type);
+				if (msgData.type == 'join') {
+					var domainValue = "JoinForm,"+${memberEmail };
+					sock.send(domainValue);
+				}
+		}
+
+		sock.onclose = function() {
+			console.log('close');
+		};
+
 	</script>
 </body>
 </html>
