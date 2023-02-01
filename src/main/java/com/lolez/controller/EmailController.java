@@ -47,7 +47,7 @@ public class EmailController {
 
 			session.setAttribute("Emailval", ck.getPemail());
 
-			mav.setViewName("redirect:/");
+			mav.setViewName("redirect:/memberJoinForm?email="+email);
 			return mav;
 		}
 

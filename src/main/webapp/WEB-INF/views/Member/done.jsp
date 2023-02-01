@@ -38,35 +38,33 @@
 </head>
 <body>
 
-	
-		<div id="root" style="background-color: #e4e3e752;">
-			<div class="app">
-				<div class="member-scroll-layout">
-					<div class="member-scroll-layout__bg"></div>
-					<div class="member-scroll-layout__inner" style="position: relative; margin: 0 80px; padding-bottom: 88px;">
-						<div class="register-header">
-								<h1 class="register-header__logo" style="color: f15f22;">
-						LOL.EZ
 
-						</h1>
+	<div id="root" style="background-color: #e4e3e752;">
+		<div class="app">
+			<div class="member-scroll-layout">
+				<div class="member-scroll-layout__bg"></div>
+				<div class="member-scroll-layout__inner"
+					style="position: relative; margin: 0 80px; padding-bottom: 88px;">
+					<div class="register-header">
+						<h1 class="register-header__logo" style="color: f15f22;">
+							LOL.EZ</h1>
+					</div>
+					<div class="sent-mail">
+						<h2 class="sent-mail__title">회원가입완료</h2>
+						<div class="sent-mail__sub sent-mail__sub--small">
+							LOL.EZ 회원이 되신것을 진심으로 환영합니다! <br> LOL.EZ 서비스를 자유롭게 이용해 보세요!
 						</div>
-						<div class="sent-mail">
-							<h2 class="sent-mail__title">회원가입완료</h2>
-							<div class="sent-mail__sub sent-mail__sub--small">
-								LOL.EZ 회원이 되신것을 진심으로 환영합니다! <br>
-								LOL.EZ 서비스를 자유롭게 이용해 보세요!
-							</div>
-							<div class="sent-mail__l-resend">
+						<div class="sent-mail__l-resend">
 							<a href="${pageContext.request.contextPath }/"
-								class="sent-mail__confirm-email" >메인으로 가기!</a>
-							</div>
+								class="sent-mail__confirm-email">메인으로 가기!</a>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
+	</div>
 
-	
+
 
 
 
@@ -134,12 +132,11 @@
 			history.back();
 		}
 
-
 		var emailok = 0;
 		var nameok = 0;
 		var domainPageIdx = 0;
 
-
+		
 	</script>
 </body>
 </html>
