@@ -38,7 +38,7 @@
 </head>
 <body>
 
-	<div id="root" style="background-color: #e4e3e752;">
+	<div id="root">
 		<div class="app">
 			<div class="member-scroll-layout">
 				<div class="member-scroll-layout__bg"></div>
