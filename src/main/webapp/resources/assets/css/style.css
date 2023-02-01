@@ -224,9 +224,9 @@
 }
 
 body {
-	font-family: "Barlow", sans-serif;
+/* 	font-family: "Barlow", sans-serif;
 	font-weight: normal;
-	font-style: normal
+	font-style: normal */
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -357,6 +357,10 @@ hr {
 .theme-overlay {
 	position: relative
 }
+
+
+
+
 
 .theme-overlay::before {
 	background: #1696e7 none repeat scroll 0 0;
@@ -561,6 +565,19 @@ hero-btn {
 		float: left;
 		margin-top: 20px
 	}
+}
+
+@media only screen and (min-width: 768px)
+.game-info__name {
+    margin-top: 0;
+    line-height: 39px;
+    font-size: 32px;
+}
+
+.game-info__name {
+    line-height: 29px;
+    font-size: 24px;
+    color: #fff;
 }
 
 .submit-btn2 {
@@ -2808,6 +2825,9 @@ transition
 	color: #f15f22;
 	background: none;
 	padding-left: 13px !important
+}
+li>a {
+    display: block;
 }
 
 .main-header ul>li:hover>ul.submenu {

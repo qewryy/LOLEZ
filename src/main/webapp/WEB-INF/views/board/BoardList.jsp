@@ -50,7 +50,11 @@
 		<%@ include file="/WEB-INF/views/includes/header.jsp"%>
 		<!-- Header End -->
 	</header>
+	
+	
 	<main>
+	
+	
 		<div id="wrapper">
 
 			<!-- Content Wrapper -->
@@ -63,7 +67,7 @@
 					<div class="container-fluid">
 
 						<!-- Page Heading -->
-						<h1 class="h3 mb-2 text-gray-800">커뮤니티</h1>
+						<h1 class="h3 mb-2 text-gray-800" style="font-size: xxx-large;">커뮤니티</h1>
 						<!-- DataTales Example -->
 
 						<form class="card shadow mb-4"
@@ -105,18 +109,8 @@
 										</tbody>
 									</table>
 								</div>
-							</div>
-							<!-- </div> -->
-							<div class="row">
-
-								<!-- btn-lolezColor -> resources/assets/css/bootstarp.min.css line:2309 -->
-
-							</div>
-				
+							</div>	
 					</div>
-					
-					<!-- /.container-fluid -->
-
 				</div>
 				<div class="col-sm-6 col-md-5">
 					<button type="submit" class="btn btn-lolezColor btn-icon-split">글
@@ -128,15 +122,6 @@
 
 				<!-- Footer -->
 
-				<footer class="sticky-footer bg-white">
-					<div class="copyright text-center my-auto">
-						<span>Copyright &copy; Your Website 2020</span>
-					</div>
-				</footer>
-<<<<<<< HEAD
-
-=======
->>>>>>> bc34b2a005a1e0f3f2840cbfcd6b7fb8e4a292b6
 				<!-- 			<footer class="sticky-footer bg-white">
 				<div class="container my-auto">
 					<div class="copyright text-center my-auto">

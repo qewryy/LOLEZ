@@ -37,84 +37,77 @@
 	href="${pageContext.request.contextPath }/resources/assets/css/style.css">
 </head>
 <body>
-
-	<main>
-		<section class="contact-form-area section-bg  pt-115 pb-120 fix">
-			<div class="container">
-				<div class="row justify-content-end">
-					<!-- Contact wrapper -->
-					<div class="col-xl-16 col-lg-8" style="height: 100%">
-						<div class="contact-form-wrapper">
-							<!-- From tittle -->
-							<div class="row">
-								<div class="col-lg-12">
-									<!-- Section Tittle -->
-									<div class="section-tittle mb-50 ">
-										<h2 style="color: #f15f22">LOL.EZ</h2>
-									</div>
-								</div>
-							</div>
-							<!-- form -->
-							<form action="${pageContext.request.contextPath }/memberJoin"
+	<div id="root">
+		<div class="app">
+			<div class="member-scroll-layout">
+				<div class="member-scroll-layout__bg"></div>
+				<div class="member-scroll-layout__inner"
+					style="position: relative; margin: 0 80px; padding-bottom: 88px;">
+					<div class="register-header">
+						<h1 class="register-header__logo">LOL.EZ</h1>
+					</div>
+					<form action="${pageContext.request.contextPath }/memberJoin"
 								class="contact-form" method="post"
 								onsubmit="return joinFormCheck(this)">
-								<div class="row ">
-									<div class="col-lg-12 col-md-6">
-										<div class="input-form">
-											<input type="email" placeholder="이메일 주소" name="email"
-												id="inputEmail" onkeyup="checkEmail(this.value)"> <span
-												class="small" id="emailMsg"></span>
-
-										</div>
-									</div>
-									<div class="col-lg-12 col-md-6">
-										<div class="input-form">
-											<input type="text" placeholder="닉네임" name="name"
-												id="inputname" onkeyup="checkName(this.value)"> <span
-												class="small" id=nameMsg></span>
-										</div>
-									</div>
-									<div class="col-lg-12 col-md-6">
-										<div class="input-form">
-											<input type="date" placeholder="생년월일" name="date">
-										</div>
-									</div>
-
-									<div class="col-lg-12 col-md-6">
-										<div class="input-form">
-											<input type="password" placeholder="비밀번호" name="pw"
-												id="inputPW" onkeyup="pwcheck(this.value)">
-											<div class="password-condition">
-												<h3 id="PWrule"></h3>
-												<ul>
-													<li id="pwcheckMsg1"></li>
-													<li id="pwcheckMsg2"></li>
-													<li id="pwcheckMsg3"></li>
-												</ul>
-											</div>
-										</div>
-
-									</div>
-									<!-- Radio Button -->
-
-									<!-- Button -->
-									<div class="col-lg-6">
-										<button name="button" class="submit-btn" onclick="back()">취소</button>
-									</div>
-									<div class="col-lg-6">
-										<button name="submit" class="submit-btn">가입하기</button>
-									</div>
-									<span">이미 회원이신가요? </span> <a
-										href="${pageContext.request.contextPath }/LoginForm"
-										style="color: #f15f22; text-align: left;">로그인 하기</a>
+						<div class="sign-up">
+							<h2 class="sign-up__title">기본정보입력</h2>
+							<div class="member-input">
+								<div class="member-input__state member-input__state--value">
+									<span class="sign-up__input-nickname-message">이메일</span> <input
+										id="inputEmail" class="member-input__box" type="text"
+										style="border: 0; padding: 0" autocomplete="off" name="email"
+										readonly="readonly" value="${memberEmail}">
 								</div>
-							</form>
+							</div>
+							<div class="member-input">
+								<div class="member-input__state member-input__state--value">
+									<input id="inputname" class="member-input__box"
+										placeholder="닉네임" type="text" autocomplete="off" name="name"
+										style="border: 0; padding: 0" onkeyup="checkName(this.value)">
+									<span class="member-input__valid-wrapper" id="nameMsg"></span>
+								</div>
+							</div>
+							<div class="sign-up__input-nickname-message">개인정보를 기입하여 발생될
+								수 있는 피해는 LOL.EZ가 일절 책임지지 않습니다.</div>
+							<div class="member-input">
+								<div class="member-input__state member-input__state--value">
+									<input id=inputPW class="member-input__box" placeholder="비밀번호"
+										style="border: 0; padding: 0" type="password"
+										autocomplete="off" name="pw" onkeyup="pwcheck(this.value)">
+								</div>
+							</div>
+							<div class="password-condition">
+								<h3 id="PWrule" style="font-size: 20px; margin: 0"></h3>
+								<ul>
+									<li id="pwcheckMsg1"></li>
+									<li id="pwcheckMsg2"></li>
+									<li id="pwcheckMsg3"></li>
+								</ul>
+							</div>
+
+							<div class="member-input">
+								<div class="member-input__state member-input__state--value">
+									<span class="sign-up__input-nickname-message">생년월일</span> <input
+										class="member-input__box" placeholder="생년월일"
+										style="border: 0; padding: 0" type="date" autocomplete="off"
+										name="date">
+								</div>
+							</div>
+							<div class="sign-up__l-btn">
+								<button type="submit" class="member-button sign-up__btn">가입하기</button>
+								<button type="button" class="member-button sign-up__btn-cancel"
+									style="background-color: #fff; color: #1e2022; border: 1px solid #dddfe4; font-weight: 400;">취소</button>
+							</div>
 						</div>
+					</form>
+					<div class="sign-up__go-to-login">
+						이미 회원이신가요?<a href="${pageContext.request.contextPath }/LoginForm" type="button" style="position: relative; color: #1ea1f7; text-decoration: underline; padding: 0; background-color: transparent; border: 0; margin-left: 12px;"
+							class="sign-up__go-to-login-btn">로그인하기</a>
 					</div>
 				</div>
 			</div>
-		</section>
-	</main>
+		</div>
+	</div>
 
 
 
@@ -317,6 +310,9 @@
 			var checkEN=0;
 			var checkSC=0;
 			
+			console.log(email);
+			console.log(name);
+			
 			document.getElementById('PWrule').innerText = '비밀번호 규칙사항';
 			document.getElementById('PWrule').style.color = '#c5bebe';
 			
@@ -348,7 +344,7 @@
 			/* 사용자가 이메일 또는 닉네임을 비밀번호랑 동일하게  사용하는지 확인후 처리하는 용도 */
 			if(pw!=email || pw!=name){
 				document.getElementById('pwcheckMsg1').style.color = '#c5bebe';
-				
+			
 				if(checkSC != 0 || checkEN != 0){
 					document.getElementById('pwcheckMsg2').style.color = '#c5bebe';
 				}else{
@@ -464,4 +460,5 @@
 
 	</script>
 </body>
+
 </html>

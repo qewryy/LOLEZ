@@ -51,7 +51,6 @@ html {
 	-webkit-tap-highlight-color: transparent;
 	height: 100%;
 	width: 100%;
-	font-size: 14ex;
 }
 
 -ms-viewport {
@@ -541,7 +540,271 @@ pre code {
 #root {
 	position: relative;
 	min-height: 100%;
-	background-color: #ffffff;
+	background-color: #e4e3e752;
+}
+
+.l-content {
+    background: #ffffff;
+    overflow: hidden;
+}
+
+.game-info__background, .game-info__background:after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.game-info__background {
+    background-size: 100%;
+    background-position: 50% 30%;
+}
+
+@media (max-width: 768px)
+.login__l-or:after, .login__l-or:before {
+    width: 45%;
+}
+
+@media only screen and (min-width: 1024px)
+.game-info {
+    display: block;
+    position: relative;
+    height: 200px;
+    background: #fff;
+}
+.game-info {
+    display: none;
+}
+
+@media only screen and (min-width: 1024px)
+.l-content>.content {
+    margin-top: -40px;
+}
+
+@media only screen and (min-width: 768px)
+.content, .site-family {
+    position: relative;
+}
+
+.content {
+    max-width: 1044px;
+    margin: 0 auto;
+}
+
+@media only screen and (min-width: 768px)
+.game-info-content {
+    padding-top: 75px;
+}
+
+.game-info-content {
+    display: inline-block;
+    position: relative;
+    padding-top: 49px;
+    padding-left: 24px;
+    white-space: nowrap;
+}
+@media only screen and (min-width: 768px)
+.game-info-content a {
+    display: flex;
+    align-items: center;
+}
+
+@media only screen and (min-width: 768px)
+.game-info__icon {
+    margin-top: 0;
+    height: 60px;
+}
+
+.game-info__icon {
+    float: left;
+    height: 44px;
+    margin-right: 8px;
+    margin-top: 3px;
+}
+
+@media only screen and (min-width: 768px)
+.game-info__name {
+    margin-top: 0;
+    line-height: 39px;
+    font-size: 32px;
+}
+
+.game-info__name {
+    line-height: 29px;
+    font-size: 24px;
+    color: #fff;
+}
+
+@media only screen and (min-width: 1024px)
+.sidebar {
+    display: block;
+    width: 300px;
+    float: left;
+    z-index: 1000;
+    will-change: min-height;
+}
+
+.sidebar {
+    display: none;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: 10000;
+}
+
+@media only screen and (min-width: 1024px)
+.sidebar__inner {
+    position: relative;
+    transform: translate(0);
+    transform: translateZ(0);
+    will-change: position,transform;
+}
+
+@media only screen and (min-width: 1024px)
+.sidebar .sidebar-dimmed {
+    display: none;
+}
+.sidebar-dimmed {
+    display: block;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,.5);
+}
+
+@media only screen and (min-width: 1024px)
+.sidebar-content-wrap {
+    position: static;
+    padding-bottom: 0;
+}
+
+.sidebar-content-wrap {
+    position: fixed;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: #fff;
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 15%);
+    width: 300px;
+    overflow-y: auto;
+    padding-bottom: 50px;
+}
+
+.sidebar-content-header {
+    padding: 16px;
+}
+.sidebar-button {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+}
+
+.sidebar-button__item:last-child {
+    padding-right: 0;
+}
+
+.sidebar-button__item:first-child {
+    padding-left: 0;
+}
+.sidebar-button__item {
+    display: table-cell;
+    padding-right: 4px;
+    padding-left: 4px;
+}
+
+/* ---------------------- 에이테그 버튼 부분 수정구간--------------------------- */
+.sidebar-button__item>.button {
+    display: block;
+    padding: 11px 0 10px;
+    line-height: 17px;
+    font-size: 14px;
+}
+
+a.button {
+    display: inline-block;
+    box-sizing: border-box;
+    text-align: center;
+}
+.button--green {
+    border-color: #46cfa7;
+    background-color: #46cfa7;
+    color: #fff;
+}
+.button {
+    border-radius: 4px;
+    background-color: #fff;
+    border: 1px solid #dddfe4;
+}	
+
+/* ------------------------------------------------- */
+.sidebar-menu {
+    border-top: 1px solid #ebeef1;
+    padding: 9px 16px 8px;
+}
+.sidebar-menu__title {
+    padding-bottom: 8px;
+    line-height: 15px;
+    font-size: 12px;
+    color: #7b858e;
+}
+.sidebar-menu__item {
+    line-height: 17px;
+    font-size: 14px;
+    color: #1e2022;
+    border-radius: 4px;
+}
+.sidebar-menu__item a {
+    padding: 8px 12px 7px;
+}
+
+@media only screen and (min-width: 1024px)
+#content {
+    float: right;
+    box-sizing: border-box;
+    width: 728px;
+}
+.article-list {
+    background: #f8f9fa;
+    margin-top: 8px;
+    line-height: 18px;
+    font-size: 14px;
+    color: #7b858e;
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 15%);
+}
+
+
+
+.content:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+.l-content {
+    background: #ebeef1;
+    overflow: hidden;
+}
+
+.login__l:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.login__l-or:after {
+    right: 0;
+}
+.login__l-or:after, .login__l-or:before {
+    position: absolute;
+    top: 6px;
+    content: "";
+    display: block;
+    width: 160px;
+    height: 1px;
+    background-color: #dddfe4;
 }
 
 .register-header__logo {
@@ -564,6 +827,97 @@ pre code {
 	font-size: 16px;
 	line-height: 19px;
 	width: 100%;
+}
+
+
+.member-card-layout {
+    position: relative;
+    min-width: 320px;
+    min-height: 100%;
+    padding: 120px 0 170px;
+}
+
+.h2_mg0{
+	margin: 0;
+}
+
+.member-card-layout__container {
+    position: relative;
+    margin: 0 auto;
+    width: 450px;
+    min-height: 682px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px 0 rgb(0 0 0 / 20%);
+}
+
+.member-card-layout__inner {
+    margin: 0 40px;
+    padding-bottom: 40px;
+}
+
+.member-card-layout__logo {
+    padding-top: 48px;
+    text-align: center;
+    margin-bottom: 42px;
+}
+
+.member-card-layout__logo-image {
+    width: 128px;
+    height: 32px;
+}
+
+.login__fb-login-btn, .login__fb-title {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+}
+
+.sign-up__go-to-login {
+    margin-top: 17px;
+    text-align: center;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.login__fb-btn {
+    margin-top: 12px;
+    width: 100%;
+}
+
+.facebook-button {
+    background-color: #3c5a99;
+    line-height: 20px;
+}
+
+.login__apple-btn{
+    margin-top: 12px;
+    width: 100%;
+}
+
+.apple-button {
+    background-color: #212529;
+    line-height: 20px;
+    box-sizing: border-box;
+}
+
+.login__email-title {
+    margin-top: 42px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+}
+
+.login__l-or {
+    position: relative;
+    margin-top: 24px;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 18px;
+    color: #c5cbd0;
+    text-align: center;
+    vertical-align: top;
+    line-height: 14px;
 }
 
 .sign-up__input-nickname-message {
@@ -591,16 +945,52 @@ pre code {
 
 .member-input__state {
 	margin-top: 27px;
+	margin-bottom: 27px;
 	position: relative;
 	padding: 10px 0 11px;
 	border-bottom: 1px solid #dddfe4;
+}
+
+.cancel-button {
+    background-color: #fff;
+    color: #1e2022;
+    border: 1px solid #dddfe4;
+    font-weight: 400;
+}
+
+.sign-up__go-to-login-btn {
+    color: #1ea1f7;
+    text-decoration: underline;
+    padding: 0;
+    background-color: transparent;
+    border: 0;
+    margin-left: 12px;
+}
+
+.sign-up__l-btn:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.sign-up__btn-cancel {
+    float: left;
+    width: 217px;
+}
+
+.sign-up__btn {
+    float: right;
+    width: 217px;
 }
 
 .sign-up__title {
 	font-weight: 400;
 	font-size: 24px;
 	line-height: 32px;
+	
 }
+
+
 
 .sign-up__sub {
 	margin-top: 12px;
@@ -696,6 +1086,25 @@ pre code {
 	padding: 0;
 	font-size: 16px;
 	outline: 0;
+}
+
+.member-link {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: #1ea1f7;
+    text-decoration: underline;
+}
+
+.login__find-password-btn, .login__sign-up-btn {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: #1ea1f7;
+}
+
+.login__find-password-btn {
+    float: right;
 }
 
 .link-button, .link-button:disabled {

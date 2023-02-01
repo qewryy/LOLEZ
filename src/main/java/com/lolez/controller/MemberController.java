@@ -23,7 +23,7 @@ public class MemberController {
 	private MemberService memsvc;
 	
 	@RequestMapping(value = "/EmailAuthentication")
-	public ModelAndView memberJoinForm(String email) {
+	public ModelAndView memberJoinFormEmail(String email) {
 
 		System.out.println("인증대기창 페이지 이동 요청");
 		System.out.println("인증요청 이메일 : " + email);
@@ -55,6 +55,21 @@ public class MemberController {
 
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("Member/JoinFormEmail");
+		return mav;
+	}
+	
+	
+	@RequestMapping(value = "/JoinForm")
+	public ModelAndView memberJoinForm(String email) {
+
+
+		System.out.println("회원가입 페이지 이동 요청");
+		System.out.println("인증완료된 이메일 : "+ email);
+		
+		
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("memberEmail", email);
+		mav.setViewName("Member/JoinForm");
 		return mav;
 	}
 
@@ -141,7 +156,7 @@ public class MemberController {
 			System.out.println("로그인 실패");
 			
 			// 로그인 페이지 이동
-			mav.setViewName("redirect:/memberLoginForm");
+			mav.setViewName("redirect:/LoginForm");
 			
 		} else { 
 			// 조회되는 회원정보가 있을 경우
