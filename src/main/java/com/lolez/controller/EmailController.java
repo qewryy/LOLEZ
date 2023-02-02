@@ -270,7 +270,11 @@ public class EmailController {
 		ModelAndView mav = new ModelAndView();
 		System.out.println("접속 토큰 : " + token);
 		String Ptoken = esvc.selectToken(token);
-		if (!(Ptoken.equals(null))) {
+		if(Ptoken == null){
+			System.out.println("이메일 인증에 실패하셨습니다.");
+			mav.setViewName("redirect:/error");
+			return mav;
+		}else if (!(Ptoken == null)) {
 			System.out.println("이메일 인증에 성공하셨습니다.");
 			int us = esvc.updateEmailProve(token);
 			String[] tokenEmail = token.split("_");
@@ -278,11 +282,7 @@ public class EmailController {
 	        String decodedText = new String(decodedBytes, StandardCharsets.UTF_8);
 			session.setAttribute("Emailval", decodedText);
 			mav.setViewName("redirect:/done");
-		} else {
-			System.out.println("이메일 인증에 실패하셨습니다.");
-			mav.setViewName("redirect:/error");
-			return mav;
-		}
+		}  
 
 		return mav;
 	}
