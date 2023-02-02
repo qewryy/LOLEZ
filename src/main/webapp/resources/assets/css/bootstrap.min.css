@@ -4,6 +4,9 @@
  * Copyright 2011-2018 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
+ 
+ 
+ 
 :root { -
 	-blue: #007bff; -
 	-indigo: #6610f2; -
@@ -767,17 +770,6 @@ a.button {
     box-sizing: border-box;
     width: 728px;
 }
-.article-list {
-    background: #f8f9fa;
-    margin-top: 8px;
-    line-height: 18px;
-    font-size: 14px;
-    color: #7b858e;
-    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 15%);
-}
-
-
-
 .content:after {
     content: "";
     display: block;
