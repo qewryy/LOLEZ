@@ -57,8 +57,7 @@
 							<li class="error__sub-item">예기치 못한 오류 발생했을 경우</li>
 						</ul>
 						<div class="error__small-sub">
-							<strong>만약  이메일 가입 인증을 완료하지 못했을 경우</strong><br>
-							회원가입 시 입력한 정보가 모두 DB에서 삭제되어 회원가입을 다시 진행해 주셔야 합니다.
+							<strong>회원가입을 다시 진행해 주셔야 합니다.</strong><br>
 						</div>
 	 						<div class="error__link">
 							<a href="${pageContext.request.contextPath }/"
@@ -152,7 +151,7 @@
 
 			console.log(msgData.type);
 			if (msgData.type == 'join') {
-				var domainValue = "JoinForm," + "${Emailval }";
+				var domainValue = "error," + "${Emailval }";
 				sock.send(domainValue);
 			}
 		}

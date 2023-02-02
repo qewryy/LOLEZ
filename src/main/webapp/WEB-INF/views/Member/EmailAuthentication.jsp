@@ -68,16 +68,15 @@
 								<a href="${pageContext.request.contextPath }/done"
 									class="member-button link-button" target="_blank"
 									style="position: relative; color: #1ea1f7; text-decoration: underline; padding: 0; background-color: transparent; border: 0; margin-left: 12px;">테스트
-									done</a> 
-									<a
+									done</a> <a
 									href="${pageContext.request.contextPath }/JoinForm?email=${memberEmail}"
 									class="member-button link-button"
 									style="position: relative; color: #1ea1f7; text-decoration: underline; padding: 0; background-color: transparent; border: 0; margin-left: 12px;">test
-									회원가입 작성부분 이동</a>
-									<a href="${pageContext.request.contextPath }/error"
-									class="member-button link-button" 
-									style="position: relative; color: #1ea1f7;  text-decoration: underline;  padding: 0; background-color: transparent; border: 0; margin-left: 12px;">테스트
-									error</a> 
+									회원가입 작성부분 이동</a> <a
+									href="${pageContext.request.contextPath }/error"
+									class="member-button link-button"
+									style="position: relative; color: #1ea1f7; text-decoration: underline; padding: 0; background-color: transparent; border: 0; margin-left: 12px;">테스트
+									error</a>
 							</div>
 						</div>
 					</div>
@@ -149,7 +148,8 @@
 	<script
 		src="${pageContext.request.contextPath }/resources//assets/js/main.js"></script>
 
-	<script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
 
 	<script type="text/javascript">
 		function back() {
@@ -221,7 +221,12 @@
 			var msgData = JSON.parse(e.data);
 			console.log(msgData.type);
 				if (msgData.type == 'move') {
-					location.href = ${pageContext.request.contextPath }/+msgData.domain+"?email="+email;
+					if(msgData.domain == 'error'){
+						window.open('', '_self', '');
+						window.close();
+					}else{
+						location.href = ${pageContext.request.contextPath }/+msgData.domain+"?email="+email;
+					}
 				}
 
 		}

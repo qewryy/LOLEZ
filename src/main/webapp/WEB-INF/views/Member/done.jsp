@@ -52,12 +52,13 @@
 					<div class="sent-mail">
 						<h2 class="sent-mail__title">이메일 인증 완료</h2>
 						<div class="sent-mail__sub sent-mail__sub--small">
-							${Emailval }님 LOL.EZ 인증이 완료되었습니다! 
-							<br> 본래 페이지로 돌아가 LOL.EZ 회원가입을 진행하세요!
+							${Emailval }님 LOL.EZ 인증이 완료되었습니다! <br> 본래 페이지로 돌아가 LOL.EZ
+							회원가입을 진행하세요!
 						</div>
 						<div class="sent-mail__l-resend">
-						<a href="javascript:window.close()" class="sent-mail__confirm-email">창닫기</a>
-							
+							<a href="javascript:window.close()"
+								class="sent-mail__confirm-email">창닫기</a>
+
 						</div>
 					</div>
 				</div>
@@ -128,7 +129,8 @@
 	<script
 		src="${pageContext.request.contextPath }/resources//assets/js/main.js"></script>
 
-	<script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
 
 
 
@@ -136,7 +138,6 @@
 		function back() {
 			history.back();
 		}
-
 
 		var sock = new SockJS('${pageContext.request.contextPath }/checkProve');
 
@@ -147,17 +148,16 @@
 		sock.onmessage = function(e) {
 			var msgData = JSON.parse(e.data);
 
-				console.log(msgData.type);
-				if (msgData.type == 'join') {
-					var domainValue = "JoinForm,"+"${Emailval }";
-					sock.send(domainValue);
-				}
+			console.log(msgData.type);
+			if (msgData.type == 'join') {
+				var domainValue = "JoinForm," + "${Emailval }";
+				sock.send(domainValue);
+			}
 		}
 
 		sock.onclose = function() {
 			console.log('close');
 		};
-
 	</script>
 </body>
 </html>
