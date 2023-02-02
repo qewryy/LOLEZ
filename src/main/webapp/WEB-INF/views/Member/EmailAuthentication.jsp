@@ -144,6 +144,8 @@
 	<script
 		src="${pageContext.request.contextPath }/resources//assets/js/main.js"></script>
 
+	<script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
+
 	<script type="text/javascript">
 		function back() {
 			history.back();
@@ -209,46 +211,20 @@
 		sock.onopen = function() {
 			console.log('open');
 		};
-
+		var email = '${Emailval }';
 		sock.onmessage = function(e) {
 			var msgData = JSON.parse(e.data);
-			if (msgData.option == null) {
-
-				console.log(msgData.type);
+			console.log(msgData.type);
 				if (msgData.type == 'move') {
-					$.ajax({
-						type : "get",
-						url : "${pageContext.request.contextPath }/"+msgData.domain,
-						data : {
-							"email" : msgData.useremail
-						},
-						success : function(checkResult) {
-							
-						}
-					});
+					location.href = ${pageContext.request.contextPath }/+msgData.domain+"?email="+email;
 				}
 
-			}
 		}
 
 		sock.onclose = function() {
 			console.log('close');
 		};
 
-		function sendMsgtest() {
-			var inputValue = document.getElementById('msg').value;
-			console.log("입력한 메세지 : " + inputValue);
-			sock.send(inputValue);
-
-			var output = "<div class=\"d-flex flex-row justify-content-end mb-4\">";
-			output += "<div class=\"p-3 me-3 border\"style=\"border-radius: 15px; background-color: #FFFF00;\">"
-			output += "<p class=\"small mb-0\">" + inputValue + "</p>"
-			output += "</div>"
-			output += "</div>"
-			$("#chatList").append(output);
-
-			document.getElementById('msg').value = null;
-		}
 	</script>
 </body>
 </html>

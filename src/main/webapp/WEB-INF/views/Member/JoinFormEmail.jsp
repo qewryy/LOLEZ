@@ -52,7 +52,7 @@
 					<h2 style="font-weight: 400; font-size: 24px; line-height: 32px;">이메일
 						입력</h2>
 					<form
-						action="${pageContext.request.contextPath }/EmailAuthentication"
+						action="${pageContext.request.contextPath }/emailprove"
 						method="post" onsubmit="return joinFormCheck(this)">
 						<div class="email">
 							<div class="member-numberformat-input">
@@ -215,50 +215,6 @@
 
 		}
 		
-		/* 
-		<form action="${pageContext.request.contextPath }/memberJoin"
-								class="contact-form" method="post"
-								onsubmit="return joinFormCheck(this)">
-								<div class="row ">
-									<div class="col-lg-8 col-md-6">
-										<div class="input-form">
-											<input type="email" placeholder="이메일 주소" name="email">
-										<span>인증 상태</span>
-										</div>
-									</div>
-									<div class="col-lg-4">
-										<button name="button" class="submit-btn" onclick="">인증하기</button>
-									</div>
-									<div class="col-lg-12 col-md-6">
-										<div class="input-form">
-											<input type="text" placeholder="닉네임" name="name">
-										</div>
-									</div>
-									<div class="col-lg-12 col-md-6">
-										<div class="input-form">
-											<input type="date" placeholder="생년월일" name="date">
-										</div>
-									</div>
-									<div class="col-lg-12 col-md-6">
-										<div class="input-form">
-											<input type="password" placeholder="비밀번호" name="pw">
-										</div>
-									</div>
-									<!-- Radio Button -->
-
-									<!-- Button -->
-									<div class="col-lg-6">
-										<button name="button" class="submit-btn" onclick="back()">취소</button>
-									</div>
-									<div class="col-lg-6">
-										<button name="submit" class="submit-btn">가입하기</button>
-									</div>
-									<span">이미 회원이신가요? </span> <a
-										href="${pageContext.request.contextPath }/LoginForm"
-										style="color: #f15f22; text-align: left;">로그인 하기</a>
-								</div>
-							</form>
-		*/
 	</script>
 </body>
 </html>
