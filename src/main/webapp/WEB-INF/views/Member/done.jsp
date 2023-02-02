@@ -50,9 +50,10 @@
 							LOL.EZ</h1>
 					</div>
 					<div class="sent-mail">
-						<h2 class="sent-mail__title">회원가입완료</h2>
+						<h2 class="sent-mail__title">이메일 인증 완료</h2>
 						<div class="sent-mail__sub sent-mail__sub--small">
-							LOL.EZ 회원이 되신것을 진심으로 환영합니다! <br> LOL.EZ 서비스를 자유롭게 이용해 보세요!
+							${Emailval }님 LOL.EZ 인증이 완료되었습니다! 
+							<br> 본래 페이지로 돌아가 LOL.EZ 회원가입을 진행하세요!
 						</div>
 						<div class="sent-mail__l-resend">
 							<a href="${pageContext.request.contextPath }/"
@@ -127,18 +128,15 @@
 	<script
 		src="${pageContext.request.contextPath }/resources//assets/js/main.js"></script>
 
+	<script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
+
 	<script type="text/javascript">
 		function back() {
 			history.back();
 		}
 
-		var emailok = 0;
-		var nameok = 0;
-		var domainPageIdx = 0;
-
 		var sock = new SockJS('${pageContext.request.contextPath }/checkProve');
 
-		var i = 0;
 		sock.onopen = function() {
 			console.log('open');
 		};
@@ -148,7 +146,7 @@
 
 				console.log(msgData.type);
 				if (msgData.type == 'join') {
-					var domainValue = "JoinForm,"+${memberEmail };
+					var domainValue = "JoinForm,"+"${Emailval }";
 					sock.send(domainValue);
 				}
 		}
