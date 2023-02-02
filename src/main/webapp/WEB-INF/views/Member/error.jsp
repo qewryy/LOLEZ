@@ -50,15 +50,20 @@
 							LOL.EZ</h1>
 					</div>
 					<div class="sent-mail">
-						<h2 class="sent-mail__title">이메일 인증 완료</h2>
-						<div class="sent-mail__sub sent-mail__sub--small">
-							${Emailval }님 LOL.EZ 인증이 완료되었습니다! 
-							<br> 본래 페이지로 돌아가 LOL.EZ 회원가입을 진행하세요!
+						<h2 class="error__title">이메일 인증오류</h2>
+						<div class="error__sub">이메일 인증이 아래의 사유로 인하여 오류가 발생한거 같습니다.</div>
+						<ul class="error__sub-list">
+							<li class="error__sub-item">비정상적인 경로로 페이지에 접근하였을 경우</li>
+							<li class="error__sub-item">예기치 못한 오류 발생했을 경우</li>
+						</ul>
+						<div class="error__small-sub">
+							<strong>만약  이메일 가입 인증을 완료하지 못했을 경우</strong><br>
+							회원가입 시 입력한 정보가 모두 DB에서 삭제되어 회원가입을 다시 진행해 주셔야 합니다.
 						</div>
-						<div class="sent-mail__l-resend">
-						<a href="javascript:window.close()" class="sent-mail__confirm-email">창닫기</a>
-							
-						</div>
+	 						<div class="error__link">
+							<a href="${pageContext.request.contextPath }/"
+								class="sent-mail__confirm-email">메인으로 돌아가기</a>
+						</div> 
 					</div>
 				</div>
 			</div>
@@ -128,15 +133,13 @@
 	<script
 		src="${pageContext.request.contextPath }/resources//assets/js/main.js"></script>
 
-	<script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
-
-
+	<script
+		src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
 
 	<script type="text/javascript">
 		function back() {
 			history.back();
 		}
-
 
 		var sock = new SockJS('${pageContext.request.contextPath }/checkProve');
 
@@ -147,17 +150,16 @@
 		sock.onmessage = function(e) {
 			var msgData = JSON.parse(e.data);
 
-				console.log(msgData.type);
-				if (msgData.type == 'join') {
-					var domainValue = "JoinForm,"+"${Emailval }";
-					sock.send(domainValue);
-				}
+			console.log(msgData.type);
+			if (msgData.type == 'join') {
+				var domainValue = "JoinForm," + "${Emailval }";
+				sock.send(domainValue);
+			}
 		}
 
 		sock.onclose = function() {
 			console.log('close');
 		};
-
 	</script>
 </body>
 </html>

@@ -39,11 +39,21 @@ public class MemberController {
 	@RequestMapping(value = "/done")
 	public ModelAndView done( ) {
 
-		System.out.println("회원가입 완료 안내 페이지 요청");
+		System.out.println("인증 완료 안내 페이지 요청");
 
 		ModelAndView mav = new ModelAndView();
 		
 		mav.setViewName("Member/done");
+		return mav;
+	}
+	@RequestMapping(value = "/error")
+	public ModelAndView error( ) {
+
+		System.out.println("에러안내 페이지 요청");
+
+		ModelAndView mav = new ModelAndView();
+		
+		mav.setViewName("Member/error");
 		return mav;
 	}
 	
@@ -87,7 +97,6 @@ public class MemberController {
 	@RequestMapping(value = "/memberJoin")
 	public ModelAndView memberJoin(MemberDto joinInfo, RedirectAttributes ra)
 			throws IllegalStateException, IOException {
-
 
 		System.out.println("회원가입 요청");
 		ModelAndView mav = new ModelAndView();

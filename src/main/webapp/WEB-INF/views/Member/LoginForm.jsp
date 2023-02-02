@@ -70,7 +70,7 @@
 								</button>
 								<!-- 애플 버튼 종료 -->
 
-							<form <%-- ${pageContext.request.contextPath }/memberLogin --%> 
+							<form  action="${pageContext.request.contextPath }/memberLogin" 
 							onsubmit="return LoginFormCheck(this)" method="post">
 
 								<div class="login__l-or" style="">OR</div>
@@ -89,7 +89,7 @@
 								<div class="member-input">
 									<div class="member-input__state">
 										<input id="inputPw" class="member-input__box" type="password"
-											autocomplete="off" name="inputPw" placeholder="비밀번호"
+											autocomplete="off" name="inputMpw" placeholder="비밀번호"
 											style="border: 0; padding: 0"> <span id="PwMsg"></span>
 									</div>
 								</div>
@@ -188,7 +188,7 @@
 	<script type="text/javascript">
 		function LonginFormCheck(LoginForm) {
 			var memail = LoginForm.inputEmail;
-			var mpw = LoginForm.inputPw;
+			var mpw = LoginForm.inputMpw;
 			
 			console.log(memail);
 			console.log(mpw);
