@@ -51,18 +51,19 @@
 								onsubmit="return joinFormCheck(this)">
 						<div class="sign-up">
 							<h2 class="sign-up__title">기본정보입력</h2>
+							<input type="hidden"  value="${memberEmail}" id="inputEmail"  name="memail">
 							<div class="member-input">
 								<div class="member-input__state member-input__state--value">
 									<span class="sign-up__input-nickname-message">이메일</span> <input
-										id="inputEmail" class="member-input__box" type="text"
-										style="border: 0; padding: 0" autocomplete="off" name="email"
+										class="member-input__box" type="text"
+										style="border: 0; padding: 0" autocomplete="off"
 										readonly="readonly" value="${memberEmail}">
 								</div>
 							</div>
 							<div class="member-input">
 								<div class="member-input__state member-input__state--value">
 									<input id="inputname" class="member-input__box"
-										placeholder="닉네임" type="text" autocomplete="off" name="name"
+										placeholder="닉네임" type="text" autocomplete="off" name="mname"
 										style="border: 0; padding: 0" onkeyup="checkName(this.value)">
 									<span class="member-input__valid-wrapper" id="nameMsg"></span>
 								</div>
@@ -73,7 +74,7 @@
 								<div class="member-input__state member-input__state--value">
 									<input id=inputPW class="member-input__box" placeholder="비밀번호"
 										style="border: 0; padding: 0" type="password"
-										autocomplete="off" name="pw" onkeyup="pwcheck(this.value)">
+										autocomplete="off" name="mpw" onkeyup="pwcheck(this.value)">
 								</div>
 							</div>
 							<div class="password-condition">
@@ -90,7 +91,7 @@
 									<span class="sign-up__input-nickname-message">생년월일</span> <input
 										class="member-input__box" placeholder="생년월일"
 										style="border: 0; padding: 0" type="date" autocomplete="off"
-										name="date">
+										name="mdate">
 								</div>
 							</div>
 							<div class="sign-up__l-btn">
@@ -310,8 +311,14 @@
 			var checkEN=0;
 			var checkSC=0;
 			
+			console.log(pw);
 			console.log(email);
 			console.log(name);
+			
+			if(pw == email){
+				console.log("pw == email")
+			}
+			
 			
 			document.getElementById('PWrule').innerText = '비밀번호 규칙사항';
 			document.getElementById('PWrule').style.color = '#c5bebe';
@@ -342,7 +349,7 @@
 
 			
 			/* 사용자가 이메일 또는 닉네임을 비밀번호랑 동일하게  사용하는지 확인후 처리하는 용도 */
-			if(pw!=email || pw!=name){
+			if(pw!=email && pw!=name){
 				document.getElementById('pwcheckMsg1').style.color = '#c5bebe';
 			
 				if(checkSC != 0 || checkEN != 0){

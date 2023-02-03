@@ -53,19 +53,12 @@
 	
 	
 	<main>
-	
-	
 		<div id="wrapper">
-
 			<!-- Content Wrapper -->
 			<div id="content-wrapper" class="d-flex flex-column">
-
 				<!-- Main Content -->
 				<div id="content">
-
 					<!-- Begin Page Content -->
-					<div class="container-fluid">
-
 						<!-- Page Heading -->
 						<h1 class="h3 mb-2 text-gray-800" style="font-size: xxx-large;">커뮤니티</h1>
 						<!-- DataTales Example -->
@@ -73,6 +66,7 @@
 						<form class="card shadow mb-4"
 							action="${pageContext.request.contextPath }/boardWriteForm"
 							enctype="multipart/form-data" method="post" class="user">
+					<div class="container-fluid">
 							<!-- <div class="card shadow mb-4">  -->
 							<div class="card-body">
 								<div class="table-responsive">
@@ -111,33 +105,20 @@
 								</div>
 							</div>	
 					</div>
+				</form>
 				</div>
 				<div class="col-sm-6 col-md-5">
 					<button type="submit" class="btn btn-lolezColor btn-icon-split">글
 						작성하기</button>
 
 				</div>
-				</form>
 				<!-- End of Main Content -->
 
-				<!-- Footer -->
-
-				<!-- 			<footer class="sticky-footer bg-white">
-				<div class="container my-auto">
-					<div class="copyright text-center my-auto">
-						<span>Copyright &copy; Your Website 2020</span>
-					</div>
-				</div>
-			</footer> -->
-
-				<!-- End of Footer -->
 
 			</div>
-			<!-- End of Content Wrapper -->
+
 
 		</div>
-		<!-- End of Page Wrapper -->
-
 
 	</main>
 

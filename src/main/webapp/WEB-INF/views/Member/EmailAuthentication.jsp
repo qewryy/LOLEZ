@@ -66,13 +66,17 @@
 									style="position: relative; color: #1ea1f7; text-decoration: underline; padding: 0; background-color: transparent; border: 0; margin-left: 12px;">다시
 									보내기</button>
 								<a href="${pageContext.request.contextPath }/done"
-									class="member-button link-button"
+									class="member-button link-button" target="_blank"
 									style="position: relative; color: #1ea1f7; text-decoration: underline; padding: 0; background-color: transparent; border: 0; margin-left: 12px;">테스트
 									done</a> <a
 									href="${pageContext.request.contextPath }/JoinForm?email=${memberEmail}"
 									class="member-button link-button"
 									style="position: relative; color: #1ea1f7; text-decoration: underline; padding: 0; background-color: transparent; border: 0; margin-left: 12px;">test
-									회원가입 작성부분 이동</a>
+									회원가입 작성부분 이동</a> <a
+									href="${pageContext.request.contextPath }/error"
+									class="member-button link-button"
+									style="position: relative; color: #1ea1f7; text-decoration: underline; padding: 0; background-color: transparent; border: 0; margin-left: 12px;">테스트
+									error</a>
 							</div>
 						</div>
 					</div>
@@ -144,6 +148,9 @@
 	<script
 		src="${pageContext.request.contextPath }/resources//assets/js/main.js"></script>
 
+	<script
+		src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
+
 	<script type="text/javascript">
 		function back() {
 			history.back();
@@ -209,46 +216,25 @@
 		sock.onopen = function() {
 			console.log('open');
 		};
-
+		var email = '${Emailval }';
 		sock.onmessage = function(e) {
 			var msgData = JSON.parse(e.data);
-			if (msgData.option == null) {
-
-				console.log(msgData.type);
+			console.log(msgData.type);
 				if (msgData.type == 'move') {
-					$.ajax({
-						type : "get",
-						url : "${pageContext.request.contextPath }/"+msgData.domain,
-						data : {
-							"email" : msgData.useremail
-						},
-						success : function(checkResult) {
-							
-						}
-					});
+					if(msgData.domain == 'error'){
+						window.open('', '_self', '');
+						window.close();
+					}else{
+						location.href = ${pageContext.request.contextPath }/+msgData.domain+"?email="+email;
+					}
 				}
 
-			}
 		}
 
 		sock.onclose = function() {
 			console.log('close');
 		};
 
-		function sendMsgtest() {
-			var inputValue = document.getElementById('msg').value;
-			console.log("입력한 메세지 : " + inputValue);
-			sock.send(inputValue);
-
-			var output = "<div class=\"d-flex flex-row justify-content-end mb-4\">";
-			output += "<div class=\"p-3 me-3 border\"style=\"border-radius: 15px; background-color: #FFFF00;\">"
-			output += "<p class=\"small mb-0\">" + inputValue + "</p>"
-			output += "</div>"
-			output += "</div>"
-			$("#chatList").append(output);
-
-			document.getElementById('msg').value = null;
-		}
 	</script>
 </body>
 </html>

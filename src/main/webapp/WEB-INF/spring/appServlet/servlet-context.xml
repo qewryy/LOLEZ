@@ -26,7 +26,6 @@
 	
 	<websocket:handlers>
 		<websocket:mapping handler="provecheckHandler" path="/checkProve"/>
-		<websocket:mapping handler="errorcheckHandler" path="/checkError"/>
 		<websocket:handshake-interceptors>
 			<beans:bean class="org.springframework.web.socket.server.support.HttpSessionHandshakeInterceptor"></beans:bean>
 		</websocket:handshake-interceptors>
@@ -34,7 +33,6 @@
 	</websocket:handlers>
 	
 	<beans:bean id="provecheckHandler" class="com.lolez.webSock.EmailProveCheckHandler"></beans:bean>
-	<beans:bean id="errorcheckHandler" class="com.lolez.webSock.EmailErrorCheckHandler"></beans:bean>
 	
 	<context:component-scan base-package="com.lolez.controller" />
 	<context:component-scan base-package="com.lolez.service" />

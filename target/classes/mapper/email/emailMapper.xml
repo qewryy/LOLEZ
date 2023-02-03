@@ -17,7 +17,7 @@
 	</select>
 
 	<update id="updateEmailProve" parameterType="String">
-		UPDATE EMAILPROVE SET PSTASUS = 1 WHERE PTOKEN = #{token};
+		UPDATE EMAILPROVE SET PSTATUS = 1 WHERE PTOKEN = #{token}
 	</update>
 	
 </mapper> 
