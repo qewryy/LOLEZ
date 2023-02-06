@@ -117,7 +117,7 @@
                                     <input type="text" placeholder="소환사명..">
                                 </div>
                                 <div class="search-form">
-                                    <a href="${pageContext.request.contextPath }/emailprove?email=qewryy4@gmail.com">검색</a>
+                                    <a href="${pageContext.request.contextPath }/SummoneSerch">검색</a>
                                 </div>	
                             </form>	
                         </div>

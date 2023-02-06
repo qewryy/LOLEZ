@@ -13,6 +13,7 @@
 		<typeAlias type="com.lolez.dto.BoardDto" alias="board" />
 		<typeAlias type="com.lolez.dto.ReplyDto" alias="reply" />
 		<typeAlias type="com.lolez.dto.EmailDto" alias="email" />
+		<typeAlias type="com.lolez.dto.SummonerDto" alias="summoner" />
 	</typeAliases>
 
 
@@ -20,5 +21,6 @@
 		<mapper resource="mapper/member/memberMapper.xml" />
 		<mapper resource="mapper/board/boardMapper.xml" />
 		<mapper resource="mapper/email/emailMapper.xml" />
+		<mapper resource="mapper/summoner/summonerMapper.xml" />
 	</mappers>
 </configuration>
