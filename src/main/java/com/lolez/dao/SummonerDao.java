@@ -1,6 +1,6 @@
 package com.lolez.dao;
 
-import com.lolez.dto.SummonerDto;
+import com.lolez.Summonerdto.SummonerDto;
 
 public interface SummonerDao {
 

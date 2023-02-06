@@ -9,8 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.google.gson.Gson;
+import com.lolez.Summonerdto.SummonerDto;
 import com.lolez.dao.SummonerDao;
-import com.lolez.dto.SummonerDto;
 
 @Service
 public class SummonerService {

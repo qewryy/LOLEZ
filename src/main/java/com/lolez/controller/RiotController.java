@@ -19,7 +19,7 @@ public class RiotController {
 	@Autowired
 	private SummonerService ssvc;
 	
-	private String apiKey = "RGAPI-5ab9afb2-377a-4821-a233-3278c37f5a7a";
+	private String apiKey = "RGAPI-4125477d-d2c7-44a1-bc83-3b64457be6f3";
 	
 	@RequestMapping(value = "/SummoneSerch")
 	public ModelAndView SummoneSerch(String summoneName) throws Exception {
