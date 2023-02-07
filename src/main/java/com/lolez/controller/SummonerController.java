@@ -19,11 +19,12 @@ public class SummonerController {
 	@Autowired
 	private SummonerService ssvc;
 	
-	private String apiKey = "RGAPI-ed5b8bbb-c399-4a89-acfb-37ad8e6ca9ad";
+	private String apiKey = "RGAPI-0b50f770-3b1b-42bb-995c-1eb605a71b7b";
 	
 	@RequestMapping(value = "/SummoneSerch")
 	public ModelAndView SummoneSerch(String summoneName) throws Exception {
 		System.out.println("소환사 전적 검색 요청");
+		
 		System.out.println("검색할 소환사 이름 : " + summoneName);
 		ModelAndView mav = new ModelAndView();
 		

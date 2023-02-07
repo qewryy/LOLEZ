@@ -8,7 +8,7 @@ public interface SummonerDao {
 
 	int insertsummonerinfo(SummonerDto summoner);
 
-	String selectusername(@Param("summoneName") String summoneName);
+	SummonerDto selectusername(@Param("id") String id);
 
 	int updatesummonerinfo(SummonerDto summoner);
 
