@@ -117,9 +117,12 @@
                                 <div class="input-form">
                                     <input name="summoneName" type="text" placeholder="소환사명..">
                                 </div>
-                                <div class="search-form">
-                                    <button type="submit">검색</button>
-                                </div>	
+<%--                                  <div class="search-form">
+                                    <a href="${pageContext.request.contextPath }/emailprove?email=qewryy4@gmail.com">검색</a>
+                                </div> --%>
+	                              <div class="search-form">
+                                    <button class="search-form-button btn" type="submit">검색</button>
+                                </div>	 
                             </form>	
                         </div>
                     </div>
