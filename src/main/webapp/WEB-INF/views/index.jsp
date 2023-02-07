@@ -112,12 +112,13 @@
                                 <h1 > <span>LOL.EZ</span> </h1>
                             </div>
                             <!--Hero form -->
-                            <form action="#" class="search-box">
+                            <form action="${pageContext.request.contextPath }/SummoneSerch" class="search-box"
+                           		  method="get">
                                 <div class="input-form">
-                                    <input type="text" placeholder="소환사명..">
+                                    <input name="summoneName" type="text" placeholder="소환사명..">
                                 </div>
                                 <div class="search-form">
-                                    <a href="${pageContext.request.contextPath }/SummoneSerch">검색</a>
+                                    <button type="submit">검색</button>
                                 </div>	
                             </form>	
                         </div>

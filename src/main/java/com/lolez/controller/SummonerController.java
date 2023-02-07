@@ -11,7 +11,7 @@ import com.lolez.service.SummonerService;
 
 
 @Controller
-public class RiotController {
+public class SummonerController {
 	
 	@Autowired
 	private HttpSession session;
@@ -19,18 +19,26 @@ public class RiotController {
 	@Autowired
 	private SummonerService ssvc;
 	
-	private String apiKey = "RGAPI-4125477d-d2c7-44a1-bc83-3b64457be6f3";
+	private String apiKey = "RGAPI-ed5b8bbb-c399-4a89-acfb-37ad8e6ca9ad";
 	
 	@RequestMapping(value = "/SummoneSerch")
 	public ModelAndView SummoneSerch(String summoneName) throws Exception {
 		System.out.println("소환사 전적 검색 요청");
+		System.out.println("검색할 소환사 이름 : " + summoneName);
 		ModelAndView mav = new ModelAndView();
 		
-		int sr = ssvc.summoneserch(summoneName, apiKey);
+		int rs = ssvc.summoneserch(summoneName, apiKey);
 		
+		if(rs == 1) {
+			System.out.println("정상 처리 완료.");
+			mav.setViewName("redirect:/");
+			return mav;
+		}else {
+			System.out.println("오류가 발생했습니다.");
+			mav.setViewName("redirect:/");
+			return mav;
+		}
 		
-		
-		return mav;
 	}
 
 }

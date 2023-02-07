@@ -3,10 +3,22 @@
 
 <mapper namespace="com.lolez.dao.SummonerDao">
 
-	<insert id="insertEmailProve" parameterType="summoner">
-		INSERT INTO SUMMONER(ID,PUUID,ACCOUNTID,PROFILEICONID,REVISIONDATE,NAME,SUMMONERLEVEL)
-		VALUES(#{id}, #{puuid},#{accountId},#{profileIconId},#{revisionDate},#{name}, #{summonerLevel} )
+	<insert id="insertsummonerinfo" parameterType="summoner">
+		INSERT INTO
+		SUMMONER(SID, PUUID, ACCOUNTID, PROFILEICONID, REVISIONDATE, NAME, SUMMONERLEVEL)
+		VALUES(#{id}, #{puuid}, #{accountId},
+		#{profileIconId}, #{revisionDate}, #{name}, #{summonerLevel})
 	</insert>
 
+	<select id="selectusername" resultType="String">
+		SELECT NAME FROM SUMMONER WHERE NAME = #{summoneName}
+	</select>
+
+	<update id="updatesummonerinfo" parameterType="int">
+		UPDATE SUMMONER SET
+		ID = #{id}, PUUID = #{puuid}, ACCOUNTID = #{accountId},
+		PROFILEICONID = #{profileIconId}, REVISIONDATE = #{revisionDate},
+		SUMMONERLEVEL = #{summonerLevel}
+	</update>
 	
 </mapper> 

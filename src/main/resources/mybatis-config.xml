@@ -13,7 +13,7 @@
 		<typeAlias type="com.lolez.dto.BoardDto" alias="board" />
 		<typeAlias type="com.lolez.dto.ReplyDto" alias="reply" />
 		<typeAlias type="com.lolez.dto.EmailDto" alias="email" />
-		<typeAlias type="com.lolez.dto.SummonerDto" alias="summoner" />
+		<typeAlias type="com.lolez.Summonerdto.SummonerDto" alias="summoner" />
 	</typeAliases>
 
 
