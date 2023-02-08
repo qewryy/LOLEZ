@@ -53,52 +53,79 @@
 
 
 	<div id=root>
-		<div class="Community_card_layout">
-			<div class="Community_card_layout_container">
-				<div class="Community_card_layout_inner">
-					<h1 class="logo1"></h1>
-					<div class="Community_content">
-						<form action="${pageContext.request.contextPath }/boardWriteForm"
-						enctype="multipart/form-data" method="post" class="user">
-							<table class="table table-bordered" id="dataTable" width="100%"
-								cellspacing="0">
-								<thead>
-									<tr>
-										<th>번호</th>
-										<th>제목</th>
-										<th>작성자</th>
-										<th>날짜</th>
-										<th>조회수</th>
-										<th>추천수</th>
-									</tr>
-								</thead>
-								<tfoot>
-									<tr>
-									</tr>
-								</tfoot>
+
+		<div class="l-content">
+
+			<div class="game-info">
+				<div class="game-info__background"
+					style="background-image: url(http://photo.jtbc.joins.com/news/2018/09/28/20180928194011504.jpg);">
+				</div>
+			</div>
 
 
-								<tbody>
-									<tr>
-										<td>1512</td>
-										<td>테스트 글</td>
-										<td>테스터</td>
-										<td>2023-02-08</td>
-										<td>55</td>
-										<td>12</td>
-									</tr>
-									<tr>
-										<td>1512</td>
-										<td>테스트 글</td>
-										<td>테스터</td>
-										<td>2023-02-08</td>
-										<td>55</td>
-										<td>12</td>
-									</tr>
 
-								</tbody>
+			<div class="content">
 
-								<%-- 							<tbody>
+				<div id="content">
+					<div class="Community_sub_header">
+						<div class="Community_sub_header_info">
+							<h2 class="Community_sub_header_title">유저 게시판</h2>
+							<ul class="Community_sub_header_button">
+								<li class="Community_sub_header_button_item"><a
+									href="${pageContext.request.contextPath }/boardWriteForm">
+										<img
+										src="${pageContext.request.contextPath }/resources/assets/img/freeicon/free-icon-writing-lolez.png"
+										alt="글쓰기" width="24">
+								</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="Community_card_layout">
+						<div class="Community_card_layout_container">
+							<div class="Community_card_layout_inner">
+								<div class="Community_content">
+									<form
+										action="${pageContext.request.contextPath }/boardWriteForm"
+										enctype="multipart/form-data" method="post" class="user">
+										<table class="table table-bordered" id="dataTable"
+											width="100%" cellspacing="0">
+											<thead>
+												<tr>
+													<th>번호</th>
+													<th>제목</th>
+													<th>작성자</th>
+													<th>날짜</th>
+													<th>조회수</th>
+													<th>추천수</th>
+												</tr>
+											</thead>
+											<tfoot>
+												<tr>
+												</tr>
+											</tfoot>
+
+
+											<tbody>
+												<tr>
+													<td>1512</td>
+													<td>테스트 글</td>
+													<td>테스터</td>
+													<td>2023-02-08</td>
+													<td>55</td>
+													<td>12</td>
+												</tr>
+												<tr>
+													<td>1512</td>
+													<td>테스트 글</td>
+													<td>테스터</td>
+													<td>2023-02-08</td>
+													<td>55</td>
+													<td>12</td>
+												</tr>
+
+											</tbody>
+
+											<%-- 							<tbody>
 								<c:forEach items="${boardList}" var="board">
 									<tr>
 										<td>${board.bno }</td>
@@ -112,25 +139,32 @@
 									</tr>
 								</c:forEach>
 							</tbody> --%>
-							</table>
-							<div class="col-sm-6 col-md-5">
-								<button type="submit" class="btn btn-lolezColor btn-icon-split">글
-									작성하기</button>
+										</table>
+									</form>
+
+								</div>
 
 							</div>
-						</form>
+
+
+						</div>
+
 
 					</div>
-
 				</div>
+
 
 
 			</div>
 
 
+
+
 		</div>
 
+
 	</div>
+
 
 
 
@@ -268,6 +302,5 @@
 	<!-- Page level custom scripts -->
 	<script
 		src="${pageContext.request.contextPath }/resources/assets/js/demo/datatables-demo.js"></script>
-
 </body>
 </html>

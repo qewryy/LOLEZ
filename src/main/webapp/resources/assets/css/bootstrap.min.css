@@ -18,7 +18,23 @@
 	border: 0;
 	vertical-align: baseline;
 }
+
+a img, a span, button img, button span {
+    vertical-align: middle;
+}
  
+ 
+li>a {
+    display: block;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+a, button {
+    cursor: pointer;
+}
  
  
 :root { -
@@ -582,31 +598,6 @@ pre code {
     width: 45%;
 }
 
-@media only screen and (min-width: 1024px)
-.game-info {
-    display: block;
-    position: relative;
-    height: 200px;
-    background: #fff;
-}
-.game-info {
-    display: none;
-}
-
-@media only screen and (min-width: 1024px)
-.l-content>.content {
-    margin-top: -40px;
-}
-
-@media only screen and (min-width: 768px)
-.content, .site-family {
-    position: relative;
-}
-
-.content {
-    max-width: 1044px;
-    margin: 0 auto;
-}
 
 @media only screen and (min-width: 768px)
 .game-info-content {
@@ -821,16 +812,15 @@ a.button {
 /* -----------------------------커뮤니티 클래스 제작부분 ----------------------------------------------------------*/
 .Community_card_layout{
 	position: relative;;
-	min-width: 320px;
+	min-width: 1600px;
 	min-height: 100%;
-	padding: 120px 0 170px;
+	padding: 10px 0 170px;
 	
 }
 .Community_card_layout_container{
 	position: relative;
 	margin: 0 auto;
 	width: 1600px;
-	/* min-height: 1000px; */
 	background: #fff;
 	box-shadow: 0 2px 4px 0 rgb(0 0 0 / 20%);
 	
@@ -844,107 +834,92 @@ a.button {
 }
 
 @media only screen and (min-width: 1024px)
-.sidebar {
+.game-info {
     display: block;
-    width: 300px;
-    float: left;
-    z-index: 1000;
-    will-change: min-height;
+    position: relative;
+    height: 200px;
+    background: #fff;
 }
 
-.sidebar {
-    display: none;
+
+
+.game-info__background, .game-info__background:after {
     position: absolute;
     top: 0;
-    bottom: 0;
-    right: 0;
     left: 0;
-    z-index: 10000;
-}
-
-@media only screen and (min-width: 1024px)
-.sidebar__inner {
-    position: relative;
-    transform: translate(0);
-    transform: translateZ(0);
-    will-change: position,transform;
-}
-
-
-@media only screen and (min-width: 1024px)
-.sidebar-content-wrap {
-    position: static;
-    padding-bottom: 0;
-}
-.sidebar-content-wrap {
-    position: fixed;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    background: #fff;
-    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 15%);
-    width: 300px;
-    overflow-y: auto;
-    padding-bottom: 50px;
-}
-
-.sidebar-content-header {
-    padding: 16px;
-}
-
-.sidebar-button {
-    display: table;
     width: 100%;
-    table-layout: fixed;
+    height: 100%;
 }
 
-.sidebar-button__item:last-child {
-    padding-right: 0;
-}
-.sidebar-button__item:first-child {
-    padding-left: 0;
-}
-.sidebar-button__item {
-    display: table-cell;
-    padding-right: 4px;
-    padding-left: 4px;
+.game-info__background:after {
+    content: "";
+    background-image: linear-gradient(180deg,rgba(51,56,60,.5),rgba(0,0,0,.5));
 }
 
-.sidebar-button__item>.button {
+.game-info__background, .game-info__background:after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.game-info {
     display: block;
-    padding: 11px 0 10px;
-    line-height: 17px;
-    font-size: 14px;
-}
-
-.buttonCommunity {
-    border-radius: 4px;
-    background-color: #fff;
-    border: 1px solid #dddfe4;
-}
-
-.button--green {
-    border-color: #46cfa7;
-    background-color: #46cfa7;
-    color: #fff;
-}
-
-
-@media only screen and (min-width: 768px)
-.content, .site-family {
     position: relative;
+    height: 200px;
+    background: #fff;
+}
+
+
+.l-content {
+    background: #ebeef1;
+    overflow: hidden;
 }
 
 .content {
-    max-width: 1044px;
-    margin: 0 auto;
+	position: relative;
+	margin-top: -40px;
 }
 
-@media only screen and (min-width: 1024px)
+.Community_sub_header{
+	position: relative;
+	background-color: #fff;
+	box-shadow: 0 1px 3px 0 rgb(0 0 0 / 15%);
+	width: 1600px;
+    margin: 0 auto;
+}
+.Community_sub_header_info{
+	padding-top: 18px;
+	padding-bottom: 17px;
+}
+.Community_sub_header_title{
+	padding-left: 17px;
+	line-height: 21px;
+	font-size: 18px;
+	color: #1e2022;
+	font-weight: 700;
+}
+
+.Community_sub_header_button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-top: 16px;
+    margin-right: 16px;
+}
+
+.Community_sub_header_button_item:first-child {
+    margin-left: 0;
+}
+
+.Community_sub_header_button_item {
+    display: inline-block;
+    margin-left: 16px;
+    vertical-align: top;
+}
+
 #content {
-    float: right;
-    box-sizing: border-box;
-    width: 728px;
+
 }
 
 /* -----------------------커뮤니티 클래스 제작 마침 부분----------------------------- */
