@@ -1,7 +1,5 @@
 package com.lolez.dto;
 
-import java.time.LocalDate;
-
 import lombok.Data;
 
 @Data
