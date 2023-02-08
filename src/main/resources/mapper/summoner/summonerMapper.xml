@@ -2,22 +2,23 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.lolez.dao.SummonerDao">
-
-	<insert id="insertsummonerinfo" parameterType="summoner">
-		INSERT INTO
-		SUMMONER(ID, PUUID, ACCOUNTID, PROFILEICONID, REVISIONDATE, NAME, SUMMONERLEVEL)
-		VALUES(#{id}, #{puuid}, #{accountId},
-		#{profileIconId}, #{revisionDate}, #{name}, #{summonerLevel})
-	</insert>
-
-	<select id="selectusername" resultType="summoner">
-		SELECT * FROM SUMMONER WHERE ID = #{id}
-	</select>
-
-	<update id="updatesummonerinfo" parameterType="summoner">
-		UPDATE SUMMONER SET PUUID = #{puuid}, ACCOUNTID = #{accountId},
-		PROFILEICONID = #{profileIconId}, REVISIONDATE = #{revisionDate},
-		SUMMONERLEVEL = #{summonerLevel} WHERE ID = #{id}
-	</update>
 	
+    <insert id="insertsummonerinfo" parameterType="summoner">
+        INSERT INTO
+        SUMMONER(ID, PUUID, ACCOUNTID, PROFILEICONID, REVISIONDATE, NAME, SUMMONERLEVEL)
+        VALUES(#{id}, #{puuid}, #{accountId},
+        #{profileIconId}, #{revisionDate}, #{name}, #{summonerLevel})
+    </insert>
+
+    <select id="selectusername" resultType="summoner">
+        SELECT * FROM SUMMONER WHERE ID = #{id}
+    </select>
+
+    <update id="updatesummonerinfo" parameterType="summoner">
+        UPDATE SUMMONER SET PUUID = #{puuid}, ACCOUNTID = #{accountId},
+        PROFILEICONID = #{profileIconId}, REVISIONDATE = #{revisionDate},
+        SUMMONERLEVEL = #{summonerLevel}
+        SUMMONERLEVEL = #{summonerLevel} WHERE ID = #{id}
+    </update>
+	 
 </mapper> 

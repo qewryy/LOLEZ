@@ -12,5 +12,7 @@ public class SummonerDto {
 	private long revisionDate;
 	private String name;
 	private long summonerLevel;
+	private String message;
+	private int status_code;
 	
 }
