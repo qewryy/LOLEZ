@@ -50,23 +50,106 @@
 		<%@ include file="/WEB-INF/views/includes/header.jsp"%>
 		<!-- Header End -->
 	</header>
-	
-	
-	<main>
+
+
+	<div id=root>
+		<div class="Community_card_layout">
+			<div class="Community_card_layout_container">
+				<div class="Community_card_layout_inner">
+					<h1 class="logo1"></h1>
+					<div class="Community_content">
+						<form action="${pageContext.request.contextPath }/boardWriteForm"
+						enctype="multipart/form-data" method="post" class="user">
+							<table class="table table-bordered" id="dataTable" width="100%"
+								cellspacing="0">
+								<thead>
+									<tr>
+										<th>번호</th>
+										<th>제목</th>
+										<th>작성자</th>
+										<th>날짜</th>
+										<th>조회수</th>
+										<th>추천수</th>
+									</tr>
+								</thead>
+								<tfoot>
+									<tr>
+									</tr>
+								</tfoot>
+
+
+								<tbody>
+									<tr>
+										<td>1512</td>
+										<td>테스트 글</td>
+										<td>테스터</td>
+										<td>2023-02-08</td>
+										<td>55</td>
+										<td>12</td>
+									</tr>
+									<tr>
+										<td>1512</td>
+										<td>테스트 글</td>
+										<td>테스터</td>
+										<td>2023-02-08</td>
+										<td>55</td>
+										<td>12</td>
+									</tr>
+
+								</tbody>
+
+								<%-- 							<tbody>
+								<c:forEach items="${boardList}" var="board">
+									<tr>
+										<td>${board.bno }</td>
+										<td><a style="color: black;"
+											href="${pageContext.request.contextPath }/boardView?viewBno=${board.bno }">
+												${board.btitle } </a></td>
+										<td>${board.bwriter }</td>
+										<td>${board.bdate }</td>
+										<td>${board.bhits }</td>
+										<td>${board.brec }</td>
+									</tr>
+								</c:forEach>
+							</tbody> --%>
+							</table>
+							<div class="col-sm-6 col-md-5">
+								<button type="submit" class="btn btn-lolezColor btn-icon-split">글
+									작성하기</button>
+
+							</div>
+						</form>
+
+					</div>
+
+				</div>
+
+
+			</div>
+
+
+		</div>
+
+	</div>
+
+
+
+
+	<%-- <main>
 		<div id="wrapper">
 			<!-- Content Wrapper -->
 			<div id="content-wrapper" class="d-flex flex-column">
 				<!-- Main Content -->
 				<div id="content">
 					<!-- Begin Page Content -->
-						<!-- Page Heading -->
-						<h1 class="h3 mb-2 text-gray-800" style="font-size: xxx-large;">커뮤니티</h1>
-						<!-- DataTales Example -->
+					<!-- Page Heading -->
+					<h1 class="h3 mb-2 text-gray-800" style="font-size: xxx-large;">커뮤니티</h1>
+					<!-- DataTales Example -->
 
-						<form class="card shadow mb-4"
-							action="${pageContext.request.contextPath }/boardWriteForm"
-							enctype="multipart/form-data" method="post" class="user">
-					<div class="container-fluid">
+					<form class="card shadow mb-4"
+						action="${pageContext.request.contextPath }/boardWriteForm"
+						enctype="multipart/form-data" method="post" class="user">
+						<div class="container-fluid">
 							<!-- <div class="card shadow mb-4">  -->
 							<div class="card-body">
 								<div class="table-responsive">
@@ -103,9 +186,9 @@
 										</tbody>
 									</table>
 								</div>
-							</div>	
-					</div>
-				</form>
+							</div>
+						</div>
+					</form>
 				</div>
 				<div class="col-sm-6 col-md-5">
 					<button type="submit" class="btn btn-lolezColor btn-icon-split">글
@@ -120,7 +203,7 @@
 
 		</div>
 
-	</main>
+	</main> --%>
 
 
 	<!-- JS here -->

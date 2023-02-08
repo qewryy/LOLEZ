@@ -6,6 +6,20 @@
  */
  
  
+ a, abbr, acronym, address, applet, article, aside, audio, b, big,
+	blockquote, body, canvas, caption, center, cite, code, dd, del, details,
+	dfn, div, dl, dt, em, embed, fieldset, figcaption, figure, footer, form,
+	h1, h2, h3, h4, h5, h6, header, hgroup, html, i, iframe, img, ins, kbd,
+	label, legend, li, mark, menu, nav, object, ol, output, p, pre, q, ruby,
+	s, samp, section, small, span, strike, strong, sub, summary, sup, table,
+	tbody, td, tfoot, th, thead, time, tr, tt, u, ul, var, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	vertical-align: baseline;
+}
+ 
+ 
  
 :root { -
 	-blue: #007bff; -
@@ -802,6 +816,138 @@ a.button {
     color: #52595f;
     margin-top: 16px;
 }
+
+
+/* -----------------------------커뮤니티 클래스 제작부분 ----------------------------------------------------------*/
+.Community_card_layout{
+	position: relative;;
+	min-width: 320px;
+	min-height: 100%;
+	padding: 120px 0 170px;
+	
+}
+.Community_card_layout_container{
+	position: relative;
+	margin: 0 auto;
+	width: 1600px;
+	/* min-height: 1000px; */
+	background: #fff;
+	box-shadow: 0 2px 4px 0 rgb(0 0 0 / 20%);
+	
+}
+.Community_card_layout_inner{
+	margin: 0 40px;
+	padding: 40px 0 40px;
+}
+.Community_content{
+	margin:  0 auto;
+}
+
+@media only screen and (min-width: 1024px)
+.sidebar {
+    display: block;
+    width: 300px;
+    float: left;
+    z-index: 1000;
+    will-change: min-height;
+}
+
+.sidebar {
+    display: none;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: 10000;
+}
+
+@media only screen and (min-width: 1024px)
+.sidebar__inner {
+    position: relative;
+    transform: translate(0);
+    transform: translateZ(0);
+    will-change: position,transform;
+}
+
+
+@media only screen and (min-width: 1024px)
+.sidebar-content-wrap {
+    position: static;
+    padding-bottom: 0;
+}
+.sidebar-content-wrap {
+    position: fixed;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: #fff;
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 15%);
+    width: 300px;
+    overflow-y: auto;
+    padding-bottom: 50px;
+}
+
+.sidebar-content-header {
+    padding: 16px;
+}
+
+.sidebar-button {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+}
+
+.sidebar-button__item:last-child {
+    padding-right: 0;
+}
+.sidebar-button__item:first-child {
+    padding-left: 0;
+}
+.sidebar-button__item {
+    display: table-cell;
+    padding-right: 4px;
+    padding-left: 4px;
+}
+
+.sidebar-button__item>.button {
+    display: block;
+    padding: 11px 0 10px;
+    line-height: 17px;
+    font-size: 14px;
+}
+
+.buttonCommunity {
+    border-radius: 4px;
+    background-color: #fff;
+    border: 1px solid #dddfe4;
+}
+
+.button--green {
+    border-color: #46cfa7;
+    background-color: #46cfa7;
+    color: #fff;
+}
+
+
+@media only screen and (min-width: 768px)
+.content, .site-family {
+    position: relative;
+}
+
+.content {
+    max-width: 1044px;
+    margin: 0 auto;
+}
+
+@media only screen and (min-width: 1024px)
+#content {
+    float: right;
+    box-sizing: border-box;
+    width: 728px;
+}
+
+/* -----------------------커뮤니티 클래스 제작 마침 부분----------------------------- */
 
 @media (max-width: 768px)
 .error__link {
@@ -5376,7 +5522,7 @@ input[type=button].btn-block, input[type=reset].btn-block, input[type=submit].bt
 	padding: .5rem .75rem;
 	margin-left: -1px;
 	line-height: 1.25;
-	color: #007bff;
+	color: #f15f22;
 	background-color: #fff;
 	border: 1px solid #dee2e6
 }
@@ -5413,8 +5559,8 @@ input[type=button].btn-block, input[type=reset].btn-block, input[type=submit].bt
 .page-item.active .page-link {
 	z-index: 1;
 	color: #fff;
-	background-color: #007bff;
-	border-color: #007bff
+	background-color: #f15f22;
+	border-color: #f15f22
 }
 
 .page-item.disabled .page-link {
