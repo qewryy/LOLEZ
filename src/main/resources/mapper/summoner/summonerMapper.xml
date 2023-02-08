@@ -5,20 +5,19 @@
 
 	<insert id="insertsummonerinfo" parameterType="summoner">
 		INSERT INTO
-		SUMMONER(SID, PUUID, ACCOUNTID, PROFILEICONID, REVISIONDATE, NAME, SUMMONERLEVEL)
+		SUMMONER(ID, PUUID, ACCOUNTID, PROFILEICONID, REVISIONDATE, NAME, SUMMONERLEVEL)
 		VALUES(#{id}, #{puuid}, #{accountId},
 		#{profileIconId}, #{revisionDate}, #{name}, #{summonerLevel})
 	</insert>
 
-	<select id="selectusername" resultType="String">
-		SELECT NAME FROM SUMMONER WHERE NAME = #{summoneName}
+	<select id="selectusername" resultType="summoner">
+		SELECT * FROM SUMMONER WHERE ID = #{id}
 	</select>
 
-	<update id="updatesummonerinfo" parameterType="int">
-		UPDATE SUMMONER SET
-		ID = #{id}, PUUID = #{puuid}, ACCOUNTID = #{accountId},
+	<update id="updatesummonerinfo" parameterType="summoner">
+		UPDATE SUMMONER SET PUUID = #{puuid}, ACCOUNTID = #{accountId},
 		PROFILEICONID = #{profileIconId}, REVISIONDATE = #{revisionDate},
-		SUMMONERLEVEL = #{summonerLevel}
+		SUMMONERLEVEL = #{summonerLevel} WHERE ID = #{id}
 	</update>
 	
 </mapper> 
