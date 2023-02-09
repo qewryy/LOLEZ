@@ -5,6 +5,7 @@ import lombok.Data;
 @Data
 public class MiniSeriesDto {
 
+	private String id;
 	private int losses;
 	private int progress;
 	private String target;

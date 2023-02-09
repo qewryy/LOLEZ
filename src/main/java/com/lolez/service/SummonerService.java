@@ -18,10 +18,10 @@ public class SummonerService {
 	@Autowired
 	private SummonerDao sdao;
 
-	public int summoneserch(String summoneName, String apiKey) throws Exception {
-		System.out.println("RiotService summoneserch() 실행");
+	public SummonerDto summoneserch(String summoneName, String apiKey) throws Exception {
+		System.out.println("SummonerService summoneserch() 실행");
 
-		String replaceName = summoneName.replace(" ", "%20");
+		String replaceName = summoneName.replace(" ", "%20"); // 공백을 UTF-8로 변환
 
 		CloseableHttpClient httpClient = HttpClients.createDefault();
 
@@ -37,31 +37,65 @@ public class SummonerService {
 
 		Gson gson = new Gson();
 
-		SummonerDto summoner = gson.fromJson(responseJson, SummonerDto.class);
+		SummonerDto summoner = gson.fromJson(responseJson, SummonerDto.class); 
+		// gson을 Dto객체에 담기
+		
+		String summonerid = summoner.getId();
 
-		SummonerDto Stdata = sdao.selectusername(summoner.getId());
+		if (summoner.getMessage() != null) {
+			System.out.println("존재하지 않는 소환자 입니다.");
+			//에러 메세지 전송
+			
+			System.out.println(summoner.getStatus_code());
+			System.out.println(summoner.getMessage());
+			
+		} else {
+			SummonerDto Stdata = sdao.selectusername(summonerid);
+			if (Stdata != null) {
+				System.out.println("등록된 사용자 입니다.");
+				// 검색 결과가 같다면 pass, 다르다면 update
 
-		if (Stdata != null) {
-			System.out.println("등록된 사용자 입니다.");
-
-			if (Stdata.getClass() == summoner.getClass()) {
-				System.out.println("검색 결과가 같습니다.");
-				return 1;
-
+				if (Stdata.getClass() == summoner.getClass()) {
+					System.out.println("검색 결과가 같습니다.");
+					// pass
+					
+				} else {
+					System.out.println("기존 내용을 update 합니다.");
+					int ur = sdao.updatesummonerinfo(summoner);
+					// update
+					
+					// update 처리 유무
+					if (ur == 1) {
+						System.out.println("내용이 정상적으로 추가되었습니다.");
+						
+					} else {
+						System.out.println("오류가 발생했습니다.");
+						
+						return null;
+						
+					}
+				}
 			} else {
-				System.out.println("기존 내용을 업데이트 합니다.");
-				int ur = sdao.updatesummonerinfo(summoner);
-				return ur;
+				System.out.println("등록되지 않은 사용자 입니다.");
+				System.out.println("새로운 정보를 Insert 합니다.");
+				// 검색 결과가 존재하지 않아 insert
+				
+				int ir = sdao.insertsummonerinfo(summoner);
+				
+				// insert 처리 유무
+				if (ir == 1) {
+					System.out.println("정상적으로 추가되었습니다.");
+					
+				} else {
+					System.out.println("오류가 발생했습니다.");
+					
+					return null;
+					
+				}
 
 			}
-		} else {
-			System.out.println("등록되지 않은 사용자 입니다.");
-			System.out.println("새로운 정보를 추가합니다.");
-			int ir = sdao.insertsummonerinfo(summoner);
-			return ir;
-
 		}
-
+		return summoner;
 	}
 
 }
