@@ -42,10 +42,6 @@ public class LeagueService {
 		Gson gson = new Gson();
 		Type type = new TypeToken<ArrayList<LeagueEntryDto>>(){}.getType();
 		ArrayList<LeagueEntryDto> LeagueData = gson.fromJson(responseJson, type);
-		/*
-		 * LeagueEntryDto LeagueData = gson.fromJson(responseJson,
-		 * LeagueEntryDto.class);
-		 */
 
 		// 받아온 데이터 유무 확인
 		// true : 기존 데이터 Select

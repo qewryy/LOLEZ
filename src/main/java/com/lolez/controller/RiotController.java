@@ -1,5 +1,7 @@
 package com.lolez.controller;
 
+import java.util.ArrayList;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,12 +10,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.lolez.Leaguedto.LeagueEntryDto;
+import com.lolez.Matchdto.MatchDto;
 import com.lolez.Summonerdto.SummonerDto;
 import com.lolez.service.LeagueService;
+import com.lolez.service.MatchService;
 import com.lolez.service.SummonerService;
 
 @Controller
-public class SummonerController {
+public class RiotController {
 
 	@Autowired
 	private HttpSession session;
@@ -24,7 +28,11 @@ public class SummonerController {
 	@Autowired
 	private LeagueService lsvc;
 
-	private String apiKey = "RGAPI-611a9f24-6359-4b4e-9334-031ec0298b56";
+	@Autowired
+	private MatchService msvc;
+	
+	
+	private String apiKey = "RGAPI-a866609d-1b01-41d7-a0be-59e0ebe2bf1a";
 
 	@RequestMapping(value = "/SummoneSerch")
 	public ModelAndView SummoneSerch(String summoneName) throws Exception {
@@ -59,7 +67,8 @@ public class SummonerController {
 					mav.setViewName("redirect:/");
 					
 			}
-
+			
+			ArrayList<MatchDto> Mresult = msvc.matchserch(Sresult, apiKey);
 			
 		} else {
 			System.out.println("오류가 발생했습니다.");
@@ -67,6 +76,9 @@ public class SummonerController {
 			
 		}
 
+		
+		
+		
 		return mav;
 	}
 

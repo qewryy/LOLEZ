@@ -16,6 +16,10 @@
 		<typeAlias type="com.lolez.Summonerdto.SummonerDto" alias="summoner" />
 		<typeAlias type="com.lolez.Leaguedto.LeagueEntryDto" alias="league" />
 		<typeAlias type="com.lolez.Leaguedto.MiniSeriesDto" alias="mini" />
+		<typeAlias type="com.lolez.Matchdto.MetadataDto" alias="metadata" />
+		<typeAlias type="com.lolez.Matchdto.InfoDto" alias="info" />
+		<typeAlias type="com.lolez.Matchdto.ParticipantDto" alias="part" />
+		<typeAlias type="com.lolez.Matchdto.PerksDto" alias="perks" />
 	</typeAliases>
 
 
@@ -25,5 +29,6 @@
 		<mapper resource="mapper/email/emailMapper.xml" />
 		<mapper resource="mapper/summoner/summonerMapper.xml" />
 		<mapper resource="mapper/league/leagueMapper.xml" />
+		<mapper resource="mapper/match/matchMapper.xml" />
 	</mappers>
 </configuration>

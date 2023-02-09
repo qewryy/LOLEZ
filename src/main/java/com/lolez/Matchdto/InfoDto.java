@@ -8,10 +8,10 @@ import lombok.Data;
 @Data
 public class InfoDto {
 
+	private long gameId;
 	private long gameCreation;
 	private long gameDuration;
 	private long gameEndTimestamp;
-	private long gameId;
 	private String gameMode;
 	private String gameName;
 	private long gameStartTimestamp;

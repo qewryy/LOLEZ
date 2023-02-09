@@ -4,7 +4,9 @@ import lombok.Data;
 
 @Data
 public class ParticipantDto {
-
+	
+	private long gameid;
+	private String userpuuid;
 	private int assists;
 	private int baronKills;
 	private int bountyLevel;
@@ -23,11 +25,17 @@ public class ParticipantDto {
 	private int doubleKills;
 	private int dragonKills;
 	private boolean firstBloodAssist;
+	private int firstBloodAssist_int;
 	private boolean firstBloodKill;
+	private int firstBloodKill_int;
 	private boolean firstTowerAssist;
+	private int firstTowerAssist_int;
 	private boolean firstTowerKill;
+	private int firstTowerKill_int;
 	private boolean gameEndedInEarlySurrender;
+	private int gameEndedInEarlySurrender_int;
 	private boolean gameEndedInSurrender;
+	private int gameEndedInSurrender_int;
 	private int goldEarned;
 	private int goldSpent;
 	private String individualPosition;
@@ -60,7 +68,7 @@ public class ParticipantDto {
 	private int objectivesStolenAssists;
 	private int participantId;
 	private int pentaKills;
-	private PerksDto perks;
+	private PerksDto perks = new PerksDto();
 	private int physicalDamageDealt;
 	private int physicalDamageDealtToChampions;
 	private int physicalDamageTaken;
@@ -83,6 +91,7 @@ public class ParticipantDto {
 	private int summonerLevel;
 	private String summonerName;
 	private boolean teamEarlySurrendered;
+	private int teamEarlySurrendered_int;
 	private int teamId;
 	private String teamPosition;
 	private int timeCCingOthers;
@@ -110,5 +119,10 @@ public class ParticipantDto {
 	private int wardsKilled;
 	private int wardsPlaced;
 	private boolean win;
+	private int win_int;
+	
+	public int convertBooleanToInt(boolean value) {
+		return value ? 1 : 0;
+	}
 	
 }
