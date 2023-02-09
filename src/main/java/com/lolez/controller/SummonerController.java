@@ -1,5 +1,7 @@
 package com.lolez.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,6 +15,9 @@ import com.lolez.service.SummonerService;
 @Controller
 public class SummonerController {
 
+	@Autowired
+	private HttpSession session;
+	
 	@Autowired
 	private SummonerService ssvc;
 
@@ -36,18 +41,23 @@ public class SummonerController {
 				
 			}else {
 				System.out.println("소환사 검색 정상 처리 완료.");
+				
 				System.out.println("소환사 정보로 League 검색 요청");
 				
-				LeagueEntryDto Lresult = lsvc.leagueserch(Sresult, apiKey);
+				// 0 : 솔로랭크 값 받아오기
+				LeagueEntryDto Lresult0 = lsvc.leagueserch(Sresult, apiKey, 0);
+				session.setAttribute("SoloList", Lresult0);
 				
-				if(Lresult != null) {
+				if(Lresult0.isDuoBoolean()) {
+					// 1 : 자유랭크 값 받아오기
+					System.out.println("소환사 정보로 Solo League 검색 요청");
+					LeagueEntryDto Lresult1 = lsvc.leagueserch(Sresult, apiKey, 1);
+					session.setAttribute("DuoList", Lresult1);
+				}
+				
 					System.out.println("리그 검색 정상 처리 완료.");
 					mav.setViewName("redirect:/");
 					
-				}else {
-					System.out.println("오류가 발생했습니다.");
-					mav.setViewName("redirect:/");
-				}
 			}
 
 			

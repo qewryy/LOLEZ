@@ -4,7 +4,7 @@
 <mapper namespace="com.lolez.dao.LeagueDao">
 
 	<select id="selectleaguedata" resultType="league">
-		SELECT * FROM LEAGUEENTRY WHERE SUMMONERID = #{leagueId}
+		SELECT * FROM LEAGUEENTRY WHERE SUMMONERID = #{leagueId} AND QUEUETYPE = #{leagueQueue}
 	</select>
 	
 	 <insert id="insertminidata" parameterType="mini">
@@ -27,21 +27,21 @@
 	 
 	 <insert id="insertleaguedata" parameterType="league">
 		INSERT INTO
-		LEAGUEENTRYDTO(SUMMONERID, LEAGUEID, SUMMONERNAME, 
+		LEAGUEENTRY(SUMMONERID, LEAGUEID, SUMMONERNAME, 
 		QUEUETYPE, TIER, RANK, LEAGUEPOINTS, WINS, LOSSES, 
 		HOTSTREAK, VETERAN, FRESHBLOOD, INACTIVE) 
 		VALUES (#{summonerId}, #{leagueId}, #{summonerName}, 
 		#{queueType}, #{tier}, #{rank}, #{leaguePoints}, #{wins}, #{losses}, 
-		#{convertBooleanToInt(hotStreak)}, #{convertBooleanToInt(veteran)}, 
-		#{convertBooleanToInt(freshBlood)}, #{convertBooleanToInt(inactive)})
+		#{hotStreak_int}, #{veteran_int}, 
+		#{freshBlood_int}, #{inactive_int})
 	</insert>
 	
 	<update id="updateleaguedata" parameterType="league">
-		UPDATE LEAGUEENTRYDTO SET LEAGUEID = #{leagueId}, SUMMONERNAME = #{summonerName},
+		UPDATE LEAGUEENTRY SET LEAGUEID = #{leagueId}, SUMMONERNAME = #{summonerName},
 		QUEUETYPE = #{queueType}, TIER = #{tier}, RANK = #{rank}, 
 		LEAGUEPOINTS = #{leaguePoints},	WINS = #{wins}, LOSSES = #{losses}, 
-		#{convertBooleanToInt(hotStreak)}, #{convertBooleanToInt(veteran)}, 
-		#{convertBooleanToInt(freshBlood)}, #{convertBooleanToInt(inactive)}
+		#{hotStreak_int}, #{veteran_int}, 
+		#{freshBlood_int}, #{inactive_int})
 		WHERE SUMMONERID = #{summonerId}
 	</update>
 	

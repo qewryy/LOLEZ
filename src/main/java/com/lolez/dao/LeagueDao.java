@@ -10,7 +10,7 @@ import com.lolez.Leaguedto.MiniSeriesDto;
 
 public interface LeagueDao {
 
-	LeagueEntryDto selectleaguedata(@Param("leagueId") String leagueId);
+	LeagueEntryDto selectleaguedata(@Param("leagueId") String leagueId,@Param("leagueQueue")  String leagueQueue);
 
 	int updateminidata(MiniSeriesDto miniSeriesDto);
 
@@ -18,9 +18,9 @@ public interface LeagueDao {
 
 	int insertminidata(MiniSeriesDto miniSeriesDto);
 
-	int insertleaguedata(ArrayList<LeagueEntryDto> leagueData);
+	int insertleaguedata(LeagueEntryDto leagueEntryDto);
 
-	int updateleaguedata(ArrayList<LeagueEntryDto> leagueData);
+	int updateleaguedata(LeagueEntryDto leagueEntryDto);
 	
 
 }

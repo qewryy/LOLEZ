@@ -24,7 +24,7 @@ public class LeagueService {
 	@Autowired
 	private LeagueDao ldao;
 
-	public LeagueEntryDto leagueserch(SummonerDto sresult, String apiKey) throws Exception {
+	public LeagueEntryDto leagueserch(SummonerDto sresult, String apiKey, int i) throws Exception {
 		System.out.println("LeagueService leagueserch() 실행");
 
 		String url = "https://kr.api.riotgames.com//lol/league/v4/entries/by-summoner/" + sresult.getId();
@@ -51,13 +51,18 @@ public class LeagueService {
 		// true : 기존 데이터 Select
 		// false : error return
 		if (LeagueData != null) {
-			String LeagueId = LeagueData.get(0).getSummonerId();
-			LeagueEntryDto Stdata = ldao.selectleaguedata(LeagueId);
+			String LeagueId = LeagueData.get(i).getSummonerId();
+			String LeagueQueue = LeagueData.get(i).getQueueType();
+			LeagueEntryDto Stdata = ldao.selectleaguedata(LeagueId, LeagueQueue);
 
 			// 신규 데이터에 승격전 정보가 있다면 승격전 테이블에 Id set
-			if (LeagueData.get(0).getMiniSeriesDto() != null) {
+			if (LeagueData.get(i).getMiniSeriesDto() != null) {
 				// 신규 데이터에 MiniSeriesDto의 PK인 Id set
-				LeagueData.get(0).getMiniSeriesDto().setId(LeagueData.get(0).getSummonerId());
+				LeagueData.get(i).getMiniSeriesDto().setId(LeagueData.get(i).getSummonerId());
+				LeagueData.get(i).setHotStreak_int(LeagueData.get(i).convertBooleanToInt(LeagueData.get(i).isHotStreak()));
+				LeagueData.get(i).setVeteran_int(LeagueData.get(i).convertBooleanToInt(LeagueData.get(i).isVeteran()));
+				LeagueData.get(i).setFreshBlood_int(LeagueData.get(i).convertBooleanToInt(LeagueData.get(i).isFreshBlood()));
+				LeagueData.get(i).setInactive_int(LeagueData.get(i).convertBooleanToInt(LeagueData.get(i).isInactive()));
 			}
 
 			// 기존 데이터 유무 확인
@@ -75,7 +80,7 @@ public class LeagueService {
 				// 받아온 데이터와 기존 데이터가 동일한지 확인
 				// true : 동일하면 아무 수정 없이 pass
 				// false : 값이 하나라도 다르다면 여부에 따라 update, delete
-				if (Stdata.getClass() == LeagueData.get(0).getClass()) {
+				if (Stdata.getClass() == LeagueData.get(i).getClass()) {
 					System.out.println("리그 기록이 동일합니다.");
 					// pass
 
@@ -84,7 +89,7 @@ public class LeagueService {
 					System.out.println("기존 내용을 update 합니다.");
 
 					// update
-					int ur = ldao.updateleaguedata(LeagueData);
+					int ur = ldao.updateleaguedata(LeagueData.get(i));
 
 					// update 처리 유무
 					if (ur == 1) {
@@ -101,12 +106,16 @@ public class LeagueService {
 			} else {
 				System.out.println("등록되지 않은 리그 기록입니다.");
 
-				int ir = ldao.insertleaguedata(LeagueData);
+				int ir = ldao.insertleaguedata(LeagueData.get(i));
 
 				// insert 처리 유무
 				if (ir == 1) {
 					System.out.println("리그 정보가 정상적으로 추가되었습니다.");
-
+					if(LeagueData.size() > 1 && i == 0) {
+						LeagueData.get(i).setDuoBoolean(true);
+					}
+					
+					return LeagueData.get(i);
 				} else {
 					System.out.println("오류가 발생했습니다.");
 
@@ -116,22 +125,23 @@ public class LeagueService {
 
 			}
 
-			// 기존 데이터에 승격전 기록이 있는지 확인
+			
+			System.out.println("기존 데이터에 승격전 기록이 있는지 확인");
 			// true : 여부에 따라 update, delete
 			// false : 여부에 따라 insert
 			if (Stdata.getMiniSeriesDto() != null) {
 				System.out.println("기존 데이터에 승격전 기록이 존재합니다.");
 
-				// 새로운 데이터에 승격전 기록이 있는지 확인
+				System.out.println("새로운 데이터에 승격전 기록이 있는지 확인");
 				// true : 여부에 따라 update문 작성
 				// false : delete문 작성
-				if (LeagueData.get(0).getMiniSeriesDto() != null) {
+				if (LeagueData.get(i).getMiniSeriesDto() != null) {
 					System.out.println("신규 데이터에 승격전 기록이 존재합니다.");
 
-					// 새로운 데이터와 기존 데이터의 승격전 정보가 같은지 확인
+					System.out.println("새로운 데이터와 기존 데이터의 승격전 정보가 같은지 확인");
 					// true : 동일하면 아무 수정 없이 pass
 					// false : 여부에 따라 update문 작성
-					if (Stdata.getMiniSeriesDto().getClass() == LeagueData.get(0).getMiniSeriesDto().getClass()) {
+					if (Stdata.getMiniSeriesDto().getClass() == LeagueData.get(i).getMiniSeriesDto().getClass()) {
 						System.out.println("승격전 기록이 동일합니다.");
 						// pass
 
@@ -140,7 +150,7 @@ public class LeagueService {
 						System.out.println("기존 내용을 update 합니다.");
 
 						// update
-						int ur = ldao.updateminidata(LeagueData.get(0).getMiniSeriesDto());
+						int ur = ldao.updateminidata(LeagueData.get(i).getMiniSeriesDto());
 
 						// update 처리 유무
 						if (ur == 1) {
@@ -173,13 +183,13 @@ public class LeagueService {
 			} else {
 				System.out.println("기존 데이터에 승격전 기록이 없습니다.");
 
-				// 신규 데이터에 승격전 기록 유무 확인
+				System.out.println("신규 데이터에 승격전 기록 유무 확인");
 				// true : insert문 작성
 				// false : 기록이 없다면 pass
-				if (LeagueData.get(0).getMiniSeriesDto() != null) {
+				if (LeagueData.get(i).getMiniSeriesDto() != null) {
 					System.out.println("신규 데이터에 승격전 기록이 있습니다.");
 
-					int ir = ldao.insertminidata(LeagueData.get(0).getMiniSeriesDto());
+					int ir = ldao.insertminidata(LeagueData.get(i).getMiniSeriesDto());
 
 					// insert 처리 유무
 					if (ir == 1) {
@@ -199,12 +209,25 @@ public class LeagueService {
 			}
 
 		} else {
-			System.out.println("리그 정보가 존재하지 않습니다.");
+			if(i == 0) {
+				System.out.println("솔로랭크 리그 정보가 존재하지 않습니다.");
+				
+			}else if(i == 1) {
+				System.out.println("자유랭크 리그 정보가 존재하지 않습니다.");
+				
+			}else {
+				System.out.println("이유 모를 오류발생");
+				
+			}
 			// error return
 			return null;
 		}
-
-		return LeagueData.get(0);
+		
+		if(LeagueData.size() > 1 && i == 0) {
+			LeagueData.get(i).setDuoBoolean(true);
+		}
+		
+		return LeagueData.get(i);
 	}
 
 }
