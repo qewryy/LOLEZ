@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.lolez.dao.LeagueDao">
+
+	<select id="selectleaguedata" resultType="league">
+		SELECT * FROM LEAGUEENTRY WHERE SUMMONERID = #{leagueId} AND QUEUETYPE = #{leagueQueue}
+	</select>
+	
+	 <insert id="insertminidata" parameterType="mini">
+		INSERT INTO
+		MINISERIES(ID, LOSSES, PROGRESS, TARGET, WINS)
+		VALUES(#{id}, #{losses}, #{progress}, #{target}, #{wins})
+	</insert>
+
+
+	<update id="updateminidata" parameterType="mini">
+		UPDATE MINISERIES SET LOSSES = #{losses}, PROGRESS = #{progress},
+		TARGET = #{target}, WINS = #{wins}
+		WHERE ID = #{id}
+	</update>
+	 
+	 <delete id="deleteminidata" parameterType="int">
+		DELETE FROM MINISERIES
+		WHERE ID = #{id}
+	</delete>
+	 
+	 <insert id="insertleaguedata" parameterType="league">
+		INSERT INTO
+		LEAGUEENTRY(SUMMONERID, LEAGUEID, SUMMONERNAME, 
+		QUEUETYPE, TIER, RANK, LEAGUEPOINTS, WINS, LOSSES, 
+		HOTSTREAK, VETERAN, FRESHBLOOD, INACTIVE) 
+		VALUES (#{summonerId}, #{leagueId}, #{summonerName}, 
+		#{queueType}, #{tier}, #{rank}, #{leaguePoints}, #{wins}, #{losses}, 
+		#{hotStreak_int}, #{veteran_int}, 
+		#{freshBlood_int}, #{inactive_int})
+	</insert>
+	
+	<update id="updateleaguedata" parameterType="league">
+		UPDATE LEAGUEENTRY SET LEAGUEID = #{leagueId}, SUMMONERNAME = #{summonerName},
+		QUEUETYPE = #{queueType}, TIER = #{tier}, RANK = #{rank}, 
+		LEAGUEPOINTS = #{leaguePoints},	WINS = #{wins}, LOSSES = #{losses}, 
+		#{hotStreak_int}, #{veteran_int}, 
+		#{freshBlood_int}, #{inactive_int})
+		WHERE SUMMONERID = #{summonerId}
+	</update>
+	
+</mapper> 

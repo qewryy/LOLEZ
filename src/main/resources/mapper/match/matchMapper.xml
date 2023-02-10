@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.lolez.dao.MatchDao">
+
+	<select id="selectmatchId" resultType="String">
+		SELECT MATCHID FROM METADATA WHERE MATCHID = #{matchId}
+	</select>
+	
+	<insert id="insertmetadata" parameterType="metadata">
+        INSERT INTO
+        METADATA(DATAVERSION, MATCHID, PARTCIPANTS)
+        VALUES(#{dataVersion}, #{matchId}, #{participants_String} )
+    </insert>
+    
+    <insert id="insertinfo" parameterType="info">
+        INSERT INTO
+        INFO(GAMEID, GAMECREATION, GAMEDURATION, GAMEENDTIMESTAMP, GAMEMODE, GAMENAME, 
+        GAMESTARTTIMESTAMP, GAMETYPE, GAMEVERSION, MAPID, PLATFORMMID, QUEUEID, TOUMAMENTCODE)
+        VALUES(#{gameId}, #{gameCreation}, #{gameDuration}, #{gameEndTimestamp}, #{gameMode},#{gameName},
+        #{gameStartTimestamp},#{gameType}, #{gameVersion},#{mapId}, #{platformId}, #{queueId}, #{tournamentCode} )
+    </insert>
+    
+    <insert id="insertparticipant" parameterType="part">
+        INSERT INTO
+        PARTICIPANT(GAMEID, USERPUUID, ASSISTS, BARONKILLS, BOUNTYLEVEL, CHAMPEXPERIENCE, CHAMPLEVEL, CHAMPIONID, CHAMPIONNAME, 
+        CHAMPIONTRANSFORM, CONSUMABLESPURCHASED, DAMAGEDEALTTOBUILDINGS, DAMAGEDEALTTOOBJECTIVES, DAMAGEDEALTTOTURRETS, DAMAGESELFMITIGATED, 
+        DEATHS, DETECTORWARDSPLACED, DOUBLEKILLS, DRAGONKILLS, FIRSTBLOODASSIST, FIRSTBLOODKILL, FIRSTTOWERASSIST, FIRSTTOWERKILL, GAMEENDEDINEARLYSURRENDER, 
+        GAMEENDEDINSURRENDER, GOLDEARNED, GOLDSPENT, INDIVIDUALPOSITION, INHIBITORKILLS, INHIBITORTAKEDOWNS, INHIBITORSLOST, 
+        ITEM0, ITEM1, ITEM2, ITEM3, ITEM4, ITEM5, ITEM6, ITEMSPURCHASED, KILLINGSPREES, KILLS, LANE, LARGESTCRITICALSTRIKE, 
+        LARGESTKILLINGSPREE, LARGESTMULTIKILL, LONGESTTIMESPENTLIVING, MAGICDAMAGEDEALT, MAGICDAMAGEDEALTTOCHAMPIONS, MAGICDAMAGETAKEN, 
+        NEUTRALMINIONSKILLED, NEXUSKILLS, NEXUSTAKEDOWNS, NEXUSLOST, OBJECTIVESSTOLEN, OBJECTIVESSTOLENASSISTS, PARTICIPANTID, PENTAKILLS, 
+        PHYSICALDAMAGEDEALT, PHYSICALDAMAGEDEALTTOCHAMPIONS, PHYSICALDAMAGETAKEN, PROFILEICON, PUUID, QUADRAKILLS, RIOTIDNAME, RIOTIDTAGLINE, 
+        ROLE, SIGHTWARDSBOUGHTINGAME, SPELL1CASTS, SPELL2CASTS, SPELL3CASTS, SPELL4CASTS, SUMMONER1CASTS, SUMMONER1ID, SUMMONER2CASTS, 
+        SUMMONER2ID, SUMMONERID, SUMMONERLEVEL, SUMMONERNAME, TEAMEARLYSURRENDERED, TEAMID, TEAMPOSITION, TIMECCINGOTHERS, TIMEPLAYED, 
+        TOTALDAMAGEDEALT, TOTALDAMAGEDEALTTOCHAMPIONS, TOTALDAMAGESHIELDEDONTEAMMATES, TOTALDAMAGETAKEN, TOTALHEAL, TOTALHEALSONTEAMMATES, 
+        TOTALMINIONSKILLED, TOTALTIMECCDEALT, TOTALTIMESPENTDEAD, TOTALUNITSHEALED, TRIPLEKILLS, TRUEDAMAGEDEALT, TRUEDAMAGEDEALTTOCHAMPIONS, 
+        TRUEDAMAGETAKEN, TURRETKILLS, TURRETTAKEDOWNS, TURRETSLOST, UNREALKILLS, VISIONSCORE, VISIONWARDSBOUGHTINGAME, WARDSKILLED, WARDSPLACED, WIN )
+        VALUES(#{gameid}, #{userpuuid}, #{assists}, #{baronKills}, #{bountyLevel}, #{champExperience}, #{champLevel}, #{championId}, #{championName}, 
+        #{championTransform}, #{consumablesPurchased}, #{damageDealtToBuildings}, #{damageDealtToObjectives}, #{damageDealtToTurrets}, #{damageSelfMitigated}, 
+        #{deaths}, #{detectorWardsPlaced}, #{doubleKills}, #{dragonKills}, #{firstBloodAssist_int}, #{firstBloodKill_int}, #{firstTowerAssist_int}, #{firstTowerKill_int}, 
+        #{gameEndedInEarlySurrender_int}, #{gameEndedInSurrender_int}, #{goldEarned}, #{goldSpent}, #{individualPosition}, #{inhibitorKills}, #{inhibitorTakedowns}, 
+        #{inhibitorsLost}, #{item0}, #{item1}, #{item2}, #{item3}, #{item4}, #{item5}, #{item6}, #{itemsPurchased}, #{killingSprees}, #{kills}, #{lane}, 
+        #{largestCriticalStrike}, #{largestKillingSpree}, #{largestMultiKill}, #{longestTimeSpentLiving}, #{magicDamageDealt}, #{magicDamageDealtToChampions}, 
+        #{magicDamageTaken}, #{neutralMinionsKilled}, #{nexusKills}, #{nexusTakedowns}, #{nexusLost}, #{objectivesStolen}, #{objectivesStolenAssists}, 
+        #{participantId}, #{pentaKills}, #{physicalDamageDealt}, #{physicalDamageDealtToChampions}, #{physicalDamageTaken}, #{profileIcon}, 
+        #{puuid}, #{quadraKills}, #{riotIdName}, #{riotIdTagline}, #{role}, #{sightWardsBoughtInGame}, #{spell1Casts}, #{spell2Casts}, #{spell3Casts}, 
+        #{spell4Casts}, #{summoner1Casts}, #{summoner1Id}, #{summoner2Casts}, #{summoner2Id}, #{summonerId}, #{summonerLevel}, #{summonerName}, 
+        #{teamEarlySurrendered_int}, #{teamId}, #{teamPosition}, #{timeCCingOthers}, #{timePlayed}, #{totalDamageDealt}, #{totalDamageDealtToChampions}, 
+        #{totalDamageShieldedOnTeammates}, #{totalDamageTaken}, #{totalHeal}, #{totalHealsOnTeammates}, #{totalMinionsKilled}, #{totalTimeCCDealt}, 
+        #{totalTimeSpentDead}, #{totalUnitsHealed}, #{tripleKills}, #{trueDamageDealt}, #{trueDamageDealtToChampions}, #{trueDamageTaken}, #{turretKills}, 
+        #{turretTakedowns}, #{turretsLost}, #{unrealKills}, #{visionScore}, #{visionWardsBoughtInGame}, #{wardsKilled}, #{wardsPlaced}, #{win_int} )
+    </insert>
+	
+</mapper> 
+
