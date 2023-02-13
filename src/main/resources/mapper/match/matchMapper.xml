@@ -51,6 +51,42 @@
         #{totalTimeSpentDead}, #{totalUnitsHealed}, #{tripleKills}, #{trueDamageDealt}, #{trueDamageDealtToChampions}, #{trueDamageTaken}, #{turretKills}, 
         #{turretTakedowns}, #{turretsLost}, #{unrealKills}, #{visionScore}, #{visionWardsBoughtInGame}, #{wardsKilled}, #{wardsPlaced}, #{win_int} )
     </insert>
+    
+    <insert id="insertstatperks" parameterType="perkstats">
+        INSERT INTO
+        PERKSTATS(PERK_STATS_ID, GAMEID, DEFENSE, FLEX, OFFENSE )
+        VALUES(#{perk_style_id}, #{gameId}, #{defense}, #{flex}, #{offense} )
+    </insert>
+    
+    <insert id="insertperkstyle" parameterType="perkstyle">
+        INSERT INTO
+        PERKSTYLE(PERK_STYLE_ID, GAMEID, DESCRIPTION, STYLE )
+        VALUES(#{perk_style_id}, #{gameId}, #{description}, #{style} )
+    </insert>
+    
+    <insert id="insertperkstyle" parameterType="perkstyle">
+        INSERT INTO
+        PERKSTYLESELECTION(PERK_STYLE_ID, PERK, VAR1, VAR2, VAR3 )
+        VALUES(emp_seq.NEXTVAL, #{perk}, #{var1}, #{var2}, #{var3} )
+    </insert>
+    
+    <insert id="insertteam" parameterType="team">
+        INSERT INTO
+        TEAM(TEAMID, GAMEID, WIN )
+        VALUES(#{teamId}, #{gameId}, #{win} )
+    </insert>
+    
+    <insert id="insertban" parameterType="ban">
+        INSERT INTO
+        BAN(TEAMID, GAMEID, CHAMPIONID, PICKTURN )
+        VALUES(#{teamId}, #{gameId}, #{championId}, #{pickTurn} )
+    </insert>
+    
+    <insert id="insertobjectives" parameterType="object">
+        INSERT INTO
+        OBJECTIVE(TEAMID, GAMEID, FIRST, KILLS, TYPE )
+        VALUES(#{teamId}, #{gameId}, #{first}, #{kills}, #{type} )
+    </insert>
 	
 </mapper> 
 

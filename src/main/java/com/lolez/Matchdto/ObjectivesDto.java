@@ -5,11 +5,11 @@ import lombok.Data;
 @Data
 public class ObjectivesDto {
 
-	private ObjectiveDto baron;
-	private ObjectiveDto champion;
-	private ObjectiveDto dragon;
-	private ObjectiveDto inhibitor;
-	private ObjectiveDto riftHerald;
-	private ObjectiveDto tower;
+	private ObjectiveDto baron = new ObjectiveDto();
+	private ObjectiveDto champion = new ObjectiveDto();
+	private ObjectiveDto dragon = new ObjectiveDto();
+	private ObjectiveDto inhibitor = new ObjectiveDto();
+	private ObjectiveDto riftHerald = new ObjectiveDto();
+	private ObjectiveDto tower = new ObjectiveDto();
 
 }

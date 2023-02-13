@@ -8,9 +8,10 @@ import lombok.Data;
 @Data
 public class TeamDto {
 	
-	private List<BanDto> bans = new ArrayList<BanDto>();
-	private ObjectivesDto objectives;
+	private long gameId;
 	private int teamId;
+	private List<BanDto> bans = new ArrayList<BanDto>();
+	private ObjectivesDto objectives = new ObjectivesDto();
 	private boolean win;
 	
 }
