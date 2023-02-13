@@ -125,5 +125,15 @@ public class BoardController {
 	 * 
 	 * return result; }
 	 */
+	
+	@RequestMapping(value = "/testPage_OF_record")
+	public ModelAndView testPage_OF_recode() {
+		System.out.println("testPage on");
+		ModelAndView mav = new ModelAndView();
+
+		// 2. 글목록페이지 지정
+		mav.setViewName("record/RecordPage");
+		return mav;
+	}
 
 }
