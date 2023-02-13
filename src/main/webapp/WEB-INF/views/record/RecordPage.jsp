@@ -2,142 +2,115 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!doctype html>
-<html class="no-js" lang="ko" style="--main100: #ECF2FF;
-    --main200: #D5E3FF;
-    --main300: #B3CDFF;
-    --main400: #81ACFF;
-    --main500: #5383E8;
-    --main600: #4171D6;
-    --main700: #2F5EC0;
-    --main800: #2F436E;
-    --main900: #28344E;
-    --gray0: #FFF;
-    --gray100: #F7F7F9;
-    --gray200: #ebeef1;
-    --gray250: #DBE0E4;
-    --gray300: #C3CBD1;
-    --gray400: #9AA4AF;
-    --gray500: #758592;
-    --gray600: #57646F;
-    --gray700: #44515C;
-    --gray800: #34414D;
-    --gray900: #202D37;
-    --red100: #FFF1F3;
-    --red200: #FFD8D9;
-    --red300: #FFBAC3;
-    --red400: #FF6C81;
-    --red500: #E84057;
-    --red600: #D31A45;
-    --red700: #B61337;
-    --red800: #703C47;
-    --red900: #59343B;
-    --orange100: #FFF1E6;
-    --orange200: #FFD1A9;
-    --orange300: #FCB77A;
-    --orange400: #FF9F4A;
-    --orange500: #FF8200;
-    --orange600: #F06F00;
-    --orange700: #C55900;
-    --orange800: #8E3E00;
-    --orange900: #703100;
-    --yellow100: #FFF9DB;
-    --yellow200: #FEEC9C;
-    --yellow300: #FFD424;
-    --yellow400: #FFB900;
-    --yellow500: #EB9C00;
-    --yellow600: #E28400;
-    --yellow700: #AC6306;
-    --yellow800: #76480F;
-    --yellow900: #4A340E;
-    --green100: #E6F7DB;
-    --green200: #D0F1BB;
-    --green300: #A8E082;
-    --green400: #6CC92D;
-    --green500: #00AE0A;
-    --green600: #139020;
-    --green700: #1B7D25;
-    --green800: #24662B;
-    --green900: #304A1D;
-    --teal100: #E5FAF3;
-    --teal200: #BBECDB;
-    --teal300: #89DFC4;
-    --teal400: #00D7B0;
-    --teal500: #00BBA3;
-    --teal600: #00A399;
-    --teal700: #008889;
-    --teal800: #00666E;
-    --teal900: #1D4346;
-    --blue100: #DDF9FF;
-    --blue200: #90E5F7;
-    --blue300: #52D5F3;
-    --blue400: #00B8ED;
-    --blue500: #0093FF;
-    --blue600: #006DE2;
-    --blue700: #095BB3;
-    --blue800: #114882;
-    --blue900: #183955;
-    --purple100: #F3EEFF;
-    --purple200: #DECFFF;
-    --purple300: #C0A5FF;
-    --purple400: #A072FF;
-    --purple500: #7D59EA;
-    --purple600: #6B42DC;
-    --purple700: #5836B2;
-    --purple800: #3F2A75;
-    --purple900: #332353;
-    --pink100: #FFE4F4;
-    --pink200: #FFCDEA;
-    --pink300: #FF9BD2;
-    --pink400: #F56CB6;
-    --pink500: #E537A2;
-    --pink600: #D932D6;
-    --pink700: #B920B7;
-    --pink800: #8F178D;
-    --pink900: #5F225E;
-    --bronze100: #F6EDE3;
-    --bronze200: #E6D4BF;
-    --bronze300: #D7B792;
-    --bronze400: #A88A67;
-    --bronze500: #907659;
-    --bronze600: #7C6750;
-    --bronze700: #6B5D4D;
-    --bronze800: #52493F;
-    --bronze900: #3A3734;
-    --homeDesktop: #5383E8;
-    --homeMobile: #ebeef1;" >
+<html class="no-js" lang="ko"
+	style="
+	--main100: #ECF2FF;
+	--main200: #D5E3FF;
+	--main300: #B3CDFF;
+	--main400: #81ACFF;
+	--main500: #5383E8;
+	--main600: #4171D6; 
+	--main700: #2F5EC0; 
+	--main800: #2F436E; 
+	--main900: #28344E; 
+	--gray0: #FFF; 
+	--gray100: #F7F7F9; 
+	--gray200: #ebeef1; 
+	--gray250: #DBE0E4; 
+	--gray300: #C3CBD1; 
+	--gray400: #9AA4AF; 
+	--gray500: #758592; 
+	--gray600: #57646F; 
+	--gray700: #44515C; 
+	--gray800: #34414D; 
+	--gray900: #202D37; 
+	--red100: #FFF1F3; 
+	--red200: #FFD8D9; 
+	--red300: #FFBAC3; 
+	--red400: #FF6C81; 
+	--red500: #E84057; 
+	--red600: #D31A45; 
+	--red700: #B61337; 
+	--red800: #703C47; 
+	--red900: #59343B; 
+	--orange100: #FFF1E6; 
+	--orange200: #FFD1A9; 
+	--orange300: #FCB77A; 
+	--orange400: #FF9F4A; 
+	--orange500: #FF8200; 
+	--orange600: #F06F00; 
+	--orange700: #C55900; 
+	--orange800: #8E3E00; 
+	--orange900: #703100; 
+	--yellow100: #FFF9DB; 
+	--yellow200: #FEEC9C; 
+	--yellow300: #FFD424; 
+	--yellow400: #FFB900; 
+	--yellow500: #EB9C00; 
+	--yellow600: #E28400; 
+	--yellow700: #AC6306; 
+	--yellow800: #76480F; 
+	--yellow900: #4A340E; 
+	--green100: #E6F7DB; 
+	--green200: #D0F1BB; 
+	--green300: #A8E082;
+	 --green400: #6CC92D;
+	 --green500: #00AE0A; 
+	 --green600: #139020; 
+	 --green700: #1B7D25; 
+	 --green800: #24662B; 
+	 --green900: #304A1D; 
+	 --teal100: #E5FAF3; 
+	 --teal200: #BBECDB; 
+	 --teal300: #89DFC4; 
+	 --teal400: #00D7B0;
+	 --teal500: #00BBA3;
+	 --teal600: #00A399; 
+	 --teal700: #008889; 
+	 --teal800: #00666E; 
+	 --teal900: #1D4346; 
+	 --blue100: #DDF9FF; 
+	 --blue200: #90E5F7; 
+	 --blue300: #52D5F3; 
+	 --blue400: #00B8ED; 
+	 --blue500: #0093FF; 
+	 --blue600: #006DE2; 
+	 --blue700: #095BB3;
+	 --blue800: #114882; 
+	 --blue900: #183955; 
+	 --purple100: #F3EEFF; 
+	 --purple200: #DECFFF; 
+	 --purple300: #C0A5FF; 
+	 --purple400: #A072FF; 
+	 --purple500: #7D59EA; 
+	 --purple600: #6B42DC; 
+	 --purple700: #5836B2; 
+	 --purple800: #3F2A75; 
+	 --purple900: #332353; 
+	 --pink100: #FFE4F4; 
+	 --pink200: #FFCDEA; 
+	 --pink300: #FF9BD2; 
+	 --pink400: #F56CB6;
+	 --pink500: #E537A2; 
+	 --pink600: #D932D6; 
+	 --pink700: #B920B7; 
+	 --pink800: #8F178D; 
+	 --pink900: #5F225E; 
+	 --bronze100: #F6EDE3; 
+	 --bronze200: #E6D4BF; 
+	 --bronze300: #D7B792; 
+	 --bronze400: #A88A67; 
+	 --bronze500: #907659; 
+	 --bronze600: #7C6750; 
+	 --bronze700: #6B5D4D; 
+	 --bronze800: #52493F; 
+	 --bronze900: #3A3734; 
+	 --homeDesktop: #5383E8; 
+	 --homeMobile: #ebeef1;">
 <head>
 
-<!-- <style data-emotion="css-global" data-s="">@font-face{font-family:"Roboto";font-style:normal;font-weight:400;font-display:swap;src:url(https://s-lol-web.op.gg/fonts/Roboto/Roboto-Regular.woff2) format("woff2"),url(https://s-lol-web.op.gg/fonts/Roboto/Roboto-Regular.woff) format("woff");}@font-face{font-family:"Roboto";font-style:normal;font-weight:700;font-display:swap;src:url(https://s-lol-web.op.gg/fonts/Roboto/Roboto-Bold.woff2) format("woff2"),url(https://s-lol-web.op.gg/fonts/Roboto/Roboto-Bold.woff) format("woff");}#nprogress{pointer-events:none;}#nprogress .bar{background:#EB9C00;position:fixed;z-index:10000006;top:0;left:0;width:100%;height:2px;}#nprogress .peg{display:block;position:absolute;right:0px;width:100px;height:100%;box-shadow:0 0 10px #EB9C00,0 0 5px #EB9C00;opacity:1;-webkit-transform:rotate(3deg) translate(0px, -4px);-ms-transform:rotate(3deg) translate(0px, -4px);-webkit-transform:rotate(3deg) translate(0px, -4px);-moz-transform:rotate(3deg) translate(0px, -4px);-ms-transform:rotate(3deg) translate(0px, -4px);transform:rotate(3deg) translate(0px, -4px);}html,body,button,select,input,textarea,label,a,table{font-family:"Roboto",sans-serif;}html:lang(ko),html:lang(ko) body,html:lang(ko) button,html:lang(ko) select,html:lang(ko) input,html:lang(ko) textarea,html:lang(ko) label,html:lang(ko) a,html:lang(ko) table{font-family:"Apple SD Gothic Neo","Roboto",sans-serif;}[data-emotion]{display:none!important;}body,h1,h2,h3,h4,p,ol,ul,dl,dd,button{margin:0;padding:0;}html{font-family:sans-serif;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;background-color:#ebeef1;background-color:var(--gray200);}h1,h2,h3,h4,h5,h6{margin:0;}ul,li{list-style:none;}dl,dt,dd,ol,ul,li{list-style:none;margin:0;padding:0;}iframe{border:0;}img{border:0;vertical-align:middle;max-width:100%;}a:focus{outline:thin dotted;}a:active,a:hover{outline:0;}a{-webkit-text-decoration:none;text-decoration:none;color:#202D37;color:var(--gray900);}input{margin:0;padding:0;outline:none;}input,select{background:#fff;border:none;vertical-align:middle;}input[type="text"]::-ms-clear{display:none;width:0;height:0;}textarea{width:100%;background:none;border:0;margin:0;padding:0;resize:none;word-break:break-all;overflow-y:hidden;font-size:14px;line-height:1.43;color:#202d37;}label{cursor:pointer;}button{margin:0;padding:0;border:0;cursor:pointer;background:none;}a{cursor:pointer;}input,textarea{-webkit-appearance:none;-webkit-border-radius:0;}.hidden{position:absolute;}caption,.hidden{clip:rect(0 0 0 0);width:1px;height:1px;margin:-1px;overflow:hidden;}footer,header{display:block;}ol,ul,li{list-style:none;}button{border:0;padding:0;background:transparent;cursor:pointer;}b,strong{font-weight:bold;}textarea{overflow:auto;vertical-align:top;}table{border-collapse:collapse;border-spacing:0;}th,td{padding:0;margin:0;}select{border-radius:0;-webkit-appearance:none;-moz-appearance:none;-ms-appearance:none;appearance:none;}.react-tooltip-lite{max-width:300px;color:#fff;font-size:11px;background:#1c1e1e;}.react-tooltip-lite-arrow{border-color:#1c1e1e;}.tooltip320{display:inline-block;vertical-align:middle;margin-left:5px;}.tooltip320 .react-tooltip-lite{max-width:320px!important;}.tooltip690-light .react-tooltip-lite{background:none!important;}.tooltip690-light .react-tooltip-lite-arrow{border-color:#1d2f51;}#__next{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;height:100%;}.react-tooltip-lite{max-width:300px;background:#000;}.react-tooltip-lite-arrow{border-color:#000;}.bg-image{background-color:#ebeef1;background-color:var(--gray200);}.loader,.loader:after{border-radius:50%;width:10em;height:10em;}.loader{margin:60px auto;font-size:10px;position:relative;text-indent:-9999em;border-top:1.1em solid rgba(255, 255, 255, 0.2);border-right:1.1em solid rgba(255, 255, 255, 0.2);border-bottom:1.1em solid rgba(255, 255, 255, 0.2);border-left:1.1em solid #ffffff;-webkit-transform:translateZ(0);-ms-transform:translateZ(0);-webkit-transform:translateZ(0);-moz-transform:translateZ(0);-ms-transform:translateZ(0);transform:translateZ(0);-webkit-animation:load8 1.1s infinite linear;-webkit-animation:load8 1.1s infinite linear;animation:load8 1.1s infinite linear;}@-webkit-keyframes load8{0%{-webkit-transform:rotate(0deg);-webkit-transform:rotate(0deg);-moz-transform:rotate(0deg);-ms-transform:rotate(0deg);transform:rotate(0deg);}100%{-webkit-transform:rotate(360deg);-webkit-transform:rotate(360deg);-moz-transform:rotate(360deg);-ms-transform:rotate(360deg);transform:rotate(360deg);}}@-webkit-keyframes load8{0%{-webkit-transform:rotate(0deg);-webkit-transform:rotate(0deg);-moz-transform:rotate(0deg);-ms-transform:rotate(0deg);transform:rotate(0deg);}100%{-webkit-transform:rotate(360deg);-webkit-transform:rotate(360deg);-moz-transform:rotate(360deg);-ms-transform:rotate(360deg);transform:rotate(360deg);}}@keyframes load8{0%{-webkit-transform:rotate(0deg);-webkit-transform:rotate(0deg);-moz-transform:rotate(0deg);-ms-transform:rotate(0deg);transform:rotate(0deg);}100%{-webkit-transform:rotate(360deg);-webkit-transform:rotate(360deg);-moz-transform:rotate(360deg);-ms-transform:rotate(360deg);transform:rotate(360deg);}}#measure-layer *{-ms-overflow-style:none;scrollbar-width:none;}#measure-layer *::-webkit-scrollbar{width:0;}#measure-layer *::-webkit-scrollbar-track{background:transparent;box-shadow:none;}#measure-layer *::-webkit-scrollbar-thumb{background-color:transparent;box-shadow:none;}.simplebar-track.simplebar-vertical{width:12px;}.simplebar-scrollbar:before{border-radius:4px;background:rgba(0, 0, 0, 0.4);}[data-theme="dark"] .simplebar-scrollbar:before{background:hsla(0, 0%, 100%, 0.5);}.simplebar-scrollbar.simplebar-visible:before{opacity:1;}</style>
-<style data-emotion="css 16nzi5j" data-s="">.css-16nzi5j{min-width:1080px;}</style>
-<style data-emotion="css 158fcuv" data-s="">.css-158fcuv{position:relative;background-color:#FFF;background-color:var(--gray0);}</style>
-<style data-emotion="css 1b3kvro" data-s="">.css-1b3kvro{position:relative;z-index:2;}.css-1b3kvro:before{content:"";display:block;position:absolute;left:50%;margin-left:-450px;width:900px;top:0;bottom:-45px;background:url(https://opgg-static.akamaized.net/meta/images/lol/champion/centered/Jhin_5.jpg?image=c_crop,w_1280,y_-120,x_0) no-repeat center center;-webkit-background-size:cover;background-size:cover;opacity:0.4;z-index:1;}.css-1b3kvro:after{content:"";display:block;position:absolute;left:50%;margin-left:-450px;width:900px;top:0;bottom:-45px;opacity:1;background:url(https://s-lol-web.op.gg/static/images/site/summoner/mask.svg) no-repeat center center;-webkit-background-size:cover;background-size:cover;z-index:1;}[data-theme="dark"] .css-1b3kvro:after{background:url(https://s-lol-web.op.gg/static/images/site/summoner/mask_dark.svg) no-repeat center center;}.wrapper{position:relative;z-index:2;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;width:1080px;margin:0 auto;-webkit-box-pack:justify;-webkit-justify-content:space-between;justify-content:space-between;}.wrapper .header-profile-info{padding:10px 10px 16px 0;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex:1;-ms-flex:1;flex:1;box-sizing:border-box;}.wrapper >div+div{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;}.wrapper .e17e77tq5{margin:0;-webkit-flex-basis:405px;-ms-flex-preferred-size:405px;flex-basis:405px;}.profile-icon{margin-top:32px;position:relative;width:100px;height:100px;-webkit-flex-basis:100px;-ms-flex-preferred-size:100px;flex-basis:100px;}.profile-icon img{border-radius:20px;}.profile-icon div.level{height:20px;margin-top:-11px;text-align:center;}.profile-icon div.level span.level{display:inline-block;line-height:20px;padding:0 8px;font-size:12px;border-radius:10px;color:#FFF;background-color:#202D37;font-family:"Roboto",sans-serif;}.profile-icon div.verified{position:absolute;top:0;right:0;}.profile-icon div.verified img{display:block;}.header-profile-info .info{-webkit-flex:1;-ms-flex:1;flex:1;margin-left:24px;box-sizing:border-box;}.header-profile-info .info .tier-and-cover-img{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:justify;-webkit-justify-content:space-between;justify-content:space-between;height:32px;}.header-profile-info .info .prev-tier{position:relative;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;font-family:"Roboto",sans-serif;}.header-profile-info .info .prev-tier .tier-list{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;}.header-profile-info .info .prev-tier .tier-list li{line-height:18px;padding:0 4px;border-radius:2px;font-size:11px;color:#9AA4AF;color:var(--gray400);background-color:#ebeef1;background-color:var(--gray200);text-transform:capitalize;margin-left:4px;}.header-profile-info .info .prev-tier .tier-list li:first-of-type{margin-left:0;}.header-profile-info .info .prev-tier .more-tier{position:relative;margin-left:4px;padding:0 16px 0 4px;font-size:12px;color:#9AA4AF;color:var(--gray400);line-height:16px;font-family:"Roboto",sans-serif;}.header-profile-info .info .prev-tier .more-tier:after{content:"";position:absolute;top:0;right:0;display:block;width:16px;height:16px;background-image:url(https://s-lol-web.op.gg/images/icon/icon-down-small.svg);}.header-profile-info .info .prev-tier .more-tier:hover{background-color:#ebeef1;background-color:var(--gray200);border-radius:2px;}.header-profile-info .info .prev-tier .more-tier-list{position:absolute;top:20px;right:0;border-radius:4px;color:#9AA4AF;color:var(--gray400);background-color:#ebeef1;background-color:var(--gray200);box-shadow:0 8px 12px 0 rgba(0, 0, 0, 0.2);font-size:11px;text-align:center;font-family:"Roboto",sans-serif;}.header-profile-info .info .prev-tier .more-tier-list li{width:90px;line-height:14px;padding:4px 12px;border-bottom:1px solid;border-bottom-color:#DBE0E4;border-bottom-color:var(--gray250);text-transform:capitalize;}.header-profile-info .info>.name{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;height:32px;font-size:24px;font-weight:bold;color:#202D37;color:var(--gray900);}.header-profile-info .info>.name .summoner-name{margin-right:8px;font-size:24px;}.header-profile-info .info>.team-and-rank{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;line-height:16px;margin-top:6px;color:#758592;color:var(--gray500);font-size:12px;}.header-profile-info .info>.team-and-rank .team{position:relative;padding-right:8px;margin-right:8px;font-family:"Roboto",sans-serif;}.header-profile-info .info>.team-and-rank .team:after{position:absolute;left:0;content:"";width:1px;height:16px;background-color:#C3CBD1;background-color:var(--gray300);left:auto;right:0;height:10px;top:3px;}.header-profile-info .info>.team-and-rank .rank a{color:#758592;color:var(--gray500);}.header-profile-info .info>.team-and-rank .rank a .ranking{color:#4171D6;color:var(--main600);}.header-profile-info .info>.buttons{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;margin-top:8px;}.header-profile-info .info>.buttons button{padding:0 14px;border-radius:4px;font-size:14px;margin-right:8px;height:40px;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;-webkit-justify-content:center;justify-content:center;}.header-profile-info .info>.last-update{margin-top:8px;font-size:12px;color:#9AA4AF;color:var(--gray400);width:-webkit-max-content;width:-moz-max-content;width:max-content;}</style>
-<style data-emotion="css 4e9tnt" data-s="">.css-4e9tnt{position:relative;border:1px solid #5383E8;border:var(--main500);background:#5383E8;background:var(--main500);color:#FFF;cursor:cursor;}.css-4e9tnt:hover{background:#4171D6;background:var(--main600);}[data-theme="dark"] .css-4e9tnt:hover{background:#81ACFF;background:var(--main400);}.css-4e9tnt .loading{position:relative;z-index:1;border-top-color:transparent;}</style>
-<style data-emotion="css 6naflr" data-s="">.css-6naflr{border:1px solid;border-color:#81ACFF;border-color:var(--main400);color:#4171D6;color:var(--main600);background-color:#FFF;background-color:var(--gray0);}.css-6naflr:hover{background-color:#ECF2FF;background-color:var(--main100);}</style>
-<style data-emotion="css cjro43" data-s="">.css-cjro43{display:block;min-width:60px;height:36px;line-height:36px;padding:0 16px;margin-right:4px;border-radius:4px;font-size:14px;font-weight:normal;-webkit-text-decoration:none;text-decoration:none;text-align:center;color:#202D37;color:var(--gray900);}.css-cjro43:hover{background-color:#F7F7F9;}[data-theme="dark"] .css-cjro43{color:#202D37;color:var(--gray900);}[data-theme="dark"] .css-cjro43:hover{background:#282830;}</style>
-<style data-emotion="css 150oaqg" data-s="">.css-150oaqg{display:inline-block;width:740px;margin-top:8px;margin-left:8px;font-size:12px;vertical-align:top;}.css-150oaqg .loading{padding:150px 0;text-align:center;}.css-150oaqg .no-data{border-bottom-left-radius:4px;border-bottom-right-radius:4px;padding:96px 0 40px;text-align:center;background-image:url(https://s-lol-web.op.gg/images/icon/icon-nodata.svg);-webkit-background-position:50% 40px;background-position:50% 40px;background-repeat:no-repeat;background-color:#FFF;background-color:var(--gray0);font-size:14px;color:#9AA4AF;color:var(--gray400);}[data-theme="dark"] .css-150oaqg .no-data{background-image:url(https://s-lol-web.op.gg/images/icon/icon-nodata-dark.svg);}.css-150oaqg .more{border:1px solid;border-color:#DBE0E4;border-color:var(--gray250);background-color:#FFF;background-color:var(--gray0);border-radius:4px;display:block;width:100%;height:40px;padding:8px 0;color:#202D37;color:var(--gray900);font-size:13px;text-align:center;-webkit-text-decoration:none;text-decoration:none;box-sizing:border-box;}.css-150oaqg .more span{vertical-align:middle;}</style>
-<style data-emotion="css 164r41r" data-s="">.css-164r41r{margin-top:8px;}</style>
-<style data-emotion="css uz18fj" data-s="">.css-uz18fj{position:relative;display:inline-block;width:100%;height:20px;vertical-align:middle;border-radius:3px;overflow:hidden;}.css-uz18fj .fill{display:inline-block;vertical-align:middle;height:100%;}.css-uz18fj .fill.left{background:#5383E8;background:var(--main500);}.css-uz18fj .fill.right{background:#E84057;background:var(--red500);}.css-uz18fj .text{position:absolute;top:3px;font-size:11px;color:#f2f2f2;line-height:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}.css-uz18fj .text.left{display:block;left:4px;}.css-uz18fj .text.right{display:block;right:4px;}</style>
-<style data-emotion="css s6qg8" data-s="">.css-s6qg8{-webkit-flex:1;-ms-flex:1;flex:1;margin-left:4px;vertical-align:middle;cursor:pointer;text-align:center;border-radius:4px;background-color:#FFF;background-color:var(--gray0);color:#202D37;color:var(--gray900);}.css-s6qg8:nth-of-type(1){margin-left:0;}.css-s6qg8:hover{background-color:#F7F7F9;}[data-theme="dark"] .css-s6qg8{background-color:#FFF;background-color:var(--gray0);color:#202D37;color:var(--gray900);}[data-theme="dark"] .css-s6qg8:hover{background-color:#282830;}.css-s6qg8 button{display:block;width:100%;color:inherit;padding:4px 0;font-size:14px;height:28px;box-sizing:border-box;font-weight:normal;}</style>
-<style data-emotion="css 1lteyi9" data-s="">.css-1lteyi9{-webkit-flex:1;-ms-flex:1;flex:1;margin-left:4px;vertical-align:middle;cursor:pointer;text-align:center;border-radius:4px;background-color:#ECF2FF;color:#4171D6;}.css-1lteyi9:nth-of-type(1){margin-left:0;}.css-1lteyi9:hover{background-color:#ECF2FF;}[data-theme="dark"] .css-1lteyi9{background-color:#515163;color:#FFF;}[data-theme="dark"] .css-1lteyi9:hover{background-color:#515163;}.css-1lteyi9 button{display:block;width:100%;color:inherit;padding:4px 0;font-size:14px;height:28px;box-sizing:border-box;font-weight:bold;}</style>
-<style data-emotion="css e9xk5o" data-s="">.css-e9xk5o{margin-top:8px;background-color:#FFF;background-color:var(--gray0);border-radius:4px;overflow:hidden;}.css-e9xk5o>ul{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-webkit-justify-content:space-between;justify-content:space-between;padding:4px;border-bottom:1px solid;border-color:#ebeef1;border-color:var(--gray200);}.css-e9xk5o>div .champion-box{display:table;width:100%;height:48px;border-bottom:1px solid;border-color:#ebeef1;border-color:var(--gray200);color:#9AA4AF;color:var(--gray400);text-align:center;table-layout:fixed;}.css-e9xk5o>div .champion-box .face{display:table-cell;width:44px;text-align:right;vertical-align:middle;}.css-e9xk5o>div .champion-box .face >a{display:inline-block;width:32px;height:32px;}.css-e9xk5o>div .champion-box .face img{display:inline-block;width:32px;height:32px;border-radius:50%;}.css-e9xk5o>div .champion-box .info{display:table-cell;width:100px;text-align:left;vertical-align:middle;padding-left:8px;box-sizing:border-box;}.css-e9xk5o>div .champion-box .info .name{color:#202D37;color:var(--gray900);font-weight:bold;font-size:12px;text-overflow:ellipsis;overflow:hidden;white-space:nowrap;}.css-e9xk5o>div .champion-box .info .name a{color:inherit;-webkit-text-decoration:none;text-decoration:none;}.css-e9xk5o>div .champion-box .info .cs{margin-top:2px;font-size:11px;white-space:nowrap;}.css-e9xk5o>div .champion-box .kda{display:table-cell;width:100px;vertical-align:middle;text-align:center;box-sizing:border-box;}.css-e9xk5o>div .champion-box .kda .detail{margin-top:2px;font-size:11px;white-space:nowrap;font-family:"Roboto",sans-serif;}.css-e9xk5o>div .champion-box .played{display:table-cell;width:88px;padding-right:0;vertical-align:middle;text-align:center;padding-right:12px;box-sizing:border-box;}.css-e9xk5o>div .champion-box .played .count{margin-top:2px;font-size:11px;white-space:nowrap;text-align:right;}.css-e9xk5o>div .more{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;-webkit-justify-content:center;justify-content:center;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-text-decoration:none;text-decoration:none;padding:8px 0 8px;font-size:12px;text-align:center;background-color:#F7F7F9;background-color:var(--gray100);color:#758592;color:var(--gray500);box-sizing:border-box;}.css-e9xk5o>div .no-data{display:block;padding:116px 0 70px;text-align:center;background:url(https://s-lol-web.op.gg/images/icon/icon-nodata.svg) 50% 55px no-repeat;background-color:#FFF;background-color:var(--gray0);font-size:14px;color:#9AA4AF;color:var(--gray400);}[data-theme="dark"] .css-e9xk5o>div .no-data{background:url(https://s-lol-web.op.gg/images/icon/icon-nodata-dark.svg) 50% 55px no-repeat;}.css-e9xk5o>div .loading{text-align:center;padding:150px 0;}</style>
-<style data-emotion="css 8whjbz" data-s="">.css-8whjbz{width:1080px;margin:0 auto;}.css-8whjbz>div:nth-of-type(1){display:inline-block;width:332px;font-size:12px;vertical-align:top;min-height:870px;}</style>
-<style data-emotion="css 1v663t" data-s="">.css-1v663t{margin-top:8px;border-radius:4px;background-color:#FFF;background-color:var(--gray0);}.css-1v663t .header{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-webkit-justify-content:space-between;justify-content:space-between;line-height:35px;padding:0 12px;font-size:14px;color:#202D37;color:var(--gray900);}.css-1v663t .header .unranked{font-size:14px;font-weight:bold;color:#C3CBD1;color:var(--gray300);font-family:"Roboto",sans-serif;}.css-1v663t>.content{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;padding:12px;border-top:1px solid;border-color:#ebeef1;border-color:var(--gray200);}.css-1v663t>.content img{background-color:#F7F7F9;background-color:var(--gray100);border-radius:50%;}.css-1v663t>.content .info{-webkit-flex:1;-ms-flex:1;flex:1;position:relative;margin-left:16px;}.css-1v663t>.content .info .tier{line-height:26px;font-size:20px;font-weight:bold;text-transform:capitalize;color:#202D37;color:var(--gray900);font-family:"Roboto",sans-serif;}.css-1v663t>.content .info .lp{line-height:16px;margin-top:2px;font-size:12px;color:#758592;color:var(--gray500);font-family:"Roboto",sans-serif;}.css-1v663t>.content .win-lose-container{font-size:12px;text-align:right;color:#9AA4AF;color:var(--gray400);}.css-1v663t>.content .win-lose-container .win-lose{line-height:26px;}.css-1v663t>.content .win-lose-container .ratio{margin-top:2px;line-height:16px;}</style>
-<style data-emotion="css 1474l3c" data-s="">.css-1474l3c{margin-top:8px;border-radius:4px;background-color:#FFF;background-color:var(--gray0);}.css-1474l3c .header{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-webkit-justify-content:space-between;justify-content:space-between;line-height:35px;padding:0 12px;font-size:14px;color:#202D37;color:var(--gray900);}.css-1474l3c .header .unranked{font-size:14px;font-weight:bold;color:#C3CBD1;color:var(--gray300);font-family:"Roboto",sans-serif;}.css-1474l3c>.content{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;padding:12px;border-top:1px solid;border-color:#ebeef1;border-color:var(--gray200);}.css-1474l3c>.content img{background-color:#F7F7F9;background-color:var(--gray100);border-radius:50%;}.css-1474l3c>.content .info{-webkit-flex:1;-ms-flex:1;flex:1;position:relative;margin-left:8px;}.css-1474l3c>.content .info .tier{line-height:20px;font-size:14px;font-weight:bold;text-transform:capitalize;color:#202D37;color:var(--gray900);font-family:"Roboto",sans-serif;}.css-1474l3c>.content .info .lp{line-height:16px;font-size:12px;color:#758592;color:var(--gray500);font-family:"Roboto",sans-serif;}.css-1474l3c>.content .win-lose-container{font-size:12px;text-align:right;color:#9AA4AF;color:var(--gray400);}.css-1474l3c>.content .win-lose-container .win-lose{line-height:20px;}.css-1474l3c>.content .win-lose-container .ratio{margin-top:2px;line-height:16px;}</style>
-<style data-emotion="css 954ezp" data-s="">.css-954ezp{font-size:12px;font-weight:bold;white-space:nowrap;color:#758592;color:var(--gray500);}</style>
-<style data-emotion="css 1nuoroq" data-s="">.css-1nuoroq{line-height:15px;font-size:12px;color:#758592;color:var(--gray500);font-family:"Roboto",sans-serif;text-align:right;}</style>
-<style data-emotion="css b0uosc" data-s="">.css-b0uosc{line-height:15px;font-size:12px;color:#D31A45;color:var(--red600);font-family:"Roboto",sans-serif;text-align:right;}</style>
-<style data-emotion="css 1w55eix" data-s="">.css-1w55eix{font-size:12px;font-weight:bold;white-space:nowrap;color:#00BBA3;color:var(--teal500);}</style>
-<style data-emotion="css 10uuukx" data-s="">.css-10uuukx{font-size:12px;font-weight:bold;white-space:nowrap;color:#0093FF;color:var(--blue500);}</style>
-<style data-emotion="css k5hsyz" data-s="">.css-k5hsyz{margin-top:8px;background-color:#FFF;background-color:var(--gray0);border-radius:4px;}.css-k5hsyz>.title{position:relative;display:block;line-height:20px;padding:8px 12px;border-bottom:1px solid;border-color:#ebeef1;border-color:var(--gray200);color:#202D37;color:var(--gray900);font-size:14px;}.css-k5hsyz>.header{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;line-height:30px;padding:0 12px;background-color:#F7F7F9;background-color:var(--gray100);font-size:12px;color:#9AA4AF;color:var(--gray400);border-bottom:1px solid;border-color:#ebeef1;border-color:var(--gray200);}.css-k5hsyz>.header div:nth-of-type(1){width:152px;}.css-k5hsyz>.header div:nth-of-type(2){-webkit-flex:1;-ms-flex:1;flex:1;text-align:center;}.css-k5hsyz>ul li{display:table;width:100%;border-bottom:1px solid;border-color:#ebeef1;border-color:var(--gray200);color:#202D37;color:var(--gray900);text-align:center;font-size:12px;table-layout:fixed;}.css-k5hsyz>ul li .face{display:table-cell;width:36px;text-align:right;vertical-align:middle;}.css-k5hsyz>ul li .face img{width:24px;height:24px;border-radius:50%;}.css-k5hsyz>ul li .info{display:table-cell;width:108px;text-align:left;vertical-align:middle;}.css-k5hsyz>ul li .info .name{width:100%;margin-left:8px;text-overflow:ellipsis;white-space:nowrap;overflow:hidden;-webkit-text-decoration:none;text-decoration:none;}.css-k5hsyz>ul li .info .name a{color:#202D37;color:var(--gray900);}.css-k5hsyz>ul li .info .name a:hover{-webkit-text-decoration:underline;text-decoration:underline;}.css-k5hsyz>ul li .winratio{display:table-cell;width:43px;vertical-align:middle;color:#758592;color:var(--gray500);}.css-k5hsyz>ul li .graph{display:table-cell;height:40px;vertical-align:middle;padding-left:20px;}</style>
-<style data-emotion="css z219cj" data-s="">.css-z219cj{position:relative;display:inline-block;width:100%;height:20px;vertical-align:middle;border-radius:3px;overflow:hidden;}.css-z219cj .fill{display:inline-block;vertical-align:middle;height:100%;}.css-z219cj .fill.left{background:#5383E8;background:var(--main500);}.css-z219cj .fill.right{background:#E84057;background:var(--red500);}.css-z219cj .text{position:absolute;top:3px;font-size:11px;color:#f2f2f2;line-height:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}.css-z219cj .text.left{display:none;left:4px;}.css-z219cj .text.right{display:block;right:4px;}</style>
-<style data-emotion="css ut2tyh" data-s="">.css-ut2tyh{margin-top:8px;background:#FFF;background:var(--gray0);border-radius:4px;}.css-ut2tyh>div{position:relative;display:block;line-height:20px;padding:8px 12px;border-bottom:1px solid;border-color:#ebeef1;border-color:var(--gray200);color:#202D37;color:var(--gray900);font-size:14px;-webkit-text-decoration:none;text-decoration:none;}.css-ut2tyh>table{width:100%;table-layout:fixed;}.css-ut2tyh>table thead th{padding:9px 0;background-color:#F7F7F9;background-color:var(--gray100);color:#9AA4AF;color:var(--gray400);font-weight:normal;font-size:12px;}.css-ut2tyh>table thead th.name{padding-left:12px;text-align:left;}.css-ut2tyh>table thead th.winratio{padding-right:12px;text-align:right;}.css-ut2tyh>table tbody tr{border-top:1px solid;border-color:#ebeef1;border-color:var(--gray200);}.css-ut2tyh>table tbody tr td{padding:4px 0;color:#758592;color:var(--gray500);font-size:12px;text-align:center;}.css-ut2tyh>table tbody tr td +td{font-family:"Roboto",sans-serif;}.css-ut2tyh>table tbody tr td.name{text-align:left;padding-left:12px;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;}.css-ut2tyh>table tbody tr td.name a{color:#202D37;color:var(--gray900);font-size:12px;-webkit-text-decoration:none;text-decoration:none;}.css-ut2tyh>table tbody tr td.name a img{width:24px;height:24px;border-radius:50%;margin-right:8px;}.css-ut2tyh>table tbody tr td.name a:hover{-webkit-text-decoration:underline;text-decoration:underline;}.css-ut2tyh>table tbody tr td.winratio{padding-right:12px;text-align:right;}</style>
-<style data-emotion="css jizu2z" data-s="">.css-jizu2z{position:relative;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-webkit-justify-content:space-between;justify-content:space-between;padding:4px;background-color:#FFF;background-color:var(--gray0);border-top-left-radius:4px;border-top-right-radius:4px;border-bottom:1px solid;border-color:#ebeef1;border-color:var(--gray200);}.css-jizu2z>ul{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;height:28px;}.css-jizu2z .m-champion-list{display:inline;line-height:28px;text-overflow:ellipsis;white-space:nowrap;overflow:hidden;}.css-jizu2z .m-champion-list select{cursor:pointer;color:#202D37;color:var(--gray900);font-size:13px;background:none;outline:none;}</style>
-<style data-emotion="css ywzb36" data-s="">.css-ywzb36{margin-left:4px;vertical-align:top;}.css-ywzb36:nth-of-type(1){margin-left:0;}.css-ywzb36 button{display:block;padding:4px 12px;border-radius:4px;font-weight:bold;font-size:14px;-webkit-text-decoration:none;text-decoration:none;background:#ECF2FF;color:#4171D6;box-sizing:border-box;height:28px;}.css-ywzb36 button:hover{background:#ECF2FF;}[data-theme="dark"] .css-ywzb36 button{background:#515163;color:#FFF;}[data-theme="dark"] .css-ywzb36 button:hover{background:#515163;}.css-ywzb36 span{display:inline-block;line-height:20px;}.css-ywzb36 span select{padding:4px 24px 4px 12px;border-radius:4px;cursor:pointer;font-size:13px;font-weight:bold;background:none;outline:none;line-height:20px;background:url(https://s-lol-web.op.gg/images/icon/icon-down.svg) no-repeat right center;background-color:#ECF2FF;color:#4171D6;}.css-ywzb36 span select:hover{background-color:#ECF2FF;}[data-theme="dark"] .css-ywzb36 span select{background-color:#515163;color:#FFF;}[data-theme="dark"] .css-ywzb36 span select:hover{background-color:#515163;}[data-ie="true"] .css-ywzb36 span select::-ms-expand{display:none;}</style>
-<style data-emotion="css 1oynv5f" data-s="">.css-1oynv5f{margin-left:4px;vertical-align:top;}.css-1oynv5f:nth-of-type(1){margin-left:0;}.css-1oynv5f button{display:block;padding:4px 12px;border-radius:4px;font-weight:normal;font-size:14px;-webkit-text-decoration:none;text-decoration:none;background:#FFF;background-color:var(--gray0);color:#202D37;color:var(--gray900);box-sizing:border-box;height:28px;}.css-1oynv5f button:hover{background:#F7F7F9;}[data-theme="dark"] .css-1oynv5f button{background:#FFF;background-color:var(--gray0);color:#202D37;color:var(--gray900);}[data-theme="dark"] .css-1oynv5f button:hover{background:#282830;}.css-1oynv5f span{display:inline-block;line-height:20px;}.css-1oynv5f span select{padding:4px 24px 4px 12px;border-radius:4px;cursor:pointer;font-size:13px;font-weight:normal;background:none;outline:none;line-height:20px;background:url(https://s-lol-web.op.gg/images/icon/icon-down.svg) no-repeat right center;background-color:#FFF;background-color:var(--gray0);color:#202D37;color:var(--gray900);}.css-1oynv5f span select:hover{background-color:#F7F7F9;}[data-theme="dark"] .css-1oynv5f span select{background-color:#FFF;background-color:var(--gray0);color:#202D37;color:var(--gray900);}[data-theme="dark"] .css-1oynv5f span select:hover{background-color:#282830;}[data-ie="true"] .css-1oynv5f span select::-ms-expand{display:none;}</style>
-<style data-emotion="css" data-s=""></style> -->
 
-
-
+<style data-emotion="css" data-s=""></style>
 
 <meta charset="utf-8">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -234,7 +207,7 @@
 			<div>
 				<div class="css-1v663t e1x14w4w1">
 					<div class="header">솔로랭크</div>
-					<div class="contents">
+					<div class="content">
 						<div class="" style="position: relative;">
 							<img
 								src="https://opgg-static.akamaized.net/images/medals_new/challenger.png?image=q_auto,f_webp,w_144&amp;v=1675751623266"
@@ -720,10 +693,10 @@
 									src="https://s-lol-web.op.gg/images/icon/icon-search.svg?v=1675751623266"
 									alt="search">
 							</div>
-							<div class="contents">
+							<div class="content">
 								<ul>
 									<li><div class="header">최근 플레이</div>
-										<div class="contents">
+										<div class="content">
 											<ul>
 												<li><button>
 														<img
@@ -793,7 +766,7 @@
 											</ul>
 										</div></li>
 									<li><div class="header">챔피언 목록</div>
-										<div class="contents">
+										<div class="content">
 											<ul>
 												<li><button>
 														<span class="all"><img
@@ -1761,7 +1734,7 @@
 				<div class="css-164r41r e1r5v5160">
 					<li class="css-1qq23jn e1iiyghw3"><div result="LOSE"
 							class="css-jc3q2t e1iiyghw2">
-							<div class="contents">
+							<div class="content">
 								<div class="game-content">
 									<div class="game">
 										<div class="type">솔랭</div>
@@ -1992,7 +1965,7 @@
 						</div></li>
 					<li class="css-1qq23jn e1iiyghw3"><div result="LOSE"
 							class="css-jc3q2t e1iiyghw2">
-							<div class="contents">
+							<div class="content">
 								<div class="game-content">
 									<div class="game">
 										<div class="type">솔랭</div>
@@ -2234,7 +2207,7 @@
 						</div></li>
 					<li class="css-1qq23jn e1iiyghw3"><div result="WIN"
 							class="css-1shak8a e1iiyghw2">
-							<div class="contents">
+							<div class="content">
 								<div class="game-content">
 									<div class="game">
 										<div class="type">솔랭</div>
@@ -2474,7 +2447,7 @@
 						</div></li>
 					<li class="css-1qq23jn e1iiyghw3"><div result="WIN"
 							class="css-1shak8a e1iiyghw2">
-							<div class="contents">
+							<div class="content">
 								<div class="game-content">
 									<div class="game">
 										<div class="type">솔랭</div>
@@ -2717,7 +2690,7 @@
 						</div></li>
 					<li class="css-1qq23jn e1iiyghw3"><div result="LOSE"
 							class="css-jc3q2t e1iiyghw2">
-							<div class="contents">
+							<div class="content">
 								<div class="game-content">
 									<div class="game">
 										<div class="type">솔랭</div>
@@ -2953,7 +2926,7 @@
 						</div></li>
 					<li class="css-1qq23jn e1iiyghw3"><div result="LOSE"
 							class="css-jc3q2t e1iiyghw2">
-							<div class="contents">
+							<div class="content">
 								<div class="game-content">
 									<div class="game">
 										<div class="type">솔랭</div>
@@ -3191,7 +3164,7 @@
 						</div></li>
 					<li class="css-1qq23jn e1iiyghw3"><div result="LOSE"
 							class="css-jc3q2t e1iiyghw2">
-							<div class="contents">
+							<div class="content">
 								<div class="game-content">
 									<div class="game">
 										<div class="type">솔랭</div>
@@ -3431,7 +3404,7 @@
 						</div></li>
 					<li class="css-1qq23jn e1iiyghw3"><div result="WIN"
 							class="css-1shak8a e1iiyghw2">
-							<div class="contents">
+							<div class="content">
 								<div class="game-content">
 									<div class="game">
 										<div class="type">솔랭</div>
@@ -3675,7 +3648,7 @@
 						</div></li>
 					<li class="css-1qq23jn e1iiyghw3"><div result="WIN"
 							class="css-1shak8a e1iiyghw2">
-							<div class="contents">
+							<div class="content">
 								<div class="game-content">
 									<div class="game">
 										<div class="type">솔랭</div>
@@ -3924,7 +3897,7 @@
 						</div></li>
 					<li class="css-1qq23jn e1iiyghw3"><div result="WIN"
 							class="css-1shak8a e1iiyghw2">
-							<div class="contents">
+							<div class="content">
 								<div class="game-content">
 									<div class="game">
 										<div class="type">솔랭</div>
@@ -4156,7 +4129,7 @@
 						</div></li>
 					<li class="css-1qq23jn e1iiyghw3"><div result="LOSE"
 							class="css-jc3q2t e1iiyghw2">
-							<div class="contents">
+							<div class="content">
 								<div class="game-content">
 									<div class="game">
 										<div class="type">솔랭</div>
@@ -4404,7 +4377,7 @@
 						</div></li>
 					<li class="css-1qq23jn e1iiyghw3"><div result="WIN"
 							class="css-1shak8a e1iiyghw2">
-							<div class="contents">
+							<div class="content">
 								<div class="game-content">
 									<div class="game">
 										<div class="type">솔랭</div>
@@ -4651,7 +4624,7 @@
 						</div></li>
 					<li class="css-1qq23jn e1iiyghw3"><div result="REMAKE"
 							class="css-1dbudbg e1iiyghw2">
-							<div class="contents">
+							<div class="content">
 								<div class="game-content">
 									<div class="game">
 										<div class="type">솔랭</div>
@@ -4873,7 +4846,7 @@
 						</div></li>
 					<li class="css-1qq23jn e1iiyghw3"><div result="WIN"
 							class="css-1shak8a e1iiyghw2">
-							<div class="contents">
+							<div class="content">
 								<div class="game-content">
 									<div class="game">
 										<div class="type">솔랭</div>
@@ -5114,7 +5087,7 @@
 						</div></li>
 					<li class="css-1qq23jn e1iiyghw3"><div result="LOSE"
 							class="css-jc3q2t e1iiyghw2">
-							<div class="contents">
+							<div class="content">
 								<div class="game-content">
 									<div class="game">
 										<div class="type">솔랭</div>
@@ -5355,7 +5328,7 @@
 						</div></li>
 					<li class="css-1qq23jn e1iiyghw3"><div result="LOSE"
 							class="css-jc3q2t e1iiyghw2">
-							<div class="contents">
+							<div class="content">
 								<div class="game-content">
 									<div class="game">
 										<div class="type">솔랭</div>
@@ -5601,7 +5574,7 @@
 						</div></li>
 					<li class="css-1qq23jn e1iiyghw3"><div result="WIN"
 							class="css-1shak8a e1iiyghw2">
-							<div class="contents">
+							<div class="content">
 								<div class="game-content">
 									<div class="game">
 										<div class="type">솔랭</div>
@@ -5841,7 +5814,7 @@
 						</div></li>
 					<li class="css-1qq23jn e1iiyghw3"><div result="WIN"
 							class="css-1shak8a e1iiyghw2">
-							<div class="contents">
+							<div class="content">
 								<div class="game-content">
 									<div class="game">
 										<div class="type">솔랭</div>
@@ -6086,7 +6059,7 @@
 						</div></li>
 					<li class="css-1qq23jn e1iiyghw3"><div result="WIN"
 							class="css-1shak8a e1iiyghw2">
-							<div class="contents">
+							<div class="content">
 								<div class="game-content">
 									<div class="game">
 										<div class="type">솔랭</div>
@@ -6328,7 +6301,7 @@
 						</div></li>
 					<li class="css-1qq23jn e1iiyghw3"><div result="WIN"
 							class="css-1shak8a e1iiyghw2">
-							<div class="contents">
+							<div class="content">
 								<div class="game-content">
 									<div class="game">
 										<div class="type">솔랭</div>

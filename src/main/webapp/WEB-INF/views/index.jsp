@@ -72,7 +72,6 @@
                                             <li><a href="about.html">챔피언 분석</a></li>
                                             <li><a href="services.html">통계</a></li>
                                             <li><a href="blog.html">랭킹</a>
-                                            <li><a href="${pageContext.request.contextPath }/testPage_OF_record">전적페이지 테스트 창</a>
 <!--                                                 <ul class="submenu">
                                                     <li><a href="blog.html">Blog</a></li>
                                                     <li><a href="blog_details.html">Blog Details</a></li>
