@@ -54,20 +54,20 @@
     
     <insert id="insertstatperks" parameterType="perkstats">
         INSERT INTO
-        PERKSTATS(PERK_STATS_ID, GAMEID, DEFENSE, FLEX, OFFENSE )
-        VALUES(#{perk_style_id}, #{gameId}, #{defense}, #{flex}, #{offense} )
+        PERKSTATS(PUUID, GAMEID, DEFENSE, FLEX, OFFENSE )
+        VALUES(#{puuid}, #{gameId}, #{defense}, #{flex}, #{offense} )
     </insert>
     
     <insert id="insertperkstyle" parameterType="perkstyle">
         INSERT INTO
-        PERKSTYLE(PERK_STYLE_ID, GAMEID, DESCRIPTION, STYLE )
-        VALUES(#{perk_style_id}, #{gameId}, #{description}, #{style} )
+        PERKSTYLE(PUUID, GAMEID, DESCRIPTION, STYLE )
+        VALUES(#{puuid}, #{gameId}, #{description}, #{style} )
     </insert>
     
-    <insert id="insertperkstyle" parameterType="perkstyle">
+    <insert id="insertperkstyleselect" parameterType="perkstyleselect">
         INSERT INTO
-        PERKSTYLESELECTION(PERK_STYLE_ID, PERK, VAR1, VAR2, VAR3 )
-        VALUES(emp_seq.NEXTVAL, #{perk}, #{var1}, #{var2}, #{var3} )
+        PERKSTYLESELECTION(PUUID, DESCRIPTION, GAMEID, PERK, VAR1, VAR2, VAR3 )
+        VALUES(#{puuid}, #{description}, #{gameId}, #{perk}, #{var1}, #{var2}, #{var3} )
     </insert>
     
     <insert id="insertteam" parameterType="team">
@@ -82,10 +82,10 @@
         VALUES(#{teamId}, #{gameId}, #{championId}, #{pickTurn} )
     </insert>
     
-    <insert id="insertobjectives" parameterType="object">
+    <insert id="insertObjective" parameterType="obj">
         INSERT INTO
-        OBJECTIVE(TEAMID, GAMEID, FIRST, KILLS, TYPE )
-        VALUES(#{teamId}, #{gameId}, #{first}, #{kills}, #{type} )
+        OBJECTIVE(TEAMID, GAMEID, PUUID, FIRST, KILLS, TYPE )
+        VALUES(#{teamId}, #{gameId}, #{puuid}, #{first_int}, #{kills}, #{type} )
     </insert>
 	
 </mapper> 

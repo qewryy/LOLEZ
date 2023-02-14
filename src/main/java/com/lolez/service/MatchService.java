@@ -129,7 +129,6 @@ public class MatchService {
 
 								} else {
 									System.out.println("Team DB Insert 성공");
-									System.out.println("\nDB에 ObjectivesDto Insert 실행");
 
 									// ObjectivesDto 컬럼들에 boolean int 변환
 									ObjectivesDto ol = vl.getInfo().getTeams().get(i).getObjectives();
@@ -146,12 +145,7 @@ public class MatchService {
 									ol.getTower()
 											.setFirst_int(ol.getTower().convertBooleanToInt(ol.getTower().isFirst()));
 
-									// ObjectivesDto에 GameId set설정
-									ol.getBaron().setGameId(vl.getInfo().getGameId());
-
-									// ObjectivesDto teamId set설정
-									ol.getBaron().setTeamId(vl.getInfo().getTeams().get(i).getTeamId());
-
+									
 									// ObjectiveDto type set설정
 									ol.getBaron().setType("baron");
 									ol.getChampion().setType("champion");
@@ -162,8 +156,19 @@ public class MatchService {
 
 									ObjectiveDto[] objectives = { ol.getBaron(), ol.getChampion(), ol.getDragon(),
 											ol.getInhibitor(), ol.getRiftHerald(), ol.getTower() };
+									
 									for (ObjectiveDto objective : objectives) {
-										int OBir = mdao.insertObjectives(objective);
+										// ObjectivesDto에 GameId set설정
+										objective.setGameId(vl.getInfo().getGameId());
+										
+										// ObjectivesDto teamId set설정
+										objective.setTeamId(vl.getInfo().getTeams().get(i).getTeamId());
+										
+										// ObjectivesDto Puuid set설정
+										objective.setPuuid(list.get(i));
+										
+										System.out.println("\nDB에 ObjectivesDto Insert 실행");
+										int OBir = mdao.insertObjective(objective);
 
 										if (OBir == 0) {
 											System.out.println("Objective DB Insert 실패");
@@ -229,7 +234,7 @@ public class MatchService {
 									psl.setGameId(vl.getInfo().getGameId());
 
 									// PerkStatsDto perk_style_id에 puuid set설정
-									psl.setPerk_style_id(list.get(i));
+									psl.setPuuid(list.get(i));
 									int PSTir = mdao.insertstatperks(psl);
 
 									if (PSTir == 1) {
@@ -242,22 +247,28 @@ public class MatchService {
 										pyl.setGameId(vl.getInfo().getGameId());
 
 										// PerkStyleDto perk_style_id에 puuid set설정
-										pyl.setPerk_style_id(list.get(i));
+										pyl.setPuuid(list.get(i));
 
 										int PSYir = mdao.insertperkstyle(pyl);
 
 										if (PSYir == 1) {
 											System.out.println("PerkStyle DB Insert 성공");
 											System.out.println("\nDB에 PerkStyleSelectionDto Insert 실행");
+											
+											for (int a = 0; a < pl.getPerks().getStyles().size(); a++) {
 
-											for (int a = 0; a < vl.getInfo().getParticipants().get(i).getPerks()
-													.getStyles().size(); a++) {
+												for (int b = 0; b < pl.getPerks().getStyles().get(a).getSelections()
+														.size(); b++) {
+													// PerkStyleSelectionDto에 GameId set설정
+													pl.getPerks().getStyles().get(a).getSelections().get(b).setGameId(pl.getPerks().getStyles().get(a).getGameId());
 
-												for (int b = 0; b < vl.getInfo().getParticipants().get(i).getPerks()
-														.getStyles().get(a).getSelections().size(); b++) {
+													// PerkStyleSelectionDto에 Puuid set설정
+													pl.getPerks().getStyles().get(a).getSelections().get(b).setPuuid(pl.getPerks().getStyles().get(a).getPuuid());
+													
+													// PerkStyleSelectionDto에 Description set설정
+													pl.getPerks().getStyles().get(a).getSelections().get(b).setDescription(pl.getPerks().getStyles().get(a).getDescription());
 													int PSLir = mdao.insertperkstyleselect(
-															vl.getInfo().getParticipants().get(i).getPerks().getStyles()
-																	.get(a).getSelections().get(b));
+															pl.getPerks().getStyles().get(a).getSelections().get(b));
 
 													if (PSLir == 0) {
 														System.out.println("PerkStyleSelection DB Insert 실패");

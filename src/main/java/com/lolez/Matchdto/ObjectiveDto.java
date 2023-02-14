@@ -7,6 +7,7 @@ public class ObjectiveDto {
 	
 	private long gameId;
 	private int teamId;
+	private String puuid;
 	private String type;
 	private boolean first;
 	private int first_int;

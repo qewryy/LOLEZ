@@ -6,7 +6,6 @@ import com.lolez.Matchdto.BanDto;
 import com.lolez.Matchdto.InfoDto;
 import com.lolez.Matchdto.MetadataDto;
 import com.lolez.Matchdto.ObjectiveDto;
-import com.lolez.Matchdto.ObjectivesDto;
 import com.lolez.Matchdto.ParticipantDto;
 import com.lolez.Matchdto.PerkStatsDto;
 import com.lolez.Matchdto.PerkStyleDto;
@@ -33,6 +32,6 @@ public interface MatchDao {
 
 	int insertban(BanDto banDto);
 
-	int insertObjectives(ObjectiveDto objective);
+	int insertObjective(ObjectiveDto objective);
 
 }
