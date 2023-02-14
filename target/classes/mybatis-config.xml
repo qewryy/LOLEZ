@@ -21,9 +21,10 @@
 		<typeAlias type="com.lolez.Matchdto.ParticipantDto" alias="part" />
 		<typeAlias type="com.lolez.Matchdto.PerkStatsDto" alias="perkstats" />
 		<typeAlias type="com.lolez.Matchdto.PerkStyleDto" alias="perkstyle" />
+		<typeAlias type="com.lolez.Matchdto.PerkStyleSelectionDto" alias="perkstyleselect" />
 		<typeAlias type="com.lolez.Matchdto.TeamDto" alias="team" />
 		<typeAlias type="com.lolez.Matchdto.BanDto" alias="ban" />
-		<typeAlias type="com.lolez.Matchdto.ObjectiveDto" alias="object" />
+		<typeAlias type="com.lolez.Matchdto.ObjectiveDto" alias="obj" />
 	</typeAliases>
 
 
