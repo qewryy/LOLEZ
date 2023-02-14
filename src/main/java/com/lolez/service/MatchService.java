@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.lolez.Matchdto.BanDto;
 import com.lolez.Matchdto.MatchDto;
 import com.lolez.Matchdto.ObjectiveDto;
 import com.lolez.Matchdto.ObjectivesDto;
@@ -145,7 +146,6 @@ public class MatchService {
 									ol.getTower()
 											.setFirst_int(ol.getTower().convertBooleanToInt(ol.getTower().isFirst()));
 
-									
 									// ObjectiveDto type set설정
 									ol.getBaron().setType("baron");
 									ol.getChampion().setType("champion");
@@ -156,17 +156,17 @@ public class MatchService {
 
 									ObjectiveDto[] objectives = { ol.getBaron(), ol.getChampion(), ol.getDragon(),
 											ol.getInhibitor(), ol.getRiftHerald(), ol.getTower() };
-									
+
 									for (ObjectiveDto objective : objectives) {
 										// ObjectivesDto에 GameId set설정
 										objective.setGameId(vl.getInfo().getGameId());
-										
+
 										// ObjectivesDto teamId set설정
 										objective.setTeamId(vl.getInfo().getTeams().get(i).getTeamId());
-										
+
 										// ObjectivesDto Puuid set설정
 										objective.setPuuid(list.get(i));
-										
+
 										System.out.println("\nDB에 ObjectivesDto Insert 실행");
 										int OBir = mdao.insertObjective(objective);
 
@@ -180,26 +180,29 @@ public class MatchService {
 									System.out.println("Objective DB Insert 성공");
 									System.out.println("\nDB에 BanDto Insert 실행");
 
-									for (int a = 0; a < vl.getInfo().getTeams().get(i).getBans().size(); a++) {
 
-										// BanDto에 GameId set설정
-										vl.getInfo().getTeams().get(i).getBans().get(a)
-												.setGameId(vl.getInfo().getGameId());
+										for (int a = 0; a < vl.getInfo().getTeams().get(i).getBans().size(); a++) {
+											BanDto bl = vl.getInfo().getTeams().get(i).getBans().get(a);
 
-										// BanDto teamId set설정
-										vl.getInfo().getTeams().get(i).getBans().get(a)
-												.setTeamId(vl.getInfo().getTeams().get(i).getTeamId());
+											// BanDto에 GameId set설정
+											bl.setGameId(vl.getInfo().getGameId());
 
-										int BANir = mdao.insertban(vl.getInfo().getTeams().get(i).getBans().get(a));
+											// BanDto teamId set설정
+											bl.setTeamId(vl.getInfo().getTeams().get(i).getTeamId());
 
-										if (BANir == 0) {
-											System.out.println("Ban DB Insert 실패");
-											return null;
+											// BanDto PuuId set설정
+											bl.setPuuid(list.get(a));;
+
+											int BANir = mdao.insertban(bl);
+
+											if (BANir == 0) {
+												System.out.println("Ban DB Insert 실패");
+												return null;
+
+											}
+											System.out.println("Ban DB Insert 성공");
 
 										}
-										System.out.println("Ban DB Insert 성공");
-
-									}
 
 								}
 							}
@@ -241,47 +244,48 @@ public class MatchService {
 										System.out.println("PerkStats DB Insert 성공");
 										System.out.println("\nDB에 PerkStyle Insert 실행");
 
-										PerkStyleDto pyl = pl.getPerks().getStyles().get(i);
+										for (int a = 0; a < pl.getPerks().getStyles().size(); a++) {
 
-										// PerkStyleDto에 GameId set설정
-										pyl.setGameId(vl.getInfo().getGameId());
+											PerkStyleDto pyl = pl.getPerks().getStyles().get(a);
 
-										// PerkStyleDto perk_style_id에 puuid set설정
-										pyl.setPuuid(list.get(i));
+											// PerkStyleDto에 GameId set설정
+											pyl.setGameId(vl.getInfo().getGameId());
 
-										int PSYir = mdao.insertperkstyle(pyl);
+											// PerkStyleDto perk_style_id에 puuid set설정
+											pyl.setPuuid(list.get(i));
 
-										if (PSYir == 1) {
-											System.out.println("PerkStyle DB Insert 성공");
-											System.out.println("\nDB에 PerkStyleSelectionDto Insert 실행");
-											
-											for (int a = 0; a < pl.getPerks().getStyles().size(); a++) {
+											int PSYir = mdao.insertperkstyle(pyl);
 
-												for (int b = 0; b < pl.getPerks().getStyles().get(a).getSelections()
-														.size(); b++) {
+											if (PSYir == 1) {
+												System.out.println("PerkStyle DB Insert 성공");
+
+												for (int b = 0; b < pyl.getSelections().size(); b++) {
+													System.out.println("\nDB에 PerkStyleSelectionDto Insert 실행");
+
 													// PerkStyleSelectionDto에 GameId set설정
-													pl.getPerks().getStyles().get(a).getSelections().get(b).setGameId(pl.getPerks().getStyles().get(a).getGameId());
+													pyl.getSelections().get(b).setGameId(pyl.getGameId());
 
 													// PerkStyleSelectionDto에 Puuid set설정
-													pl.getPerks().getStyles().get(a).getSelections().get(b).setPuuid(pl.getPerks().getStyles().get(a).getPuuid());
-													
+													pyl.getSelections().get(b).setPuuid(pyl.getPuuid());
+
 													// PerkStyleSelectionDto에 Description set설정
-													pl.getPerks().getStyles().get(a).getSelections().get(b).setDescription(pl.getPerks().getStyles().get(a).getDescription());
-													int PSLir = mdao.insertperkstyleselect(
-															pl.getPerks().getStyles().get(a).getSelections().get(b));
+													pyl.getSelections().get(b).setDescription(pyl.getDescription());
+
+													int PSLir = mdao.insertperkstyleselect(pyl.getSelections().get(b));
 
 													if (PSLir == 0) {
 														System.out.println("PerkStyleSelection DB Insert 실패");
 														return null;
 
 													}
+													System.out.println("PerkStyleSelection DB Insert 성공");
 												}
+
+											} else {
+												System.out.println("PerkStyle DB Insert 실패");
+												return null;
+
 											}
-
-										} else {
-											System.out.println("PerkStyle DB Insert 실패");
-											return null;
-
 										}
 
 									} else {
