@@ -1085,6 +1085,9 @@ a.button {
 /* -----------------------커뮤니티 클래스 제작 마침 부분----------------------------- */
 
 /* -----------------------레코드 클래스 제작  부분----------------------------- */
+.classOfHtml{
+	background-color: var(--gray200);
+}
 
 
 .css-150oaqg {
@@ -1683,121 +1686,111 @@ caption, .hidden {
 /* 챔피언 평점 승률 등 플레이한 챔피언의 통계 더보기 종료 부분 ----------------*/
 
 /* 최근 7일간 승률확인  시작 부분 ----------------*/
-.css-k5hsyz { /* 배경색 밑 마진 담당 */
-	margin-top: 8px;
-	background-color: var(--gray0);
-	border-radius: 4px;
+.css-k5hsyz { /* 틀 div 부분 */
+    margin-top: 8px;
+    background-color: #FFF;
+    background-color: var(--gray0);
+    border-radius: 4px;
 }
 
-.css-k5hsyz>.title { /* 제목 부분 */
-	position: relative;
-	display: block;
-	line-height: 20px;
-	padding: 8px 12px;
-	border-bottom-width: 1px;
-	border-bottom-style: solid;
-	border-color: var(--gray200);
-	color: var(--gray900);
-	font-size: 14px;
+.css-k5hsyz>.title { /* 최근 7일간 랭크 승률 제목 클래스 */
+    position: relative;
+    display: block;
+    line-height: 20px;
+    padding: 8px 12px;
+    border-bottom: 1px solid;
+    border-color: #ebeef1;
+    border-color: var(--gray200);
+    color: #202D37;
+    color: var(--gray900);
+    font-size: 14px;
 }
 
-.css-k5hsyz>.header { /* 챔피언          승률 표시 부분 */
-	display: flex;
-	line-height: 30px;
-	padding: 0px 12px;
-	background-color: var(--gray100);
-	font-size: 12px;
-	color: var(--gray400);
-	border-bottom-width: 1px;
-	border-bottom-style: solid;
-	border-color: var(--gray200);
+.css-k5hsyz>.header { /* 헤더부분 챔피언      승률 */
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    line-height: 30px;
+    padding: 0 12px;
+    background-color: #F7F7F9;
+    background-color: var(--gray100);
+    font-size: 12px;
+    color: #9AA4AF;
+    color: var(--gray400);
+    border-bottom: 1px solid;
+    border-color: #ebeef1;
+    border-color: var(--gray200);
 }
 
-.css-k5hsyz>.header div:nth-of-type(1) { /* 쳄피언에 해당 하는 부분 */
-	width: 152px;
+
+.css-k5hsyz>.header div:nth-of-type(1) { /* 챔피언 */
+    width: 152px;
 }
 
-.css-k5hsyz>.header div:nth-of-type(2) { /* 승률에 해당하는 부분 */
-	flex: 1 1 0%;
-	text-align: center;
+.css-k5hsyz>.header div:nth-of-type(2) { /* 승률 */
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    text-align: center;
 }
 
-.css-k5hsyz>ul li { /* 승률  챔피언 */
-	display: table;
-	width: 100%;
-	border-bottom-width: 1px;
-	border-bottom-style: solid;
-	border-color: var(--gray200);
-	color: var(--gray900);
-	text-align: center;
-	font-size: 12px;
-	table-layout: fixed;
+.css-k5hsyz>ul li { /* 각 챔프 부분 div내 li 태그 클래스 */
+    display: table;
+    width: 100%;
+    border-bottom: 1px solid;
+    border-color: #ebeef1;
+    border-color: var(--gray200);
+    color: #202D37;
+    color: var(--gray900);
+    text-align: center;
+    font-size: 12px;
+    table-layout: fixed;
 }
 
-.css-k5hsyz>ul li .face { /* 챔피언의 사진 */
-	display: table-cell;
-	width: 36px;
-	text-align: right;
-	vertical-align: middle;
-}
-
-.css-k5hsyz>ul li .info { /* 챔피언 정보 */
-	display: table-cell;
-	width: 108px;
-	text-align: left;
-	vertical-align: middle;
-}
-
-.css-k5hsyz>ul li .info .name { /* 챔피언 이름 */
-	width: 100%;
-	margin-left: 8px;
-	text-overflow: ellipsis;
-	white-space: nowrap;
-	overflow: hidden;
-	text-decoration: none;
-}
-
-.css-k5hsyz>ul li .info .name a { /* 이름 폰트 색깔 부분 */
-	color: var(--gray900);
-}
-
-.css-k5hsyz>ul li .graph { /* 그래프 부분 */
-	display: table-cell;
-	height: 40px;
-	vertical-align: middle;
-	padding-left: 20px;
-}
-
-.css-16uc0vq {
-	position: relative;
-	display: inline-block;
-	width: 100%;
-	height: 20px;
-	vertical-align: middle;
-	border-radius: 3px;
-	overflow: hidden;
-}
-
-.css-z219cj { /* 위 클래스랑 같음을 의미함 */
-	position: relative;
-	display: inline-block;
-	width: 100%;
-	height: 20px;
-	vertical-align: middle;
-	border-radius: 3px;
-	overflow: hidden;
-}
-.css-z219cj .fill.right {
-    background: var(--red500);
-}
-
-.css-z219cj .fill {
-    display: inline-block;
+.css-k5hsyz>ul li .face { /* 챔프 칸 크기 및 위치 조절 */
+    display: table-cell;
+    width: 36px;
+    text-align: right;
     vertical-align: middle;
-    height: 100%;
+}
+.css-k5hsyz>ul li .face img { /* 사진 크기 조절 */
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
 }
 
-.css-z219cj .text {
+.css-k5hsyz>ul li .info { /* 해당하는 챔프이름칸의 전체 칸 크기 조절 */
+    display: table-cell;
+    width: 108px;
+    text-align: left;
+    vertical-align: middle;
+}
+
+.css-k5hsyz>ul li .info { /*이름 칸 크기조절  */
+    display: table-cell;
+    width: 108px;
+    text-align: left;
+    vertical-align: middle;
+}
+
+.css-k5hsyz>ul li .info .name a {
+    color: #202D37;
+    color: var(--gray900);
+}
+
+.css-16uc0vq { /* 승리만 했을시 */
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    height: 20px;
+    vertical-align: middle;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+
+.css-16uc0vq .text {
     position: absolute;
     top: 3px;
     font-size: 11px;
@@ -1808,18 +1801,53 @@ caption, .hidden {
     text-overflow: ellipsis;
 }
 
-
-
-.css-uz18fj { /* 위 클래스랑 같음을 의미함 */
-	position: relative;
-	display: inline-block;
-	width: 100%;
-	height: 20px;
-	vertical-align: middle;
-	border-radius: 3px;
-	overflow: hidden;
+.css-16uc0vq .fill.left {
+    background: var(--main500);
 }
 
+.css-16uc0vq .fill {
+    display: inline-block;
+    vertical-align: middle;
+    height: 100%;
+}
+.css-16uc0vq .text.left {
+    display: block;
+    left: 4px;
+}
+.css-16uc0vq .text.right {
+    display: none;
+    right: 4px;
+}
+
+.css-16uc0vq .fill.right {
+    background: var(--red500);
+}
+
+
+
+.css-uz18fj { /* 승패가 있을시 */
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    height: 20px;
+    vertical-align: middle;
+    border-radius: 3px;
+    overflow: hidden;
+}
+.css-uz18fj .text {
+    position: absolute;
+    top: 3px;
+    font-size: 11px;
+    color: rgb(242, 242, 242);
+    line-height: 14px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.css-uz18fj .fill.left {
+    background: var(--main500);
+}
 .css-uz18fj .fill.right {
     background: var(--red500);
 }
@@ -1833,67 +1861,23 @@ caption, .hidden {
     display: block;
     left: 4px;
 }
-.css-uz18fj .text {
-    position: absolute;
-    top: 3px;
-    font-size: 11px;
-    color: rgb(242, 242, 242);
-    line-height: 14px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+.css-uz18fj .text.right {
+    display: block;
+    right: 4px;
 }
 
 
-.css-16uc0vq .fill.left { /* 승리시 들어가는 색깔  */
-	background: var(--main500);
-}
-
-.css-16uc0vq .fill {
-	display: inline-block;
-	vertical-align: middle;
-	height: 100%;
-}
-
-.css-16uc0vq .text.left { /* 글씨 부분 */
-	display: block;
-	left: 4px;
-}
-
-.css-16uc0vq .text {
-	position: absolute;
-	top: 3px;
-	font-size: 11px;
-	color: rgb(242, 242, 242);
-	line-height: 14px;
-	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
-}
-
-.css-16uc0vq .fill {
-	display: inline-block;
-	vertical-align: middle;
-	height: 100%;
-}
-.css-16uc0vq .text.right { /* 패배 택스트 부분 */
-	display: none;
-	right: 4px;
-}
-
-.css-16uc0vq .fill.right { /* 패배 부분 */
-	background: var(--red500);
+.css-k5hsyz > ul li .winratio {
+    display: table-cell;
+    width: 43px;
+    vertical-align: middle;
+    color: var(--gray500);
 }
 
 
 
 
-.css-k5hsyz>ul li .winratio { /* 승률 % 부분 */
-	display: table-cell;
-	width: 43px;
-	vertical-align: middle;
-	color: var(--gray500);
-}
+
 
 /* 최근 7일간 승률확인  종료 부분 ----------------*/
 
