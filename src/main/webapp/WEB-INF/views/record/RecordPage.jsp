@@ -2,7 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!doctype html>
-<html class="no-js" lang="ko" style="--main100: #ECF2FF;
+<html class="no-js  classOfHtml" lang="ko" style="--main100: #ECF2FF;
     --main200: #D5E3FF;
     --main300: #B3CDFF;
     --main400: #81ACFF;
@@ -1644,14 +1644,11 @@
 										<g class="recharts-layer recharts-pie-sector">
 										<path stroke="none" fill="#5383E8" color="#5383E8"
 											class="recharts-sector"
-											d="M 44,0
-    A 44,44,0,
-    1,1,
-    23.058314706368762,82.69684505308553
-  L 29.72157820888779,70.38421253619467
-            A 30,30,0,
-            1,0,
-            44,14 Z"></path></g>
+											d="M 44,0 A 44,44,0, 1,1,
+										    23.058314706368762,82.69684505308553
+										    L 29.72157820888779,70.38421253619467
+										    A 30,30,0, 1,0,
+										    44,14 Z"></path></g>
 										<g class="recharts-layer recharts-pie-sector">
 										<path stroke="none" fill="#E84057" color="#E84057"
 											class="recharts-sector"
