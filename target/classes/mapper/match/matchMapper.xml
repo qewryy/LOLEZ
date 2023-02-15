@@ -78,8 +78,8 @@
     
     <insert id="insertban" parameterType="ban">
         INSERT INTO
-        BAN(TEAMID, GAMEID, CHAMPIONID, PICKTURN )
-        VALUES(#{teamId}, #{gameId}, #{championId}, #{pickTurn} )
+        BAN(TEAMID, GAMEID, PUUID, CHAMPIONID, PICKTURN )
+        VALUES(#{teamId}, #{gameId}, #{puuid}, #{championId}, #{pickTurn} )
     </insert>
     
     <insert id="insertObjective" parameterType="obj">
