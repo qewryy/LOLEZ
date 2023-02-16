@@ -220,6 +220,10 @@ public class LeagueService {
 		
 		if(LeagueData.size() > 1 && i == 0) {
 			LeagueData.get(i).setDuoBoolean(true);
+		}else {
+			if(LeagueData.get(i).getQueueType().equals("RANKED_SOLO_5x5")) {
+				LeagueData.get(i).setSoloBoolean(true);
+			}
 		}
 		
 		return LeagueData.get(i);
