@@ -33,25 +33,22 @@ public class LeagueEntryDto {
 	// 해당 리그에서 해당 소환사가 당한 패배 횟수입니다.
 	
 	private boolean hotStreak;
-	private int hotStreak_int;
 	// 해당 소환사가 현재 연승 상태인지 여부입니다.
 	
 	private boolean veteran;
-	private int veteran_int;
 	// 해당 소환사가 게임을 많이 했는지 여부입니다.
 	
 	private boolean freshBlood;
-	private int freshBlood_int;
 	// 해당 소환사가 최근에 리그에 참여한 새로운 소환사인지 여부입니다.
 	
 	private boolean inactive;
-	private int inactive_int;
 	// 해당 소환사가 현재 리그에서 비활성 상태인지 여부입니다.
 	
 	private MiniSeriesDto MiniSeriesDto;
 	// 해당 소환사가 속한 미니시리즈 정보입니다. 이 정보는 해당 소환사가 승격전을 위해 플레이하는 경우에 사용됩니다.
 	
-	private boolean DuoBoolean; // ? 이거 뭐지 
+	private boolean DuoBoolean; 
+	private boolean SoloBoolean; 
 
 	public int convertBooleanToInt(boolean value) {
 		return value ? 1 : 0;
