@@ -198,7 +198,7 @@ style="
 				<div class="wrapper">
 					<div class="header-profile-info">
 						<div class="profile-icon">
-							<img
+							<img 
 								src="http://ddragon.leagueoflegends.com/cdn/13.3.1/img/profileicon/${Summoner.profileIconId}.png"
 								alt="profile image">
 							<div class="level">
@@ -231,20 +231,24 @@ style="
 					<div class="header">솔로랭크</div>
 					<div class="contents">
 						<div class="" style="position: relative;">
-							<img
-								src="https://opgg-static.akamaized.net/images/medals_new/challenger.png?image=q_auto,f_webp,w_144&amp;v=1675751623266"
+							<img id="tierImg"
+								src=""
 								width="72" alt="CHALLENGER">
 						</div>
 						<div class="info">
 							<div class="tier">challenger</div>
-							<div class="lp">962 LP</div>
+							<div class="lp">${SoloList.leaguePoints} LP</div>
 						</div>
 						<div class="win-lose-container">
-							<div class="win-lose">93승 62패</div>
-							<div class="ratio">승률 60%</div>
+							<div class="win-lose">${SoloList.wins}승 ${SoloList.losses}패</div>
+
+							<div class="ratio" id="winning_rate"></div>
 						</div>
 					</div>
 				</div>
+				
+				
+				
 				<div class="css-1474l3c e1x14w4w1">
 					<div class="header">
 						자유랭크<span class="unranked">Unranked</span>
@@ -1477,9 +1481,64 @@ style="
 
 
 <script type="text/javascript">
-	console.log("소환사 티어 확인");
-	console.log("${Summoner}");
-	console.log("${DuoList}");
+	var tier=["IRON","BRONZE","SILVER","GOLD","PLATINUM","DIAMOND","MASTER","GRANDMASTER","CHALLENGER"]
+	var img = document.getElementById("tierImg");
+	
+	
+	var userTier = "${SoloList.tier}";
+	var tierNum;
+	
+	for(var i=0; i<tier.length; i++){
+		if(userTier.indexOf(tier[i])!= -1  )
+			tierNum = i;
+
+	}
+
+	var result = Math.ceil(${SoloList.wins}/(${SoloList.wins} + ${SoloList.losses} )*100);
+	console.log("${SoloList.tier}");	
+	document.getElementById('winning_rate').innerText ="승률 "+result+"%";
+	
+	
+	switch (tierNum) {
+	case 0:
+		img.src="${pageContext.request.contextPath }/resources/assets/img/tier/06022022_TFTDevArticle_0000_TFT_Iron.jpg";
+		break;
+	case 1:
+		img.src="${pageContext.request.contextPath }/resources/assets/img/tier/06022022_TFTDevArticle_0001_TFT_Bronze.jpg";
+		break;
+
+	case 2:
+		img.src="${pageContext.request.contextPath }/resources/assets/img/tier/06022022_TFTDevArticle_0002_TFT_Silver.jpg";
+		break;
+
+	case 3:
+		img.src="${pageContext.request.contextPath }/resources/assets/img/tier/06022022_TFTDevArticle_0003_TFT_Gold.jpg";
+		break;
+
+	case 4:
+		img.src="${pageContext.request.contextPath }/resources/assets/img/tier/06022022_TFTDevArticle_0004_TFT_Platinum.jpg";
+		break;
+
+	case 5:
+		img.src="${pageContext.request.contextPath }/resources/assets/img/tier/06022022_TFTDevArticle_0005_TFT_Diamon.jpg";
+		break;
+
+	case 6:
+		img.src="${pageContext.request.contextPath }/resources/assets/img/tier/06022022_TFTDevArticle_0006_TFT_Master.jpg";
+		break;
+
+	case 7:
+		img.src="${pageContext.request.contextPath }/resources/assets/img/tier/06022022_TFTDevArticle_0007_TFT_GrandMaster.jpg";
+		break;
+
+	case 8:
+		img.src="${pageContext.request.contextPath }/resources/assets/img/tier/06022022_TFTDevArticle_0008_TFT_Challenger.jpg";
+		break;
+
+
+	}
+
+
 
 </script>
 </html>
