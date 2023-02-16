@@ -46,7 +46,7 @@ public class LeagueService {
 		// 받아온 데이터 유무 확인
 		// true : 기존 데이터 Select
 		// false : error return
-		if (LeagueData != null) {
+		if (!(LeagueData.isEmpty())) {
 			String LeagueId = LeagueData.get(i).getSummonerId();
 			String LeagueQueue = LeagueData.get(i).getQueueType();
 			LeagueEntryDto Stdata = ldao.selectleaguedata(LeagueId, LeagueQueue);
@@ -206,17 +206,16 @@ public class LeagueService {
 
 		} else {
 			if(i == 0) {
-				System.out.println("솔로랭크 리그 정보가 존재하지 않습니다.");
-				
-			}else if(i == 1) {
-				System.out.println("자유랭크 리그 정보가 존재하지 않습니다.");
-				
+				System.out.println("리그 정보가 존재하지 않습니다.");
+				LeagueEntryDto unrank = new LeagueEntryDto();
+				unrank.setUnrankBoolean(true);
+				return unrank;
 			}else {
 				System.out.println("이유 모를 오류발생");
 				
+				// error return
+				return null;
 			}
-			// error return
-			return null;
 		}
 		
 		if(LeagueData.size() > 1 && i == 0) {
