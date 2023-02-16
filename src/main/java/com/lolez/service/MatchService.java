@@ -32,15 +32,15 @@ public class MatchService {
 	@Autowired
 	private MatchDao mdao;
 
-	public ArrayList<MatchDto> matchserch(SummonerDto sresult, String apiKey) throws Exception {
+	public ArrayList<MatchDto> matchserch(SummonerDto sresult, String apiKey, int j) throws Exception {
 		System.out.println("MatchService matchserch() 실행");
-
+		int v = j * 20;
 		ArrayList<MatchDto> matches = new ArrayList<MatchDto>();
 
 		CloseableHttpClient httpClient = HttpClients.createDefault();
 
 		String url = "https://asia.api.riotgames.com/lol/match/v5/matches/by-puuid/" + sresult.getPuuid()
-				+ "/ids?start=0&count=20";
+				+ "/ids?start="+(v-20)+"&count="+v;
 
 		HttpGet request = new HttpGet(url);
 

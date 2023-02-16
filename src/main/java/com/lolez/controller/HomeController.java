@@ -30,20 +30,5 @@ public class HomeController {
 		return "index";
 	}
 
-	/*
-	 * @RequestMapping(value = "/LoginForm") public ModelAndView loginform() {
-	 * ModelAndView mav = new ModelAndView();
-	 * 
-	 * mav.setViewName("Member/LoginForm");
-	 * 
-	 * return mav; }
-	 * 
-	 * @RequestMapping(value = "/JoinForm") public ModelAndView JoinForm() {
-	 * ModelAndView mav = new ModelAndView();
-	 * 
-	 * mav.setViewName("Member/JoinForm");
-	 * 
-	 * return mav; }
-	 */
 
 }
