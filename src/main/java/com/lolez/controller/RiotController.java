@@ -65,6 +65,7 @@ public class RiotController {
 						// SoloList 솔로랭크 검색 요청
 						LeagueEntryDto SoloList = lsvc.leagueserch(Sresult, apiKey, 1);
 						session.setAttribute("SoloList", SoloList);
+						
 
 						// Lresult = 자유랭크
 						LeagueEntryDto DuoList = Lresult;
