@@ -199,15 +199,15 @@ style="
 					<div class="header-profile-info">
 						<div class="profile-icon">
 							<img
-								src="https://opgg-static.akamaized.net/images/profile_icons/profileIcon7.jpg?image=q_auto,f_webp,w_auto&amp;v=1675751623266"
+								src="http://ddragon.leagueoflegends.com/cdn/13.3.1/img/profileicon/${Summoner.profileIconId}.png"
 								alt="profile image">
 							<div class="level">
-								<span class="level">573</span>
+								<span class="level">${Summoner.summonerLevel}</span>
 							</div>
 						</div>
 						<div class="info">
 							<div class="name">
-								<h1 class="summoner-name">T1 Gumayusi</h1>
+								<h1 class="summoner-name">${Summoner.name}</h1>
 							</div>
 							<div class="buttons">
 								<button class="css-4e9tnt eapd0am1">전적 갱신</button>
@@ -1474,4 +1474,12 @@ style="
 	<script
 		src="${pageContext.request.contextPath }/resources/assets/js/demo/datatables-demo.js"></script>
 </body>
+
+
+<script type="text/javascript">
+	console.log("소환사 티어 확인");
+	console.log("${Summoner}");
+	console.log("${DuoList}");
+
+</script>
 </html>
