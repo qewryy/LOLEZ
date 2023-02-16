@@ -32,16 +32,16 @@
 		HOTSTREAK, VETERAN, FRESHBLOOD, INACTIVE) 
 		VALUES (#{summonerId}, #{leagueId}, #{summonerName}, 
 		#{queueType}, #{tier}, #{rank}, #{leaguePoints}, #{wins}, #{losses}, 
-		#{hotStreak_int}, #{veteran_int}, 
-		#{freshBlood_int}, #{inactive_int})
+		#{hotStreak}, #{veteran}, 
+		#{freshBlood}, #{inactive})
 	</insert>
 	
 	<update id="updateleaguedata" parameterType="league">
 		UPDATE LEAGUEENTRY SET LEAGUEID = #{leagueId}, SUMMONERNAME = #{summonerName},
 		QUEUETYPE = #{queueType}, TIER = #{tier}, RANK = #{rank}, 
 		LEAGUEPOINTS = #{leaguePoints},	WINS = #{wins}, LOSSES = #{losses}, 
-		#{hotStreak_int}, #{veteran_int}, 
-		#{freshBlood_int}, #{inactive_int})
+		#{hotStreak}, #{veteran}, 
+		#{freshBlood}, #{inactive})
 		WHERE SUMMONERID = #{summonerId}
 	</update>
 	

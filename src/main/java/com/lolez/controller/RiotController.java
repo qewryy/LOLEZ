@@ -54,13 +54,17 @@ public class RiotController {
 				
 				// 0 : 랭크 값 받아오기
 				LeagueEntryDto Lresult0 = lsvc.leagueserch(Sresult, apiKey, 0);
-				session.setAttribute("DuoList", Lresult0);
 				
 				if(Lresult0.isDuoBoolean()) {
 					// 1 : 솔로랭크 값 받아오기
 					System.out.println("소환사 정보로 Solo League 검색 요청");
 					LeagueEntryDto Lresult1 = lsvc.leagueserch(Sresult, apiKey, 1);
 					session.setAttribute("SoloList", Lresult1);
+				}else {
+					if(Lresult0.isSoloBoolean()) {
+						session.setAttribute("SoloList", Lresult0);
+					}
+					session.setAttribute("DuoList", Lresult0);
 				}
 				
 					System.out.println("리그 검색 정상 처리 완료.");

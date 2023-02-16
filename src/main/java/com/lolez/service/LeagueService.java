@@ -55,10 +55,6 @@ public class LeagueService {
 			if (LeagueData.get(i).getMiniSeriesDto() != null) {
 				// 신규 데이터에 MiniSeriesDto의 PK인 Id set
 				LeagueData.get(i).getMiniSeriesDto().setId(LeagueData.get(i).getSummonerId());
-				LeagueData.get(i).setHotStreak_int(LeagueData.get(i).convertBooleanToInt(LeagueData.get(i).isHotStreak()));
-				LeagueData.get(i).setVeteran_int(LeagueData.get(i).convertBooleanToInt(LeagueData.get(i).isVeteran()));
-				LeagueData.get(i).setFreshBlood_int(LeagueData.get(i).convertBooleanToInt(LeagueData.get(i).isFreshBlood()));
-				LeagueData.get(i).setInactive_int(LeagueData.get(i).convertBooleanToInt(LeagueData.get(i).isInactive()));
 			}
 
 			// 기존 데이터 유무 확인
@@ -109,6 +105,10 @@ public class LeagueService {
 					System.out.println("리그 정보가 정상적으로 추가되었습니다.");
 					if(LeagueData.size() > 1 && i == 0) {
 						LeagueData.get(i).setDuoBoolean(true);
+					}else {
+						if(LeagueData.get(i).getQueueType().equals("RANKED_SOLO_5x5")) {
+							LeagueData.get(i).setSoloBoolean(true);
+						}
 					}
 					
 					return LeagueData.get(i);
