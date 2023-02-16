@@ -131,20 +131,7 @@ public class MatchService {
 								} else {
 									System.out.println("Team DB Insert 성공");
 
-									// ObjectivesDto 컬럼들에 boolean int 변환
 									ObjectivesDto ol = vl.getInfo().getTeams().get(i).getObjectives();
-									ol.getBaron()
-											.setFirst_int(ol.getBaron().convertBooleanToInt(ol.getBaron().isFirst()));
-									ol.getChampion().setFirst_int(
-											ol.getChampion().convertBooleanToInt(ol.getChampion().isFirst()));
-									ol.getDragon()
-											.setFirst_int(ol.getDragon().convertBooleanToInt(ol.getDragon().isFirst()));
-									ol.getInhibitor().setFirst_int(
-											ol.getInhibitor().convertBooleanToInt(ol.getInhibitor().isFirst()));
-									ol.getRiftHerald().setFirst_int(
-											ol.getRiftHerald().convertBooleanToInt(ol.getRiftHerald().isFirst()));
-									ol.getTower()
-											.setFirst_int(ol.getTower().convertBooleanToInt(ol.getTower().isFirst()));
 
 									// ObjectiveDto type set설정
 									ol.getBaron().setType("baron");
@@ -163,9 +150,6 @@ public class MatchService {
 
 										// ObjectivesDto teamId set설정
 										objective.setTeamId(vl.getInfo().getTeams().get(i).getTeamId());
-
-										// ObjectivesDto Puuid set설정
-										objective.setPuuid(list.get(i));
 
 										System.out.println("\nDB에 ObjectivesDto Insert 실행");
 										int OBir = mdao.insertObjective(objective);
@@ -212,16 +196,7 @@ public class MatchService {
 							// Participants 배열에 GameId set 설정
 							for (int i = 0; i < vl.getInfo().getParticipants().size(); i++) {
 								ParticipantDto pl = vl.getInfo().getParticipants().get(i);
-								pl.setFirstBloodAssist_int(pl.convertBooleanToInt(pl.isFirstBloodAssist()));
-								pl.setFirstBloodKill_int(pl.convertBooleanToInt(pl.isFirstBloodKill()));
-								pl.setFirstTowerAssist_int(pl.convertBooleanToInt(pl.isFirstTowerAssist()));
-								pl.setFirstTowerKill_int(pl.convertBooleanToInt(pl.isFirstTowerKill()));
-								pl.setGameEndedInEarlySurrender_int(
-										pl.convertBooleanToInt(pl.isGameEndedInEarlySurrender()));
-								pl.setGameEndedInSurrender_int(pl.convertBooleanToInt(pl.isGameEndedInSurrender()));
-								pl.setTeamEarlySurrendered_int(pl.convertBooleanToInt(pl.isWin()));
-								pl.setWin_int(pl.convertBooleanToInt(pl.isFirstBloodAssist()));
-								pl.setUserpuuid(list.get(i));
+								pl.setPuuid(list.get(i));
 								pl.setGameid(vl.getInfo().getGameId());
 								int PTir = mdao.insertparticipant(pl);
 								if (PTir == 0) {

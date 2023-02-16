@@ -32,7 +32,7 @@ public class RiotController {
 	private MatchService msvc;
 	
 	
-	private String apiKey = "RGAPI-016f4a26-a109-4543-986a-18a49369b672";
+	private String apiKey = "RGAPI-2eec8085-71d7-4bed-a9ed-a13c3b39ae8e";
 
 	@RequestMapping(value = "/SummoneSerch")
 	public ModelAndView SummoneSerch(String summoneName) throws Exception {
