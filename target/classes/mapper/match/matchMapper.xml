@@ -23,33 +23,33 @@
     
     <insert id="insertparticipant" parameterType="part">
         INSERT INTO
-        PARTICIPANT(GAMEID, USERPUUID, ASSISTS, BARONKILLS, BOUNTYLEVEL, CHAMPEXPERIENCE, CHAMPLEVEL, CHAMPIONID, CHAMPIONNAME, 
+        PARTICIPANT(GAMEID, PUUID, ASSISTS, BARONKILLS, BOUNTYLEVEL, CHAMPEXPERIENCE, CHAMPLEVEL, CHAMPIONID, CHAMPIONNAME, 
         CHAMPIONTRANSFORM, CONSUMABLESPURCHASED, DAMAGEDEALTTOBUILDINGS, DAMAGEDEALTTOOBJECTIVES, DAMAGEDEALTTOTURRETS, DAMAGESELFMITIGATED, 
         DEATHS, DETECTORWARDSPLACED, DOUBLEKILLS, DRAGONKILLS, FIRSTBLOODASSIST, FIRSTBLOODKILL, FIRSTTOWERASSIST, FIRSTTOWERKILL, GAMEENDEDINEARLYSURRENDER, 
         GAMEENDEDINSURRENDER, GOLDEARNED, GOLDSPENT, INDIVIDUALPOSITION, INHIBITORKILLS, INHIBITORTAKEDOWNS, INHIBITORSLOST, 
         ITEM0, ITEM1, ITEM2, ITEM3, ITEM4, ITEM5, ITEM6, ITEMSPURCHASED, KILLINGSPREES, KILLS, LANE, LARGESTCRITICALSTRIKE, 
         LARGESTKILLINGSPREE, LARGESTMULTIKILL, LONGESTTIMESPENTLIVING, MAGICDAMAGEDEALT, MAGICDAMAGEDEALTTOCHAMPIONS, MAGICDAMAGETAKEN, 
         NEUTRALMINIONSKILLED, NEXUSKILLS, NEXUSTAKEDOWNS, NEXUSLOST, OBJECTIVESSTOLEN, OBJECTIVESSTOLENASSISTS, PARTICIPANTID, PENTAKILLS, 
-        PHYSICALDAMAGEDEALT, PHYSICALDAMAGEDEALTTOCHAMPIONS, PHYSICALDAMAGETAKEN, PROFILEICON, PUUID, QUADRAKILLS, RIOTIDNAME, RIOTIDTAGLINE, 
+        PHYSICALDAMAGEDEALT, PHYSICALDAMAGEDEALTTOCHAMPIONS, PHYSICALDAMAGETAKEN, PROFILEICON, QUADRAKILLS, RIOTIDNAME, RIOTIDTAGLINE, 
         ROLE, SIGHTWARDSBOUGHTINGAME, SPELL1CASTS, SPELL2CASTS, SPELL3CASTS, SPELL4CASTS, SUMMONER1CASTS, SUMMONER1ID, SUMMONER2CASTS, 
         SUMMONER2ID, SUMMONERID, SUMMONERLEVEL, SUMMONERNAME, TEAMEARLYSURRENDERED, TEAMID, TEAMPOSITION, TIMECCINGOTHERS, TIMEPLAYED, 
         TOTALDAMAGEDEALT, TOTALDAMAGEDEALTTOCHAMPIONS, TOTALDAMAGESHIELDEDONTEAMMATES, TOTALDAMAGETAKEN, TOTALHEAL, TOTALHEALSONTEAMMATES, 
         TOTALMINIONSKILLED, TOTALTIMECCDEALT, TOTALTIMESPENTDEAD, TOTALUNITSHEALED, TRIPLEKILLS, TRUEDAMAGEDEALT, TRUEDAMAGEDEALTTOCHAMPIONS, 
         TRUEDAMAGETAKEN, TURRETKILLS, TURRETTAKEDOWNS, TURRETSLOST, UNREALKILLS, VISIONSCORE, VISIONWARDSBOUGHTINGAME, WARDSKILLED, WARDSPLACED, WIN )
-        VALUES(#{gameid}, #{userpuuid}, #{assists}, #{baronKills}, #{bountyLevel}, #{champExperience}, #{champLevel}, #{championId}, #{championName}, 
+        VALUES(#{gameid}, #{puuid}, #{assists}, #{baronKills}, #{bountyLevel}, #{champExperience}, #{champLevel}, #{championId}, #{championName}, 
         #{championTransform}, #{consumablesPurchased}, #{damageDealtToBuildings}, #{damageDealtToObjectives}, #{damageDealtToTurrets}, #{damageSelfMitigated}, 
-        #{deaths}, #{detectorWardsPlaced}, #{doubleKills}, #{dragonKills}, #{firstBloodAssist_int}, #{firstBloodKill_int}, #{firstTowerAssist_int}, #{firstTowerKill_int}, 
-        #{gameEndedInEarlySurrender_int}, #{gameEndedInSurrender_int}, #{goldEarned}, #{goldSpent}, #{individualPosition}, #{inhibitorKills}, #{inhibitorTakedowns}, 
+        #{deaths}, #{detectorWardsPlaced}, #{doubleKills}, #{dragonKills}, #{firstBloodAssist}, #{firstBloodKill}, #{firstTowerAssist}, #{firstTowerKill}, 
+        #{gameEndedInEarlySurrender}, #{gameEndedInSurrender}, #{goldEarned}, #{goldSpent}, #{individualPosition}, #{inhibitorKills}, #{inhibitorTakedowns}, 
         #{inhibitorsLost}, #{item0}, #{item1}, #{item2}, #{item3}, #{item4}, #{item5}, #{item6}, #{itemsPurchased}, #{killingSprees}, #{kills}, #{lane}, 
         #{largestCriticalStrike}, #{largestKillingSpree}, #{largestMultiKill}, #{longestTimeSpentLiving}, #{magicDamageDealt}, #{magicDamageDealtToChampions}, 
         #{magicDamageTaken}, #{neutralMinionsKilled}, #{nexusKills}, #{nexusTakedowns}, #{nexusLost}, #{objectivesStolen}, #{objectivesStolenAssists}, 
         #{participantId}, #{pentaKills}, #{physicalDamageDealt}, #{physicalDamageDealtToChampions}, #{physicalDamageTaken}, #{profileIcon}, 
-        #{puuid}, #{quadraKills}, #{riotIdName}, #{riotIdTagline}, #{role}, #{sightWardsBoughtInGame}, #{spell1Casts}, #{spell2Casts}, #{spell3Casts}, 
+        #{quadraKills}, #{riotIdName}, #{riotIdTagline}, #{role}, #{sightWardsBoughtInGame}, #{spell1Casts}, #{spell2Casts}, #{spell3Casts}, 
         #{spell4Casts}, #{summoner1Casts}, #{summoner1Id}, #{summoner2Casts}, #{summoner2Id}, #{summonerId}, #{summonerLevel}, #{summonerName}, 
-        #{teamEarlySurrendered_int}, #{teamId}, #{teamPosition}, #{timeCCingOthers}, #{timePlayed}, #{totalDamageDealt}, #{totalDamageDealtToChampions}, 
+        #{teamEarlySurrendered}, #{teamId}, #{teamPosition}, #{timeCCingOthers}, #{timePlayed}, #{totalDamageDealt}, #{totalDamageDealtToChampions}, 
         #{totalDamageShieldedOnTeammates}, #{totalDamageTaken}, #{totalHeal}, #{totalHealsOnTeammates}, #{totalMinionsKilled}, #{totalTimeCCDealt}, 
         #{totalTimeSpentDead}, #{totalUnitsHealed}, #{tripleKills}, #{trueDamageDealt}, #{trueDamageDealtToChampions}, #{trueDamageTaken}, #{turretKills}, 
-        #{turretTakedowns}, #{turretsLost}, #{unrealKills}, #{visionScore}, #{visionWardsBoughtInGame}, #{wardsKilled}, #{wardsPlaced}, #{win_int} )
+        #{turretTakedowns}, #{turretsLost}, #{unrealKills}, #{visionScore}, #{visionWardsBoughtInGame}, #{wardsKilled}, #{wardsPlaced}, #{win} )
     </insert>
     
     <insert id="insertstatperks" parameterType="perkstats">
@@ -84,8 +84,8 @@
     
     <insert id="insertObjective" parameterType="obj">
         INSERT INTO
-        OBJECTIVE(TEAMID, GAMEID, PUUID, FIRST, KILLS, TYPE )
-        VALUES(#{teamId}, #{gameId}, #{puuid}, #{first_int}, #{kills}, #{type} )
+        OBJECTIVE(TEAMID, GAMEID, FIRST, KILLS, TYPE )
+        VALUES(#{teamId}, #{gameId}, #{first}, #{kills}, #{type} )
     </insert>
 	
 </mapper> 

@@ -8,7 +8,7 @@ public class ParticipantDto {
 	private long gameid;
 	// 해당 게임의 고유 ID입니다. 이 ID는 다른 API 요청에서도 사용됩니다.
 	
-	private String userpuuid;
+	private String puuid;
 	// PK 설정을 위해 임의로 넣어놓은 값으로 해당 참가자의 puuid 입니다.
 	
 	private int assists;
@@ -64,27 +64,21 @@ public class ParticipantDto {
 	// 해당 참가자가 용을 처치한 횟수입니다.
 	
 	private boolean firstBloodAssist;
-	private int firstBloodAssist_int;
 	// 해당 참가자가 첫 번째 킬에서 어시스트한 경우 true입니다.
 	
 	private boolean firstBloodKill;
-	private int firstBloodKill_int;
 	// 해당 참가자가 첫 번째 킬을 기록한 경우 true입니다.
 	
 	private boolean firstTowerAssist;
-	private int firstTowerAssist_int;
 	// 해당 참가자가 첫 번째 타워 파괴에서 어시스트한 경우 true입니다.
 	
 	private boolean firstTowerKill;
-	private int firstTowerKill_int;
 	// 당 참가자가 첫 번째 타워를 파괴한 경우 true입니다.
 	
 	private boolean gameEndedInEarlySurrender;
-	private int gameEndedInEarlySurrender_int;
 	// 해당 참가자가 서렌한 경우 true입니다.
 	
 	private boolean gameEndedInSurrender;
-	private int gameEndedInSurrender_int;
 	// 해당 참가자가 서렌을 한 경우, true로 설정됩니다. 서렌을 하지 않은 경우, false입니다.
 	
 	private int goldEarned;
@@ -186,9 +180,6 @@ public class ParticipantDto {
 	private int profileIcon;
 	//	해당 참가자의 프로필 아이콘 ID입니다.
 	
-	private String puuid;
-	// 참고를 위해 넣은 해당 참가자의 puuid, 이미 중복 컬럼이 있기에 지울 예정
-	
 	private int quadraKills;
 	// 해당 참가자가 게임 중에 기록한 쿼드라 처치 횟수입니다.
 
@@ -238,7 +229,6 @@ public class ParticipantDto {
 	// 해당 참가자의 소환사 이름입니다.
 	
 	private boolean teamEarlySurrendered;
-	private int teamEarlySurrendered_int;
 	// 해당 참가자의 팀이 조기 항복한 여부입니다.
 	
 	private int teamId;
@@ -320,11 +310,6 @@ public class ParticipantDto {
 	// 해당 참가자가 설치한 총 와드 수입니다.
 	
 	private boolean win;
-	private int win_int;
 	// 해당 참가자의 승패 여부를 나타내는 값입니다.
-	
-	public int convertBooleanToInt(boolean value) {
-		return value ? 1 : 0;
-	}
 	
 }
