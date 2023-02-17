@@ -70,9 +70,9 @@ public class RiotController {
 							for (int i = 1; i < Lresult.getDataSize(); i++) {
 								if (Lresult.getDataSize() > 1) {
 									// SoloList 솔로랭크 검색 요청
-									LeagueEntryDto SoloList = lsvc.leagueserch(Sresult, apiKey, i);
-									if (SoloList.isSoloBoolean()) {
-										session.setAttribute("SoloList", SoloList);
+									LeagueEntryDto DLresult = lsvc.leagueserch(Sresult, apiKey, i);
+									if (DLresult.isSoloBoolean()) {
+										session.setAttribute("SoloList", DLresult);
 									}
 								}
 
@@ -86,9 +86,9 @@ public class RiotController {
 							for (int i = 1; i < Lresult.getDataSize(); i++) {
 								if (Lresult.getDataSize() > 1) {
 									// DuoList 자유랭크 검색 요청
-									LeagueEntryDto DuoList = lsvc.leagueserch(Sresult, apiKey, i);
-									if (DuoList.isSoloBoolean()) {
-										session.setAttribute("DuoList", DuoList);
+									LeagueEntryDto SLresult = lsvc.leagueserch(Sresult, apiKey, i);
+									if (SLresult.isDuoBoolean()) {
+										session.setAttribute("DuoList", SLresult);
 									}
 								}
 
@@ -136,6 +136,8 @@ public class RiotController {
 								session.setAttribute("Unrank", Unrank);
 							}
 						}
+						
+						
 					} else {
 						// Lresult 결과가 unrank 일시
 						LeagueEntryDto Unrank = Lresult;
