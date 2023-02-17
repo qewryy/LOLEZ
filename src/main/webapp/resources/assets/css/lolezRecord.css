@@ -442,6 +442,11 @@ caption, .hidden {
     color: var(--gray400);
 }
 
+.css-1474l3c > .contents img {
+    background-color: var(--gray100);
+    border-radius: 50%;
+}
+
 .css-1474l3c > .contents .win-lose-container .win-lose {
     line-height: 20px;
 }

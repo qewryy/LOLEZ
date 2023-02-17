@@ -226,21 +226,23 @@
 		<div id="content-container" class="css-8whjbz e8nboil2">
 			<div>
 				<div class="css-1v663t e1x14w4w1">
+				
 					<div class="header">솔로랭크</div>
 					<div class="contents">
 						<div class="" style="position: relative;">
-							<img id="tierImg" src="" width="72" alt="${SoloList.tier }">
+							<img id="tierImg_of_SoloList" src="" width="72" alt="${SoloList.tier }">
 						</div>
 						<div class="info">
-							<div class="tier">challenger</div>
+							<div class="tier">${SoloList.tier} ${SoloList.rank}</div>
 							<div class="lp">${SoloList.leaguePoints}LP</div>
 						</div>
 						<div class="win-lose-container">
-							<div class="win-lose">${SoloList.wins}승${SoloList.losses}패</div>
+							<div class="win-lose" id="result_SL">${SoloList.wins} 승 ${SoloList.losses} 패</div>
 
-							<div class="ratio" id="winning_rate"></div>
+							<div class="ratio" id="winning_rate_of_SoloList"></div>
 						</div>
 					</div>
+					
 				</div>
 
 
@@ -249,17 +251,17 @@
 					<div class="header">자유랭크</div>
 					<div class="contents">
 						<div class="" style="position: relative;">
-							<img
+							<img id="tierImg_of_DuoList"
 								src=""
-								width="40" alt="SILVER">
+								width="40" alt="${DuoList.tier }">
 						</div>
 						<div class="info">
-							<div class="tier">silver 4</div>
-							<div class="lp">75 LP</div>
+							<div class="tier">${DuoList.tier} ${DuoList.rank}</div>
+							<div class="lp">${DuoList.leaguePoints} LP</div>
 						</div>
 						<div class="win-lose-container">
-							<div class="win-lose">4승 10패</div>
-							<div class="ratio">승률 29%</div>
+							<div class="win-lose">${DuoList.wins} 승 ${DuoList.losses} 패</div>
+							<div class="ratio" id="winning_rate_of_DuoList"> </div>
 						</div>
 					</div>
 				</div>
@@ -1490,71 +1492,168 @@
 
 
 <script type="text/javascript">
-	console.log("${SoloList}");
-	console.log("${DuoList}");
 	
 	var tier=["IRON","BRONZE","SILVER","GOLD","PLATINUM","DIAMOND","MASTER","GRANDMASTER","CHALLENGER"]
 	var ran=["I","II","III","IV"]
-	var img = document.getElementById("tierImg");
+	var checkSoloList = "${SoloList.tier}";
+	var checkDuoList = "${DuoList.tier}";
+	
+	var test1u = "${Unrank.unrankBoolean}";
+	var test1s = "${SoloList.SoloBoolean}";
+	var test1d = "${DuoList.DuoBoolean}";
+	
+	var test2 = "${Unrank.inactive}"
+	var test2s = "${SoloList.inactive}"
+	var test2d = "${DuoList.inactive}"
 	
 	
-	console.log("해당 소환사 티어");
-	console.log("${DuoList.tier}");
-	console.log("해당 소환사 랭크");
-	console.log("${SoloList.leaguePoints}");
+	console.log("unrankBoolean , SoloBoolean, DuoBoolean 순서로 확인 공백의 의미는 false임 ");
+	console.log(test1d);
+	console.log(test1s);
+	console.log(test1u);
 	
-	var userTier = img.alt;
-	var tierNum;
 	
+	console.log("1차 확인 false는 해당 기록이 존재하는 것");
+	console.log(test2);
+	console.log(test2s);
+	console.log(test2d);
+	
+	
+	if(test2.length == 0){
+		test2 = true;
+	}else{
+		test2 = false;
+	}
+	
+	if(test2s.length == 0){
+		test2s = true;
+	}else{
+		test2s = false;
+	}
+	
+	if(test2d.length == 0){
+		test2d = true;
+	}else{
+		test2d = false;
+	}
+	
+	console.log("결과 확인 test2: " + test2);
+	console.log("결과 확인 test2s: " + test2s);
+	console.log("결과 확인 test2d: " + test2d);
+	
+	
+	if( checkSoloList.length != 0){
+		
+		console.log("솔랭 작동");
+		
+	var img_of_SoloList = document.getElementById("tierImg_of_SoloList");
+	var userTier_of_SoloList = img_of_SoloList.alt;
+	var tierNum_of_SoloList;
 	for(var i=0; i<tier.length; i++){
-		if(userTier.indexOf(tier[i])!= -1  )
-			tierNum = i;
+		if(userTier_of_SoloList.indexOf(tier[i])!= -1  )
+			tierNum_of_SoloList = i;
 
 	}
 	
-	/* console.log(tierNum); */
-	switch (tierNum) {
+	switch (tierNum_of_SoloList) {
 	case 0:
-		img.src="${pageContext.request.contextPath }/resources/assets/img/tier/06022022_TFTDevArticle_0000_TFT_Iron.jpg";
+		img_of_SoloList.src="${pageContext.request.contextPath }/resources/assets/img/tier/06022022_TFTDevArticle_0000_TFT_Iron.jpg";
 		break;
 	case 1:
-		img.src="${pageContext.request.contextPath }/resources/assets/img/tier/06022022_TFTDevArticle_0001_TFT_Bronze.jpg";
+		img_of_SoloList.src="${pageContext.request.contextPath }/resources/assets/img/tier/06022022_TFTDevArticle_0001_TFT_Bronze.jpg";
 		break;
 
 	case 2:
-		img.src="${pageContext.request.contextPath }/resources/assets/img/tier/06022022_TFTDevArticle_0002_TFT_Silver.jpg";
+		img_of_SoloList.src="${pageContext.request.contextPath }/resources/assets/img/tier/06022022_TFTDevArticle_0002_TFT_Silver.jpg";
 		break;
 
 	case 3:
-		img.src="${pageContext.request.contextPath }/resources/assets/img/tier/06022022_TFTDevArticle_0003_TFT_Gold.jpg";
+		img_of_SoloList.src="${pageContext.request.contextPath }/resources/assets/img/tier/06022022_TFTDevArticle_0003_TFT_Gold.jpg";
 		break;
 
 	case 4:
-		img.src="${pageContext.request.contextPath }/resources/assets/img/tier/06022022_TFTDevArticle_0004_TFT_Platinum.jpg";
+		img_of_SoloList.src="${pageContext.request.contextPath }/resources/assets/img/tier/06022022_TFTDevArticle_0004_TFT_Platinum.jpg";
 		break;
 
 	case 5:
-		img.src="${pageContext.request.contextPath }/resources/assets/img/tier/06022022_TFTDevArticle_0005_TFT_Diamon.jpg";
+		img_of_SoloList.src="${pageContext.request.contextPath }/resources/assets/img/tier/06022022_TFTDevArticle_0005_TFT_Diamon.jpg";
 		break;
 
 	case 6:
-		img.src="${pageContext.request.contextPath }/resources/assets/img/tier/06022022_TFTDevArticle_0006_TFT_Master.jpg";
+		img_of_SoloList.src="${pageContext.request.contextPath }/resources/assets/img/tier/06022022_TFTDevArticle_0006_TFT_Master.jpg";
 		break;
 
 	case 7:
-		img.src="${pageContext.request.contextPath }/resources/assets/img/tier/06022022_TFTDevArticle_0007_TFT_GrandMaster.jpg";
+		img_of_SoloList.src="${pageContext.request.contextPath }/resources/assets/img/tier/06022022_TFTDevArticle_0007_TFT_GrandMaster.jpg";
 		break;
 
 	case 8:
-		img.src="${pageContext.request.contextPath }/resources/assets/img/tier/06022022_TFTDevArticle_0008_TFT_Challenger.jpg";
+		img_of_SoloList.src="${pageContext.request.contextPath }/resources/assets/img/tier/06022022_TFTDevArticle_0008_TFT_Challenger.jpg";
+		break;
+
+
+		}
+	
+/*  	var result_of_SoloList = Math.ceil(${SoloList.wins}/(${SoloList.wins} + ${SoloList.losses} )*100); 
+	document.getElementById('winning_rate_of_SoloList').innerText ="승률 "+result_of_SoloList+"%";   */
+	}
+	
+	
+	
+	if(checkDuoList.length != 0){
+		
+		console.log("자랭 작동");
+		
+	var img_of_DuoList = document.getElementById("tierImg_of_DuoList");	
+	var userTier_of_DuoList = img_of_DuoList.alt;
+	var tierNum_of_DuoList;
+	for(var i=0; i<tier.length; i++){
+		if(userTier_of_DuoList.indexOf(tier[i])!= -1  )
+			tierNum_of_DuoList = i;
+
+	}
+	switch (tierNum_of_DuoList) {
+	case 0:
+		img_of_DuoList.src="${pageContext.request.contextPath }/resources/assets/img/tier/06022022_TFTDevArticle_0000_TFT_Iron.jpg";
+		break;
+	case 1:
+		img_of_DuoList.src="${pageContext.request.contextPath }/resources/assets/img/tier/06022022_TFTDevArticle_0001_TFT_Bronze.jpg";
+		break;
+
+	case 2:
+		img_of_DuoList.src="${pageContext.request.contextPath }/resources/assets/img/tier/06022022_TFTDevArticle_0002_TFT_Silver.jpg";
+		break;
+
+	case 3:
+		img_of_DuoList.src="${pageContext.request.contextPath }/resources/assets/img/tier/06022022_TFTDevArticle_0003_TFT_Gold.jpg";
+		break;
+
+	case 4:
+		img_of_DuoList.src="${pageContext.request.contextPath }/resources/assets/img/tier/06022022_TFTDevArticle_0004_TFT_Platinum.jpg";
+		break;
+
+	case 5:
+		img_of_DuoList.src="${pageContext.request.contextPath }/resources/assets/img/tier/06022022_TFTDevArticle_0005_TFT_Diamon.jpg";
+		break;
+
+	case 6:
+		img_of_DuoList.src="${pageContext.request.contextPath }/resources/assets/img/tier/06022022_TFTDevArticle_0006_TFT_Master.jpg";
+		break;
+
+	case 7:
+		img_of_DuoList.src="${pageContext.request.contextPath }/resources/assets/img/tier/06022022_TFTDevArticle_0007_TFT_GrandMaster.jpg";
+		break;
+
+	case 8:
+		img_of_DuoList.src="${pageContext.request.contextPath }/resources/assets/img/tier/06022022_TFTDevArticle_0008_TFT_Challenger.jpg";
 		break;
 
 
 	}
-
-	 var result = Math.ceil(${SoloList.wins}/(${SoloList.wins} + ${SoloList.losses} )*100); 
-	 document.getElementById('winning_rate').innerText ="승률 "+result+"%"; 
+/*   	 var result_of_DuoList = Math.ceil(${DuoList.wins}/(${DuoList.wins} + ${DuoList.losses} )*100); 
+	 document.getElementById('winning_rate_of_DuoList').innerText ="승률 "+result_of_DuoList+"%";    */
 	
+	}
 	
 
 
