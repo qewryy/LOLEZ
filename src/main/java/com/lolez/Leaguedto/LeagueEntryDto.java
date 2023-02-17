@@ -47,10 +47,10 @@ public class LeagueEntryDto {
 	private MiniSeriesDto MiniSeriesDto;
 	// 해당 소환사가 속한 미니시리즈 정보입니다. 이 정보는 해당 소환사가 승격전을 위해 플레이하는 경우에 사용됩니다.
 	
-	private boolean DuoBoolean; 
-	private boolean SoloBoolean; 
-	private boolean unrankBoolean;
-	private int DataSize;
+	private boolean duoboolean; 
+	private boolean soloboolean; 
+	private boolean unrankboolean;
+	private int datasize;
 
 	public int convertBooleanToInt(boolean value) {
 		return value ? 1 : 0;

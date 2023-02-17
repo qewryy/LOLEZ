@@ -59,69 +59,69 @@ public class RiotController {
 				LeagueEntryDto Lresult = lsvc.leagueserch(Sresult, apiKey, 0);
 
 				if (Lresult != null) {
-					if (!(Lresult.isUnrankBoolean())) {
+					if (!(Lresult.isUnrankboolean())) {
 
 						// Lresult.DuoBoolean이 true일 시
-						if (Lresult.isDuoBoolean()) {
+						if (Lresult.isDuoboolean()) {
 							// Lresult = 자유랭크
 							LeagueEntryDto DuoList = Lresult;
 							session.setAttribute("DuoList", DuoList);
 
-							for (int i = 1; i < Lresult.getDataSize(); i++) {
-								if (Lresult.getDataSize() > 1) {
+							for (int i = 1; i < Lresult.getDatasize(); i++) {
+								if (Lresult.getDatasize() > 1) {
 									// SoloList 솔로랭크 검색 요청
 									LeagueEntryDto DLresult = lsvc.leagueserch(Sresult, apiKey, i);
-									if (DLresult.isSoloBoolean()) {
+									if (DLresult.isSoloboolean()) {
 										session.setAttribute("SoloList", DLresult);
 									}
 								}
 
 							}
 
-						} else if (Lresult.isSoloBoolean()) {
+						} else if (Lresult.isSoloboolean()) {
 							// Lresult의 queueType이 솔로랭크일시 true
 							LeagueEntryDto SoloList = Lresult;
 							session.setAttribute("SoloList", SoloList);
 
-							for (int i = 1; i < Lresult.getDataSize(); i++) {
-								if (Lresult.getDataSize() > 1) {
+							for (int i = 1; i < Lresult.getDatasize(); i++) {
+								if (Lresult.getDatasize() > 1) {
 									// DuoList 자유랭크 검색 요청
 									LeagueEntryDto SLresult = lsvc.leagueserch(Sresult, apiKey, i);
-									if (SLresult.isDuoBoolean()) {
+									if (SLresult.isDuoboolean()) {
 										session.setAttribute("DuoList", SLresult);
 									}
 								}
 
 							}
 						} else {
-							if (Lresult.getDataSize() >= 1) {
+							if (Lresult.getDatasize() >= 1) {
 
-								for (int i = 1; i < Lresult.getDataSize(); i++) {
-									if (Lresult.getDataSize() > 1) {
+								for (int i = 1; i < Lresult.getDatasize(); i++) {
+									if (Lresult.getDatasize() > 1) {
 										LeagueEntryDto RLresult = lsvc.leagueserch(Sresult, apiKey, i);
 
-										if (RLresult.isDuoBoolean()) {
+										if (RLresult.isDuoboolean()) {
 											// Lresult = 자유랭크
 											LeagueEntryDto DuoList = RLresult;
 											session.setAttribute("DuoList", DuoList);
 
-											if (RLresult.getDataSize() > 1) {
+											if (RLresult.getDatasize() > 1) {
 												// SoloList 솔로랭크 검색 요청
 												LeagueEntryDto SoloList = lsvc.leagueserch(Sresult, apiKey, i);
-												if (SoloList.isSoloBoolean()) {
+												if (SoloList.isSoloboolean()) {
 													session.setAttribute("SoloList", SoloList);
 												}
 											}
 
-										} else if (RLresult.isSoloBoolean()) {
+										} else if (RLresult.isSoloboolean()) {
 											// Lresult의 queueType이 솔로랭크일시 true
 											LeagueEntryDto SoloList = RLresult;
 											session.setAttribute("SoloList", SoloList);
 
-											if (RLresult.getDataSize() > 1) {
+											if (RLresult.getDatasize() > 1) {
 												// DuoList 자유랭크 검색 요청
 												LeagueEntryDto DuoList = lsvc.leagueserch(Sresult, apiKey, i);
-												if (DuoList.isSoloBoolean()) {
+												if (DuoList.isSoloboolean()) {
 													session.setAttribute("DuoList", DuoList);
 												}
 											}
@@ -183,69 +183,69 @@ public class RiotController {
 		LeagueEntryDto Lresult = lsvc.leagueserch(Sresult, apiKey, 0);
 
 		if (Lresult != null) {
-			if (!(Lresult.isUnrankBoolean())) {
+			if (!(Lresult.isUnrankboolean())) {
 
 				// Lresult.DuoBoolean이 true일 시
-				if (Lresult.isDuoBoolean()) {
+				if (Lresult.isDuoboolean()) {
 					// Lresult = 자유랭크
 					LeagueEntryDto DuoList = Lresult;
 					LresultList.add(DuoList);
 
-					for (int i = 0; i < Lresult.getDataSize(); i++) {
-						if (Lresult.getDataSize() > 1) {
+					for (int i = 0; i < Lresult.getDatasize(); i++) {
+						if (Lresult.getDatasize() > 1) {
 							// SoloList 솔로랭크 검색 요청
 							LeagueEntryDto SoloList = lsvc.leagueserch(Sresult, apiKey, i);
-							if (SoloList.isSoloBoolean()) {
+							if (SoloList.isSoloboolean()) {
 								LresultList.add(SoloList);
 							}
 						}
 
 					}
 
-				} else if (Lresult.isSoloBoolean()) {
+				} else if (Lresult.isSoloboolean()) {
 					// Lresult의 queueType이 솔로랭크일시 true
 					LeagueEntryDto SoloList = Lresult;
 					LresultList.add(SoloList);
 
-					for (int i = 0; i < Lresult.getDataSize(); i++) {
-						if (Lresult.getDataSize() > 1) {
+					for (int i = 0; i < Lresult.getDatasize(); i++) {
+						if (Lresult.getDatasize() > 1) {
 							// SoloList 솔로랭크 검색 요청
 							LeagueEntryDto DuoList = lsvc.leagueserch(Sresult, apiKey, i);
-							if (DuoList.isSoloBoolean()) {
+							if (DuoList.isSoloboolean()) {
 								LresultList.add(DuoList);
 							}
 						}
 
 					}
 				}else {
-					if (Lresult.getDataSize() >= 1) {
+					if (Lresult.getDatasize() >= 1) {
 
-						for (int i = 1; i < Lresult.getDataSize(); i++) {
-							if (Lresult.getDataSize() > 1) {
+						for (int i = 1; i < Lresult.getDatasize(); i++) {
+							if (Lresult.getDatasize() > 1) {
 								LeagueEntryDto RLresult = lsvc.leagueserch(Sresult, apiKey, i);
 
-								if (RLresult.isDuoBoolean()) {
+								if (RLresult.isDuoboolean()) {
 									// Lresult = 자유랭크
 									LeagueEntryDto DuoList = RLresult;
 									session.setAttribute("DuoList", DuoList);
 
-									if (RLresult.getDataSize() > 1) {
+									if (RLresult.getDatasize() > 1) {
 										// SoloList 솔로랭크 검색 요청
 										LeagueEntryDto SoloList = lsvc.leagueserch(Sresult, apiKey, i);
-										if (SoloList.isSoloBoolean()) {
+										if (SoloList.isSoloboolean()) {
 											session.setAttribute("SoloList", SoloList);
 										}
 									}
 
-								} else if (RLresult.isSoloBoolean()) {
+								} else if (RLresult.isSoloboolean()) {
 									// Lresult의 queueType이 솔로랭크일시 true
 									LeagueEntryDto SoloList = RLresult;
 									session.setAttribute("SoloList", SoloList);
 
-									if (RLresult.getDataSize() > 1) {
+									if (RLresult.getDatasize() > 1) {
 										// DuoList 자유랭크 검색 요청
 										LeagueEntryDto DuoList = lsvc.leagueserch(Sresult, apiKey, i);
-										if (DuoList.isSoloBoolean()) {
+										if (DuoList.isSoloboolean()) {
 											session.setAttribute("DuoList", DuoList);
 										}
 									}
