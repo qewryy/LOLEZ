@@ -225,28 +225,33 @@
 		</div>
 		<div id="content-container" class="css-8whjbz e8nboil2">
 			<div>
+			<%-- 
+			<c:choose>
+				<c:when test="${SoloList.soloboolean}">
+					<div>
+					</div>
+				</c:when>
+				
+
+				
+				<c:otherwise>
+				
+				</c:otherwise>
+			
+			</c:choose>
+			 --%>
 			
 			
-		<c:if test="${Unrank.unrankBoolean}"> <!-- 참일때 true -->
-
-				<div class="css-1v663t e1x14w4w1">
-					<div class="header">솔로랭크
-						<span class="unranked">Unranked</span>
-					</div>
-				</div>
-				
-				
-				<div class="css-1474l3c e1x14w4w1">
-					<div class="header">자유랭크
-						<span class="unranked">Unranked</span>
-					</div>
-				</div>
-
-			</c:if>
+<%-- 			<c:if test="${Unrank.unrankboolean}">
+				<div class="css-1v663t e1x14w4w1"><div class="header">솔로랭크<span class="unranked">Unranked</span></div></div>
+				<div class="css-1474l3c e1x14w4w1"><div class="header">자유랭크<span class="unranked">Unranked</span></div></div>
+			</c:if> --%>
 			
 			<c:choose>
 			
-			<c:if test="${SoloList.SoloBoolean}">
+			<%--조건 : 솔랭 전적이 있는경우, 전적이 없는 경우 --%>
+			
+				<c:when test="${SoloList.soloboolean}">
 				<div class="css-1v663t e1x14w4w1">
 					<div class="header">솔로랭크</div>
 					<div class="contents">
@@ -266,16 +271,14 @@
 					
 				</div>
 				
-				<c:choose>
-				<div class="css-1v663t e1x14w4w1">
-					<div class="header">솔로랭크
-						<span class="unranked">Unranked</span>
-					</div>
-				</div>
-				</c:choose>
-			</c:if>
+				</c:when>
 				
-				<c:if test="${DuoList.DuoBoolean}">
+						<c:when test="!${SoloList.soloboolean}">
+						<div class="css-1v663t e1x14w4w1"><div class="header">솔로랭크<span class="unranked">Unranked</span></div></div>
+						</c:when>
+				
+				
+			<c:when test="${DuoList.duoboolean}">
 				<div class="css-1474l3c e1x14w4w1">
 					<div class="header">자유랭크</div>
 					<div class="contents">
@@ -294,21 +297,19 @@
 						</div>
 					</div>
 				</div>
-				
-			<c:choose>
-				<div class="css-1474l3c e1x14w4w1">
-					<div class="header">자유랭크
-						<span class="unranked">Unranked</span>
-					</div>
-				</div>
-				</c:choose>
-				
-				</c:if>
-
+				</c:when>
 			
+						<c:when test="!${DuoList.duoboolean}">
+							<div class="css-1474l3c e1x14w4w1"><div class="header">자유랭크<span class="unranked">Unranked</span></div></div>
+						</c:when>
+						
+					<c:otherwise>
+				<div class="css-1v663t e1x14w4w1"><div class="header">솔로랭크<span class="unranked">Unranked</span></div></div>
+				<div class="css-1474l3c e1x14w4w1"><div class="header">자유랭크<span class="unranked">Unranked</span></div></div>
+					</c:otherwise>
+
 			
 			</c:choose>
-
 
 				<div class="css-e9xk5o e1g7spwk3">
 					<ul>
@@ -1553,29 +1554,33 @@
 	console.log(test1s);
 	console.log(test1d);
 	
-	if(!test1u){
+	
+	
+	
+	
+	if(test1u){
 		// 언랭임
 		test1u = true;
 	}else{
 		// 언랭아님
 		test1u = false;
+		
 	}
 	
-	if(!test1s){
-		// 솔랭임
-		test1s = true;
-	}else{
-		// 솔랭아님
-		test1s = false;
-	}
-	
-	if(!test1d){
-		// 자랭임
-		test1d = true;
-	}else{
-		// 자랭 아님
-		test1d = false;
-	}
+		if(!test1u){
+			if(test1s){
+				test1s = true;
+			}else{
+				test1s = false;
+			}
+			
+			if(test1d){
+				test1d = true;
+			}else{
+				test1d = false;
+			}
+		}
+
 	
 	console.log("결과 확인 test1u: " + test1u);
 	console.log("결과 확인 test1s: " + test1s);
