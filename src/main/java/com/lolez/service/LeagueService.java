@@ -42,11 +42,13 @@ public class LeagueService {
 		Gson gson = new Gson();
 		Type type = new TypeToken<ArrayList<LeagueEntryDto>>(){}.getType();
 		ArrayList<LeagueEntryDto> LeagueData = gson.fromJson(responseJson, type);
-
+		
+			
+		
 		// 받아온 데이터 유무 확인
 		// true : 기존 데이터 Select
 		// false : error return
-		if (!(LeagueData.isEmpty())) {
+		if (!(LeagueData.size() < 1)) {
 			String LeagueId = LeagueData.get(i).getSummonerId();
 			String LeagueQueue = LeagueData.get(i).getQueueType();
 			LeagueEntryDto Stdata = ldao.selectleaguedata(LeagueId, LeagueQueue);
@@ -98,26 +100,35 @@ public class LeagueService {
 			} else {
 				System.out.println("등록되지 않은 리그 기록입니다.");
 
-				int ir = ldao.insertleaguedata(LeagueData.get(i));
-
-				// insert 처리 유무
-				if (ir == 1) {
-					System.out.println("리그 정보가 정상적으로 추가되었습니다.");
-					if(LeagueData.size() > 1 && i == 0) {
-						LeagueData.get(i).setDuoBoolean(true);
-					}else {
-						if(LeagueData.get(i).getQueueType().equals("RANKED_SOLO_5x5")) {
+				if(LeagueData.get(i).getQueueType().equals("RANKED_SOLO_5x5") || LeagueData.get(i).getQueueType().equals("RANKED_FLEX_SR")) {
+					int ir = ldao.insertleaguedata(LeagueData.get(i));
+					// insert 처리 유무
+					if (ir == 1) {
+						System.out.println("리그 정보가 정상적으로 추가되었습니다.");
+						if(LeagueData.get(i).getQueueType().equals("RANKED_FLEX_SR")) {
+							LeagueData.get(i).setDuoBoolean(true);
+						}else if(LeagueData.get(i).getQueueType().equals("RANKED_SOLO_5x5")){
 							LeagueData.get(i).setSoloBoolean(true);
 						}
+						
+						LeagueData.get(i).setDataSize(LeagueData.size());
+						
+						return LeagueData.get(i);
+					} else {
+						System.out.println("오류가 발생했습니다.");
+						
+						return null;
+						
 					}
+				}else {
+					System.out.println("필요하지 않은 정보 ( TFT, 그 외 ) 입니다.");
+					System.out.println("그대로 종료합니다.");
+					
+					LeagueData.get(i).setDataSize(LeagueData.size());
 					
 					return LeagueData.get(i);
-				} else {
-					System.out.println("오류가 발생했습니다.");
-
-					return null;
-
 				}
+
 
 			}
 
@@ -208,6 +219,7 @@ public class LeagueService {
 			if(i == 0) {
 				System.out.println("리그 정보가 존재하지 않습니다.");
 				LeagueEntryDto unrank = new LeagueEntryDto();
+				unrank.setDataSize(i);
 				unrank.setUnrankBoolean(true);
 				return unrank;
 			}else {
@@ -218,13 +230,13 @@ public class LeagueService {
 			}
 		}
 		
-		if(LeagueData.size() > 1 && i == 0) {
+		if(LeagueData.get(i).getQueueType().equals("RANKED_FLEX_SR")) {
 			LeagueData.get(i).setDuoBoolean(true);
-		}else {
-			if(LeagueData.get(i).getQueueType().equals("RANKED_SOLO_5x5")) {
+		}else if(LeagueData.get(i).getQueueType().equals("RANKED_SOLO_5x5")){
 				LeagueData.get(i).setSoloBoolean(true);
-			}
 		}
+		
+		LeagueData.get(i).setDataSize(LeagueData.size());
 		
 		return LeagueData.get(i);
 	}

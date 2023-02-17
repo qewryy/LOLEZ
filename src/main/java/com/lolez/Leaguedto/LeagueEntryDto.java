@@ -50,6 +50,7 @@ public class LeagueEntryDto {
 	private boolean DuoBoolean; 
 	private boolean SoloBoolean; 
 	private boolean unrankBoolean;
+	private int DataSize;
 
 	public int convertBooleanToInt(boolean value) {
 		return value ? 1 : 0;
