@@ -52,7 +52,9 @@ public class RiotController {
 				session.setAttribute("Summoner", Sresult);
 
 				System.out.println("소환사 정보로 League 검색 요청");
-
+				session.removeAttribute("SoloList"); 
+				session.removeAttribute("DuoList"); 
+				session.removeAttribute("Unrank"); 
 				// 랭크 값 받아오기
 				LeagueEntryDto Lresult = lsvc.leagueserch(Sresult, apiKey, 0);
 
@@ -65,7 +67,7 @@ public class RiotController {
 							LeagueEntryDto DuoList = Lresult;
 							session.setAttribute("DuoList", DuoList);
 
-							for (int i = 0; i < Lresult.getDataSize(); i++) {
+							for (int i = 1; i < Lresult.getDataSize(); i++) {
 								if (Lresult.getDataSize() > 1) {
 									// SoloList 솔로랭크 검색 요청
 									LeagueEntryDto SoloList = lsvc.leagueserch(Sresult, apiKey, i);
@@ -81,7 +83,7 @@ public class RiotController {
 							LeagueEntryDto SoloList = Lresult;
 							session.setAttribute("SoloList", SoloList);
 
-							for (int i = 0; i < Lresult.getDataSize(); i++) {
+							for (int i = 1; i < Lresult.getDataSize(); i++) {
 								if (Lresult.getDataSize() > 1) {
 									// DuoList 자유랭크 검색 요청
 									LeagueEntryDto DuoList = lsvc.leagueserch(Sresult, apiKey, i);
