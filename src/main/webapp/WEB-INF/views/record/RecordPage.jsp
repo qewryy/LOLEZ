@@ -225,8 +225,29 @@
 		</div>
 		<div id="content-container" class="css-8whjbz e8nboil2">
 			<div>
+			
+			
+		<c:if test="${Unrank.unrankBoolean}"> <!-- 참일때 true -->
+
 				<div class="css-1v663t e1x14w4w1">
+					<div class="header">솔로랭크
+						<span class="unranked">Unranked</span>
+					</div>
+				</div>
 				
+				
+				<div class="css-1474l3c e1x14w4w1">
+					<div class="header">자유랭크
+						<span class="unranked">Unranked</span>
+					</div>
+				</div>
+
+			</c:if>
+			
+			<c:choose>
+			
+			<c:if test="${SoloList.SoloBoolean}">
+				<div class="css-1v663t e1x14w4w1">
 					<div class="header">솔로랭크</div>
 					<div class="contents">
 						<div class="" style="position: relative;">
@@ -244,9 +265,17 @@
 					</div>
 					
 				</div>
-
-
-
+				
+				<c:choose>
+				<div class="css-1v663t e1x14w4w1">
+					<div class="header">솔로랭크
+						<span class="unranked">Unranked</span>
+					</div>
+				</div>
+				</c:choose>
+			</c:if>
+				
+				<c:if test="${DuoList.DuoBoolean}">
 				<div class="css-1474l3c e1x14w4w1">
 					<div class="header">자유랭크</div>
 					<div class="contents">
@@ -265,6 +294,22 @@
 						</div>
 					</div>
 				</div>
+				
+			<c:choose>
+				<div class="css-1474l3c e1x14w4w1">
+					<div class="header">자유랭크
+						<span class="unranked">Unranked</span>
+					</div>
+				</div>
+				</c:choose>
+				
+				</c:if>
+
+			
+			
+			</c:choose>
+
+
 				<div class="css-e9xk5o e1g7spwk3">
 					<ul>
 						<li class="css-1lteyi9 e1g7spwk2"><button>S2023 전체</button></li>
