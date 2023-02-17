@@ -213,6 +213,48 @@ public class RiotController {
 						}
 
 					}
+				}else {
+					if (Lresult.getDataSize() >= 1) {
+
+						for (int i = 1; i < Lresult.getDataSize(); i++) {
+							if (Lresult.getDataSize() > 1) {
+								LeagueEntryDto RLresult = lsvc.leagueserch(Sresult, apiKey, i);
+
+								if (RLresult.isDuoBoolean()) {
+									// Lresult = 자유랭크
+									LeagueEntryDto DuoList = RLresult;
+									session.setAttribute("DuoList", DuoList);
+
+									if (RLresult.getDataSize() > 1) {
+										// SoloList 솔로랭크 검색 요청
+										LeagueEntryDto SoloList = lsvc.leagueserch(Sresult, apiKey, i);
+										if (SoloList.isSoloBoolean()) {
+											session.setAttribute("SoloList", SoloList);
+										}
+									}
+
+								} else if (RLresult.isSoloBoolean()) {
+									// Lresult의 queueType이 솔로랭크일시 true
+									LeagueEntryDto SoloList = RLresult;
+									session.setAttribute("SoloList", SoloList);
+
+									if (RLresult.getDataSize() > 1) {
+										// DuoList 자유랭크 검색 요청
+										LeagueEntryDto DuoList = lsvc.leagueserch(Sresult, apiKey, i);
+										if (DuoList.isSoloBoolean()) {
+											session.setAttribute("DuoList", DuoList);
+										}
+									}
+
+								}
+							}
+
+						}
+					}else {
+						// Lresult.getDataSize()가 2이상이 아닐 시 unrank 설정
+						LeagueEntryDto Unrank = Lresult;
+						session.setAttribute("Unrank", Unrank);
+					}
 				}
 			} else {
 				// Lresult 결과가 unrank 일시
