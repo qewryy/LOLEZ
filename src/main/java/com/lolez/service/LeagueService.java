@@ -106,12 +106,12 @@ public class LeagueService {
 					if (ir == 1) {
 						System.out.println("리그 정보가 정상적으로 추가되었습니다.");
 						if(LeagueData.get(i).getQueueType().equals("RANKED_FLEX_SR")) {
-							LeagueData.get(i).setDuoBoolean(true);
+							LeagueData.get(i).setDuoboolean(true);
 						}else if(LeagueData.get(i).getQueueType().equals("RANKED_SOLO_5x5")){
-							LeagueData.get(i).setSoloBoolean(true);
+							LeagueData.get(i).setSoloboolean(true);
 						}
 						
-						LeagueData.get(i).setDataSize(LeagueData.size());
+						LeagueData.get(i).setDatasize(LeagueData.size());
 						
 						return LeagueData.get(i);
 					} else {
@@ -124,7 +124,7 @@ public class LeagueService {
 					System.out.println("필요하지 않은 정보 ( TFT, 그 외 ) 입니다.");
 					System.out.println("그대로 종료합니다.");
 					
-					LeagueData.get(i).setDataSize(LeagueData.size());
+					LeagueData.get(i).setDatasize(LeagueData.size());
 					
 					return LeagueData.get(i);
 				}
@@ -219,8 +219,8 @@ public class LeagueService {
 			if(i == 0) {
 				System.out.println("리그 정보가 존재하지 않습니다.");
 				LeagueEntryDto unrank = new LeagueEntryDto();
-				unrank.setDataSize(i);
-				unrank.setUnrankBoolean(true);
+				unrank.setDatasize(i);
+				unrank.setUnrankboolean(true);
 				return unrank;
 			}else {
 				System.out.println("이유 모를 오류발생");
@@ -231,12 +231,12 @@ public class LeagueService {
 		}
 		
 		if(LeagueData.get(i).getQueueType().equals("RANKED_FLEX_SR")) {
-			LeagueData.get(i).setDuoBoolean(true);
+			LeagueData.get(i).setDuoboolean(true);
 		}else if(LeagueData.get(i).getQueueType().equals("RANKED_SOLO_5x5")){
-				LeagueData.get(i).setSoloBoolean(true);
+				LeagueData.get(i).setSoloboolean(true);
 		}
 		
-		LeagueData.get(i).setDataSize(LeagueData.size());
+		LeagueData.get(i).setDatasize(LeagueData.size());
 		
 		return LeagueData.get(i);
 	}

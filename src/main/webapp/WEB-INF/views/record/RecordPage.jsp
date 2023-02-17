@@ -1543,48 +1543,43 @@
 	var checkSoloList = "${SoloList.tier}";
 	var checkDuoList = "${DuoList.tier}";
 	
-	var test1u = "${Unrank.unrankBoolean}";
-	var test1s = "${SoloList.SoloBoolean}";
-	var test1d = "${DuoList.DuoBoolean}";
-	
-	var test2 = "${Unrank.inactive}"
-	var test2s = "${SoloList.inactive}"
-	var test2d = "${DuoList.inactive}"
+	var test1u = "${Unrank.unrankboolean}";
+	var test1s = "${SoloList.soloboolean}";
+	var test1d = "${DuoList.duoboolean}";
 	
 	
 	console.log("unrankBoolean , SoloBoolean, DuoBoolean 순서로 확인 공백의 의미는 false임 ");
-	console.log(test1d);
-	console.log(test1s);
 	console.log(test1u);
+	console.log(test1s);
+	console.log(test1d);
 	
-	
-	console.log("1차 확인 false는 해당 기록이 존재하는 것");
-	console.log(test2);
-	console.log(test2s);
-	console.log(test2d);
-	
-	
-	if(test2.length == 0){
-		test2 = true;
+	if(!test1u){
+		// 언랭임
+		test1u = true;
 	}else{
-		test2 = false;
+		// 언랭아님
+		test1u = false;
 	}
 	
-	if(test2s.length == 0){
-		test2s = true;
+	if(!test1s){
+		// 솔랭임
+		test1s = true;
 	}else{
-		test2s = false;
+		// 솔랭아님
+		test1s = false;
 	}
 	
-	if(test2d.length == 0){
-		test2d = true;
+	if(!test1d){
+		// 자랭임
+		test1d = true;
 	}else{
-		test2d = false;
+		// 자랭 아님
+		test1d = false;
 	}
 	
-	console.log("결과 확인 test2: " + test2);
-	console.log("결과 확인 test2s: " + test2s);
-	console.log("결과 확인 test2d: " + test2d);
+	console.log("결과 확인 test1u: " + test1u);
+	console.log("결과 확인 test1s: " + test1s);
+	console.log("결과 확인 test1d: " + test1d);
 	
 	
 	if( checkSoloList.length != 0){
