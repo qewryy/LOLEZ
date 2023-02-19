@@ -32,7 +32,7 @@ public class RiotController {
 	@Autowired
 	private MatchService msvc;
 
-	private String apiKey = "RGAPI-3b460a38-a47e-4d8b-9f8f-6f610e8f647b";
+	private String apiKey = "RGAPI-bff4cb69-275d-4386-87ef-282365941f78";
 
 	@RequestMapping(value = "/SummoneSerch")
 	public ModelAndView SummoneSerch(String summoneName) throws Exception {
@@ -50,62 +50,118 @@ public class RiotController {
 			} else {
 				System.out.println("소환사 검색 정상 처리 완료.");
 				session.setAttribute("Summoner", Sresult);
-				
-				System.out.println("소환사 정보로 League 검색 요청");
 
+				System.out.println("소환사 정보로 League 검색 요청");
+				session.removeAttribute("SoloList"); 
+				session.removeAttribute("DuoList"); 
+				session.removeAttribute("Unrank"); 
 				// 랭크 값 받아오기
 				LeagueEntryDto Lresult = lsvc.leagueserch(Sresult, apiKey, 0);
 
 				if (Lresult != null) {
-					if(!(Lresult.isUnrankBoolean())) {
-						
-					
-					// Lresult.size가 2일시 true
-					if (Lresult.isDuoBoolean()) {
-						// SoloList 솔로랭크 검색 요청
-						LeagueEntryDto SoloList = lsvc.leagueserch(Sresult, apiKey, 1);
-						session.setAttribute("SoloList", SoloList);
+					if (!(Lresult.isUnrankboolean())) {
 
-						// Lresult = 자유랭크
-						LeagueEntryDto DuoList = Lresult;
-						session.setAttribute("DuoList", DuoList);
-
-					} else {
-						// Lresult의 queueType이 솔로랭크일시 true
-						if (Lresult.isSoloBoolean()) {
-							LeagueEntryDto SoloList = Lresult;
-							session.setAttribute("SoloList", SoloList);
-						} else {
+						// Lresult.DuoBoolean이 true일 시
+						if (Lresult.isDuoboolean()) {
+							// Lresult = 자유랭크
 							LeagueEntryDto DuoList = Lresult;
 							session.setAttribute("DuoList", DuoList);
+
+							for (int i = 1; i < Lresult.getDatasize(); i++) {
+								if (Lresult.getDatasize() > 1) {
+									// SoloList 솔로랭크 검색 요청
+									LeagueEntryDto DLresult = lsvc.leagueserch(Sresult, apiKey, i);
+									if (DLresult.isSoloboolean()) {
+										session.setAttribute("SoloList", DLresult);
+									}
+								}
+
+							}
+
+						} else if (Lresult.isSoloboolean()) {
+							// Lresult의 queueType이 솔로랭크일시 true
+							LeagueEntryDto SoloList = Lresult;
+							session.setAttribute("SoloList", SoloList);
+
+							for (int i = 1; i < Lresult.getDatasize(); i++) {
+								if (Lresult.getDatasize() > 1) {
+									// DuoList 자유랭크 검색 요청
+									LeagueEntryDto SLresult = lsvc.leagueserch(Sresult, apiKey, i);
+									if (SLresult.isDuoboolean()) {
+										session.setAttribute("DuoList", SLresult);
+									}
+								}
+
+							}
+						} else {
+							if (Lresult.getDatasize() >= 1) {
+
+								for (int i = 1; i < Lresult.getDatasize(); i++) {
+									if (Lresult.getDatasize() > 1) {
+										LeagueEntryDto RLresult = lsvc.leagueserch(Sresult, apiKey, i);
+
+										if (RLresult.isDuoboolean()) {
+											// Lresult = 자유랭크
+											LeagueEntryDto DuoList = RLresult;
+											session.setAttribute("DuoList", DuoList);
+
+											if (RLresult.getDatasize() > 1) {
+												// SoloList 솔로랭크 검색 요청
+												LeagueEntryDto SoloList = lsvc.leagueserch(Sresult, apiKey, i);
+												if (SoloList.isSoloboolean()) {
+													session.setAttribute("SoloList", SoloList);
+												}
+											}
+
+										} else if (RLresult.isSoloboolean()) {
+											// Lresult의 queueType이 솔로랭크일시 true
+											LeagueEntryDto SoloList = RLresult;
+											session.setAttribute("SoloList", SoloList);
+
+											if (RLresult.getDatasize() > 1) {
+												// DuoList 자유랭크 검색 요청
+												LeagueEntryDto DuoList = lsvc.leagueserch(Sresult, apiKey, i);
+												if (DuoList.isSoloboolean()) {
+													session.setAttribute("DuoList", DuoList);
+												}
+											}
+
+										}
+									}
+
+								}
+							}else {
+								// Lresult.getDataSize()가 2이상이 아닐 시 unrank 설정
+								LeagueEntryDto Unrank = Lresult;
+								session.setAttribute("Unrank", Unrank);
+							}
 						}
+						
+						
+					} else {
+						// Lresult 결과가 unrank 일시
+						LeagueEntryDto Unrank = Lresult;
+						session.setAttribute("Unrank", Unrank);
 					}
-				}else {
-					// Lresult 결과가 unrank 일시
-					LeagueEntryDto Unrank = Lresult;
-					session.setAttribute("Unrank", Unrank);
-				}
 
 					System.out.println("리그 검색 정상 처리 완료.");
-					
+
 					System.out.println("소환사 정보로 Match 검색 요청");
 
 					System.out.println("리그 정보로 최근 20 게임 정보 검색 요청");
 
 					ArrayList<MatchDto> Mresult = msvc.matchserch(Sresult, apiKey, 1);
-					
+
 					session.setAttribute("MatchList", Mresult);
-					
+
 					System.out.println("매치 정보 검색 정상 처리 완료");
-					
-				}else {
+
+				} else {
 					System.out.println("오류가 발생했습니다.");
 					mav.setViewName("redirect:/");
 					return mav;
 				}
-				
-				
-				
+
 			}
 
 			mav.setViewName("record/RecordPage");
@@ -120,46 +176,100 @@ public class RiotController {
 
 	@RequestMapping(value = "/Leaguerenewal")
 	public @ResponseBody ArrayList<LeagueEntryDto> Leaguerenewal(SummonerDto Sresult) throws Exception {
-		System.out.println("소환사 정보로 League 검색 요청");
 		ArrayList<LeagueEntryDto> LresultList = new ArrayList<LeagueEntryDto>();
+		System.out.println("소환사 정보로 League 검색 요청");
 
 		// 랭크 값 받아오기
 		LeagueEntryDto Lresult = lsvc.leagueserch(Sresult, apiKey, 0);
 
 		if (Lresult != null) {
-			if(!(Lresult.isUnrankBoolean())) {
-				
-			
-			// Lresult.size가 2일시 true
-			if (Lresult.isDuoBoolean()) {
-				// SoloList 솔로랭크 검색 요청
-				LeagueEntryDto SoloList = lsvc.leagueserch(Sresult, apiKey, 1);
-				LresultList.add(SoloList);
+			if (!(Lresult.isUnrankboolean())) {
 
-				// Lresult = 자유랭크
-				LeagueEntryDto DuoList = Lresult;
-				LresultList.add(DuoList);
-
-			} else {
-				// Lresult의 queueType이 솔로랭크일시 true
-				if (Lresult.isSoloBoolean()) {
-					LeagueEntryDto SoloList = Lresult;
-					LresultList.add(SoloList);
-				} else {
+				// Lresult.DuoBoolean이 true일 시
+				if (Lresult.isDuoboolean()) {
+					// Lresult = 자유랭크
 					LeagueEntryDto DuoList = Lresult;
 					LresultList.add(DuoList);
+
+					for (int i = 0; i < Lresult.getDatasize(); i++) {
+						if (Lresult.getDatasize() > 1) {
+							// SoloList 솔로랭크 검색 요청
+							LeagueEntryDto SoloList = lsvc.leagueserch(Sresult, apiKey, i);
+							if (SoloList.isSoloboolean()) {
+								LresultList.add(SoloList);
+							}
+						}
+
+					}
+
+				} else if (Lresult.isSoloboolean()) {
+					// Lresult의 queueType이 솔로랭크일시 true
+					LeagueEntryDto SoloList = Lresult;
+					LresultList.add(SoloList);
+
+					for (int i = 0; i < Lresult.getDatasize(); i++) {
+						if (Lresult.getDatasize() > 1) {
+							// SoloList 솔로랭크 검색 요청
+							LeagueEntryDto DuoList = lsvc.leagueserch(Sresult, apiKey, i);
+							if (DuoList.isSoloboolean()) {
+								LresultList.add(DuoList);
+							}
+						}
+
+					}
+				}else {
+					if (Lresult.getDatasize() >= 1) {
+
+						for (int i = 1; i < Lresult.getDatasize(); i++) {
+							if (Lresult.getDatasize() > 1) {
+								LeagueEntryDto RLresult = lsvc.leagueserch(Sresult, apiKey, i);
+
+								if (RLresult.isDuoboolean()) {
+									// Lresult = 자유랭크
+									LeagueEntryDto DuoList = RLresult;
+									session.setAttribute("DuoList", DuoList);
+
+									if (RLresult.getDatasize() > 1) {
+										// SoloList 솔로랭크 검색 요청
+										LeagueEntryDto SoloList = lsvc.leagueserch(Sresult, apiKey, i);
+										if (SoloList.isSoloboolean()) {
+											session.setAttribute("SoloList", SoloList);
+										}
+									}
+
+								} else if (RLresult.isSoloboolean()) {
+									// Lresult의 queueType이 솔로랭크일시 true
+									LeagueEntryDto SoloList = RLresult;
+									session.setAttribute("SoloList", SoloList);
+
+									if (RLresult.getDatasize() > 1) {
+										// DuoList 자유랭크 검색 요청
+										LeagueEntryDto DuoList = lsvc.leagueserch(Sresult, apiKey, i);
+										if (DuoList.isSoloboolean()) {
+											session.setAttribute("DuoList", DuoList);
+										}
+									}
+
+								}
+							}
+
+						}
+					}else {
+						// Lresult.getDataSize()가 2이상이 아닐 시 unrank 설정
+						LeagueEntryDto Unrank = Lresult;
+						session.setAttribute("Unrank", Unrank);
+					}
 				}
+			} else {
+				// Lresult 결과가 unrank 일시
+				LeagueEntryDto Unrank = Lresult;
+				LresultList.add(Unrank);
 			}
-		}else {
-			// Lresult 결과가 unrank 일시
-			LeagueEntryDto Unrank = Lresult;
-			LresultList.add(Unrank);
-		}
 
 			System.out.println("리그 검색 정상 처리 완료.");
 			return LresultList;
-			
-		}else {
+
+		} else {
 			System.out.println("오류가 발생했습니다.");
 			return null;
 		}
@@ -170,7 +280,7 @@ public class RiotController {
 	public @ResponseBody ArrayList<MatchDto> Matchrenewal(SummonerDto Sresult, int j) throws Exception {
 		System.out.println("소환사 정보로 Match 검색 요청");
 
-		System.out.println("리그 정보로 최근 "+(j*20-20)+"~"+(j*20)+"게임 정보 검색 요청");
+		System.out.println("리그 정보로 최근 " + (j * 20 - 20) + "~" + (j * 20) + "게임 정보 검색 요청");
 
 		ArrayList<MatchDto> Mresult = msvc.matchserch(Sresult, apiKey, j);
 		return Mresult;

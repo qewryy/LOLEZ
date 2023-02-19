@@ -2,9 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!doctype html>
-<html class="no-js  classOfHtml" lang="ko" 
-style="
-	--main100: #ECF2FF;
+<html class="no-js  classOfHtml" lang="ko" style="	--main100: #ECF2FF;
     --main200: #D5E3FF;
     --main300: #B3CDFF;
     --main400: #81ACFF;
@@ -106,7 +104,7 @@ style="
     --bronze800: #52493F;
     --bronze900: #3A3734;
     --homeDesktop: #5383E8;
-    --homeMobile: #ebeef1;" >
+    --homeMobile: #ebeef1;">
 <head>
 
 <!--  <style data-emotion="css-global" data-s="">@font-face{font-family:"Roboto";font-style:normal;font-weight:400;font-display:swap;src:url(https://s-lol-web.op.gg/fonts/Roboto/Roboto-Regular.woff2) format("woff2"),url(https://s-lol-web.op.gg/fonts/Roboto/Roboto-Regular.woff) format("woff");}@font-face{font-family:"Roboto";font-style:normal;font-weight:700;font-display:swap;src:url(https://s-lol-web.op.gg/fonts/Roboto/Roboto-Bold.woff2) format("woff2"),url(https://s-lol-web.op.gg/fonts/Roboto/Roboto-Bold.woff) format("woff");}#nprogress{pointer-events:none;}#nprogress .bar{background:#EB9C00;position:fixed;z-index:10000006;top:0;left:0;width:100%;height:2px;}#nprogress .peg{display:block;position:absolute;right:0px;width:100px;height:100%;box-shadow:0 0 10px #EB9C00,0 0 5px #EB9C00;opacity:1;-webkit-transform:rotate(3deg) translate(0px, -4px);-ms-transform:rotate(3deg) translate(0px, -4px);-webkit-transform:rotate(3deg) translate(0px, -4px);-moz-transform:rotate(3deg) translate(0px, -4px);-ms-transform:rotate(3deg) translate(0px, -4px);transform:rotate(3deg) translate(0px, -4px);}html,body,button,select,input,textarea,label,a,table{font-family:"Roboto",sans-serif;}html:lang(ko),html:lang(ko) body,html:lang(ko) button,html:lang(ko) select,html:lang(ko) input,html:lang(ko) textarea,html:lang(ko) label,html:lang(ko) a,html:lang(ko) table{font-family:"Apple SD Gothic Neo","Roboto",sans-serif;}[data-emotion]{display:none!important;}body,h1,h2,h3,h4,p,ol,ul,dl,dd,button{margin:0;padding:0;}html{font-family:sans-serif;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;background-color:#ebeef1;background-color:var(--gray200);}h1,h2,h3,h4,h5,h6{margin:0;}ul,li{list-style:none;}dl,dt,dd,ol,ul,li{list-style:none;margin:0;padding:0;}iframe{border:0;}img{border:0;vertical-align:middle;max-width:100%;}a:focus{outline:thin dotted;}a:active,a:hover{outline:0;}a{-webkit-text-decoration:none;text-decoration:none;color:#202D37;color:var(--gray900);}input{margin:0;padding:0;outline:none;}input,select{background:#fff;border:none;vertical-align:middle;}input[type="text"]::-ms-clear{display:none;width:0;height:0;}textarea{width:100%;background:none;border:0;margin:0;padding:0;resize:none;word-break:break-all;overflow-y:hidden;font-size:14px;line-height:1.43;color:#202d37;}label{cursor:pointer;}button{margin:0;padding:0;border:0;cursor:pointer;background:none;}a{cursor:pointer;}input,textarea{-webkit-appearance:none;-webkit-border-radius:0;}.hidden{position:absolute;}caption,.hidden{clip:rect(0 0 0 0);width:1px;height:1px;margin:-1px;overflow:hidden;}footer,header{display:block;}ol,ul,li{list-style:none;}button{border:0;padding:0;background:transparent;cursor:pointer;}b,strong{font-weight:bold;}textarea{overflow:auto;vertical-align:top;}table{border-collapse:collapse;border-spacing:0;}th,td{padding:0;margin:0;}select{border-radius:0;-webkit-appearance:none;-moz-appearance:none;-ms-appearance:none;appearance:none;}.react-tooltip-lite{max-width:300px;color:#fff;font-size:11px;background:#1c1e1e;}.react-tooltip-lite-arrow{border-color:#1c1e1e;}.tooltip320{display:inline-block;vertical-align:middle;margin-left:5px;}.tooltip320 .react-tooltip-lite{max-width:320px!important;}.tooltip690-light .react-tooltip-lite{background:none!important;}.tooltip690-light .react-tooltip-lite-arrow{border-color:#1d2f51;}#__next{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;height:100%;}.react-tooltip-lite{max-width:300px;background:#000;}.react-tooltip-lite-arrow{border-color:#000;}.bg-image{background-color:#ebeef1;background-color:var(--gray200);}.loader,.loader:after{border-radius:50%;width:10em;height:10em;}.loader{margin:60px auto;font-size:10px;position:relative;text-indent:-9999em;border-top:1.1em solid rgba(255, 255, 255, 0.2);border-right:1.1em solid rgba(255, 255, 255, 0.2);border-bottom:1.1em solid rgba(255, 255, 255, 0.2);border-left:1.1em solid #ffffff;-webkit-transform:translateZ(0);-ms-transform:translateZ(0);-webkit-transform:translateZ(0);-moz-transform:translateZ(0);-ms-transform:translateZ(0);transform:translateZ(0);-webkit-animation:load8 1.1s infinite linear;-webkit-animation:load8 1.1s infinite linear;animation:load8 1.1s infinite linear;}@-webkit-keyframes load8{0%{-webkit-transform:rotate(0deg);-webkit-transform:rotate(0deg);-moz-transform:rotate(0deg);-ms-transform:rotate(0deg);transform:rotate(0deg);}100%{-webkit-transform:rotate(360deg);-webkit-transform:rotate(360deg);-moz-transform:rotate(360deg);-ms-transform:rotate(360deg);transform:rotate(360deg);}}@-webkit-keyframes load8{0%{-webkit-transform:rotate(0deg);-webkit-transform:rotate(0deg);-moz-transform:rotate(0deg);-ms-transform:rotate(0deg);transform:rotate(0deg);}100%{-webkit-transform:rotate(360deg);-webkit-transform:rotate(360deg);-moz-transform:rotate(360deg);-ms-transform:rotate(360deg);transform:rotate(360deg);}}@keyframes load8{0%{-webkit-transform:rotate(0deg);-webkit-transform:rotate(0deg);-moz-transform:rotate(0deg);-ms-transform:rotate(0deg);transform:rotate(0deg);}100%{-webkit-transform:rotate(360deg);-webkit-transform:rotate(360deg);-moz-transform:rotate(360deg);-ms-transform:rotate(360deg);transform:rotate(360deg);}}#measure-layer *{-ms-overflow-style:none;scrollbar-width:none;}#measure-layer *::-webkit-scrollbar{width:0;}#measure-layer *::-webkit-scrollbar-track{background:transparent;box-shadow:none;}#measure-layer *::-webkit-scrollbar-thumb{background-color:transparent;box-shadow:none;}.simplebar-track.simplebar-vertical{width:12px;}.simplebar-scrollbar:before{border-radius:4px;background:rgba(0, 0, 0, 0.4);}[data-theme="dark"] .simplebar-scrollbar:before{background:hsla(0, 0%, 100%, 0.5);}.simplebar-scrollbar.simplebar-visible:before{opacity:1;}</style>
@@ -173,9 +171,9 @@ style="
 	href="${pageContext.request.contextPath }/resources/assets/css/nice-select.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath }/resources/assets/css/style.css">
-	
- 	<link rel="stylesheet"
-	href="${pageContext.request.contextPath }/resources/assets/css/lolezRecord.css"> 
+
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath }/resources/assets/css/lolezRecord.css">
 
 <!-- Custom styles for this page -->
 <link
@@ -227,29 +225,92 @@ style="
 		</div>
 		<div id="content-container" class="css-8whjbz e8nboil2">
 			<div>
+			<%-- 
+			<c:choose>
+				<c:when test="${SoloList.soloboolean}">
+					<div>
+					</div>
+				</c:when>
+				
+
+				
+				<c:otherwise>
+				
+				</c:otherwise>
+			
+			</c:choose>
+			 --%>
+			
+			
+<%-- 			<c:if test="${Unrank.unrankboolean}">
+				<div class="css-1v663t e1x14w4w1"><div class="header">솔로랭크<span class="unranked">Unranked</span></div></div>
+				<div class="css-1474l3c e1x14w4w1"><div class="header">자유랭크<span class="unranked">Unranked</span></div></div>
+			</c:if> --%>
+			
+			<c:choose>
+			
+			<%--조건 : 솔랭 전적이 있는경우, 전적이 없는 경우 --%>
+			
+				<c:when test="${SoloList.soloboolean}">
 				<div class="css-1v663t e1x14w4w1">
 					<div class="header">솔로랭크</div>
 					<div class="contents">
 						<div class="" style="position: relative;">
-							<img
-								src="https://opgg-static.akamaized.net/images/medals_new/challenger.png?image=q_auto,f_webp,w_144&amp;v=1675751623266"
-								width="72" alt="CHALLENGER">
+							<img id="tierImg_of_SoloList" src="" width="72" alt="${SoloList.tier }">
 						</div>
 						<div class="info">
-							<div class="tier">challenger</div>
-							<div class="lp">962 LP</div>
+							<div class="tier">${SoloList.tier} ${SoloList.rank}</div>
+							<div class="lp">${SoloList.leaguePoints}LP</div>
 						</div>
 						<div class="win-lose-container">
-							<div class="win-lose">93승 62패</div>
-							<div class="ratio">승률 60%</div>
+							<div class="win-lose" id="result_SL">${SoloList.wins} 승 ${SoloList.losses} 패</div>
+
+							<div class="ratio" id="winning_rate_of_SoloList"></div>
+						</div>
+					</div>
+					
+				</div>
+				
+				</c:when>
+				
+						<c:when test="!${SoloList.soloboolean}">
+						<div class="css-1v663t e1x14w4w1"><div class="header">솔로랭크<span class="unranked">Unranked</span></div></div>
+						</c:when>
+				
+				
+			<c:when test="${DuoList.duoboolean}">
+				<div class="css-1474l3c e1x14w4w1">
+					<div class="header">자유랭크</div>
+					<div class="contents">
+						<div class="" style="position: relative;">
+							<img id="tierImg_of_DuoList"
+								src=""
+								width="40" alt="${DuoList.tier }">
+						</div>
+						<div class="info">
+							<div class="tier">${DuoList.tier} ${DuoList.rank}</div>
+							<div class="lp">${DuoList.leaguePoints} LP</div>
+						</div>
+						<div class="win-lose-container">
+							<div class="win-lose">${DuoList.wins} 승 ${DuoList.losses} 패</div>
+							<div class="ratio" id="winning_rate_of_DuoList"> </div>
 						</div>
 					</div>
 				</div>
-				<div class="css-1474l3c e1x14w4w1">
-					<div class="header">
-						자유랭크<span class="unranked">Unranked</span>
-					</div>
-				</div>
+				</c:when>
+			
+						<c:when test="!${DuoList.duoboolean}">
+							<div class="css-1474l3c e1x14w4w1"><div class="header">자유랭크<span class="unranked">Unranked</span></div></div>
+						</c:when>
+						
+					<c:otherwise>
+				<div class="css-1v663t e1x14w4w1"><div class="header">솔로랭크<span class="unranked">Unranked</span></div></div>
+				<div class="css-1474l3c e1x14w4w1"><div class="header">자유랭크<span class="unranked">Unranked</span></div></div>
+					</c:otherwise>
+
+			
+			</c:choose>
+
 				<div class="css-e9xk5o e1g7spwk3">
 					<ul>
 						<li class="css-1lteyi9 e1g7spwk2"><button>S2023 전체</button></li>
@@ -439,7 +500,7 @@ style="
 						</a>
 					</div>
 				</div>
-			
+
 				<div class="css-ut2tyh e1rsywk30">
 					<div>같은 팀으로 게임한 소환사들 (최근 20 게임)</div>
 					<table>
@@ -693,9 +754,9 @@ style="
 						</ul>
 					</div>
 				</div>
-				
-				
-				
+
+
+
 				<div class="css-164r41r e1r5v5160">
 					<li class="css-1qq23jn e1iiyghw3"><div result="LOSE"
 							class="css-jc3q2t e1iiyghw2">
@@ -928,10 +989,10 @@ style="
 								</button>
 							</div>
 						</div></li>
-						
-						
 
-					
+
+
+
 					<li class="css-1qq23jn e1iiyghw3"><div result="WIN"
 							class="css-1shak8a e1iiyghw2">
 							<div class="contents">
@@ -1179,7 +1240,7 @@ style="
 								</button>
 							</div>
 						</div></li>
-						
+
 					<li class="css-1qq23jn e1iiyghw3"><div result="REMAKE"
 							class="css-1dbudbg e1iiyghw2">
 							<div class="contents">
@@ -1477,9 +1538,170 @@ style="
 
 
 <script type="text/javascript">
-	console.log("소환사 티어 확인");
-	console.log("${Summoner}");
-	console.log("${DuoList}");
+	
+	var tier=["IRON","BRONZE","SILVER","GOLD","PLATINUM","DIAMOND","MASTER","GRANDMASTER","CHALLENGER"]
+	var ran=["I","II","III","IV"]
+	var checkSoloList = "${SoloList.tier}";
+	var checkDuoList = "${DuoList.tier}";
+	
+	var test1u = "${Unrank.unrankboolean}";
+	var test1s = "${SoloList.soloboolean}";
+	var test1d = "${DuoList.duoboolean}";
+	
+	
+	console.log("unrankBoolean , SoloBoolean, DuoBoolean 순서로 확인 공백의 의미는 false임 ");
+	console.log(test1u);
+	console.log(test1s);
+	console.log(test1d);
+	
+	
+	
+	
+	
+	if(test1u){
+		// 언랭임
+		test1u = true;
+	}else{
+		// 언랭아님
+		test1u = false;
+		
+	}
+	
+		if(!test1u){
+			if(test1s){
+				test1s = true;
+			}else{
+				test1s = false;
+			}
+			
+			if(test1d){
+				test1d = true;
+			}else{
+				test1d = false;
+			}
+		}
+
+	
+	console.log("결과 확인 test1u: " + test1u);
+	console.log("결과 확인 test1s: " + test1s);
+	console.log("결과 확인 test1d: " + test1d);
+	
+	
+	if( checkSoloList.length != 0){
+		
+		console.log("솔랭 작동");
+		
+	var img_of_SoloList = document.getElementById("tierImg_of_SoloList");
+	var userTier_of_SoloList = img_of_SoloList.alt;
+	var tierNum_of_SoloList;
+	for(var i=0; i<tier.length; i++){
+		if(userTier_of_SoloList.indexOf(tier[i])!= -1  )
+			tierNum_of_SoloList = i;
+
+	}
+	
+	switch (tierNum_of_SoloList) {
+	case 0:
+		img_of_SoloList.src="${pageContext.request.contextPath }/resources/assets/img/tier/06022022_TFTDevArticle_0000_TFT_Iron.jpg";
+		break;
+	case 1:
+		img_of_SoloList.src="${pageContext.request.contextPath }/resources/assets/img/tier/06022022_TFTDevArticle_0001_TFT_Bronze.jpg";
+		break;
+
+	case 2:
+		img_of_SoloList.src="${pageContext.request.contextPath }/resources/assets/img/tier/06022022_TFTDevArticle_0002_TFT_Silver.jpg";
+		break;
+
+	case 3:
+		img_of_SoloList.src="${pageContext.request.contextPath }/resources/assets/img/tier/06022022_TFTDevArticle_0003_TFT_Gold.jpg";
+		break;
+
+	case 4:
+		img_of_SoloList.src="${pageContext.request.contextPath }/resources/assets/img/tier/06022022_TFTDevArticle_0004_TFT_Platinum.jpg";
+		break;
+
+	case 5:
+		img_of_SoloList.src="${pageContext.request.contextPath }/resources/assets/img/tier/06022022_TFTDevArticle_0005_TFT_Diamon.jpg";
+		break;
+
+	case 6:
+		img_of_SoloList.src="${pageContext.request.contextPath }/resources/assets/img/tier/06022022_TFTDevArticle_0006_TFT_Master.jpg";
+		break;
+
+	case 7:
+		img_of_SoloList.src="${pageContext.request.contextPath }/resources/assets/img/tier/06022022_TFTDevArticle_0007_TFT_GrandMaster.jpg";
+		break;
+
+	case 8:
+		img_of_SoloList.src="${pageContext.request.contextPath }/resources/assets/img/tier/06022022_TFTDevArticle_0008_TFT_Challenger.jpg";
+		break;
+
+
+		}
+	
+/*  	var result_of_SoloList = Math.ceil(${SoloList.wins}/(${SoloList.wins} + ${SoloList.losses} )*100); 
+	document.getElementById('winning_rate_of_SoloList').innerText ="승률 "+result_of_SoloList+"%";   */
+	}
+	
+	
+	
+	if(checkDuoList.length != 0){
+		
+		console.log("자랭 작동");
+		
+	var img_of_DuoList = document.getElementById("tierImg_of_DuoList");	
+	var userTier_of_DuoList = img_of_DuoList.alt;
+	var tierNum_of_DuoList;
+	for(var i=0; i<tier.length; i++){
+		if(userTier_of_DuoList.indexOf(tier[i])!= -1  )
+			tierNum_of_DuoList = i;
+
+	}
+	switch (tierNum_of_DuoList) {
+	case 0:
+		img_of_DuoList.src="${pageContext.request.contextPath }/resources/assets/img/tier/06022022_TFTDevArticle_0000_TFT_Iron.jpg";
+		break;
+	case 1:
+		img_of_DuoList.src="${pageContext.request.contextPath }/resources/assets/img/tier/06022022_TFTDevArticle_0001_TFT_Bronze.jpg";
+		break;
+
+	case 2:
+		img_of_DuoList.src="${pageContext.request.contextPath }/resources/assets/img/tier/06022022_TFTDevArticle_0002_TFT_Silver.jpg";
+		break;
+
+	case 3:
+		img_of_DuoList.src="${pageContext.request.contextPath }/resources/assets/img/tier/06022022_TFTDevArticle_0003_TFT_Gold.jpg";
+		break;
+
+	case 4:
+		img_of_DuoList.src="${pageContext.request.contextPath }/resources/assets/img/tier/06022022_TFTDevArticle_0004_TFT_Platinum.jpg";
+		break;
+
+	case 5:
+		img_of_DuoList.src="${pageContext.request.contextPath }/resources/assets/img/tier/06022022_TFTDevArticle_0005_TFT_Diamon.jpg";
+		break;
+
+	case 6:
+		img_of_DuoList.src="${pageContext.request.contextPath }/resources/assets/img/tier/06022022_TFTDevArticle_0006_TFT_Master.jpg";
+		break;
+
+	case 7:
+		img_of_DuoList.src="${pageContext.request.contextPath }/resources/assets/img/tier/06022022_TFTDevArticle_0007_TFT_GrandMaster.jpg";
+		break;
+
+	case 8:
+		img_of_DuoList.src="${pageContext.request.contextPath }/resources/assets/img/tier/06022022_TFTDevArticle_0008_TFT_Challenger.jpg";
+		break;
+
+
+	}
+/*   	 var result_of_DuoList = Math.ceil(${DuoList.wins}/(${DuoList.wins} + ${DuoList.losses} )*100); 
+	 document.getElementById('winning_rate_of_DuoList').innerText ="승률 "+result_of_DuoList+"%";    */
+	
+	}
+	
+
+
 
 </script>
 </html>

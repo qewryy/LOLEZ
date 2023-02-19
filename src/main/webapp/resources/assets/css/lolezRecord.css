@@ -404,13 +404,66 @@ caption, .hidden {
 	color: var(--gray900);
 }
 
+.css-1474l3c > .contents {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    padding: 12px;
+    border-top-width: 1px;
+    border-top-style: solid;
+    border-color: var(--gray200);
+}
+
+.css-1474l3c > .contents .info {
+    flex: 1 1 0%;
+    position: relative;
+    margin-left: 8px;
+}
+
+.css-1474l3c > .contents .info .tier {
+    line-height: 20px;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: capitalize;
+    color: var(--gray900);
+    font-family: Roboto, sans-serif;
+}
+
+.css-1474l3c > .contents .info .lp {
+    line-height: 16px;
+    font-size: 12px;
+    color: var(--gray500);
+    font-family: Roboto, sans-serif;
+}
+
+.css-1474l3c > .contents .win-lose-container {
+    font-size: 12px;
+    text-align: right;
+    color: var(--gray400);
+}
+
+.css-1474l3c > .contents img {
+    background-color: var(--gray100);
+    border-radius: 50%;
+}
+
+.css-1474l3c > .contents .win-lose-container .win-lose {
+    line-height: 20px;
+}
+
+.css-1474l3c > .contents .win-lose-container .ratio {
+    margin-top: 2px;
+    line-height: 16px;
+}
+
+/* 자유랭크 끝 -----------------*/
+
 .css-1474l3c .header .unranked { /* 언랭크드 부분 */
 	font-size: 14px;
 	font-weight: bold;
 	color: var(--gray300);
 	font-family: Roboto, sans-serif;
 }
-/* 자유랭크 끝 -----------------*/
 
 /* 시즌 전체 / 솔로랭크 / 자유랭크  시작 부분--------------*/
 .css-e9xk5o { /* 통계에서도 사용됨  */
