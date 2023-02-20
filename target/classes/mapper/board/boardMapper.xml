@@ -26,7 +26,7 @@
 		BHITS = BHITS + 1 WHERE BNO = #{viewBno}
 	</update>
 
-	<select id="selectBoardView" resultType="board">
+	<!-- <select id="selectBoardView" resultType="board">
 		SELECT * FROM BOARDS WHERE BNO = #{viewBno}
 	</select>
 
@@ -50,5 +50,5 @@
 	
 	<select id="selectReplyLikeCount" resultType="int">
 		SELECT COUNT(*) FROM REPLYLIKE WHERE RLNUM = #{renum}
-	</select>
+	</select> -->
 </mapper> 
