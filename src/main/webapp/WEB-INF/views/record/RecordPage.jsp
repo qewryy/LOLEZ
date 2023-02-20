@@ -1388,6 +1388,9 @@
 	var checkSoloList = "${SoloList.tier}";
 	var checkDuoList = "${DuoList.tier}";
 	
+	console.log("{$MatchList}");
+	
+	
 	var Unrank = "${Unrank.unrankboolean}";
 	var SoloList = "${SoloList.soloboolean}";
 	var DuoList = "${DuoList.duoboolean}";
