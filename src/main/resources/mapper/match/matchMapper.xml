@@ -88,5 +88,15 @@
         VALUES(#{teamId}, #{gameId}, #{first}, #{kills}, #{type} )
     </insert>
 	
+	<select id="selectmatchteam" resultType="part">
+		SELECT * FROM PARTICIPANT WHERE GAMEID = #{matchid} 
+		AND PUUID = #{puuid} 
+	</select>
+	
+	<select id="selectuserteam" resultType="part">
+		SELECT * FROM PARTICIPANT WHERE GAMEID = #{matchid} 
+		AND PUUID = #{puuid} 
+	</select>
+	
 </mapper> 
 

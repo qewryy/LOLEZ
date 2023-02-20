@@ -30,7 +30,25 @@
 		SELECT * FROM BOARDS WHERE BNO = #{viewBno}
 	</select>
 
-	<!-- <select id="selectLikeCheck" resultType="String">
+	<select id="selectLikeCheck" resultType="String">
 		SELECT * FROM BOARDS WHERE LBNO = #{lbno} AND LMID = #{lmid}
-	</select> -->
+	</select>
+	
+	<insert id="insertBoardLike" parameterType="board">
+		INSERT INTO BOARDLIKE(LBNO, LMID, LSTATE) 
+		VALUES(#{lbno}, #{lmid}, '0')
+	</insert>
+	
+	<delete id="deleteBoardLike" parameterType="int">
+		DELETE FROM BOARDLIKE 
+		WHERE LBNO = #{lbno} AND LMID = #{lmid}
+	</delete>
+	
+	<select id="selectBoardView" resultType="int">
+		SELECT COUNT(*) FROM BOARDLIKE WHERE LBNO = #{lbno}
+	</select>
+	
+	<select id="selectReplyLikeCount" resultType="int">
+		SELECT COUNT(*) FROM REPLYLIKE WHERE RLNUM = #{renum}
+	</select>
 </mapper> 

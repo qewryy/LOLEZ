@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.lolez.dto.BoardDto;
+import com.lolez.dto.ReplyDto;
 import com.lolez.service.BoardService;
 
 @Controller
@@ -40,12 +41,13 @@ public class BoardController {
 		System.out.println("글 작성 페이지 요청");
 		ModelAndView mav = new ModelAndView();
 
-		/*
-		 * if(session.getAttribute("loginNickname") == null) {
-		 * mav.setViewName("redirect:/memberLoginForm"); return mav; }else {
-		 * mav.setViewName("board/BoardWriteForm"); }
-		 */
-		mav.setViewName("board/BoardWriteForm");
+		if (session.getAttribute("loginNickname") == null) {
+			mav.setViewName("redirect:/LoginForm");
+			return mav;
+		} else {
+			mav.setViewName("board/BoardWriteForm");
+		}
+
 		return mav;
 	}
 
@@ -61,11 +63,6 @@ public class BoardController {
 		}
 
 		String loginNickname = (String) session.getAttribute("loginNickname");
-
-		if (session.getAttribute("loginNickname") == null) {
-			mav.setViewName("redirect:/memberLoginForm");
-			return mav;
-		}
 
 		// 2.board.bwriter(작성자)에 저장
 		board.setBwriter(loginNickname);
@@ -98,22 +95,25 @@ public class BoardController {
 		System.out.println(board);
 		mav.addObject("board", board);
 
-		/*
-		 * //2. 추천수 조회 int blikeCount = bsvc.boardLikeCount(viewBno);
-		 * mav.addObject("blikeCount", blikeCount);
-		 */
+		
+		//2. 추천수 조회 
+		int blikeCount = bsvc.boardLikeCount(viewBno);
+		mav.addObject("blikeCount", blikeCount);
 
-		/* String loginNickname = (String)session.getAttribute("loginNickname"); */
+		String loginNickname = (String)session.getAttribute("loginNickname");
 
-		/*
-		 * //3. 댓글 목록 조회 ArrayList<ReplyDto> replyList =
-		 * bsvc.boardReplyList(viewBno,loginId); mav.addObject("replyList", replyList);
-		 */
+		
+		 //3. 댓글 목록 조회 
+			/*
+			 * ArrayList<ReplyDto> replyList = bsvc.boardReplyList(viewBno,loginNickname);
+			 * mav.addObject("replyList", replyList);
+			 */
 
 		// . 글 상세보기 페이지 이동
 		mav.setViewName("board/BoardView");
 		return mav;
 	}
+	
 
 	/*
 	 * @RequestMapping(value = "/boardLike") public @ResponseBody String
@@ -125,7 +125,7 @@ public class BoardController {
 	 * 
 	 * return result; }
 	 */
-	
+
 	@RequestMapping(value = "/testPage_OF_record")
 	public ModelAndView testPage_OF_recode() {
 		System.out.println("testPage on");
