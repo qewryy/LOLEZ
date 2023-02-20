@@ -247,11 +247,9 @@
 				<div class="css-1474l3c e1x14w4w1"><div class="header">자유랭크<span class="unranked">Unranked</span></div></div>
 			</c:if> --%>
 			
-			<c:choose>
 			
-			<%--조건 : 솔랭 전적이 있는경우, 전적이 없는 경우 --%>
 			
-				<c:when test="${SoloList.soloboolean}">
+			<c:if test="${SoloList.soloboolean}">
 				<div class="css-1v663t e1x14w4w1">
 					<div class="header">솔로랭크</div>
 					<div class="contents">
@@ -270,15 +268,11 @@
 					</div>
 					
 				</div>
-				
-				</c:when>
-				
-						<c:when test="!${SoloList.soloboolean}">
-						<div class="css-1v663t e1x14w4w1"><div class="header">솔로랭크<span class="unranked">Unranked</span></div></div>
-						</c:when>
-				
-				
-			<c:when test="${DuoList.duoboolean}">
+			
+			
+			</c:if>
+			
+			<c:if test="${DuoList.duoboolean}">
 				<div class="css-1474l3c e1x14w4w1">
 					<div class="header">자유랭크</div>
 					<div class="contents">
@@ -297,25 +291,23 @@
 						</div>
 					</div>
 				</div>
-				</c:when>
+			</c:if>
 			
-						<c:when test="!${DuoList.duoboolean}">
-							<div class="css-1474l3c e1x14w4w1"><div class="header">자유랭크<span class="unranked">Unranked</span></div></div>
-						</c:when>
-						
-					<c:otherwise>
-				<div class="css-1v663t e1x14w4w1"><div class="header">솔로랭크<span class="unranked">Unranked</span></div></div>
-				<div class="css-1474l3c e1x14w4w1"><div class="header">자유랭크<span class="unranked">Unranked</span></div></div>
-					</c:otherwise>
-
 			
-			</c:choose>
+			<c:if test="${!SoloList.soloboolean}">
+			<div class="css-1v663t e1x14w4w1"><div class="header">솔로랭크<span class="unranked">Unranked</span></div></div>
+			</c:if>
+			
+			<c:if test="${!DuoList.duoboolean}">
+			<div class="css-1474l3c e1x14w4w1"><div class="header">자유랭크<span class="unranked">Unranked</span></div></div>
+			</c:if>
+			
 
 				<div class="css-e9xk5o e1g7spwk3">
 					<ul>
-						<li class="css-1lteyi9 e1g7spwk2"><button>S2023 전체</button></li>
+<!-- 						<li class="css-1lteyi9 e1g7spwk2"><button>S2023 전체</button></li> -->
 						<li class="css-s6qg8 e1g7spwk2"><button>솔로랭크</button></li>
-						<li class="css-s6qg8 e1g7spwk2"><button>자유랭크</button></li>
+<!-- 						<li class="css-s6qg8 e1g7spwk2"><button>자유랭크</button></li> -->
 					</ul>
 					<div>
 						<div class="champion-box">
@@ -493,130 +485,16 @@
 								<div class="count">7 게임</div>
 							</div>
 						</div>
-						<a class="more" href="/summoners/kr/T1%20Gumayusi/champions">더
-							보기 + 다른 시즌 보기<img
-							src="https://s-lol-web.op.gg/images/icon/icon-arrow-right.svg?v=1675751623266"
-							width="24" alt="" height="24">
-						</a>
 					</div>
-				</div>
-
-				<div class="css-ut2tyh e1rsywk30">
-					<div>같은 팀으로 게임한 소환사들 (최근 20 게임)</div>
-					<table>
-						<caption>같은 팀으로 게임한 소환사들 (최근 20 게임)</caption>
-						<colgroup>
-							<col>
-							<col width="60">
-							<col width="60">
-							<col width="60">
-						</colgroup>
-						<thead>
-							<tr>
-								<th class="name" scope="col">소환사</th>
-								<th class="played" scope="col">게임</th>
-								<th class="win-lose" scope="col">승 - 패</th>
-								<th class="winratio" scope="col">승률</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td class="name"><a href="/summoners/kr/KT%20Way"><img
-										src="https://opgg-static.akamaized.net/images/profile_icons/profileIcon4030.jpg?image=q_auto,f_webp,w_48&amp;v=1675751623266"
-										width="24" alt="">KT Way</a></td>
-								<td class="played">5</td>
-								<td class="win-lose">2 - 3</td>
-								<td class="winratio">40%</td>
-							</tr>
-							<tr>
-								<td class="name"><a href="/summoners/kr/Permaban12283221"><img
-										src="https://opgg-static.akamaized.net/images/profile_icons/profileIcon5641.jpg?image=q_auto,f_webp,w_48&amp;v=1675751623266"
-										width="24" alt="">Permaban12283221</a></td>
-								<td class="played">3</td>
-								<td class="win-lose">1 - 2</td>
-								<td class="winratio">33%</td>
-							</tr>
-							<tr>
-								<td class="name"><a
-									href="/summoners/kr/%EB%84%A4%EC%98%B4%EC%8B%9C%ED%8B%B0%EC%9D%B4%EB%AF%BC%EC%9E%901"><img
-										src="https://opgg-static.akamaized.net/images/profile_icons/profileIcon29.jpg?image=q_auto,f_webp,w_48&amp;v=1675751623266"
-										width="24" alt="">네옴시티이민자1</a></td>
-								<td class="played">2</td>
-								<td class="win-lose">0 - 2</td>
-								<td class="winratio">0%</td>
-							</tr>
-							<tr>
-								<td class="name"><a href="/summoners/kr/xiao123132"><img
-										src="https://opgg-static.akamaized.net/images/profile_icons/profileIcon23.jpg?image=q_auto,f_webp,w_48&amp;v=1675751623266"
-										width="24" alt="">xiao123132</a></td>
-								<td class="played">2</td>
-								<td class="win-lose">1 - 1</td>
-								<td class="winratio">50%</td>
-							</tr>
-							<tr>
-								<td class="name"><a
-									href="/summoners/kr/%EC%A3%BC%EB%8B%88%EC%96%B4%20%EB%84%A4%ED%82%A4"><img
-										src="https://opgg-static.akamaized.net/images/profile_icons/profileIcon5416.jpg?image=q_auto,f_webp,w_48&amp;v=1675751623266"
-										width="24" alt="">주니어 네키</a></td>
-								<td class="played">2</td>
-								<td class="win-lose">2 - 0</td>
-								<td class="winratio">100%</td>
-							</tr>
-							<tr>
-								<td class="name"><a
-									href="/summoners/kr/%EC%9E%A0%EC%9D%B4%EB%B3%B4%EC%95%BD%EC%9D%B4%EC%97%AC"><img
-										src="https://opgg-static.akamaized.net/images/profile_icons/profileIcon29.jpg?image=q_auto,f_webp,w_48&amp;v=1675751623266"
-										width="24" alt="">잠이보약이여</a></td>
-								<td class="played">2</td>
-								<td class="win-lose">1 - 1</td>
-								<td class="winratio">50%</td>
-							</tr>
-							<tr>
-								<td class="name"><a
-									href="/summoners/kr/%EA%BC%AC%EB%A7%88%EC%96%91%EC%94%A8"><img
-										src="https://opgg-static.akamaized.net/images/profile_icons/profileIcon4561.jpg?image=q_auto,f_webp,w_48&amp;v=1675751623266"
-										width="24" alt="">꼬마양씨</a></td>
-								<td class="played">2</td>
-								<td class="win-lose">1 - 1</td>
-								<td class="winratio">50%</td>
-							</tr>
-							<tr>
-								<td class="name"><a
-									href="/summoners/kr/%EC%84%9C%EC%86%94%ED%9D%AC"><img
-										src="https://opgg-static.akamaized.net/images/profile_icons/profileIcon5641.jpg?image=q_auto,f_webp,w_48&amp;v=1675751623266"
-										width="24" alt="">서솔희</a></td>
-								<td class="played">2</td>
-								<td class="win-lose">2 - 0</td>
-								<td class="winratio">100%</td>
-							</tr>
-							<tr>
-								<td class="name"><a href="/summoners/kr/lIlIIIIllllII"><img
-										src="https://opgg-static.akamaized.net/images/profile_icons/profileIcon4497.jpg?image=q_auto,f_webp,w_48&amp;v=1675751623266"
-										width="24" alt="">lIlIIIIllllII</a></td>
-								<td class="played">2</td>
-								<td class="win-lose">1 - 1</td>
-								<td class="winratio">50%</td>
-							</tr>
-							<tr>
-								<td class="name"><a
-									href="/summoners/kr/%EB%85%BC%EB%B9%BC%EB%AF%B8"><img
-										src="https://opgg-static.akamaized.net/images/profile_icons/profileIcon3587.jpg?image=q_auto,f_webp,w_48&amp;v=1675751623266"
-										width="24" alt="">논빼미</a></td>
-								<td class="played">2</td>
-								<td class="win-lose">2 - 0</td>
-								<td class="winratio">100%</td>
-							</tr>
-						</tbody>
-					</table>
 				</div>
 			</div>
 			<div class="css-150oaqg e1shm8tx0">
 				<div class="css-jizu2z emr8enm3">
 					<ul>
-						<li class="css-ywzb36 emr8enm1"><button value="TOTAL">전체</button></li>
+						<!-- <li class="css-ywzb36 emr8enm1"><button value="TOTAL">전체</button></li> -->
 						<li class="css-1oynv5f emr8enm1"><button value="SOLORANKED">솔로랭크</button></li>
-						<li class="css-1oynv5f emr8enm1"><button value="FLEXRANKED">자유랭크</button></li>
-						<li class="css-1oynv5f emr8enm1"><span><label
+						<!-- <li class="css-1oynv5f emr8enm1"><button value="FLEXRANKED">자유랭크</button></li> -->
+<!-- 						<li class="css-1oynv5f emr8enm1"><span><label
 								class="hidden" for="queueType">큐 타입</label><select
 								id="queueType"><option value="TOTAL">큐 타입</option>
 									<option value="NORMAL">일반 (비공개 선택)</option>
@@ -624,46 +502,13 @@
 									<option value="BOT">AI 상대 대전</option>
 									<option value="CLASH">격전</option>
 									<option value="EVENT">이벤트 게임</option>
-									<option value="URF">우르프</option></select></span></li>
+									<option value="URF">우르프</option></select></span></li> -->
 					</ul>
 				</div>
 				<div class="css-3i6n1d ehasqiv3">
 					<div class="stats">
 						<div class="win-lose">20전 11승 8패</div>
 						<div class="kda">
-							<div class="chart">
-								<div class="recharts-wrapper"
-									style="position: relative; cursor: default; width: 88px; height: 88px;">
-									<svg class="recharts-surface" width="88" height="88"
-										viewBox="0 0 88 88" version="1.1">
-										<defs>
-										<clipPath id="recharts7-clip">
-										<rect x="5" y="5" height="78" width="78"></rect></clipPath></defs>
-										<g class="recharts-layer recharts-pie">
-										<g class="recharts-layer recharts-pie-sector">
-										<path stroke="none" fill="#5383E8" color="#5383E8"
-											class="recharts-sector"
-											d="M 44,0 A 44,44,0, 1,1,
-										    23.058314706368762,82.69684505308553
-										    L 29.72157820888779,70.38421253619467
-										    A 30,30,0, 1,0,
-										    44,14 Z"></path></g>
-										<g class="recharts-layer recharts-pie-sector">
-										<path stroke="none" fill="#E84057" color="#E84057"
-											class="recharts-sector"
-											d="M 23.058314706368762,82.69684505308553
-    A 44,44,0,
-    0,1,
-    43.99999999999999,0
-  L 43.99999999999999,14
-            A 30,30,0,
-            0,0,
-            29.72157820888779,70.38421253619467 Z"></path></g></g></svg>
-								</div>
-								<div class="text">
-									<strong>58</strong>%
-								</div>
-							</div>
 							<div class="info">
 								<div class="k-d-a">
 									<span>6.1</span> / <span class="death">4.3</span> / <span>7.1</span>
@@ -1537,68 +1382,82 @@
 </body>
 
 
-<script type="text/javascript">
-	
+<script type="text/javascript">	
 	var tier=["IRON","BRONZE","SILVER","GOLD","PLATINUM","DIAMOND","MASTER","GRANDMASTER","CHALLENGER"]
 	var ran=["I","II","III","IV"]
 	var checkSoloList = "${SoloList.tier}";
 	var checkDuoList = "${DuoList.tier}";
 	
-	var test1u = "${Unrank.unrankboolean}";
-	var test1s = "${SoloList.soloboolean}";
-	var test1d = "${DuoList.duoboolean}";
+	var Unrank = "${Unrank.unrankboolean}";
+	var SoloList = "${SoloList.soloboolean}";
+	var DuoList = "${DuoList.duoboolean}";
+	
+	var winSolo = ${SoloList.wins}+0;
+	var lossesSolo= ${SoloList.losses}+0;
+	
+	var WinDuo = ${DuoList.wins}+0;
+	var lossesDuo= ${DuoList.losses}+0;
 	
 	
 	console.log("unrankBoolean , SoloBoolean, DuoBoolean 순서로 확인 공백의 의미는 false임 ");
-	console.log(test1u);
-	console.log(test1s);
-	console.log(test1d);
+	console.log(Unrank);
+	console.log(SoloList);
+	console.log(DuoList);
+	
+	console.log("${DuoList}");
+	console.log("${DuoList}");
+	
+	
+	console.log("${MatchList}");
+	
+
 	
 	
 	
 	
-	
-	if(test1u){
+	if(Unrank){
 		// 언랭임
-		test1u = true;
+		Unrank = true;	
 	}else{
 		// 언랭아님
-		test1u = false;
+		Unrank = false;
 		
 	}
 	
-		if(!test1u){
-			if(test1s){
-				test1s = true;
+		if(!Unrank){
+			if(SoloList){
+				SoloList = true;
 			}else{
-				test1s = false;
+				SoloList = false;
 			}
 			
-			if(test1d){
-				test1d = true;
+			if(DuoList){
+				DuoList = true;
 			}else{
-				test1d = false;
+				DuoList = false;
 			}
 		}
 
+	console.log("결과 확인 test1u: " + Unrank);
+	console.log("결과 확인 test1s: " + SoloList);
+	console.log("결과 확인 test1d: " + DuoList);
+
 	
-	console.log("결과 확인 test1u: " + test1u);
-	console.log("결과 확인 test1s: " + test1s);
-	console.log("결과 확인 test1d: " + test1d);
-	
-	
-	if( checkSoloList.length != 0){
+	if(SoloList){
 		
 		console.log("솔랭 작동");
 		
 	var img_of_SoloList = document.getElementById("tierImg_of_SoloList");
+	
 	var userTier_of_SoloList = img_of_SoloList.alt;
 	var tierNum_of_SoloList;
+	
 	for(var i=0; i<tier.length; i++){
 		if(userTier_of_SoloList.indexOf(tier[i])!= -1  )
 			tierNum_of_SoloList = i;
 
 	}
+	
 	
 	switch (tierNum_of_SoloList) {
 	case 0:
@@ -1639,13 +1498,16 @@
 
 		}
 	
-/*  	var result_of_SoloList = Math.ceil(${SoloList.wins}/(${SoloList.wins} + ${SoloList.losses} )*100); 
-	document.getElementById('winning_rate_of_SoloList').innerText ="승률 "+result_of_SoloList+"%";   */
+	var result_of_SoloList = Math.ceil(winSolo/(winSolo + lossesSolo )*100); 
+	document.getElementById('winning_rate_of_SoloList').innerText ="승률 "+result_of_SoloList+"%"; 
+	
 	}
 	
 	
 	
-	if(checkDuoList.length != 0){
+	
+	
+	if(DuoList){
 		
 		console.log("자랭 작동");
 		
@@ -1695,8 +1557,9 @@
 
 
 	}
-/*   	 var result_of_DuoList = Math.ceil(${DuoList.wins}/(${DuoList.wins} + ${DuoList.losses} )*100); 
-	 document.getElementById('winning_rate_of_DuoList').innerText ="승률 "+result_of_DuoList+"%";    */
+	 var result_of_DuoList = Math.ceil(WinDuo/(WinDuo + lossesDuo )*100); 
+	 document.getElementById('winning_rate_of_DuoList').innerText ="승률 "+result_of_DuoList+"%";
+
 	
 	}
 	

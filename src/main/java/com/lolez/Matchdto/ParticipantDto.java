@@ -12,7 +12,7 @@ public class ParticipantDto {
 	// PK 설정을 위해 임의로 넣어놓은 값으로 해당 참가자의 puuid 입니다.
 	
 	private int assists;
-	// 해당 참가자가 게임 중에 동료 챔피언을 지원한 횟수입니다.
+	// 해당 참가자가 게임 중에 동료 챔피언을 지원한 횟수입니다. 사ㅇ
 	
 	private int baronKills;
 	// 해당 참가자가 바론을 처치한 횟수입니다.
@@ -24,17 +24,17 @@ public class ParticipantDto {
 	// 해당 참가자가 챔피언으로부터 얻은 경험치입니다.
 	
 	private int champLevel;
-	// 해당 참가자의 챔피언 레벨입니다.
+	// 해당 참가자의 챔피언 레벨입니다.사용
 	
 	private int championId;
-	// 해당 참가자가 선택한 챔피언의 ID입니다.
+	// 해당 참가자가 선택한 챔피언의 ID입니다. ?
 	
 	private String championName;
-	// 해당 참가자가 선택한 챔피언의 이름입니다.
+	// 해당 참가자가 선택한 챔피언의 이름입니다. 사용
 	
 	private int championTransform;
 	// 해당 참가자가 선택한 챔피언의 변신 상태입니다.
-	// 해당 컬럼은 케인의 그림자 암살자 or 다르킨을 나타내는 컬럼입니다.
+	// 해당 컬럼은 케인의 그림자 암살자 or 다르킨을 나타내는 컬럼입니다. 사용
 	
 	private int consumablesPurchased;
 	// 해당 참가자가 구매한 소비 아이템 수입니다. (와드 갯수? 물약 포함인진 모름)
@@ -52,13 +52,13 @@ public class ParticipantDto {
 	// 해당 참가자가 스스로 방어한 총 피해량입니다.
 	
 	private int deaths;
-	// 해당 참가자가 게임 중에 죽은 횟수입니다.
+	// 해당 참가자가 게임 중에 죽은 횟수입니다. 사용
 	
 	private int detectorWardsPlaced;
 	// 해당 참가자가 설치한 시야 와드 수입니다.
 	
 	private int doubleKills;
-	// 해당 참가자가 게임 중에 기록한 더블 처치 횟수입니다.
+	// 해당 참가자가 게임 중에 기록한 더블 처치 횟수입니다. 사용
 	
 	private int dragonKills;
 	// 해당 참가자가 용을 처치한 횟수입니다.
@@ -82,13 +82,13 @@ public class ParticipantDto {
 	// 해당 참가자가 서렌을 한 경우, true로 설정됩니다. 서렌을 하지 않은 경우, false입니다.
 	
 	private int goldEarned;
-	// 해당 참가자가 게임에서 획득한 총 골드량입니다.
+	// 해당 참가자가 게임에서 획득한 총 골드량입니다. 사용?
 	
 	private int goldSpent;
-	// 해당 참가자가 게임에서 사용한 총 골드량입니다.
+	// 해당 참가자가 게임에서 사용한 총 골드량입니다. 사용?
 	
 	private String individualPosition;
-	// 해당 참가자의 개별 포지션입니다. (TOP, JUNGLE, MIDDLE, BOTTOM, UTILITY)
+	// 해당 참가자의 개별 포지션입니다. (TOP, JUNGLE, MIDDLE, BOTTOM, UTILITY) 사용?
 	
 	private int inhibitorKills;
 	// 해당 참가자가 억제기를 파괴한 횟수입니다.
@@ -106,19 +106,19 @@ public class ParticipantDto {
 	private int item4;
 	private int item5;
 	private int item6;
-	// 해당 참가자가 게임 중에 구매한 아이템의 ID입니다. 각각의 열은 아이템 슬롯을 나타내며, 0번 슬롯부터 6번 슬롯까지 순서대로 나열됩니다.
+	// 해당 참가자가 게임 중에 구매한 아이템의 ID입니다. 각각의 열은 아이템 슬롯을 나타내며, 0번 슬롯부터 6번 슬롯까지 순서대로 나열됩니다. 사용
 	
 	private int itemsPurchased;
-	// 해당 참가자가 게임 중 구매한 아이템 목록입니다.
+	// 해당 참가자가 게임 중 구매한 아이템 목록입니다.사용?
 	
 	private int killingSprees;
 	// 해당 참가자가 게임 중에 기록한 연속 처치 횟수입니다.
 	
 	private int kills;
-	// 해당 참가자가 게임 중에 적을 처치한 횟수입니다.
+	// 해당 참가자가 게임 중에 적을 처치한 횟수입니다. 사용
 	
 	private String lane;
-	// 해당 참가자의 라인 종류입니다. TOP, JUNGLE, MIDDLE, BOTTOM 중 하나입니다.
+	// 해당 참가자의 라인 종류입니다. TOP, JUNGLE, MIDDLE, BOTTOM 중 하나입니다. 사용
 	
 	private int largestCriticalStrike;
 	// 해당 참가자가 게임 중에 기록한 최대 치명타 피해량입니다.
@@ -142,7 +142,7 @@ public class ParticipantDto {
 	// 해당 참가자가 받은 마법 피해량입니다.
 	
 	private int neutralMinionsKilled;
-	// 해당 참가자가 처치한 중립 몬스터 수입니다.
+	// 해당 참가자가 처치한 중립 몬스터 수입니다. 사용
 	
 	private int nexusKills;
 	// 해당 참가자가 파괴한 넥서스의 수입니다.
@@ -163,10 +163,10 @@ public class ParticipantDto {
 	// 해당 참가자의 고유 ID입니다.
 	
 	private int pentaKills;
-	// 해당 참가자가 게임 중에 기록한 펜타 처치 횟수입니다.
+	// 해당 참가자가 게임 중에 기록한 펜타 처치 횟수입니다. 사용
 	
 	private PerksDto perks = new PerksDto();
-	// 해당 참가자의 룬 및 이에 따른 보조 주문 정보입니다.
+	// 해당 참가자의 룬 및 이에 따른 보조 주문 정보입니다. 사용?
 	
 	private int physicalDamageDealt;
 	// 해당 참가자가 게임 중에 가한 물리 피해량입니다.
@@ -178,10 +178,10 @@ public class ParticipantDto {
 	// 해당 참가자가 받은 물리 피해량입니다.
 	
 	private int profileIcon;
-	//	해당 참가자의 프로필 아이콘 ID입니다.
+	//	해당 참가자의 프로필 아이콘 ID입니다. 사용?
 	
 	private int quadraKills;
-	// 해당 참가자가 게임 중에 기록한 쿼드라 처치 횟수입니다.
+	// 해당 참가자가 게임 중에 기록한 쿼드라 처치 횟수입니다. 사용
 
 	private String riotIdName;
 	// 해당 참가자의 Riot ID 이름입니다.
@@ -192,14 +192,14 @@ public class ParticipantDto {
 	private String role;
 	// 해당 참가자의 역할입니다. SOLO, DUO, CARRY, SUPPORT 중 하나입니다.
 	
-	private int sightWardsBoughtInGame;
-	// 해당 참가자가 구매한 시야 와드 수입니다.
+	private int sightWardsBoughtInGame; 
+	// 해당 참가자가 구매한 시야 와드 수입니다.사용?
 	
 	private int spell1Casts;
-	// 	해당 참가자가 선택한 주문의 첫 번째 스펠 ID입니다.
+	// 	해당 참가자가 선택한 주문의 첫 번째 스펠 ID입니다. 사용
 	
 	private int spell2Casts;
-	// 	해당 참가자가 선택한 주문의 두 번째 스펠 ID입니다.
+	// 	해당 참가자가 선택한 주문의 두 번째 스펠 ID입니다. 사용
 	
 	private int spell3Casts;
 	// 	해당 참가자가 선택한 주문의 세 번째 스펠 ID입니다. ( 세, 네번째는 왜 존재하는지 잘 모름 다시 확인해봐야됨 )
@@ -220,28 +220,28 @@ public class ParticipantDto {
 	// 해당 참가자의 2번 소환사 주문 ID입니다.
 	
 	private String summonerId;
-	// 해당 참가자의 소환사 ID입니다.
+	// 해당 참가자의 소환사 ID입니다. 사용
 	
 	private int summonerLevel;
-	// 해당 참가자의 소환사 레벨입니다.
+	// 해당 참가자의 소환사 레벨입니다. 사용
 	
 	private String summonerName;
-	// 해당 참가자의 소환사 이름입니다.
+	// 해당 참가자의 소환사 이름입니다. 사용
 	
 	private boolean teamEarlySurrendered;
-	// 해당 참가자의 팀이 조기 항복한 여부입니다.
+	// 해당 참가자의 팀이 조기 항복한 여부입니다. 사용?
 	
 	private int teamId;
-	// 해당 참가자가 속한 팀의 ID입니다. 블루팀(100)과 레드팀(200)가 있습니다.
+	// 해당 참가자가 속한 팀의 ID입니다. 블루팀(100)과 레드팀(200)가 있습니다. 사용?
 	
 	private String teamPosition;
-	// 해당 참가자가 선택한 포지션입니다. "TOP", "JUNGLE", "MIDDLE", "BOTTOM", "UTILITY" 중 하나일 수 있습니다.
+	// 해당 참가자가 선택한 포지션입니다. "TOP", "JUNGLE", "MIDDLE", "BOTTOM", "UTILITY" 중 하나일 수 있습니다. 사용?
 	
 	private int timeCCingOthers;
 	// 해당 참가자가 다른 참가자를 CC(기절, 둔화 등)시킨 시간입니다.
 	
 	private int timePlayed;
-	// 해당 참가자의 게임 플레이 시간입니다.
+	// 해당 참가자의 게임 플레이 시간입니다. 사용
 	
 	private int totalDamageDealt;
 	// 해당 참가자가 게임 중에 가한 총 피해량입니다.
@@ -301,15 +301,15 @@ public class ParticipantDto {
 	// 해당 참가자가 게임에서 기여한 시야 점수입니다. 시야 점수는 와드 설치, 제거, 적 시야 제한 등을 통해 얻을 수 있습니다.
 	
 	private int visionWardsBoughtInGame;
-	// 해당 참가자가 게임에서 구매한 제어 와드 수입니다.
+	// 해당 참가자가 게임에서 구매한 제어 와드 수입니다. 사용
 	
 	private int wardsKilled;
-	// 해당 참가자가 파괴한 적 와드 수입니다.
+	// 해당 참가자가 파괴한 적 와드 수입니다. 사용
 	
 	private int wardsPlaced;
-	// 해당 참가자가 설치한 총 와드 수입니다.
+	// 해당 참가자가 설치한 총 와드 수입니다. 사용
 	
 	private boolean win;
-	// 해당 참가자의 승패 여부를 나타내는 값입니다.
+	// 해당 참가자의 승패 여부를 나타내는 값입니다. 사용
 	
 }
