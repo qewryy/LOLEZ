@@ -12,7 +12,7 @@ public class ParticipantDto {
 	// PK 설정을 위해 임의로 넣어놓은 값으로 해당 참가자의 puuid 입니다.
 	
 	private int assists;
-	// 해당 참가자가 게임 중에 동료 챔피언을 지원한 횟수입니다. 사ㅇ
+	// 해당 참가자가 게임 중에 동료 챔피언을 지원한 횟수입니다. 사용
 	
 	private int baronKills;
 	// 해당 참가자가 바론을 처치한 횟수입니다.
