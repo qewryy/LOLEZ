@@ -1,6 +1,7 @@
 package com.lolez.controller;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
@@ -149,10 +150,17 @@ public class RiotController {
 					System.out.println("소환사 정보로 Match 검색 요청");
 
 					System.out.println("리그 정보로 최근 20 게임 정보 검색 요청");
-
-					ArrayList<MatchDto> Mresult = msvc.matchserch(Sresult, apiKey, 1);
-
-					session.setAttribute("MatchList", Mresult);
+					
+					/*
+					 * List<String> MLresult = msvc.matchleagueserch(Sresult, apiKey, 1); for
+					 * (String ml : MLresult) {
+					 * 
+					 * }
+					 */
+					
+					ArrayList<MatchDto> Mresult = msvc.matchserch(Sresult, apiKey, 1); 
+					
+					session.setAttribute("MatchList", Mresult); 
 
 					System.out.println("매치 정보 검색 정상 처리 완료");
 
@@ -282,8 +290,8 @@ public class RiotController {
 
 		System.out.println("리그 정보로 최근 " + (j * 20 - 20) + "~" + (j * 20) + "게임 정보 검색 요청");
 
-		ArrayList<MatchDto> Mresult = msvc.matchserch(Sresult, apiKey, j);
-		return Mresult;
+		ArrayList<MatchDto> Mresult = msvc.matchserch(Sresult, apiKey, j); 
+		return Mresult; 
 	}
 
 }

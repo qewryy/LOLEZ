@@ -34,4 +34,8 @@ public interface MatchDao {
 
 	int insertObjective(ObjectiveDto objective);
 
+	ParticipantDto selectmatchteam(@Param("matchid") String fm, @Param("puuid") String puuid);
+
+	ParticipantDto selectuserteam(@Param("teamid") int i,@Param("matchid") String fm);
+
 }
