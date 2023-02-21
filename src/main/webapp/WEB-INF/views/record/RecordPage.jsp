@@ -245,8 +245,13 @@
 <%-- 			<c:if test="${Unrank.unrankboolean}">
 				<div class="css-1v663t e1x14w4w1"><div class="header">솔로랭크<span class="unranked">Unranked</span></div></div>
 				<div class="css-1474l3c e1x14w4w1"><div class="header">자유랭크<span class="unranked">Unranked</span></div></div>
-			</c:if> --%>
+			</c:if> 
 			
+			
+		
+			
+			--%>
+		
 			
 			
 			<c:if test="${SoloList.soloboolean}">
@@ -603,14 +608,28 @@
 
 
 				<div class="css-164r41r e1r5v5160">
+				<c:set var="indexM" value="0"/>
+				<c:set var="uesr" value="${Summoner.name}"  />
 				
+				<c:forEach begin="0" end="${MatchList.size()-1}" var="i" >
+					<c:forEach begin="0" end="${MatchList.get(i).getInfo().getParticipants().size()- 1}" var="MIP_I">
+						<c:set var="index" value="${MIP_I }" />
+
+					
+					</c:forEach>
+				
+				</c:forEach>
+				현재 진행 숫자: ${index}
+							
 					<c:forEach   items="${MatchList}" var="MatchList" varStatus="status" >
+					
+					
 					<li class="css-1qq23jn e1iiyghw3"><div result="LOSE"
 							class="css-jc3q2t e1iiyghw2">
 							<div class="contents">
 								<div class="game-content">
 									<div class="game">
-										<div class="type"></div>
+										<div class="type">${uesr}</div>
 										<div class="time-stamp">
 											<div class="" style="position: relative;">9시간 전</div>
 										</div>
@@ -922,6 +941,10 @@
 	console.log("${MatchList.get(5).getInfo().getGameMode()}");
 	console.log("${MatchList.get(5).getInfo().getGameType()}");
 	console.log("${MatchList.get(5).getInfo().getMapId()}");
+	
+	console.log("해당 인덱스 승리여부");
+	
+	console.log("${MatchList.get(0).getInfo().getParticipants().get(4).isWin()}");
 	
 	var Unrank = "${Unrank.unrankboolean}";
 	var SoloList = "${SoloList.soloboolean}";
