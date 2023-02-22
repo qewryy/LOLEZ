@@ -33,7 +33,7 @@ public class RiotController {
 	@Autowired
 	private MatchService msvc;
 
-	private String apiKey = "RGAPI-89975f39-fbc1-4913-aaa6-dccb2cc073bf";
+	private String apiKey = "RGAPI-640eecfe-d558-4719-ad90-10857c4a50e3";
 
 	@RequestMapping(value = "/SummoneSerch")
 	public ModelAndView SummoneSerch(String summoneName) throws Exception {
@@ -162,8 +162,7 @@ public class RiotController {
 					
 					session.setAttribute("MatchList", Mresult); 
 					
-			
-
+					
 					System.out.println("매치 정보 검색 정상 처리 완료");
 
 				} else {
@@ -173,6 +172,7 @@ public class RiotController {
 				}
 
 			}
+			
 
 			mav.setViewName("record/RecordPage");
 		} else {
