@@ -33,7 +33,7 @@ public class RiotController {
 	@Autowired
 	private MatchService msvc;
 
-	private String apiKey = "RGAPI-d890c8a3-c8fa-4723-90b0-970c3a2c95b5";
+	private String apiKey = "RGAPI-41a4c5e1-952d-4194-924d-cfc317a18a8b";
 
 	@RequestMapping(value = "/SummoneSerch")
 	public ModelAndView SummoneSerch(String summoneName) throws Exception {
@@ -290,7 +290,7 @@ public class RiotController {
 	public @ResponseBody ArrayList<MatchDto> Matchrenewal(SummonerDto Sresult, int j) throws Exception {
 		System.out.println("소환사 정보로 Match 검색 요청");
 
-		System.out.println("리그 정보로 최근 " + (j * 20 - 20) + "~" + (j * 20) + "게임 정보 검색 요청");
+		System.out.println("리그 정보로 최근 " + (j * 5 - 5) + "~" + (j * 5) + "게임 정보 검색 요청");
 
 		ArrayList<MatchDto> Mresult = msvc.matchserch(Sresult, apiKey, j); 
 		return Mresult; 
