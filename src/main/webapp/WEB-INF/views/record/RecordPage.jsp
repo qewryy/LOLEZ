@@ -610,24 +610,28 @@
 
 
 				<div class="css-164r41r e1r5v5160">
-				<c:set var="uesr" value="${Summoner.name}"  />
+				<c:set var="uesr" value="${Summoner.puuid}"  />
 				
 				<c:forEach begin="0" end="${MatchList.size()-1}" var="i" > <!-- 20개의 전적을 반복문으로  수행 -->
 					<c:forEach begin="0" end="${MatchList.get(i).getInfo().getParticipants().size()- 1}" var="MIP_I"><!-- 20개의 전적중 각 판마다 의 게임 인원 10명 (0~9) 근거로 수행  -->
 					
-					<c:if test="${uesr eq MatchList.get(i).getInfo().getParticipants().get(MIP_I).getSummonerName()}"><!-- 이때 전적 검색한 유저의 이름과 같은게 있을시 작동 -->
+					<c:if test="${uesr eq MatchList.get(i).getInfo().getParticipants().get(MIP_I).getPuuid()}">
 						<c:set var="kill" value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getKills() }"/>
 						<c:set var="deaths" value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getDeaths() }"/>
 						<c:set var="assists" value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getAssists() }"/>
-										
+						<c:set var="Gametype" value="${MatchList.get(i).getInfo().getQueueId()}"/>
+						
 		<c:if test="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).isWin()  eq true}">
 		
-		<c:set var="Timestamp_end" value="${MatchList.get(i).getInfo().getGameEndTimestamp()} " />
-		<c:set var="Timestamp_st" value="${MatchList.get(i).getInfo().getGameStartTimestamp()} " />
-		각 시간 출력 시작시가: ${Timestamp_st }
-		각 시간 출력 종료시간: ${Timestamp_end }
+		<c:set var="playTiemWin" value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getTimePlayed() }"/>
+		<c:set var="minWIN" value="${playTiemWin / 60 }"/>
+		<c:set var="secWIN" value="${playTiemWin % 60 }"/>
 		
+		<c:set var="MinInt" value="${minWIN.intValue()}"/>
 		
+					<fmt:formatDate value="${now}" pattern="s" var="unixTimestamp"/>
+					현재시간
+					${now }
 		
 		
 		<li class="css-1qq23jn e1iiyghw3"><div result="WIN"
@@ -635,38 +639,49 @@
 			<div class="contents">
 				<div class="game-content">
 					<div class="game">
-						<div class="type">솔랭</div>
+						<div class="type">
+					<c:choose>
+						<c:when test="${Gametype == 420 }">
+						솔로 랭크
+						
+						</c:when>
+						
+						<c:when test="${Gametype == 440 }">
+						자유 5:5 랭크
+						
+						</c:when>
+						
+						<c:when test="${Gametype == 430 }">
+						일반
+						
+						</c:when>
+						
+						<c:when test="${Gametype == 450 }">
+						무작위 총력전
+						
+						</c:when>
+						
+						<c:when test="${Gametype == 900 }">
+						모두 무작위 U.R.F.
+						
+						</c:when>
+						<c:when test="${Gametype == 1900 }">
+						U.R.F
+						
+						</c:when>
+						
+					
+					
+					</c:choose>
+						
+						
+						</div>
 						<div class="time-stamp">
 							<div class="" style="position: relative;">23분 전</div>
 						</div>
 						<div class="bar"></div>
 						<div class="result">승리</div>
-						<div class="length" id="playTiem"></div>
-					
-					
-					<script type="text/javascript">
-						
-						var unixTimestamp = ${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getTimePlayed()}; //2103
-						console.log("각 시간 확인")
-						console.log(unixTimestamp);
-						var date = new Date(unixTimestamp * 1000);
-						console.log("각 시간 *1000 이후 값 확인");
-						console.log(date)
-						
-						var minutes = date.getMinutes();
-						var seconds = date.getSeconds();
-						var timeString = minutes+'분 '+seconds+'초';
-
-						console.log(timeString);
-						
-						console.log("-------------------------");
-						document.getElementById('playTiem').innerText = minutes+"분 "+seconds+"초";
-						
-						</script>
-						
-						
-
-						
+						<div class="length">${MinInt}분 ${secWIN}초</div>
 						
 					</div>
 					<div class="info">
@@ -895,21 +910,58 @@
 						
 						
 						</c:if>
-						
-						
 						<c:if test="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).isWin()  eq false }">
+						
+								<c:set var="playTieml" value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getTimePlayed() }"/>
+								<c:set var="minl" value="${playTieml / 60 }"/>
+								<c:set var="secl" value="${playTieml % 60 }"/>
+								
+								<c:set var="MinIntL" value="${minl.intValue()}"/>
+						
 							<li class="css-1qq23jn e1iiyghw3"><div result="LOSE"
 							class="css-jc3q2t e1iiyghw2">
 							<div class="contents">
 								<div class="game-content">
 									<div class="game">
-										<div class="type">${uesr}</div>
+										<div class="type">					<c:choose>
+						<c:when test="${Gametype == 420 }">
+						솔로 랭크
+						
+						</c:when>
+						
+						<c:when test="${Gametype == 440 }">
+						자유 5:5 랭크
+						
+						</c:when>
+						
+						<c:when test="${Gametype == 430 }">
+						일반
+						
+						</c:when>
+						
+						<c:when test="${Gametype == 450 }">
+						무작위 총력전
+						
+						</c:when>
+						
+						<c:when test="${Gametype == 900 }">
+						모두 무작위 U.R.F.
+						
+						</c:when>
+						<c:when test="${Gametype == 1900 }">
+						U.R.F
+						
+						</c:when>
+						
+					
+					
+					</c:choose></div>
 										<div class="time-stamp">
 											<div class="" style="position: relative;">9시간 전</div>
 										</div>
 										<div class="bar"></div>
 										<div class="result">패배</div>
-										<div class="length">15분 54초</div>
+										<div class="length">${MinIntL}분 ${secl}초</div>
 									</div>
 									<div class="info">
 										<div>
@@ -1136,9 +1188,6 @@
 					</c:forEach>
 				
 				</c:forEach>
-				현재 진행 숫자m: ${indexM }
-				현재 진행 숫자p: ${index}
-						
 				</div>
 				<button class="more">더 보기</button>
 			</div>
@@ -1227,6 +1276,14 @@
 	
 	console.log("${MatchList.get(0).getInfo().getParticipants().get(4).isWin()}");
 	
+	
+	console.log("게임이 만들어진 시간");
+	console.log("${MatchList.get(0).getInfo().getGameCreation()}");
+	console.log("게임이 종료된 시간");
+	console.log("${MatchList.get(0).getInfo().getGameEndTimestamp()}");
+	
+	
+	
 	var Unrank = "${Unrank.unrankboolean}";
 	var SoloList = "${SoloList.soloboolean}";
 	var DuoList = "${DuoList.duoboolean}";
@@ -1238,26 +1295,7 @@
 	var lossesDuo= ${DuoList.losses}+0;
 	
 	
-	console.log("시간부분 확인");
-	console.log("${MatchList.get(1).getInfo().getParticipants().get(1).getTimePlayed()}");
-	
-/* 	
-	console.log("unrankBoolean , SoloBoolean, DuoBoolean 순서로 확인 공백의 의미는 false임 ");
-	console.log(Unrank);
-	console.log(SoloList);
-	console.log(DuoList);
-	
-	console.log("${DuoList}");
-	console.log("${DuoList}");
-	
-	
-	console.log("${MatchList}");
-	 */
 
-	
-	
-	
-	
 	if(Unrank){
 		// 언랭임
 		Unrank = true;	
@@ -1341,7 +1379,7 @@
 
 		}
 	
-	var result_of_SoloList = Math.ceil(winSolo/(winSolo + lossesSolo )*100); 
+	var result_of_SoloList = Math.round(winSolo/(winSolo + lossesSolo )*100); 
 	document.getElementById('winning_rate_of_SoloList').innerText ="승률 "+result_of_SoloList+"%"; 
 	
 	}
@@ -1400,7 +1438,7 @@
 
 
 	}
-	 var result_of_DuoList = Math.ceil(WinDuo/(WinDuo + lossesDuo )*100); 
+	 var result_of_DuoList = Math.round(WinDuo/(WinDuo + lossesDuo )*100); 
 	 document.getElementById('winning_rate_of_DuoList').innerText ="승률 "+result_of_DuoList+"%";
 
 	
