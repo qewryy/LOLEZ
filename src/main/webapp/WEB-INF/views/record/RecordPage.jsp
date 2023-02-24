@@ -1,4 +1,4 @@
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -621,17 +621,48 @@
 						<c:set var="assists" value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getAssists() }"/>
 						<c:set var="Gametype" value="${MatchList.get(i).getInfo().getQueueId()}"/>
 						
+						
+						
 		<c:if test="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).isWin()  eq true}">
+		<c:set var="buleTeam" value="0"/>
+		<c:set var="redTeam" value="1"/>
 		
 		<c:set var="playTiemWin" value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getTimePlayed() }"/>
 		<c:set var="minWIN" value="${playTiemWin / 60 }"/>
 		<c:set var="secWIN" value="${playTiemWin % 60 }"/>
-		
+		<c:set var ="totalCSW" value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getTotalMinionsKilled()
+		 + MatchList.get(i).getInfo().getParticipants().get(MIP_I).getNeutralMinionsKilled()}"/>
 		<c:set var="MinInt" value="${minWIN.intValue()}"/>
 		
-					<fmt:formatDate value="${now}" pattern="s" var="unixTimestamp"/>
-					현재시간
-					${now }
+		<c:set var="CS_SecW" value="${secWIN/100.0 }"/>
+		<c:set var="CStotal_tiemW" value="${(MinInt/1.0) + CS_SecW  }"/>
+		<c:set var="MINCS_stapW" value="${totalCSW / CStotal_tiemW}"/>
+		<fmt:formatNumber var="MINCSW" value="${MINCS_stapW }" pattern="0.0"/>
+		
+		
+		<c:set var="teamID" value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getTeamId()}"/>
+		
+		
+		
+		<c:if test="${teamID == 100 }">
+			<c:set var="buleTEAM_Kill" value="${MatchList.get(i).getInfo().getTeams().get(buleTeam).getObjectives().getChampion().getKills()}"/>
+			<c:set var="KA_bule" value="${(kill +  assists) / buleTEAM_Kill * 100}"/>
+			
+			<fmt:formatNumber var="KA_T_bule" value="${KA_bule }" pattern="0"/>
+		</c:if>
+		
+		<c:if test="${teamID == 200 }">
+			<c:set var="RedTEAM_Kill" value="${MatchList.get(i).getInfo().getTeams().get(redTeam).getObjectives().getChampion().getKills()}"/>
+			<c:set var="KA_red" value="${(kill +  assists) / RedTEAM_Kill * 100}"/>
+			
+			<fmt:formatNumber var="KA_T_red" value="${KA_red }" pattern="0"/>
+		</c:if>
+		
+		
+		
+		
+		
+		
 		
 		
 		<li class="css-1qq23jn e1iiyghw3"><div result="WIN"
@@ -687,13 +718,16 @@
 					<div class="info">
 						<div>
 							<div class="champion">
+							!
 								<div class="icon">
 									<a href="/champions/lulu" target="_blank" rel="noreferrer"><img
 										src="https://opgg-static.akamaized.net/meta/images/lol/champion/Lulu.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_96&amp;v=1676969392397"
 										width="48" alt="룰루" height="48"><span
-										class="champion-level">13</span></a>
+										class="champion-level">${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getChampLevel() }</span></a>
 								</div>
+								
 								<div class="spells">
+								
 									<div class="spell">
 										<div class="" style="position: relative;">
 											<img
@@ -701,6 +735,7 @@
 												width="22" alt="점화" height="22">
 										</div>
 									</div>
+									
 									<div class="spell">
 										<div class="" style="position: relative;">
 											<img
@@ -708,6 +743,7 @@
 												width="22" alt="점멸" height="22">
 										</div>
 									</div>
+									
 								</div>
 								<div class="runes">
 									<div class="rune">
@@ -736,16 +772,35 @@
 								</div>
 							</div>
 							<div class="stats">
+							
+							<c:choose>
+								<c:when test="${teamID == 100 }">
 								<div class="p-kill">
-									<div class="" style="position: relative;">킬관여 74%</div>
+									<div class="" style="position: relative;">킬관여 ${KA_T_bule }%</div>
 								</div>
+								
+								</c:when>
+								
+								<c:when test="${teamID == 200 }">
+								<div class="p-kill">
+									<div class="" style="position: relative;">킬관여 ${KA_T_red }%</div>
+								</div>
+								
+								</c:when>
+							
+							
+							</c:choose>
+							
+								
+								
+								
 								<div class="ward">제어 와드 ${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getVisionWardsBoughtInGame() }</div>
 								<div class="cs">
-									<div class="" style="position: relative;">CS ${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getTotalMinionsKilled() } (0.6)</div>
+									<div class="" style="position: relative;">CS ${totalCSW} (${MINCSW })</div>
 								</div>
-								<div class="average-tier">
+<!-- 								<div class="average-tier">
 									<div class="" style="position: relative;">gold 4</div>
-								</div>
+								</div> -->
 							</div>
 						</div>
 						<div>
@@ -911,44 +966,87 @@
 						
 						</c:if>
 						<c:if test="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).isWin()  eq false }">
+								<c:set var="buleTeam_L" value="0"/>
+								<c:set var="redTeam_L" value="1"/>
+						
+						<c:set var="teamID_L" value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getTeamId()}"/>
+						
+						
+						
+						<c:set var="kill_L" value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getKills() }"/>
+						<c:set var="deaths_L" value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getDeaths() }"/>
+						<c:set var="assists_L" value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getAssists() }"/>
+						<c:set var="Gametype_L" value="${MatchList.get(i).getInfo().getQueueId()}"/>
+						
+						
 						
 								<c:set var="playTieml" value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getTimePlayed() }"/>
 								<c:set var="minl" value="${playTieml / 60 }"/>
 								<c:set var="secl" value="${playTieml % 60 }"/>
+								<c:set var ="totalCSL" value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getTotalMinionsKilled() + MatchList.get(i).getInfo().getParticipants().get(MIP_I).getNeutralMinionsKilled()}"/>
 								
 								<c:set var="MinIntL" value="${minl.intValue()}"/>
-						
+								
+								
+								<c:set var="CS_Sec" value="${secl/100.0 }"/>
+								<c:set var="CStotal_tiem" value="${(MinIntL/1.0) + CS_Sec  }"/>
+								<c:set var="MINCS_stap" value="${totalCSL / CStotal_tiem}"/>
+								<fmt:formatNumber var="MINCS" value="${MINCS_stap }" pattern="0.0"/>
+								
+								
+							<c:set var="teamID_L" value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getTeamId()}"/>	
+								
+							<c:if test="${teamID_L == 100 }">
+								<c:set var="buleTEAM_Kill_L" value="${MatchList.get(i).getInfo().getTeams().get(buleTeam_L).getObjectives().getChampion().getKills()}"/>
+								<c:set var="KA_bule_L" value="${(kill_L +  assists_L) / buleTEAM_Kill_L * 100}"/>
+								
+								<fmt:formatNumber var="KA_T_bule_L" value="${KA_bule_L }" pattern="0"/>
+							</c:if>
+							
+							<c:if test="${teamID_L == 200 }">
+								<c:set var="RedTEAM_Kill_L" value="${MatchList.get(i).getInfo().getTeams().get(redTeam_L).getObjectives().getChampion().getKills()}"/>
+								<c:set var="KA_red_L" value="${(kill_L +  assists_L) / RedTEAM_Kill_L * 100}"/>
+								
+								<fmt:formatNumber var="KA_T_red_L" value="${KA_red_L }" pattern="0"/>
+							</c:if>
+								
+								
+								
+								
+
+								
+															
 							<li class="css-1qq23jn e1iiyghw3"><div result="LOSE"
 							class="css-jc3q2t e1iiyghw2">
 							<div class="contents">
 								<div class="game-content">
 									<div class="game">
 										<div class="type">					<c:choose>
-						<c:when test="${Gametype == 420 }">
+						<c:when test="${Gametype_L == 420 }">
 						솔로 랭크
 						
 						</c:when>
 						
-						<c:when test="${Gametype == 440 }">
+						<c:when test="${Gametype_L == 440 }">
 						자유 5:5 랭크
 						
 						</c:when>
 						
-						<c:when test="${Gametype == 430 }">
+						<c:when test="${Gametype_L == 430 }">
 						일반
 						
 						</c:when>
 						
-						<c:when test="${Gametype == 450 }">
+						<c:when test="${Gametype_L == 450 }">
 						무작위 총력전
 						
 						</c:when>
 						
-						<c:when test="${Gametype == 900 }">
+						<c:when test="${Gametype_L == 900 }">
 						모두 무작위 U.R.F.
 						
 						</c:when>
-						<c:when test="${Gametype == 1900 }">
+						<c:when test="${Gametype_L == 1900 }">
 						U.R.F
 						
 						</c:when>
@@ -970,7 +1068,7 @@
 													<a href="/champions/zeri" target="_blank" rel="noreferrer"><img
 														src="https://opgg-static.akamaized.net/meta/images/lol/champion/Zeri.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_96&amp;v=1675751623266"
 														width="48" alt="제리" height="48"><span
-														class="champion-level">7</span></a>
+														class="champion-level">${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getChampLevel() }</span></a>
 												</div>
 												<div class="spells">
 													<div class="spell">
@@ -1007,23 +1105,38 @@
 											</div>
 											<div class="kda">
 												<div class="k-d-a">
-													<span>0</span> / <span class="d">6</span> / <span>0</span>
+													<span>${kill_L}</span> / <span class="d">${deaths_L}</span> / <span>${assists_L}</span>
 												</div>
 												<div class="ratio">
-													<span>0.00:1</span> 평점
+												<c:set var="result_L" value="${(kill_L+assists_L)/deaths_L}"/>
+													<span>${String.format("%.2f", result_L)}:1</span> 평점
 												</div>
 											</div>
 											<div class="stats">
-												<div class="p-kill">
-													<div class="" style="position: relative;">킬관여 0%</div>
-												</div>
-												<div class="ward">제어 와드 2</div>
+												<c:choose>
+													<c:when test="${teamID_L == 100 }">
+													<div class="p-kill">
+														<div class="" style="position: relative;">킬관여 ${KA_T_bule_L }%</div>
+													</div>
+													
+													</c:when>
+													
+													<c:when test="${teamID_L == 200 }">
+													<div class="p-kill">
+														<div class="" style="position: relative;">킬관여 ${KA_T_red_L }%</div>
+													</div>
+													
+													</c:when>
+												
+												
+												</c:choose>
+												<div class="ward">제어 와드 ${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getVisionWardsBoughtInGame() }</div>
 												<div class="cs">
-													<div class="" style="position: relative;">CS 84 (5.3)</div>
+													<div class="" style="position: relative;">CS ${totalCSL } (${MINCS})</div>
 												</div>
-												<div class="average-tier">
+<!-- 												<div class="average-tier">
 													<div class="" style="position: relative;">grandmaster</div>
-												</div>
+												</div> -->
 											</div>
 										</div>
 										<div>
@@ -1259,6 +1372,8 @@
 	<!-- Page level custom scripts -->
 	<script
 		src="${pageContext.request.contextPath }/resources/assets/js/demo/datatables-demo.js"></script>
+		
+		
 </body>
 
 
@@ -1267,21 +1382,10 @@
 	var ran=["I","II","III","IV"]
 	var checkSoloList = "${SoloList.tier}";
 	var checkDuoList = "${DuoList.tier}";
-	
-	console.log("${MatchList.get(5).getInfo().getGameMode()}");
-	console.log("${MatchList.get(5).getInfo().getGameType()}");
-	console.log("${MatchList.get(5).getInfo().getMapId()}");
-	
-	console.log("해당 인덱스 승리여부");
-	
-	console.log("${MatchList.get(0).getInfo().getParticipants().get(4).isWin()}");
-	
-	
-	console.log("게임이 만들어진 시간");
-	console.log("${MatchList.get(0).getInfo().getGameCreation()}");
-	console.log("게임이 종료된 시간");
-	console.log("${MatchList.get(0).getInfo().getGameEndTimestamp()}");
-	
+	console.log("${MatchList.get(1).getInfo().getParticipants().get(2).getTeamId()}");
+	console.log("${MatchList.get(1).getInfo().getTeams()}");
+	console.log("${MatchList.get(1).getInfo().getTeams().get(0).getObjectives()}");
+
 	
 	
 	var Unrank = "${Unrank.unrankboolean}";

@@ -160,9 +160,9 @@ public class RiotController {
 					
 					ArrayList<MatchDto> Mresult = msvc.matchserch(Sresult, apiKey, 1); 
 					
+					
 					session.setAttribute("MatchList", Mresult); 
-					
-					
+				
 					System.out.println("매치 정보 검색 정상 처리 완료");
 
 				} else {

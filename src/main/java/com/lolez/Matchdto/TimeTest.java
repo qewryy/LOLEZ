@@ -3,9 +3,15 @@ package com.lolez.Matchdto;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import org.springframework.web.client.RestTemplate;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 public class TimeTest {
 
 	public static void main(String[] args) {
+
+		
 		long unixTimestamp = 1677026447049L / 1000L; // 예시로 2022년 2월 22일 12시 00분 00초를 나타내는 Unix timestamp
 		long unixTimestamp_end = 1677027737960L/ 1000L ;
 		Date date = new Date(unixTimestamp * 1000L);
