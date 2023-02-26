@@ -1,5 +1,7 @@
 package com.lolez.dto;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import lombok.Data;
 
 @Data
@@ -12,6 +14,9 @@ public class BoardDto {
 	private int brec;
 	private int bhits;
 	private int bstate;
+	private String bfilename;
+	
+	private MultipartFile bfile;
 	
 	@Override
 	public String toString() {

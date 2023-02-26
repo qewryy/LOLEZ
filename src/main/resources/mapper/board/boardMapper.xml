@@ -16,39 +16,48 @@
 	<insert id="insertBoard" parameterType="board">
 		INSERT INTO BOARDS(BNO,
 		BTITLE, BWRITER, BCONTENT, BDATE, BHITS, BREC,
-		BSTATE )
+		BSTATE, BFILENAME )
 		VALUES(#{bno},
-		#{btitle}, #{bwriter}, #{bcontent}, SYSDATE, 0, 0, 0)
+		#{btitle}, #{bwriter}, #{bcontent}, SYSDATE, 0, 0, 0, #{bfilename})
 	</insert>
 
 	<update id="updateBoardHits" parameterType="int">
 		UPDATE BOARDS SET
 		BHITS = BHITS + 1 WHERE BNO = #{viewBno}
 	</update>
+	
+	<select id="selectLikeCheck" resultType="String">
+		SELECT LNAME FROM BOARDLIKE WHERE LBNO = #{lbno} AND LNAME = #{lname}
+	</select>
+	
+	<insert id="insertBoardLike" parameterType="boardlike">
+		INSERT INTO BOARDLIKE(LBNO, LNAME, LSTATE) 
+		VALUES(#{lbno}, #{lname}, '0')
+	</insert>
 
-	<!-- <select id="selectBoardView" resultType="board">
+	<select id="selectBoardView" resultType="board">
 		SELECT * FROM BOARDS WHERE BNO = #{viewBno}
 	</select>
 
-	<select id="selectLikeCheck" resultType="String">
-		SELECT * FROM BOARDS WHERE LBNO = #{lbno} AND LMID = #{lmid}
-	</select>
-	
-	<insert id="insertBoardLike" parameterType="board">
-		INSERT INTO BOARDLIKE(LBNO, LMID, LSTATE) 
-		VALUES(#{lbno}, #{lmid}, '0')
-	</insert>
-	
 	<delete id="deleteBoardLike" parameterType="int">
 		DELETE FROM BOARDLIKE 
-		WHERE LBNO = #{lbno} AND LMID = #{lmid}
+		WHERE LBNO = #{lbno} AND LNAME = #{lname}
 	</delete>
 	
-	<select id="selectBoardView" resultType="int">
+	<select id="selectLikeCount" resultType="int">
 		SELECT COUNT(*) FROM BOARDLIKE WHERE LBNO = #{lbno}
 	</select>
 	
 	<select id="selectReplyLikeCount" resultType="int">
-		SELECT COUNT(*) FROM REPLYLIKE WHERE RLNUM = #{renum}
-	</select> -->
+		SELECT COUNT(*) FROM REPLYLIKE WHERE RLNO = #{rlno}
+	</select>
+	
+	<select id="selectReplyList" resultType="replylike">
+		SELECT * FROM REPLYLIKE WHERE RLBNO = #{rlbno} ORDER BY RLNO
+	</select>
+	
+	<select id="selectReplyLikeCheck" resultType="int">
+		SELECT RLSTATE FROM REPLYLIKE WHERE RLNO = #{rlno} AND RLNAME = #{loginNickname}
+	</select>
+	
 </mapper> 

@@ -106,22 +106,18 @@
 
 
 											<tbody>
-												<tr>
-													<td>1512</td>
-													<td>테스트 글</td>
-													<td>테스터</td>
-													<td>2023-02-08</td>
-													<td>55</td>
-													<td>12</td>
-												</tr>
-												<tr>
-													<td>1512</td>
-													<td>테스트 글</td>
-													<td>테스터</td>
-													<td>2023-02-08</td>
-													<td>55</td>
-													<td>12</td>
-												</tr>
+												<c:forEach items="${boardList }" var="board">
+													<tr>
+														<td>${board.bno }</td>
+														<td><a
+															href="${pageContext.request.contextPath }/boardView?viewBno=${board.bno }">
+																${board.btitle } </a></td>
+														<td>${board.bwriter }</td>
+														<td>${board.bdate }</td>
+														<td>${board.bhits }</td>
+														<td>${board.brec }</td>
+													</tr>
+												</c:forEach>
 
 											</tbody>
 
