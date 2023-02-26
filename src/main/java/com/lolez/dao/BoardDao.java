@@ -15,27 +15,23 @@ public interface BoardDao {
 	int selectMaxBno();
 
 	int insertBoard(BoardDto board);
-
+	
 	void updateBoardHits(int viewBno);
-
-	BoardDto selectBoardView(int viewBno);
-
-	String selectLikeCheck(int lbno, String lmid);
-
-	int insertBoardLike(@Param("lbno") int lbno, @Param("lmid") String lmid);
-
-	void deleteBoardLike(@Param("lbno") int lbno, @Param("lmid") String lmid);
-
-	int selectLikeCount(int lbno);
 	
-	@Select("SELECT RE.*, M.MPROFILE AS REPROFILE, M.MSTATE "
-			  + "FROM REPLYS RE, MEMBERS M "
-			  + "WHERE ( RE.REWRITER = M.MID ) AND REBNO = #{rebno}"
-			  + "ORDER BY RENUM ")
-		ArrayList<ReplyDto> selectReplyList(int rebno);
+	String selectLikeCheck(@Param("lbno") int lbno,@Param("lname")  String lname);
 	
-	int selectReplyLikeCount(int renum);
-	
-	
+	int insertBoardLike(@Param("lbno") int lbno, @Param("lname") String lname);
 
+	BoardDto selectBoardView(@Param("viewBno") int viewBno);
+
+	void deleteBoardLike(@Param("lbno") int lbno, @Param("lname") String lname);
+	
+	int selectLikeCount(@Param("lbno") int lbno);
+	
+	int selectReplyLikeCount(@Param("rlno") int rlno);
+	
+	ArrayList<ReplyDto> selectReplyList(@Param("rlbno") int rlbno);
+	
+	int selectReplyLikeCheck(@Param("rlno") int rlno,@Param("loginNickname")  String loginNickname);
+	
 }

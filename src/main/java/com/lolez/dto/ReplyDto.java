@@ -5,17 +5,17 @@ import lombok.Data;
 @Data
 public class ReplyDto {
 	
-	private int rnum;
-	private String rwriter;
+	private int rno;
 	private int rbno;
+	private String rname;
 	private String rcontent;
 	private String rdate;
-	private String rrec;
-	private String rstate;
+	private int rrec;
+	private int rstate;
 	
 	@Override
 	public String toString() {
-		return "ReplyDto [rnum=" + rnum + ", rwriter=" + rwriter + ", rbno=" + rbno + ", rcontent=" + rcontent
+		return "ReplyDto [rno=" + rno + ", rname=" + rname + ", rbno=" + rbno + ", rcontent=" + rcontent
 				+ ", rdate=" + rdate + ", rrec=" + rrec + ", rstate=" + rstate + "]";
 	}
 	

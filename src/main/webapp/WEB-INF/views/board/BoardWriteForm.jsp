@@ -50,7 +50,9 @@
 				<div class="row">
 					<div class="col-lg-12 ">
 						<div class="p-5">
-							<form class="user" action="${pageContext.request.contextPath }/boardWrite" method="post">
+							<form class="user" action="${pageContext.request.contextPath }/boardWrite" 
+							enctype="multipart/form-data"
+							method="post">
 								<div class="form-group row">
 									<div class="col-sm-12">
 										<label for="inputTitle" class="font-weight-bold">글제목</label>
@@ -61,6 +63,11 @@
 										<label for="inputContent" class="font-weight-bold">글내용</label>
 										<textarea name="bcontent" id="inputContent" class="form-control" rows="20" cols="5"></textarea>
 								</div>
+								<div class="form-group">
+                                	<label for="inputFile" class="font-weight-bold ">첨부파일</label>
+                                    <input name="bfile" type="file" id="inputFile" class="form-control form-control-user" 
+                                     style="padding-top:11px; height:48px;"   >
+                                </div>
 
 								<div class="form-group row">
 									<div class="col-sm-6">

@@ -11,7 +11,9 @@
 	<typeAliases>
 		<typeAlias type="com.lolez.dto.MemberDto" alias="member" />
 		<typeAlias type="com.lolez.dto.BoardDto" alias="board" />
+		<typeAlias type="com.lolez.dto.BoardLikeDto" alias="boardlike" />
 		<typeAlias type="com.lolez.dto.ReplyDto" alias="reply" />
+		<typeAlias type="com.lolez.dto.ReplyLikeDto" alias="replylike" />
 		<typeAlias type="com.lolez.dto.EmailDto" alias="email" />
 		<typeAlias type="com.lolez.Summonerdto.SummonerDto" alias="summoner" />
 		<typeAlias type="com.lolez.Leaguedto.LeagueEntryDto" alias="league" />
