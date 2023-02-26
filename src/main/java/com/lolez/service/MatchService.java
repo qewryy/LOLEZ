@@ -2,7 +2,6 @@ package com.lolez.service;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import org.apache.http.client.methods.CloseableHttpResponse;
@@ -15,14 +14,7 @@ import org.springframework.stereotype.Service;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.lolez.Matchdto.BanDto;
 import com.lolez.Matchdto.MatchDto;
-import com.lolez.Matchdto.ObjectiveDto;
-import com.lolez.Matchdto.ObjectivesDto;
-import com.lolez.Matchdto.ParticipantDto;
-import com.lolez.Matchdto.PerkStatsDto;
-import com.lolez.Matchdto.PerkStyleDto;
-import com.lolez.Matchdto.PerkStyleSelectionDto;
 import com.lolez.Summonerdto.SummonerDto;
 import com.lolez.dao.MatchDao;
 
