@@ -1,7 +1,6 @@
 package com.lolez.controller;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
@@ -13,9 +12,12 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.lolez.Leaguedto.LeagueEntryDto;
 import com.lolez.Matchdto.MatchDto;
+import com.lolez.Spectatordto.CurrentGameInfoDto;
 import com.lolez.Summonerdto.SummonerDto;
+import com.lolez.dto.ProusersDto;
 import com.lolez.service.LeagueService;
 import com.lolez.service.MatchService;
+import com.lolez.service.SpectatorService;
 import com.lolez.service.SummonerService;
 
 @Controller
@@ -32,6 +34,9 @@ public class RiotController {
 
 	@Autowired
 	private MatchService msvc;
+	
+	@Autowired
+	private SpectatorService spsvc;
 
 	private String apiKey = "RGAPI-2de83620-ed7c-4bb0-98f3-87706d4f39e9";
 
@@ -183,6 +188,18 @@ public class RiotController {
 
 		}
 
+		return mav;
+	}
+	
+	@RequestMapping(value = "/proList")
+	public ModelAndView proList() throws Exception {
+		System.out.println("프로게이머 승부예측 목록 요청");
+		ModelAndView mav = new ModelAndView();
+		ArrayList<ProusersDto> prousers = spsvc.selectprousers();
+		ArrayList<CurrentGameInfoDto> current = spsvc.currentserch(prousers, apiKey);
+		mav.addObject("progameList", current);
+
+		mav.setViewName("redirect:/");
 		return mav;
 	}
 
