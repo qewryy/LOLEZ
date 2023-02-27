@@ -20,7 +20,9 @@ public class SummonerService {
 
 	public SummonerDto summoneserch(String summoneName, String apiKey) throws Exception {
 		System.out.println("SummonerService summoneserch() 실행");
-
+		if(summoneName.length() == 2) {
+			summoneName = summoneName.substring(0, 1) + " " + summoneName.substring(1);
+		}
 		String replaceName = summoneName.replace(" ", "%20"); // 공백을 UTF-8로 변환
 
 		CloseableHttpClient httpClient = HttpClients.createDefault();
