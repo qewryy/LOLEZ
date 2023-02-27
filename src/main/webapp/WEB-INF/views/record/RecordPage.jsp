@@ -4,7 +4,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!doctype html>
-<html class="no-js  classOfHtml" lang="ko" style="	--main100: #ECF2FF;
+<html class="no-js  classOfHtml" lang="ko" style="	
+	--main100: #ECF2FF;
     --main200: #D5E3FF;
     --main300: #B3CDFF;
     --main400: #81ACFF;
@@ -611,6 +612,13 @@
 
 				<div class="css-164r41r e1r5v5160">
 				<c:set var="uesr" value="${Summoner.puuid}"  />
+				<c:set var="FiddleSticks" value="FiddleSticks"/>
+				<c:set var="Fiddlesticks_s" value="Fiddlesticks"/>
+				
+				
+				
+				
+				
 				
 				<c:forEach begin="0" end="${MatchList.size()-1}" var="i" > <!-- 20개의 전적을 반복문으로  수행 -->
 					<c:forEach begin="0" end="${MatchList.get(i).getInfo().getParticipants().size()- 1}" var="MIP_I"><!-- 20개의 전적중 각 판마다 의 게임 인원 10명 (0~9) 근거로 수행  -->
@@ -718,42 +726,347 @@
 					<div class="info">
 						<div>
 							<div class="champion">
-							!
+							
+									<c:set var="ChampionNamew" value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getChampionName()}"/>
+									<c:set var="FiddleSticks_w" value="FiddleSticks"/>
+									<c:set var="Fiddlesticks_sw" value="Fiddlesticks"/>
+							
 								<div class="icon">
-									<a href="/champions/lulu" target="_blank" rel="noreferrer"><img
-										src="https://opgg-static.akamaized.net/meta/images/lol/champion/Lulu.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_96&amp;v=1676969392397"
-										width="48" alt="룰루" height="48"><span
+									<a href="/champions/lulu" target="_blank" rel="noreferrer">
+													<c:choose>
+														<c:when test="${ChampionNamew eq FiddleSticks}">
+														<img src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/champion/${Fiddlesticks_s }.png"	width="48" alt="제리" height="48">
+														
+														</c:when>
+														
+														<c:otherwise>
+														<img src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/champion/${ChampionNamew }.png"	width="48" alt="제리" height="48">
+														
+														</c:otherwise>
+
+													</c:choose>
+														
+										<span
 										class="champion-level">${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getChampLevel() }</span></a>
 								</div>
 								
 								<div class="spells">
-								
+
+								<c:set var="spC1" value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getSummoner1Id() }"/>
+								<c:set var="spC2" value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getSummoner2Id() }"/>
 									<div class="spell">
 										<div class="" style="position: relative;">
+										
+										<c:choose>
+											<c:when test="${spC1 eq 1}">
 											<img
-												src="https://opgg-static.akamaized.net/meta/images/lol/spell/SummonerDot.png?image=q_auto,f_webp,w_44&amp;v=1676969392397"
+												src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerBoost.png"
+												width="22" alt="정화" height="22">
+											
+											</c:when>
+											
+											<c:when test="${spC1 eq 3}">
+											<img
+												src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerExhaust.png"
+												width="22" alt="탈진" height="22">
+											
+											</c:when>
+											
+											<c:when test="${spC1 eq 4}">
+											<img
+												src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerFlash.png"
+												width="22" alt="점멸" height="22">
+											
+											</c:when>
+											
+											<c:when test="${spC1 eq 6}">
+											<img
+												src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerHaste.png"
+												width="22" alt="유체화" height="22">
+											
+											</c:when>
+											
+											<c:when test="${spC1 eq 7}">
+											<img
+												src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerHeal.png"
+												width="22" alt="치유" height="22">
+											
+											</c:when>
+											
+											<c:when test="${spC1 eq 11}">
+											<img
+												src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerSmite.png"
+												width="22" alt="강타" height="22">
+											
+											</c:when>
+											
+											<c:when test="${spC1 eq 12}">
+											<img
+												src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerTeleport.png"
+												width="22" alt="순간이동" height="22">
+											
+											</c:when>
+											
+											<c:when test="${spC1 eq 13}">
+											<img
+												src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerMana.png"
+												width="22" alt="총명" height="22">
+											
+											</c:when>
+											
+											<c:when test="${spC1 eq 14}">
+											<img
+												src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerDot.png"
 												width="22" alt="점화" height="22">
+											
+											</c:when>
+											
+											<c:when test="${spC1 eq 21}">
+											<img
+												src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerBarrier.png"
+												width="22" alt="방어막" height="22">
+											
+											</c:when>
+											
+											<c:when test="${spC1 eq 32}">
+											<img
+												src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerSnowball.png"
+												width="22" alt="표식" height="22">
+											
+											</c:when>
+
+											
+										
+										</c:choose>
 										</div>
 									</div>
 									
 									<div class="spell">
 										<div class="" style="position: relative;">
+										<c:choose>
+											<c:when test="${spC2 eq 1}">
 											<img
-												src="https://opgg-static.akamaized.net/meta/images/lol/spell/SummonerFlash.png?image=q_auto,f_webp,w_44&amp;v=1676969392397"
+												src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerBoost.png"
+												width="22" alt="정화" height="22">
+											
+											</c:when>
+											
+											<c:when test="${spC2 eq 3}">
+											<img
+												src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerExhaust.png"
+												width="22" alt="탈진" height="22">
+											
+											</c:when>
+											
+											<c:when test="${spC2 eq 4}">
+											<img
+												src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerFlash.png"
 												width="22" alt="점멸" height="22">
+											
+											</c:when>
+											
+											<c:when test="${spC2 eq 6}">
+											<img
+												src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerHaste.png"
+												width="22" alt="유체화" height="22">
+											
+											</c:when>
+											
+											<c:when test="${spC2 eq 7}">
+											<img
+												src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerHeal.png"
+												width="22" alt="치유" height="22">
+											
+											</c:when>
+											
+											<c:when test="${spC2 eq 11}">
+											<img
+												src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerSmite.png"
+												width="22" alt="강타" height="22">
+											
+											</c:when>
+											
+											<c:when test="${spC2 eq 12}">
+											<img
+												src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerTeleport.png"
+												width="22" alt="순간이동" height="22">
+											
+											</c:when>
+											
+											<c:when test="${spC2 eq 13}">
+											<img
+												src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerMana.png"
+												width="22" alt="총명" height="22">
+											
+											</c:when>
+											
+											<c:when test="${spC2 eq 14}">
+											<img
+												src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerDot.png"
+												width="22" alt="점화" height="22">
+											
+											</c:when>
+											
+											<c:when test="${spC2 eq 21}">
+											<img
+												src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerBarrier.png"
+												width="22" alt="방어막" height="22">
+											
+											</c:when>
+											
+											<c:when test="${spC2 eq 32}">
+											<img
+												src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerSnowball.png"
+												width="22" alt="표식" height="22">
+											
+											</c:when>
+
+											
+										
+										</c:choose>
 										</div>
 									</div>
 									
 								</div>
 								<div class="runes">
+<%-- 								<c:set var="runstestD" value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getPerks().getStyles().get(0).getDescription() }"/>
+								<c:set var="runstestN" value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getPerks().getStyles().get(0).getStyle() }"/> --%>
+								
+								<%-- <c:set var="runs_1_W_s" value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getPerks().getStyles().get(0).getSelections().get(0).getDescription() }"/> --%>
+								<c:set var="runs_1_W" value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getPerks().getStyles().get(0).getSelections().get(0).getPerk() }"/>
+								
+								<%-- ${runs_1_W_s} --%>
+								
+								
 									<div class="rune">
+									
 										<div class="" style="position: relative;">
-											<img
-												src="https://opgg-static.akamaized.net/meta/images/lol/perk/8214.png?image=q_auto,f_webp,w_44&amp;v=1676969392397"
+										<c:choose>
+											<c:when test="${runs_1_W eq 8010 }">
+												<img
+												src="${pageContext.request.contextPath }/resources/assets/img/lolez_perk/Precision/Conqueror.png"
+												width="22" alt="정복자" height="22">
+											
+											</c:when>
+											<c:when test="${runs_1_W eq 8008 }">
+												<img
+												src="${pageContext.request.contextPath }/resources/assets/img/lolez_perk/Domination/LethalTempoTemp.png"
+												width="22" alt="치명적 속도" height="22">
+											
+											</c:when>
+											<c:when test="${runs_1_W eq 8005 }">
+												<img
+												src="${pageContext.request.contextPath }/resources/assets/img/lolez_perk/Domination/PressTheAttack.png"
+												width="22" alt="집중공격" height="22">
+											
+											</c:when>
+											<c:when test="${runs_1_W eq 8021 }">
+												<img
+												src="${pageContext.request.contextPath }/resources/assets/img/lolez_perk/Domination/FleetFootwork.png"
+												width="22" alt="기민한 발놀림" height="22">
+											
+											</c:when>
+											
+											
+											
+											<c:when test="${runs_1_W eq 8112 }">
+												<img
+												src="${pageContext.request.contextPath }/resources/assets/img/lolez_perk/Domination/Electrocute.png"
+												width="22" alt="감전" height="22">
+											
+											</c:when>
+											<c:when test="${runs_1_W eq 9923 }">
+												<img
+												src="${pageContext.request.contextPath }/resources/assets/img/lolez_perk/Domination/HailOfBlades.png"
+												width="22" alt="칼날비" height="22">
+											
+											</c:when>
+											<c:when test="${runs_1_W eq 8128 }">
+												<img
+												src="${pageContext.request.contextPath }/resources/assets/img/lolez_perk/Domination/DarkHarvest.png"
+												width="22" alt="어둠의 수학" height="22">
+											
+											</c:when>
+											<c:when test="${runs_1_W eq 8124 }">
+												<img
+												src="${pageContext.request.contextPath }/resources/assets/img/lolez_perk/Domination/Predator.png"
+												width="22" alt="포식자" height="22">
+											
+											</c:when>
+											
+											
+											
+											<c:when test="${runs_1_W eq 8229 }">
+												<img
+												src="${pageContext.request.contextPath }/resources/assets/img/lolez_perk/Sorcery/ArcaneComet.png"
+												width="22" alt="신비한 유성" height="22">
+											
+											</c:when>
+											<c:when test="${runs_1_W eq 8230 }">
+												<img
+												src="${pageContext.request.contextPath }/resources/assets/img/lolez_perk/Sorcery/PhaseRush.png"
+												width="22" alt="난입" height="22">
+											
+											</c:when>
+											<c:when test="${runs_1_W eq 8214 }">
+												<img
+												src="${pageContext.request.contextPath }/resources/assets/img/lolez_perk/Sorcery/SummonAery.png"
 												width="22" alt="콩콩이 소환" height="22">
+											
+											</c:when>
+											
+											
+											
+											
+											<c:when test="${runs_1_W eq 8437 }">
+												<img
+												src="${pageContext.request.contextPath }/resources/assets/img/lolez_perk/Resolve/GraspOfTheUndying.png"
+												width="22" alt="착취의 손아귀" height="22">
+											
+											</c:when>
+											<c:when test="${runs_1_W eq 8439 }">
+												<img
+												src="${pageContext.request.contextPath }/resources/assets/img/lolez_perk/Resolve/VeteranAftershock.png"
+												width="22" alt="여진" height="22">
+											
+											</c:when>
+											<c:when test="${runs_1_W eq 8465 }">
+												<img
+												src="${pageContext.request.contextPath }/resources/assets/img/lolez_perk/Resolve/Guardian.png"
+												width="22" alt="수호자" height="22">
+											
+											</c:when>
+											
+											
+											
+											
+											
+											<c:when test="${runs_1_W eq 8351 }">
+												<img
+												src="${pageContext.request.contextPath }/resources/assets/img/lolez_perk/Inspiration/GlacialAugment.png"
+												width="22" alt="빙결강화" height="22">
+											
+											</c:when>
+											<c:when test="${runs_1_W eq 8369 }">
+												<img
+												src="${pageContext.request.contextPath }/resources/assets/img/lolez_perk/Inspiration/FirstStrike.png"
+												width="22" alt="선제공격" height="22">
+											
+											</c:when>
+											<c:when test="${runs_1_W eq 8360 }">
+												<img
+												src="${pageContext.request.contextPath }/resources/assets/img/lolez_perk/Inspiration/UnsealedSpellbook.png"
+												width="22" alt="봉인 풀린 주문서" height="22">
+											
+											</c:when>
+										
+										</c:choose>
+										
 										</div>
 									</div>
 									<div class="rune">
+									<c:set var="runs_2_W" value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getPerks().getStyles().get(1).getStyle() }"/>
+									${runs_2_W }
 										<div class="" style="position: relative;">
 											<img
 												src="https://opgg-static.akamaized.net/meta/images/lol/perkStyle/8300.png?image=q_auto,f_webp,w_44&amp;v=1676969392397"
@@ -805,151 +1118,178 @@
 						</div>
 						<div>
 							<div class="items">
+							
+							
+							<c:set var="item0_win" value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getItem0() }"/>
+							<c:set var="item1_win" value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getItem1() }"/>
+							<c:set var="item2_win" value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getItem2() }"/>
+							<c:set var="item3_win" value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getItem3() }"/>
+							<c:set var="item4_win" value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getItem4() }"/>
+							<c:set var="item5_win" value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getItem5() }"/>
+							<c:set var="item6_win" value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getItem6() }"/>
+							<c:set var="zero" value="0"/>
+							
+							
+							<%-- <c:set var="items" value="${ {item0_win, item1_win, item2_win, item3_win, item4_win, item5_win} }"/> --%>
+							
+							<c:set var="itemList">${item0_win },${item1_win },${item2_win },${item3_win },${item4_win },${item5_win } </c:set>
+							
 								<ul>
-									<li><div class="" style="position: relative;">
+
+								
+								
+								<c:forEach var="Item_i" items="${itemList }">
+								
+								
+								
+								
+								<c:if test="${Item_i != 0}">
+								
+											<li><div class="" style="position: relative;">
 											<img
-												src="https://opgg-static.akamaized.net/meta/images/lol/item/3853.png?image=q_auto,f_webp,w_44&amp;v=1676969392397"
-												width="22" alt="얼음 정수의 파편" height="22">
+												src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/item/${Item_i}.png"
+												width="22" alt="${item_i}" height="22">
 										</div></li>
-									<li><div class="" style="position: relative;">
-											<img
-												src="https://opgg-static.akamaized.net/meta/images/lol/item/2065.png?image=q_auto,f_webp,w_44&amp;v=1676969392397"
-												width="22" alt="슈렐리아의 군가" height="22">
-										</div></li>
-									<li><div class="" style="position: relative;">
-											<img
-												src="https://opgg-static.akamaized.net/meta/images/lol/item/3916.png?image=q_auto,f_webp,w_44&amp;v=1676969392397"
-												width="22" alt="망각의 구" height="22">
-										</div></li>
-									<li></li>
-									<li><div class="" style="position: relative;">
-											<img
-												src="https://opgg-static.akamaized.net/meta/images/lol/item/3158.png?image=q_auto,f_webp,w_44&amp;v=1676969392397"
-												width="22" alt="명석함의 아이오니아 장화" height="22">
-										</div></li>
-									<li><div class="" style="position: relative;">
-											<img
-												src="https://opgg-static.akamaized.net/meta/images/lol/item/6616.png?image=q_auto,f_webp,w_44&amp;v=1676969392397"
-												width="22" alt="흐르는 물의 지팡이" height="22">
-										</div></li>
+								
+								</c:if>
+								<c:if test="${Item_i == 0}">
+								
+								<li></li>
+								
+								</c:if>
+
+								
+								</c:forEach>
+
 								</ul>
 								<div class="ward">
 									<div class="" style="position: relative;">
 										<img
-											src="https://opgg-static.akamaized.net/meta/images/lol/item/3364.png?image=q_auto,f_webp,w_44&amp;v=1676969392397"
-											width="22" alt="예언자의 렌즈" height="22">
+											src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/item/${item6_win }.png"
+											width="22" alt="${item6_win}" height="22">
 									</div>
 								</div>
 							</div>
-							<div class="multi-kill">더블킬</div>
+							
+							<c:set var="PentaKills" value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getPentaKills()}"/>
+							<c:set var="QuadraKills" value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getQuadraKills()}"/>
+							<c:set var="TripleKills" value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getTripleKills()}"/>
+							<c:set var="DoubleKills" value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getDoubleKills()}"/>
+							
+							<c:choose>
+								<c:when test="${PentaKills >= 1 }">
+										<div class="multi-kill">
+										팬타킬
+										</div>
+								</c:when>
+								
+								<c:when test="${QuadraKills >= 1 }">
+										<div class="multi-kill">
+										쿼드라킬
+										</div>
+								</c:when>
+								
+								<c:when test="${TripleKills >= 1 }">
+										<div class="multi-kill">
+										트리플킬
+										</div>
+								</c:when>
+								
+								<c:when test="${DoubleKills >= 1 }">
+										<div class="multi-kill">
+										더블킬
+										</div>
+								</c:when>
+							
+							
+							
+							</c:choose>
+
+
+	
+							
+							
 						</div>
 					</div>
 					<div class="participants">
+					<!-- 해당게임의 존재한 플레이어 목록 5:5 기준 총 10명 -->
+					
 						<ul>
-							<li class="css-1ahqe5t e1iiyghw1"><div class="icon"
+					
+						<c:forEach begin="0" end="${MatchList.get(i).getInfo().getParticipants().size()- 6}" var="member">
+						<c:set var="ChampionNameMember" value="${MatchList.get(i).getInfo().getParticipants().get(member).getChampionName()}"/>
+
+								<li class="css-1ahqe5t e1iiyghw1"><div class="icon"
 									style="position: relative;">
-									<img
-										src="https://opgg-static.akamaized.net/meta/images/lol/champion/Irelia.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_32&amp;v=1676969392397"
-										width="16" alt="이렐리아" height="16">
+									
+									<c:choose>
+										<c:when test="${ChampionNameMember ==  FiddleSticks}">
+										<img
+										src="https://ddragon.leagueoflegends.com/cdn/13.4.1/img/champion/${ FiddleSticks_s}.png"
+										width="16" alt="${ FiddleSticks_s}" height="16">
+										</c:when>
+										
+										<c:otherwise>
+										<img
+										src="https://ddragon.leagueoflegends.com/cdn/13.4.1/img/champion/${ ChampionNameMember}.png"
+										width="16" alt="${ ChampionNameMember}" height="16">
+										
+										
+										</c:otherwise>
+										
+										
+									
+									</c:choose>
+									
+										
+										
 								</div>
 								<div class="name">
 									<a
 										href="/summoners/kr/%EC%9D%91%EA%BC%AC%EC%8A%A4%ED%82%A4%EB%B2%84%ED%84%B0"
-										target="_blank" rel="noreferrer">응꼬스키버터</a>
-								</div></li>
-							<li class="css-1ahqe5t e1iiyghw1"><div class="icon"
-									style="position: relative;">
-									<img
-										src="https://opgg-static.akamaized.net/meta/images/lol/champion/Sejuani.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_32&amp;v=1676969392397"
-										width="16" alt="세주아니" height="16">
-								</div>
-								<div class="name">
-									<a href="/summoners/kr/%EC%B0%A8%EA%B2%BD%EB%8F%8C"
-										target="_blank" rel="noreferrer">차경돌</a>
-								</div></li>
-							<li class="css-1ahqe5t e1iiyghw1"><div class="icon"
-									style="position: relative;">
-									<img
-										src="https://opgg-static.akamaized.net/meta/images/lol/champion/TwistedFate.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_32&amp;v=1676969392397"
-										width="16" alt="트위스티드 페이트" height="16">
-								</div>
-								<div class="name">
-									<a
-										href="/summoners/kr/%EB%88%84%EB%88%84%EC%99%80%20%EC%95%84%EB%AC%B4%EB%AC%B4"
-										target="_blank" rel="noreferrer">누누와 아무무</a>
-								</div></li>
-							<li class="css-1ahqe5t e1iiyghw1"><div class="icon"
-									style="position: relative;">
-									<img
-										src="https://opgg-static.akamaized.net/meta/images/lol/champion/Aphelios.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_32&amp;v=1676969392397"
-										width="16" alt="아펠리오스" height="16">
-								</div>
-								<div class="name">
-									<a href="/summoners/kr/1ChatGPT" target="_blank"
-										rel="noreferrer">1ChatGPT</a>
-								</div></li>
-							<li class="css-rea7zu e1iiyghw1"><div class="icon"
-									style="position: relative;">
-									<img
-										src="https://opgg-static.akamaized.net/meta/images/lol/champion/Lulu.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_32&amp;v=1676969392397"
-										width="16" alt="룰루" height="16">
-								</div>
-								<div class="name">
-									<a href="/summoners/kr/%ED%9D%AC%EC%84%B1%EC%9D%B4"
-										target="_blank" rel="noreferrer">희성이</a>
-								</div></li>
+										target="_blank" rel="noreferrer">${MatchList.get(i).getInfo().getParticipants().get(member).getSummonerName() }</a>
+								</div></li>						
+
+						</c:forEach>
+						
+
+						
+						
+
+
 						</ul>
 						<ul>
-							<li class="css-1ahqe5t e1iiyghw1"><div class="icon"
+							<c:forEach begin="5" end="${MatchList.get(i).getInfo().getParticipants().size()- 1}" var="member_u">
+							<c:set var="ChampionNameMember_two" value="${MatchList.get(i).getInfo().getParticipants().get(member_u).getChampionName()}"/>
+							
+								<li class="css-1ahqe5t e1iiyghw1"><div class="icon"
 									style="position: relative;">
-									<img
-										src="https://opgg-static.akamaized.net/meta/images/lol/champion/Warwick.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_32&amp;v=1676969392397"
-										width="16" alt="워윅" height="16">
-								</div>
-								<div class="name">
-									<a href="/summoners/kr/%EC%96%BC%20%EB%8F%BC" target="_blank"
-										rel="noreferrer">얼 돼</a>
-								</div></li>
-							<li class="css-1ahqe5t e1iiyghw1"><div class="icon"
-									style="position: relative;">
-									<img
-										src="https://opgg-static.akamaized.net/meta/images/lol/champion/Sylas.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_32&amp;v=1676969392397"
-										width="16" alt="사일러스" height="16">
-								</div>
-								<div class="name">
-									<a href="/summoners/kr/%EB%A9%94%EA%B0%80%EC%99%80%EC%86%A1"
-										target="_blank" rel="noreferrer">메가와송</a>
-								</div></li>
-							<li class="css-1ahqe5t e1iiyghw1"><div class="icon"
-									style="position: relative;">
-									<img
-										src="https://opgg-static.akamaized.net/meta/images/lol/champion/Lillia.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_32&amp;v=1676969392397"
-										width="16" alt="릴리아" height="16">
-								</div>
-								<div class="name">
-									<a href="/summoners/kr/NaDahh" target="_blank" rel="noreferrer">NaDahh</a>
-								</div></li>
-							<li class="css-1ahqe5t e1iiyghw1"><div class="icon"
-									style="position: relative;">
-									<img
-										src="https://opgg-static.akamaized.net/meta/images/lol/champion/Xayah.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_32&amp;v=1676969392397"
-										width="16" alt="자야" height="16">
-								</div>
-								<div class="name">
-									<a href="/summoners/kr/%EC%9E%84%EC%9C%A4%EB%AA%A8"
-										target="_blank" rel="noreferrer">임윤모</a>
-								</div></li>
-							<li class="css-1ahqe5t e1iiyghw1"><div class="icon"
-									style="position: relative;">
-									<img
-										src="https://opgg-static.akamaized.net/meta/images/lol/champion/Lux.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_32&amp;v=1676969392397"
-										width="16" alt="럭스" height="16">
+									<c:choose>
+										<c:when test="${ChampionNameMember_two ==  FiddleSticks}">
+										<img
+										src="https://ddragon.leagueoflegends.com/cdn/13.4.1/img/champion/${ FiddleSticks_s}.png"
+										width="16" alt="${ FiddleSticks_s}" height="16">
+										</c:when>
+										
+										<c:otherwise>
+										<img
+										src="https://ddragon.leagueoflegends.com/cdn/13.4.1/img/champion/${ ChampionNameMember_two}.png"
+										width="16" alt="${ ChampionNameMember_two}" height="16">
+										
+										
+										</c:otherwise>
+										
+										
+									
+									</c:choose>
 								</div>
 								<div class="name">
 									<a
-										href="/summoners/kr/%EC%A7%81%EB%A0%AC%20%EB%B3%91%EB%A0%AC%20%EC%A7%80%EC%83%81%EB%A0%AC"
-										target="_blank" rel="noreferrer">직렬 병렬 지상렬</a>
-								</div></li>
+										href="/summoners/kr/%EC%9D%91%EA%BC%AC%EC%8A%A4%ED%82%A4%EB%B2%84%ED%84%B0"
+										target="_blank" rel="noreferrer">${MatchList.get(i).getInfo().getParticipants().get(member_u).getSummonerName() }</a>
+								</div></li>						
+
+						</c:forEach>
 						</ul>
 					</div>
 				</div>
@@ -1062,36 +1402,328 @@
 										<div class="length">${MinIntL}분 ${secl}초</div>
 									</div>
 									<div class="info">
+									<c:set var="ChampionName" value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getChampionName()}"/>
 										<div>
 											<div class="champion">
 												<div class="icon">
-													<a href="/champions/zeri" target="_blank" rel="noreferrer"><img
-														src="https://opgg-static.akamaized.net/meta/images/lol/champion/Zeri.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_96&amp;v=1675751623266"
-														width="48" alt="제리" height="48"><span
+													<a href="/champions/zeri" target="_blank" rel="noreferrer">
+													
+													<c:choose>
+														<c:when test="${ChampionName eq FiddleSticks}">
+														<img src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/champion/${Fiddlesticks_s }.png"	width="48" alt="제리" height="48">
+														
+														</c:when>
+														
+														<c:otherwise>
+														<img src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/champion/${ChampionName }.png"	width="48" alt="제리" height="48">
+														
+														</c:otherwise>
+
+													</c:choose>
+														
+														
+														<span
 														class="champion-level">${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getChampLevel() }</span></a>
 												</div>
 												<div class="spells">
+								<c:set var="spC1_L" value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getSummoner1Id() }"/>
+								<c:set var="spC2_L" value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getSummoner2Id() }"/>
 													<div class="spell">
 														<div class="" style="position: relative;">
-															<img
-																src="https://opgg-static.akamaized.net/meta/images/lol/spell/SummonerBoost.png?image=q_auto,f_webp,w_44&amp;v=1675751623266"
-																width="22" alt="정화" height="22">
+										<c:choose>
+											<c:when test="${spC1_L eq 1}">
+											<img
+												src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerBoost.png"
+												width="22" alt="정화" height="22">
+											
+											</c:when>
+											
+											<c:when test="${spC1_L eq 3}">
+											<img
+												src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerExhaust.png"
+												width="22" alt="탈진" height="22">
+											
+											</c:when>
+											
+											<c:when test="${spspC1_LC1 eq 4}">
+											<img
+												src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerFlash.png"
+												width="22" alt="점멸" height="22">
+											
+											</c:when>
+											
+											<c:when test="${spC1_L eq 6}">
+											<img
+												src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerHaste.png"
+												width="22" alt="유체화" height="22">
+											
+											</c:when>
+											
+											<c:when test="${spC1_L eq 7}">
+											<img
+												src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerHeal.png"
+												width="22" alt="치유" height="22">
+											
+											</c:when>
+											
+											<c:when test="${spC1_L eq 11}">
+											<img
+												src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerSmite.png"
+												width="22" alt="강타" height="22">
+											
+											</c:when>
+											
+											<c:when test="${spC1_L eq 12}">
+											<img
+												src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerTeleport.png"
+												width="22" alt="순간이동" height="22">
+											
+											</c:when>
+											
+											<c:when test="${spC1_L eq 13}">
+											<img
+												src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerMana.png"
+												width="22" alt="총명" height="22">
+											
+											</c:when>
+											
+											<c:when test="${spC1_L eq 14}">
+											<img
+												src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerDot.png"
+												width="22" alt="점화" height="22">
+											
+											</c:when>
+											
+											<c:when test="${spC1_L eq 21}">
+											<img
+												src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerBarrier.png"
+												width="22" alt="방어막" height="22">
+											
+											</c:when>
+											
+											<c:when test="${spC1_L eq 32}">
+											<img
+												src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerSnowball.png"
+												width="22" alt="표식" height="22">
+											
+											</c:when>
+
+											
+										
+										</c:choose>
 														</div>
 													</div>
 													<div class="spell">
 														<div class="" style="position: relative;">
-															<img
-																src="https://opgg-static.akamaized.net/meta/images/lol/spell/SummonerFlash.png?image=q_auto,f_webp,w_44&amp;v=1675751623266"
-																width="22" alt="점멸" height="22">
+										<c:choose>
+											<c:when test="${spC2_L eq 1}">
+											<img
+												src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerBoost.png"
+												width="22" alt="정화" height="22">
+											
+											</c:when>
+											
+											<c:when test="${spC2_L eq 3}">
+											<img
+												src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerExhaust.png"
+												width="22" alt="탈진" height="22">
+											
+											</c:when>
+											
+											<c:when test="${spC2_L eq 4}">
+											<img
+												src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerFlash.png"
+												width="22" alt="점멸" height="22">
+											
+											</c:when>
+											
+											<c:when test="${spC2_L eq 6}">
+											<img
+												src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerHaste.png"
+												width="22" alt="유체화" height="22">
+											
+											</c:when>
+											
+											<c:when test="${spC2_L eq 7}">
+											<img
+												src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerHeal.png"
+												width="22" alt="치유" height="22">
+											
+											</c:when>
+											
+											<c:when test="${spC2_L eq 11}">
+											<img
+												src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerSmite.png"
+												width="22" alt="강타" height="22">
+											
+											</c:when>
+											
+											<c:when test="${spC2_L eq 12}">
+											<img
+												src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerTeleport.png"
+												width="22" alt="순간이동" height="22">
+											
+											</c:when>
+											
+											<c:when test="${spC2_L eq 13}">
+											<img
+												src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerMana.png"
+												width="22" alt="총명" height="22">
+											
+											</c:when>
+											
+											<c:when test="${spC2_L eq 14}">
+											<img
+												src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerDot.png"
+												width="22" alt="점화" height="22">
+											
+											</c:when>
+											
+											<c:when test="${spC2_L eq 21}">
+											<img
+												src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerBarrier.png"
+												width="22" alt="방어막" height="22">
+											
+											</c:when>
+											
+											<c:when test="${spC2_L eq 32}">
+											<img
+												src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerSnowball.png"
+												width="22" alt="표식" height="22">
+											
+											</c:when>
+
+											
+										
+										</c:choose>
 														</div>
 													</div>
 												</div>
 												<div class="runes">
+												<c:set var="runs_1" value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getPerks().getStyles().get(0).getSelections().get(0).getPerk() }"/>
+												${runs_1 }
 													<div class="rune">
 														<div class="" style="position: relative;">
-															<img
-																src="https://opgg-static.akamaized.net/meta/images/lol/perk/8008.png?image=q_auto,f_webp,w_44&amp;v=1675751623266"
-																width="22" alt="치명적 속도" height="22">
+										<c:choose>
+											<c:when test="${runs_1 eq 8010 }">
+												<img
+												src="${pageContext.request.contextPath }/resources/assets/img/lolez_perk/Precision/Conqueror.png"
+												width="22" alt="정복자" height="22">
+											
+											</c:when>
+											<c:when test="${runs_1 eq 8008 }">
+												<img
+												src="${pageContext.request.contextPath }/resources/assets/img/lolez_perk/Domination/LethalTempoTemp.png"
+												width="22" alt="치명적 속도" height="22">
+											
+											</c:when>
+											<c:when test="${runs_1 eq 8005 }">
+												<img
+												src="${pageContext.request.contextPath }/resources/assets/img/lolez_perk/Domination/PressTheAttack.png"
+												width="22" alt="집중공격" height="22">
+											
+											</c:when>
+											<c:when test="${runs_1 eq 8021 }">
+												<img
+												src="${pageContext.request.contextPath }/resources/assets/img/lolez_perk/Domination/FleetFootwork.png"
+												width="22" alt="기민한 발놀림" height="22">
+											
+											</c:when>
+											
+											
+											
+											<c:when test="${runs_1 eq 8112 }">
+												<img
+												src="${pageContext.request.contextPath }/resources/assets/img/lolez_perk/Domination/Electrocute.png"
+												width="22" alt="감전" height="22">
+											
+											</c:when>
+											<c:when test="${runs_1 eq 9923 }">
+												<img
+												src="${pageContext.request.contextPath }/resources/assets/img/lolez_perk/Domination/HailOfBlades.png"
+												width="22" alt="칼날비" height="22">
+											
+											</c:when>
+											<c:when test="${runs_1 eq 8128 }">
+												<img
+												src="${pageContext.request.contextPath }/resources/assets/img/lolez_perk/Domination/DarkHarvest.png"
+												width="22" alt="어둠의 수학" height="22">
+											
+											</c:when>
+											<c:when test="${runs_1 eq 8124 }">
+												<img
+												src="${pageContext.request.contextPath }/resources/assets/img/lolez_perk/Domination/Predator.png"
+												width="22" alt="포식자" height="22">
+											
+											</c:when>
+											
+											
+											
+											<c:when test="${runs_1 eq 8229 }">
+												<img
+												src="${pageContext.request.contextPath }/resources/assets/img/lolez_perk/Sorcery/ArcaneComet.png"
+												width="22" alt="신비한 유성" height="22">
+											
+											</c:when>
+											<c:when test="${runs_1 eq 8230 }">
+												<img
+												src="${pageContext.request.contextPath }/resources/assets/img/lolez_perk/Sorcery/PhaseRush.png"
+												width="22" alt="난입" height="22">
+											
+											</c:when>
+											<c:when test="${runs_1 eq 8214 }">
+												<img
+												src="${pageContext.request.contextPath }/resources/assets/img/lolez_perk/Sorcery/SummonAery.png"
+												width="22" alt="콩콩이 소환" height="22">
+											
+											</c:when>
+											
+											
+											
+											
+											<c:when test="${runs_1 eq 8437 }">
+												<img
+												src="${pageContext.request.contextPath }/resources/assets/img/lolez_perk/Resolve/GraspOfTheUndying.png"
+												width="22" alt="착취의 손아귀" height="22">
+											
+											</c:when>
+											<c:when test="${runs_1 eq 8439 }">
+												<img
+												src="${pageContext.request.contextPath }/resources/assets/img/lolez_perk/Resolve/VeteranAftershock.png"
+												width="22" alt="여진" height="22">
+											
+											</c:when>
+											<c:when test="${runs_1 eq 8465 }">
+												<img
+												src="${pageContext.request.contextPath }/resources/assets/img/lolez_perk/Resolve/Guardian.png"
+												width="22" alt="수호자" height="22">
+											
+											</c:when>
+											
+											
+											
+											
+											
+											<c:when test="${runs_1 eq 8351 }">
+												<img
+												src="${pageContext.request.contextPath }/resources/assets/img/lolez_perk/Inspiration/GlacialAugment.png"
+												width="22" alt="빙결강화" height="22">
+											
+											</c:when>
+											<c:when test="${runs_1 eq 8369 }">
+												<img
+												src="${pageContext.request.contextPath }/resources/assets/img/lolez_perk/Inspiration/FirstStrike.png"
+												width="22" alt="선제공격" height="22">
+											
+											</c:when>
+											<c:when test="${runs_1 eq 8360 }">
+												<img
+												src="${pageContext.request.contextPath }/resources/assets/img/lolez_perk/Inspiration/UnsealedSpellbook.png"
+												width="22" alt="봉인 풀린 주문서" height="22">
+											
+											</c:when>
+										
+										</c:choose>
 														</div>
 													</div>
 													<div class="rune">
@@ -1103,6 +1735,8 @@
 													</div>
 												</div>
 											</div>
+											
+											
 											<div class="kda">
 												<div class="k-d-a">
 													<span>${kill_L}</span> / <span class="d">${deaths_L}</span> / <span>${assists_L}</span>
@@ -1141,147 +1775,153 @@
 										</div>
 										<div>
 											<div class="items">
+							<c:set var="item0_L" value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getItem0() }"/>
+							<c:set var="item1_L" value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getItem1() }"/>
+							<c:set var="item2_L" value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getItem2() }"/>
+							<c:set var="item3_L" value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getItem3() }"/>
+							<c:set var="item4_L" value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getItem4() }"/>
+							<c:set var="item5_L" value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getItem5() }"/>
+							<c:set var="item6_L" value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getItem6() }"/>
+							<c:set var="zero_L" value="0"/>
+							<c:set var="itemList_L">${item0_L },${item1_L },${item2_L },${item3_L },${item4_L },${item5_L } </c:set>
+											
 												<ul>
-													<li><div class="" style="position: relative;">
-															<img
-																src="https://opgg-static.akamaized.net/meta/images/lol/item/1055.png?image=q_auto,f_webp,w_44&amp;v=1675751623266"
-																width="22" alt="도란의 검" height="22">
-														</div></li>
-													<li><div class="" style="position: relative;">
-															<img
-																src="https://opgg-static.akamaized.net/meta/images/lol/item/6670.png?image=q_auto,f_webp,w_44&amp;v=1675751623266"
-																width="22" alt="절정의 화살" height="22">
-														</div></li>
-													<li><div class="" style="position: relative;">
-															<img
-																src="https://opgg-static.akamaized.net/meta/images/lol/item/1036.png?image=q_auto,f_webp,w_44&amp;v=1675751623266"
-																width="22" alt="롱소드" height="22">
-														</div></li>
-													<li><div class="" style="position: relative;">
-															<img
-																src="https://opgg-static.akamaized.net/meta/images/lol/item/3006.png?image=q_auto,f_webp,w_44&amp;v=1675751623266"
-																width="22" alt="광전사의 군화" height="22">
-														</div></li>
-													<li></li>
-													<li></li>
+												
+								<c:forEach var="Item_i_L" items="${itemList_L }">
+								<c:if test="${Item_i_L != 0}">
+								
+											<li><div class="" style="position: relative;">
+											<img
+												src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/item/${Item_i_L}.png"
+												width="22" alt="${Item_i_L}" height="22">
+										</div></li>
+								
+								</c:if>
+								<c:if test="${Item_i_L == 0}">
+								
+								<li></li>
+								
+								</c:if>
+
+								
+								</c:forEach>
+
 												</ul>
 												<div class="ward">
 													<div class="" style="position: relative;">
 														<img
-															src="https://opgg-static.akamaized.net/meta/images/lol/item/3340.png?image=q_auto,f_webp,w_44&amp;v=1675751623266"
-															width="22" alt="투명 와드" height="22">
+															src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/item/${item6_L}.png"
+															width="22" alt="${item6_L }" height="22">
 													</div>
 												</div>
 											</div>
+							<c:set var="PentaKills_L" value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getPentaKills()}"/>
+							<c:set var="QuadraKills_L" value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getQuadraKills()}"/>
+							<c:set var="TripleKills_L" value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getTripleKills()}"/>
+							<c:set var="DoubleKills_L" value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getDoubleKills()}"/>
+							
+							<c:choose>
+								<c:when test="${PentaKills_L >= 1 }">
+										<div class="multi-kill">
+										팬타킬
+										</div>
+								</c:when>
+								
+								<c:when test="${QuadraKills_L >= 1 }">
+										<div class="multi-kill">
+										쿼드라킬
+										</div>
+								</c:when>
+								
+								<c:when test="${TripleKills_L >= 1 }">
+										<div class="multi-kill">
+										트리플킬
+										</div>
+								</c:when>
+								
+								<c:when test="${DoubleKills_L >= 1 }">
+										<div class="multi-kill">
+										더블킬
+										</div>
+								</c:when>
+							
+							
+							
+							</c:choose>
+											
+											
 										</div>
 									</div>
+								
+								
 									<div class="participants">
 										<ul>
-											<li class="css-1ahqe5t e1iiyghw1"><div class="icon"
-													style="position: relative;">
-													<img
-														src="https://opgg-static.akamaized.net/meta/images/lol/champion/Jayce.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_32&amp;v=1675751623266"
-														width="16" alt="제이스" height="16">
-												</div>
-												<div class="name">
-													<a href="/summoners/kr/Gen%20G%20Casting" target="_blank"
-														rel="noreferrer">Gen G Casting</a>
-												</div></li>
-											<li class="css-1ahqe5t e1iiyghw1"><div class="icon"
-													style="position: relative;">
-													<img
-														src="https://opgg-static.akamaized.net/meta/images/lol/champion/Taric.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_32&amp;v=1675751623266"
-														width="16" alt="타릭" height="16">
-												</div>
-												<div class="name">
-													<a href="/summoners/kr/FA%20ady" target="_blank"
-														rel="noreferrer">FA ady</a>
-												</div></li>
-											<li class="css-1ahqe5t e1iiyghw1"><div class="icon"
-													style="position: relative;">
-													<img
-														src="https://opgg-static.akamaized.net/meta/images/lol/champion/Zoe.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_32&amp;v=1675751623266"
-														width="16" alt="조이" height="16">
+																	
+						
+										<c:forEach begin="0" end="${MatchList.get(i).getInfo().getParticipants().size()- 6}" var="member_two">
+						<c:set var="ChampionNameMember_l" value="${MatchList.get(i).getInfo().getParticipants().get(member_two).getChampionName()}"/>
+												<li class="css-1ahqe5t e1iiyghw1">
+												<div class="icon" style="position: relative;">
+
+									<c:choose>
+										<c:when test="${ChampionNameMember_l ==  FiddleSticks}">
+										<img
+										src="https://ddragon.leagueoflegends.com/cdn/13.4.1/img/champion/${ FiddleSticks_s}.png"
+										width="16" alt="${ FiddleSticks_s}" height="16">
+										</c:when>
+										
+										<c:otherwise>
+										<img
+										src="https://ddragon.leagueoflegends.com/cdn/13.4.1/img/champion/${ ChampionNameMember_l}.png"
+										width="16" alt="${ ChampionNameMember_l}" height="16">
+										
+										
+										</c:otherwise>
+										
+										
+									
+									</c:choose>
 												</div>
 												<div class="name">
 													<a
-														href="/summoners/kr/%EA%B9%80%EC%B9%98%EA%B0%80%20%EB%A7%9B%EC%9E%88%EB%8B%A4"
-														target="_blank" rel="noreferrer">김치가 맛있다</a>
-												</div></li>
-											<li class="css-1ahqe5t e1iiyghw1"><div class="icon"
-													style="position: relative;">
-													<img
-														src="https://opgg-static.akamaized.net/meta/images/lol/champion/Samira.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_32&amp;v=1675751623266"
-														width="16" alt="사미라" height="16">
-												</div>
-												<div class="name">
-													<a href="/summoners/kr/HealthandAhn" target="_blank"
-														rel="noreferrer">HealthandAhn</a>
-												</div></li>
-											<li class="css-1ahqe5t e1iiyghw1"><div class="icon"
-													style="position: relative;">
-													<img
-														src="https://opgg-static.akamaized.net/meta/images/lol/champion/Amumu.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_32&amp;v=1675751623266"
-														width="16" alt="아무무" height="16">
-												</div>
-												<div class="name">
-													<a href="/summoners/kr/%EA%B4%80%20%EA%B3%84"
-														target="_blank" rel="noreferrer">관 계</a>
-												</div></li>
+														href="/summoners/kr/%EC%9D%91%EA%BC%AC%EC%8A%A4%ED%82%A4%EB%B2%84%ED%84%B0"
+														target="_blank" rel="noreferrer">${MatchList.get(i).getInfo().getParticipants().get(member_two).getSummonerName() }</a>
+												</div></li>						
+				
+										</c:forEach>
+						
 										</ul>
 										<ul>
-											<li class="css-1ahqe5t e1iiyghw1"><div class="icon"
+										<c:forEach begin="5" end="${MatchList.get(i).getInfo().getParticipants().size()- 1}" var="member_u_two">
+										<c:set var="ChampionNameMember_l_two" value="${MatchList.get(i).getInfo().getParticipants().get(member_u_two).getChampionName()}"/>
+												<li class="css-1ahqe5t e1iiyghw1"><div class="icon"
 													style="position: relative;">
-													<img
-														src="https://opgg-static.akamaized.net/meta/images/lol/champion/Viktor.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_32&amp;v=1675751623266"
-														width="16" alt="빅토르" height="16">
+									<c:choose>
+										<c:when test="${ChampionNameMember_l_two ==  FiddleSticks}">
+										<img
+										src="https://ddragon.leagueoflegends.com/cdn/13.4.1/img/champion/${ FiddleSticks_s}.png"
+										width="16" alt="${ FiddleSticks_s}" height="16">
+										</c:when>
+										
+										<c:otherwise>
+										<img
+										src="https://ddragon.leagueoflegends.com/cdn/13.4.1/img/champion/${ ChampionNameMember_l_two}.png"
+										width="16" alt="${ ChampionNameMember_l_two}" height="16">
+										
+										
+										</c:otherwise>
+										
+										
+									
+									</c:choose>
 												</div>
 												<div class="name">
 													<a
-														href="/summoners/kr/%EC%B9%B4%EB%A6%AC%EB%82%98%EC%9D%98%EB%8C%84%EB%B8%8C"
-														target="_blank" rel="noreferrer">카리나의댄브</a>
-												</div></li>
-											<li class="css-1ahqe5t e1iiyghw1"><div class="icon"
-													style="position: relative;">
-													<img
-														src="https://opgg-static.akamaized.net/meta/images/lol/champion/MonkeyKing.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_32&amp;v=1675751623266"
-														width="16" alt="오공" height="16">
-												</div>
-												<div class="name">
-													<a
-														href="/summoners/kr/%EB%84%A4%EC%98%B4%EC%8B%9C%ED%8B%B0%EC%9D%B4%EB%AF%BC%EC%9E%901"
-														target="_blank" rel="noreferrer">네옴시티이민자1</a>
-												</div></li>
-											<li class="css-1ahqe5t e1iiyghw1"><div class="icon"
-													style="position: relative;">
-													<img
-														src="https://opgg-static.akamaized.net/meta/images/lol/champion/Tryndamere.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_32&amp;v=1675751623266"
-														width="16" alt="트린다미어" height="16">
-												</div>
-												<div class="name">
-													<a href="/summoners/kr/JaxFionaCamille" target="_blank"
-														rel="noreferrer">JaxFionaCamille</a>
-												</div></li>
-											<li class="css-rea7zu e1iiyghw1"><div class="icon"
-													style="position: relative;">
-													<img
-														src="https://opgg-static.akamaized.net/meta/images/lol/champion/Zeri.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_32&amp;v=1675751623266"
-														width="16" alt="제리" height="16">
-												</div>
-												<div class="name">
-													<a href="/summoners/kr/T1%20Gumayusi" target="_blank"
-														rel="noreferrer">T1 Gumayusi</a>
-												</div></li>
-											<li class="css-1ahqe5t e1iiyghw1"><div class="icon"
-													style="position: relative;">
-													<img
-														src="https://opgg-static.akamaized.net/meta/images/lol/champion/Ashe.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_32&amp;v=1675751623266"
-														width="16" alt="애쉬" height="16">
-												</div>
-												<div class="name">
-													<a href="/summoners/kr/GNIKLERI" target="_blank"
-														rel="noreferrer">GNIKLERI</a>
-												</div></li>
+														href="/summoners/kr/%EC%9D%91%EA%BC%AC%EC%8A%A4%ED%82%A4%EB%B2%84%ED%84%B0"
+														target="_blank" rel="noreferrer">${MatchList.get(i).getInfo().getParticipants().get(member_u_two).getSummonerName() }</a>
+												</div></li>						
+				
+										</c:forEach>
 										</ul>
 									</div>
 								</div>
@@ -1382,12 +2022,33 @@
 	var ran=["I","II","III","IV"]
 	var checkSoloList = "${SoloList.tier}";
 	var checkDuoList = "${DuoList.tier}";
-	console.log("${MatchList.get(1).getInfo().getParticipants().get(2).getTeamId()}");
+	
+	
+/* 	console.log("${MatchList.get(1).getInfo().getParticipants().get(2).getTeamId()}");
 	console.log("${MatchList.get(1).getInfo().getTeams()}");
-	console.log("${MatchList.get(1).getInfo().getTeams().get(0).getObjectives()}");
-
+	console.log("${MatchList.get(1).getInfo().getTeams().get(0).getObjectives()}"); */
 	
 	
+	console.log("${MatchList.get(0).getInfo().getParticipants().get(8).getItem0() }");
+	console.log("${MatchList.get(0).getInfo().getParticipants().get(8).getItem1() }");
+	console.log("${MatchList.get(0).getInfo().getParticipants().get(8).getItem2() }");
+	console.log("${MatchList.get(0).getInfo().getParticipants().get(8).getItem3() }");
+	console.log("${MatchList.get(0).getInfo().getParticipants().get(8).getItem4() }");
+	console.log("${MatchList.get(0).getInfo().getParticipants().get(8).getItem5() }");
+	console.log("${MatchList.get(0).getInfo().getParticipants().get(8).getItem6() }");
+	
+	
+/* 	console.log("${MatchList.get(0).getInfo().getParticipants().get(0).getPerks().getStyles().get(0).getSelections().get(0).getPerk() }");
+	console.log("${MatchList.get(0).getInfo().getParticipants().get(0).getPerks().getStyles().get(0).getSelections().get(0).getVar1() }");
+	console.log("${MatchList.get(0).getInfo().getParticipants().get(0).getPerks().getStyles().get(0).getSelections().get(0).getVar2() }");
+	 */
+	
+	console.log("스펠 확인");
+	console.log("${MatchList.get(1).getInfo().getParticipants().get(8).getSpell1Casts() }");
+	console.log("${MatchList.get(1).getInfo().getParticipants().get(8).getSpell2Casts() }");
+	
+	console.log("${MatchList.get(1).getInfo().getParticipants().get(8).getSummoner1Id() }");
+	console.log("${MatchList.get(1).getInfo().getParticipants().get(8).getSummoner2Id() }");
 	var Unrank = "${Unrank.unrankboolean}";
 	var SoloList = "${SoloList.soloboolean}";
 	var DuoList = "${DuoList.duoboolean}";
