@@ -950,19 +950,19 @@
 											</c:when>
 											<c:when test="${runs_1_W eq 8008 }">
 												<img
-												src="${pageContext.request.contextPath }/resources/assets/img/lolez_perk/Domination/LethalTempoTemp.png"
+												src="${pageContext.request.contextPath }/resources/assets/img/lolez_perk/Precision/LethalTempoTemp.png"
 												width="22" alt="치명적 속도" height="22">
 											
 											</c:when>
 											<c:when test="${runs_1_W eq 8005 }">
 												<img
-												src="${pageContext.request.contextPath }/resources/assets/img/lolez_perk/Domination/PressTheAttack.png"
+												src="${pageContext.request.contextPath }/resources/assets/img/lolez_perk/Precision/PressTheAttack.png"
 												width="22" alt="집중공격" height="22">
 											
 											</c:when>
 											<c:when test="${runs_1_W eq 8021 }">
 												<img
-												src="${pageContext.request.contextPath }/resources/assets/img/lolez_perk/Domination/FleetFootwork.png"
+												src="${pageContext.request.contextPath }/resources/assets/img/lolez_perk/Precision/FleetFootwork.png"
 												width="22" alt="기민한 발놀림" height="22">
 											
 											</c:when>
@@ -1066,11 +1066,44 @@
 									</div>
 									<div class="rune">
 									<c:set var="runs_2_W" value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getPerks().getStyles().get(1).getStyle() }"/>
-									${runs_2_W }
 										<div class="" style="position: relative;">
-											<img
-												src="https://opgg-static.akamaized.net/meta/images/lol/perkStyle/8300.png?image=q_auto,f_webp,w_44&amp;v=1676969392397"
-												width="22" alt="영감" height="22">
+														<c:choose>
+														
+														
+															<c:when test="${runs_2_W eq 8000 }">
+															<img
+																src="${pageContext.request.contextPath }/resources/assets/img/lolez_SUB_PERK/7201_Precision.png"
+																width="22" alt="결의" height="22">
+															</c:when>	
+															
+															<c:when test="${runs_2_W eq 8100 }">	
+															<img
+																src="${pageContext.request.contextPath }/resources/assets/img/lolez_SUB_PERK/7200_Domination.png"
+																width="22" alt="결의" height="22">
+															</c:when>
+															
+															
+															<c:when test="${runs_2_W eq 8200 }">
+															<img
+																src="${pageContext.request.contextPath }/resources/assets/img/lolez_SUB_PERK/7202_Sorcery.png"
+																width="22" alt="결의" height="22">
+															</c:when>
+															
+															
+															<c:when test="${runs_2_W eq 8300 }">		
+															<img
+																src="${pageContext.request.contextPath }/resources/assets/img/lolez_SUB_PERK/7203_Whimsy.png"
+																width="22" alt="결의" height="22">
+															</c:when>
+															
+															
+															<c:when test="${runs_2_W eq 8400 }">		
+															<img
+																src="${pageContext.request.contextPath }/resources/assets/img/lolez_SUB_PERK/7204_Resolve.png"
+																width="22" alt="결의" height="22">
+															</c:when>
+														
+														</c:choose>
 										</div>
 									</div>
 								</div>
@@ -1601,7 +1634,6 @@
 												</div>
 												<div class="runes">
 												<c:set var="runs_1" value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getPerks().getStyles().get(0).getSelections().get(0).getPerk() }"/>
-												${runs_1 }
 													<div class="rune">
 														<div class="" style="position: relative;">
 										<c:choose>
@@ -1613,19 +1645,19 @@
 											</c:when>
 											<c:when test="${runs_1 eq 8008 }">
 												<img
-												src="${pageContext.request.contextPath }/resources/assets/img/lolez_perk/Domination/LethalTempoTemp.png"
+												src="${pageContext.request.contextPath }/resources/assets/img/lolez_perk/Precision/LethalTempoTemp.png"
 												width="22" alt="치명적 속도" height="22">
 											
 											</c:when>
 											<c:when test="${runs_1 eq 8005 }">
 												<img
-												src="${pageContext.request.contextPath }/resources/assets/img/lolez_perk/Domination/PressTheAttack.png"
+												src="${pageContext.request.contextPath }/resources/assets/img/lolez_perk/Precision/PressTheAttack.png"
 												width="22" alt="집중공격" height="22">
 											
 											</c:when>
 											<c:when test="${runs_1 eq 8021 }">
 												<img
-												src="${pageContext.request.contextPath }/resources/assets/img/lolez_perk/Domination/FleetFootwork.png"
+												src="${pageContext.request.contextPath }/resources/assets/img/lolez_perk/Precision/FleetFootwork.png"
 												width="22" alt="기민한 발놀림" height="22">
 											
 											</c:when>
@@ -1727,10 +1759,59 @@
 														</div>
 													</div>
 													<div class="rune">
-														<div class="" style="position: relative;">
+													<c:set var="rune_ls" value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getPerks().getStyles().get(1).getSelections().get(1).getPerk() }"/>
+														${rune_ls }
+														
+														<c:choose>
+														
+															<c:when test="${rune_ls eq 8014 }">
 															<img
-																src="https://opgg-static.akamaized.net/meta/images/lol/perkStyle/8400.png?image=q_auto,f_webp,w_44&amp;v=1675751623266"
+																src="${pageContext.request.contextPath }/resources/assets/img/lolez_SUB_PERK/7201_Precision.png"
+																width="22" alt="정밀" height="22">
+															</c:when>	
+															
+															<c:when test="${rune_ls eq 8139 }">	
+															<img
+																src="${pageContext.request.contextPath }/resources/assets/img/lolez_SUB_PERK/7200_Domination.png"
+																width="22" alt="지배" height="22">
+															</c:when>
+															
+															
+															<c:when test="${rune_ls eq 8210 }">
+															<img
+																src="${pageContext.request.contextPath }/resources/assets/img/lolez_SUB_PERK/7202_Sorcery.png"
+																width="22" alt="마법" height="22">
+															</c:when>
+															
+															
+															<c:when test="${rune_ls eq 8345  }">		
+															<img
+																src="${pageContext.request.contextPath }/resources/assets/img/lolez_SUB_PERK/7203_Whimsy.png"
+																width="22" alt="영감" height="22">
+															</c:when>
+															
+															<c:when test="${rune_ls eq  8347 }">		
+															<img
+																src="${pageContext.request.contextPath }/resources/assets/img/lolez_SUB_PERK/7203_Whimsy.png"
+																width="22" alt="영감" height="22">
+															</c:when>
+															
+															<c:when test="${rune_ls eq 8304  }">		
+															<img
+																src="${pageContext.request.contextPath }/resources/assets/img/lolez_SUB_PERK/7203_Whimsy.png"
+																width="22" alt="영감" height="22">
+															</c:when>
+															
+															
+															<c:when test="${rune_ls eq 8451 }">		
+															<img
+																src="${pageContext.request.contextPath }/resources/assets/img/lolez_SUB_PERK/7204_Resolve.png"
 																width="22" alt="결의" height="22">
+															</c:when>
+														
+														</c:choose>
+													
+														<div class="" style="position: relative;">
 														</div>
 													</div>
 												</div>
