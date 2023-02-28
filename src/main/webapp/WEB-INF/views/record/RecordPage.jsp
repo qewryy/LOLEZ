@@ -1,11 +1,12 @@
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+
+<%@ page import="java.lang.Long"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!doctype html>
-<html class="no-js  classOfHtml" lang="ko" style="	
-	--main100: #ECF2FF;
+<html class="no-js  classOfHtml" lang="ko" style="	--main100: #ECF2FF;
     --main200: #D5E3FF;
     --main300: #B3CDFF;
     --main400: #81ACFF;
@@ -228,7 +229,7 @@
 		</div>
 		<div id="content-container" class="css-8whjbz e8nboil2">
 			<div>
-			<%-- 
+				<%-- 
 			<c:choose>
 				<c:when test="${SoloList.soloboolean}">
 					<div>
@@ -243,9 +244,9 @@
 			
 			</c:choose>
 			 --%>
-			
-			
-<%-- 			<c:if test="${Unrank.unrankboolean}">
+
+
+				<%-- 			<c:if test="${Unrank.unrankboolean}">
 				<div class="css-1v663t e1x14w4w1"><div class="header">솔로랭크<span class="unranked">Unranked</span></div></div>
 				<div class="css-1474l3c e1x14w4w1"><div class="header">자유랭크<span class="unranked">Unranked</span></div></div>
 			</c:if> 
@@ -254,68 +255,77 @@
 		
 			
 			--%>
-		
-			
-			
-			<c:if test="${SoloList.soloboolean}">
-				<div class="css-1v663t e1x14w4w1">
-					<div class="header">솔로랭크</div>
-					<div class="contents">
-						<div class="" style="position: relative;">
-							<img id="tierImg_of_SoloList" src="" width="72" alt="${SoloList.tier }">
-						</div>
-						<div class="info">
-							<div class="tier">${SoloList.tier} ${SoloList.rank}</div>
-							<div class="lp">${SoloList.leaguePoints}LP</div>
-						</div>
-						<div class="win-lose-container">
-							<div class="win-lose" id="result_SL">${SoloList.wins} 승 ${SoloList.losses} 패</div>
 
-							<div class="ratio" id="winning_rate_of_SoloList"></div>
+
+
+				<c:if test="${SoloList.soloboolean}">
+					<div class="css-1v663t e1x14w4w1">
+						<div class="header">솔로랭크</div>
+						<div class="contents">
+							<div class="" style="position: relative;">
+								<img id="tierImg_of_SoloList" src="" width="72"
+									alt="${SoloList.tier }">
+							</div>
+							<div class="info">
+								<div class="tier">${SoloList.tier}${SoloList.rank}</div>
+								<div class="lp">${SoloList.leaguePoints}LP</div>
+							</div>
+							<div class="win-lose-container">
+								<div class="win-lose" id="result_SL">${SoloList.wins}승
+									${SoloList.losses} 패</div>
+
+								<div class="ratio" id="winning_rate_of_SoloList"></div>
+							</div>
+						</div>
+
+					</div>
+
+
+				</c:if>
+
+				<c:if test="${DuoList.duoboolean}">
+					<div class="css-1474l3c e1x14w4w1">
+						<div class="header">자유랭크</div>
+						<div class="contents">
+							<div class="" style="position: relative;">
+								<img id="tierImg_of_DuoList" src="" width="40"
+									alt="${DuoList.tier }">
+							</div>
+							<div class="info">
+								<div class="tier">${DuoList.tier}${DuoList.rank}</div>
+								<div class="lp">${DuoList.leaguePoints}LP</div>
+							</div>
+							<div class="win-lose-container">
+								<div class="win-lose">${DuoList.wins}승 ${DuoList.losses} 패</div>
+								<div class="ratio" id="winning_rate_of_DuoList"></div>
+							</div>
 						</div>
 					</div>
-					
-				</div>
-			
-			
-			</c:if>
-			
-			<c:if test="${DuoList.duoboolean}">
-				<div class="css-1474l3c e1x14w4w1">
-					<div class="header">자유랭크</div>
-					<div class="contents">
-						<div class="" style="position: relative;">
-							<img id="tierImg_of_DuoList"
-								src=""
-								width="40" alt="${DuoList.tier }">
-						</div>
-						<div class="info">
-							<div class="tier">${DuoList.tier} ${DuoList.rank}</div>
-							<div class="lp">${DuoList.leaguePoints} LP</div>
-						</div>
-						<div class="win-lose-container">
-							<div class="win-lose">${DuoList.wins} 승 ${DuoList.losses} 패</div>
-							<div class="ratio" id="winning_rate_of_DuoList"> </div>
+				</c:if>
+
+
+				<c:if test="${!SoloList.soloboolean}">
+					<div class="css-1v663t e1x14w4w1">
+						<div class="header">
+							솔로랭크<span class="unranked">Unranked</span>
 						</div>
 					</div>
-				</div>
-			</c:if>
-			
-			
-			<c:if test="${!SoloList.soloboolean}">
-			<div class="css-1v663t e1x14w4w1"><div class="header">솔로랭크<span class="unranked">Unranked</span></div></div>
-			</c:if>
-			
-			<c:if test="${!DuoList.duoboolean}">
-			<div class="css-1474l3c e1x14w4w1"><div class="header">자유랭크<span class="unranked">Unranked</span></div></div>
-			</c:if>
-			
+				</c:if>
+
+				<c:if test="${!DuoList.duoboolean}">
+					<div class="css-1474l3c e1x14w4w1">
+						<div class="header">
+							자유랭크<span class="unranked">Unranked</span>
+						</div>
+					</div>
+				</c:if>
+
 
 				<div class="css-e9xk5o e1g7spwk3">
 					<ul>
-<!-- 						<li class="css-1lteyi9 e1g7spwk2"><button>S2023 전체</button></li> -->
+						<!-- 						<li class="css-1lteyi9 e1g7spwk2"><button>S2023 전체</button></li> -->
 						<li class="css-s6qg8 e1g7spwk2"><button>솔로랭크</button></li>
-<!-- 						<li class="css-s6qg8 e1g7spwk2"><button>자유랭크</button></li> -->
+						<!-- 						<li class="css-s6qg8 e1g7spwk2"><button>자유랭크</button></li> -->
 					</ul>
 					<div>
 						<div class="champion-box">
@@ -502,7 +512,7 @@
 						<!-- <li class="css-ywzb36 emr8enm1"><button value="TOTAL">전체</button></li> -->
 						<li class="css-1oynv5f emr8enm1"><button value="SOLORANKED">솔로랭크</button></li>
 						<!-- <li class="css-1oynv5f emr8enm1"><button value="FLEXRANKED">자유랭크</button></li> -->
-<!-- 						<li class="css-1oynv5f emr8enm1"><span><label
+						<!-- 						<li class="css-1oynv5f emr8enm1"><span><label
 								class="hidden" for="queueType">큐 타입</label><select
 								id="queueType"><option value="TOTAL">큐 타입</option>
 									<option value="NORMAL">일반 (비공개 선택)</option>
@@ -514,62 +524,104 @@
 					</ul>
 				</div>
 				<div class="css-3i6n1d ehasqiv3">
+				<c:set var="uesr_SI" value="${Summoner.puuid}" />
+				<c:set var="buleTeam_s" value="0" />
+				<c:set var="redTeam_s" value="1" />
+				
+					<c:forEach begin="0"     end="${MatchList.size()-1}"  var="s_i">
+						<c:forEach begin="0" end="${MatchList.get(s_i).getInfo().getParticipants().size()- 1}" var="si_i">
+							<c:if test="${uesr_SI eq MatchList.get(s_i).getInfo().getParticipants().get(si_i).getPuuid()}">
+							
+									<c:set var="teamID_s" value="${MatchList.get(s_i).getInfo().getParticipants().get(si_i).getTeamId()}" />
+
+									<c:if test="${teamID_s == 100 }">
+										<c:set var="buleTEAM_Kill_s" value="${buleTEAM_Kill_s + MatchList.get(s_i).getInfo().getTeams().get(buleTeam_s).getObjectives().getChampion().getKills()}" />
+									</c:if>
+									
+									<c:if test="${teamID_s == 200 }">
+										<c:set var="redTEAM_Kill_s" value="${redTEAM_Kill_s + MatchList.get(s_i).getInfo().getTeams().get(redTeam_s).getObjectives().getChampion().getKills()}" />
+									</c:if>
+							
+							
+							
+							
+								<c:set var="kill_s"	    value="${kill_s + MatchList.get(s_i).getInfo().getParticipants().get(si_i).getKills() }" />
+								<c:set var="deaths_s"	value="${deaths_s + MatchList.get(s_i).getInfo().getParticipants().get(si_i).getDeaths() }" />
+								<c:set var="assists_s"  value="${assists_s +MatchList.get(s_i).getInfo().getParticipants().get(si_i).getAssists() }" />
+								<c:set var="Gametype_s" value="${MatchList.get(s_i).getInfo().getQueueId()}" />
+								${buleTEAM_Kill_s }
+								
+							</c:if>
+						
+						</c:forEach>
+					
+					</c:forEach>
+					<c:set var="allKills" value="${buleTEAM_Kill_s + teamID_s }"/>
+					
+				${buleTEAM_Kill_s }
+				${redTEAM_Kill_s }
+					${kill_s }
+					${deaths_s }
+					${assists_s } 
+					${allKills }
+								
+				
+				
 					<div class="stats">
-						<div class="win-lose">20전 11승 8패</div>
 						<div class="kda">
 							<div class="info">
 								<div class="k-d-a">
-									<span>6.1</span> / <span class="death">4.3</span> / <span>7.1</span>
+									<span>12.5</span> / <span class="death">7.1</span> / <span>11.3</span>
 								</div>
-								<div class="ratio">3.07:1</div>
-								<div class="kill-participantion">킬관여 51%</div>
+								<div class="ratio">3.35:1</div>
+								<div class="kill-participantion">킬관여 65%</div>
 							</div>
 						</div>
 					</div>
 					<div class="champions">
-						<div class="title">플레이한 챔피언 (최근 20게임)</div>
+						<div class="title">플레이한 챔피언 (최근 ${MatchList.size()}게임)</div>
 						<ul class="">
 							<li><img
-								src="https://opgg-static.akamaized.net/meta/images/lol/champion/Varus.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_48&amp;v=1675751623266"
-								width="24" alt="바루스">
-								<div class="win-lose">
+								src="https://opgg-static.akamaized.net/meta/images/lol/champion/Kaisa.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_48&amp;v=1677504686476"
+								width="24" alt="카이사">
+							<div class="win-lose">
 									<div class="" style="position: relative; display: inline;">
-										<span class="css-1mugido ehasqiv0">100%</span>
+										<span class="css-6kn5on ehasqiv0">50%</span>
 									</div>
-									(2승 0패)
+									(1승 1패)
 								</div>
-								<div class="css-1uej4j6 ehasqiv1">4.29 평점</div></li>
+								<div class="css-18ljion ehasqiv1">1.57 평점</div></li>
 							<li><img
-								src="https://opgg-static.akamaized.net/meta/images/lol/champion/Jhin.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_48&amp;v=1675751623266"
-								width="24" alt="진">
-								<div class="win-lose">
+								src="https://opgg-static.akamaized.net/meta/images/lol/champion/Zeri.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_48&amp;v=1677504686476"
+								width="24" alt="제리">
+							<div class="win-lose">
 									<div class="" style="position: relative; display: inline;">
-										<span class="css-1mugido ehasqiv0">100%</span>
+										<span class="css-6kn5on ehasqiv0">50%</span>
 									</div>
-									(2승 0패)
+									(1승 1패)
 								</div>
-								<div class="css-xl4ym ehasqiv1">5.5 평점</div></li>
+								<div class="css-1mz60y0 ehasqiv1">3.6 평점</div></li>
 							<li><img
-								src="https://opgg-static.akamaized.net/meta/images/lol/champion/KSante.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_48&amp;v=1675751623266"
-								width="24" alt="크산테">
-								<div class="win-lose">
+								src="https://opgg-static.akamaized.net/meta/images/lol/champion/Samira.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_48&amp;v=1677504686476"
+								width="24" alt="사미라">
+							<div class="win-lose">
 									<div class="" style="position: relative; display: inline;">
-										<span class="css-1mugido ehasqiv0">100%</span>
+										<span class="css-6kn5on ehasqiv0">50%</span>
 									</div>
-									(2승 0패)
+									(1승 1패)
 								</div>
-								<div class="css-xl4ym ehasqiv1">5.8 평점</div></li>
+								<div class="css-18ljion ehasqiv1">1.82 평점</div></li>
 						</ul>
 					</div>
 					<div class="positions">
 						<div class="title">선호 포지션 (랭크)</div>
 						<ul>
 							<li><div class="bar">
-									<div class="gauge" style="height: 21.0526%;"></div>
+									<div class="gauge" style="height: 25%;"></div>
 								</div>
 								<div class="position">
 									<img
-										src="https://s-lol-web.op.gg/images/icon/icon-position-top.svg?v=1675751623266"
+										src="https://s-lol-web.op.gg/images/icon/icon-position-top.svg?v=1677504686476"
 										width="16" alt="TOP">
 								</div></li>
 							<li><div class="bar">
@@ -577,7 +629,7 @@
 								</div>
 								<div class="position">
 									<img
-										src="https://s-lol-web.op.gg/images/icon/icon-position-jungle.svg?v=1675751623266"
+										src="https://s-lol-web.op.gg/images/icon/icon-position-jungle.svg?v=1677504686476"
 										width="16" alt="JUNGLE">
 								</div></li>
 							<li><div class="bar">
@@ -585,15 +637,15 @@
 								</div>
 								<div class="position">
 									<img
-										src="https://s-lol-web.op.gg/images/icon/icon-position-mid.svg?v=1675751623266"
+										src="https://s-lol-web.op.gg/images/icon/icon-position-mid.svg?v=1677504686476"
 										width="16" alt="MID">
 								</div></li>
 							<li><div class="bar">
-									<div class="gauge" style="height: 78.9474%;"></div>
+									<div class="gauge" style="height: 75%;"></div>
 								</div>
 								<div class="position">
 									<img
-										src="https://s-lol-web.op.gg/images/icon/icon-position-adc.svg?v=1675751623266"
+										src="https://s-lol-web.op.gg/images/icon/icon-position-adc.svg?v=1677504686476"
 										width="16" alt="ADC">
 								</div></li>
 							<li><div class="bar">
@@ -601,7 +653,7 @@
 								</div>
 								<div class="position">
 									<img
-										src="https://s-lol-web.op.gg/images/icon/icon-position-support.svg?v=1675751623266"
+										src="https://s-lol-web.op.gg/images/icon/icon-position-support.svg?v=1677504686476"
 										width="16" alt="SUPPORT">
 								</div></li>
 						</ul>
@@ -609,1419 +661,1625 @@
 				</div>
 
 
-
 				<div class="css-164r41r e1r5v5160">
-				<c:set var="uesr" value="${Summoner.puuid}"  />
-				<c:set var="FiddleSticks" value="FiddleSticks"/>
-				<c:set var="Fiddlesticks_s" value="Fiddlesticks"/>
-				
-				
-				
-				
-				
-				
-				<c:forEach begin="0" end="${MatchList.size()-1}" var="i" > <!-- 20개의 전적을 반복문으로  수행 -->
-					<c:forEach begin="0" end="${MatchList.get(i).getInfo().getParticipants().size()- 1}" var="MIP_I"><!-- 20개의 전적중 각 판마다 의 게임 인원 10명 (0~9) 근거로 수행  -->
-					
-					<c:if test="${uesr eq MatchList.get(i).getInfo().getParticipants().get(MIP_I).getPuuid()}">
-						<c:set var="kill" value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getKills() }"/>
-						<c:set var="deaths" value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getDeaths() }"/>
-						<c:set var="assists" value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getAssists() }"/>
-						<c:set var="Gametype" value="${MatchList.get(i).getInfo().getQueueId()}"/>
-						
-						
-						
-		<c:if test="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).isWin()  eq true}">
-		<c:set var="buleTeam" value="0"/>
-		<c:set var="redTeam" value="1"/>
-		
-		<c:set var="playTiemWin" value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getTimePlayed() }"/>
-		<c:set var="minWIN" value="${playTiemWin / 60 }"/>
-		<c:set var="secWIN" value="${playTiemWin % 60 }"/>
-		<c:set var ="totalCSW" value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getTotalMinionsKilled()
-		 + MatchList.get(i).getInfo().getParticipants().get(MIP_I).getNeutralMinionsKilled()}"/>
-		<c:set var="MinInt" value="${minWIN.intValue()}"/>
-		
-		<c:set var="CS_SecW" value="${secWIN/100.0 }"/>
-		<c:set var="CStotal_tiemW" value="${(MinInt/1.0) + CS_SecW  }"/>
-		<c:set var="MINCS_stapW" value="${totalCSW / CStotal_tiemW}"/>
-		<fmt:formatNumber var="MINCSW" value="${MINCS_stapW }" pattern="0.0"/>
-		
-		
-		<c:set var="teamID" value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getTeamId()}"/>
-		
-		
-		
-		<c:if test="${teamID == 100 }">
-			<c:set var="buleTEAM_Kill" value="${MatchList.get(i).getInfo().getTeams().get(buleTeam).getObjectives().getChampion().getKills()}"/>
-			<c:set var="KA_bule" value="${(kill +  assists) / buleTEAM_Kill * 100}"/>
-			
-			<fmt:formatNumber var="KA_T_bule" value="${KA_bule }" pattern="0"/>
-		</c:if>
-		
-		<c:if test="${teamID == 200 }">
-			<c:set var="RedTEAM_Kill" value="${MatchList.get(i).getInfo().getTeams().get(redTeam).getObjectives().getChampion().getKills()}"/>
-			<c:set var="KA_red" value="${(kill +  assists) / RedTEAM_Kill * 100}"/>
-			
-			<fmt:formatNumber var="KA_T_red" value="${KA_red }" pattern="0"/>
-		</c:if>
-		
-		
-		
-		
-		
-		
-		
-		
-		<li class="css-1qq23jn e1iiyghw3"><div result="WIN"
-			class="css-1shak8a e1iiyghw2">
-			<div class="contents">
-				<div class="game-content">
-					<div class="game">
-						<div class="type">
-					<c:choose>
-						<c:when test="${Gametype == 420 }">
-						솔로 랭크
-						
-						</c:when>
-						
-						<c:when test="${Gametype == 440 }">
-						자유 5:5 랭크
-						
-						</c:when>
-						
-						<c:when test="${Gametype == 430 }">
-						일반
-						
-						</c:when>
-						
-						<c:when test="${Gametype == 450 }">
-						무작위 총력전
-						
-						</c:when>
-						
-						<c:when test="${Gametype == 900 }">
-						모두 무작위 U.R.F.
-						
-						</c:when>
-						<c:when test="${Gametype == 1900 }">
-						U.R.F
-						
-						</c:when>
-						
-					
-					
-					</c:choose>
-						
-						
-						</div>
-						<div class="time-stamp">
-							<div class="" style="position: relative;">23분 전</div>
-						</div>
-						<div class="bar"></div>
-						<div class="result">승리</div>
-						<div class="length">${MinInt}분 ${secWIN}초</div>
-						
-					</div>
-					<div class="info">
-						<div>
-							<div class="champion">
-							
-									<c:set var="ChampionNamew" value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getChampionName()}"/>
-									<c:set var="FiddleSticks_w" value="FiddleSticks"/>
-									<c:set var="Fiddlesticks_sw" value="Fiddlesticks"/>
-							
-								<div class="icon">
-									<a href="/champions/lulu" target="_blank" rel="noreferrer">
-													<c:choose>
-														<c:when test="${ChampionNamew eq FiddleSticks}">
-														<img src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/champion/${Fiddlesticks_s }.png"	width="48" alt="제리" height="48">
-														
-														</c:when>
-														
-														<c:otherwise>
-														<img src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/champion/${ChampionNamew }.png"	width="48" alt="제리" height="48">
-														
-														</c:otherwise>
+					<c:set var="uesr" value="${Summoner.puuid}" />
+					<c:set var="FiddleSticks" value="FiddleSticks" />
+					<c:set var="Fiddlesticks_s" value="Fiddlesticks" />
 
-													</c:choose>
-														
-										<span
-										class="champion-level">${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getChampLevel() }</span></a>
-								</div>
-								
-								<div class="spells">
 
-								<c:set var="spC1" value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getSummoner1Id() }"/>
-								<c:set var="spC2" value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getSummoner2Id() }"/>
-									<div class="spell">
-										<div class="" style="position: relative;">
-										
-										<c:choose>
-											<c:when test="${spC1 eq 1}">
-											<img
-												src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerBoost.png"
-												width="22" alt="정화" height="22">
-											
-											</c:when>
-											
-											<c:when test="${spC1 eq 3}">
-											<img
-												src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerExhaust.png"
-												width="22" alt="탈진" height="22">
-											
-											</c:when>
-											
-											<c:when test="${spC1 eq 4}">
-											<img
-												src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerFlash.png"
-												width="22" alt="점멸" height="22">
-											
-											</c:when>
-											
-											<c:when test="${spC1 eq 6}">
-											<img
-												src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerHaste.png"
-												width="22" alt="유체화" height="22">
-											
-											</c:when>
-											
-											<c:when test="${spC1 eq 7}">
-											<img
-												src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerHeal.png"
-												width="22" alt="치유" height="22">
-											
-											</c:when>
-											
-											<c:when test="${spC1 eq 11}">
-											<img
-												src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerSmite.png"
-												width="22" alt="강타" height="22">
-											
-											</c:when>
-											
-											<c:when test="${spC1 eq 12}">
-											<img
-												src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerTeleport.png"
-												width="22" alt="순간이동" height="22">
-											
-											</c:when>
-											
-											<c:when test="${spC1 eq 13}">
-											<img
-												src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerMana.png"
-												width="22" alt="총명" height="22">
-											
-											</c:when>
-											
-											<c:when test="${spC1 eq 14}">
-											<img
-												src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerDot.png"
-												width="22" alt="점화" height="22">
-											
-											</c:when>
-											
-											<c:when test="${spC1 eq 21}">
-											<img
-												src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerBarrier.png"
-												width="22" alt="방어막" height="22">
-											
-											</c:when>
-											
-											<c:when test="${spC1 eq 32}">
-											<img
-												src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerSnowball.png"
-												width="22" alt="표식" height="22">
-											
-											</c:when>
 
-											
-										
-										</c:choose>
-										</div>
-									</div>
-									
-									<div class="spell">
-										<div class="" style="position: relative;">
-										<c:choose>
-											<c:when test="${spC2 eq 1}">
-											<img
-												src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerBoost.png"
-												width="22" alt="정화" height="22">
-											
-											</c:when>
-											
-											<c:when test="${spC2 eq 3}">
-											<img
-												src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerExhaust.png"
-												width="22" alt="탈진" height="22">
-											
-											</c:when>
-											
-											<c:when test="${spC2 eq 4}">
-											<img
-												src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerFlash.png"
-												width="22" alt="점멸" height="22">
-											
-											</c:when>
-											
-											<c:when test="${spC2 eq 6}">
-											<img
-												src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerHaste.png"
-												width="22" alt="유체화" height="22">
-											
-											</c:when>
-											
-											<c:when test="${spC2 eq 7}">
-											<img
-												src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerHeal.png"
-												width="22" alt="치유" height="22">
-											
-											</c:when>
-											
-											<c:when test="${spC2 eq 11}">
-											<img
-												src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerSmite.png"
-												width="22" alt="강타" height="22">
-											
-											</c:when>
-											
-											<c:when test="${spC2 eq 12}">
-											<img
-												src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerTeleport.png"
-												width="22" alt="순간이동" height="22">
-											
-											</c:when>
-											
-											<c:when test="${spC2 eq 13}">
-											<img
-												src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerMana.png"
-												width="22" alt="총명" height="22">
-											
-											</c:when>
-											
-											<c:when test="${spC2 eq 14}">
-											<img
-												src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerDot.png"
-												width="22" alt="점화" height="22">
-											
-											</c:when>
-											
-											<c:when test="${spC2 eq 21}">
-											<img
-												src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerBarrier.png"
-												width="22" alt="방어막" height="22">
-											
-											</c:when>
-											
-											<c:when test="${spC2 eq 32}">
-											<img
-												src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerSnowball.png"
-												width="22" alt="표식" height="22">
-											
-											</c:when>
 
+
+
+					<c:forEach begin="0" end="${MatchList.size()-1}" var="i">
+						<!-- 20개의 전적을 반복문으로  수행 -->
+						<c:forEach begin="0" end="${MatchList.get(i).getInfo().getParticipants().size()- 1}"	var="MIP_I">
+							<!-- 20개의 전적중 각 판마다 의 게임 인원 10명 (0~9) 근거로 수행  -->
+
+							<c:if test="${uesr eq MatchList.get(i).getInfo().getParticipants().get(MIP_I).getPuuid()}">
+								<c:set var="kill"
+									value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getKills() }" />
+								<c:set var="deaths"
+									value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getDeaths() }" />
+								<c:set var="assists"
+									value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getAssists() }" />
+								<c:set var="Gametype"
+									value="${MatchList.get(i).getInfo().getQueueId()}" />
+
+
+
+								<c:if
+									test="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).isWin()  eq true}">
+									<c:set var="buleTeam" value="0" />
+									<c:set var="redTeam" value="1" />
+
+									<c:set var="playTiemWin"
+										value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getTimePlayed() }" />
+									<c:set var="minWIN" value="${playTiemWin / 60 }" />
+									<c:set var="secWIN" value="${playTiemWin % 60 }" />
+									<c:set var="totalCSW"
+										value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getTotalMinionsKilled()
+		 + MatchList.get(i).getInfo().getParticipants().get(MIP_I).getNeutralMinionsKilled()}" />
+									<c:set var="MinInt" value="${minWIN.intValue()}" />
+
+									<c:set var="CS_SecW" value="${secWIN/100.0 }" />
+									<c:set var="CStotal_tiemW" value="${(MinInt/1.0) + CS_SecW  }" />
+									<c:set var="MINCS_stapW" value="${totalCSW / CStotal_tiemW}" />
+									<fmt:formatNumber var="MINCSW" value="${MINCS_stapW }"
+										pattern="0.0" />
+
+
+									<c:set var="teamID"
+										value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getTeamId()}" />
+
+
+
+									<c:if test="${teamID == 100 }">
+										<c:set var="buleTEAM_Kill"
+											value="${MatchList.get(i).getInfo().getTeams().get(buleTeam).getObjectives().getChampion().getKills()}" />
+										<c:set var="KA_bule"
+											value="${(kill +  assists) / buleTEAM_Kill * 100}" />
+
+										<fmt:formatNumber var="KA_T_bule" value="${KA_bule }"
+											pattern="0" />
+									</c:if>
+
+									<c:if test="${teamID == 200 }">
+										<c:set var="RedTEAM_Kill"
+											value="${MatchList.get(i).getInfo().getTeams().get(redTeam).getObjectives().getChampion().getKills()}" />
+										<c:set var="KA_red"
+											value="${(kill +  assists) / RedTEAM_Kill * 100}" />
+
+										<fmt:formatNumber var="KA_T_red" value="${KA_red }"
+											pattern="0" />
+									</c:if>
+
+
+									<li class="css-1qq23jn e1iiyghw3"><div result="WIN"
+											class="css-1shak8a e1iiyghw2">
+											<div class="contents">
+												<div class="game-content">
+													<div class="game">
+														<div class="type">
+															<c:choose>
+																<c:when test="${Gametype == 420 }">
+																솔로 랭크
+																
+																</c:when>
+
+																<c:when test="${Gametype == 440 }">
+																자유 5:5 랭크
+																
+																</c:when>
+
+																<c:when test="${Gametype == 430 }">
+																일반
+																
+																</c:when>
+
+																<c:when test="${Gametype == 450 }">
+																무작위 총력전
+																
+																</c:when>
+
+																<c:when test="${Gametype == 900 }">
+																모두 무작위 U.R.F.
+																
+																</c:when>
+																<c:when test="${Gametype == 1900 }">
+																	U.R.F
+																	
+																</c:when>
+
+
+
+															</c:choose>
+
+
+														</div>
+														<div class="time-stamp">
+
+
+															<c:set var="gameEndTimeStampex_w"
+																value="${MatchList.get(i).getInfo().getGameEndTimestampex()}" />
+															<c:set var="now_w"
+																value="<%=System.currentTimeMillis() / 1000%>" />
+															<c:set var="time1_w"
+																value="${now_w - gameEndTimeStampex_w}" />
+
+
+															<c:set var="y_w" value="${time1_w / 31104000 }" />
+															<c:set var="mo_w" value="${time1_w / 2592000 }" />
+															<c:set var="d_w" value="${time1_w / 86000 }" />
+															<c:set var="h_w" value="${time1_w / 3600 }" />
+															<c:set var="m_w" value="${time1_w / 60 }" />
+
+															<fmt:formatNumber var="totaly_w" value="${y_w }"
+																pattern="#" />
+															<fmt:formatNumber var="totalmo_w" value="${mo_w }"
+																pattern="#" />
+															<fmt:formatNumber var="totald_w" value="${d_w }"
+																pattern="#" />
+															<fmt:formatNumber var="totalH_w" value="${h_w }"
+																pattern="#" />
+															<fmt:formatNumber var="totalm_w" value="${m_w }"
+																pattern="#" />
+
+
+
+
+
+															<div class="" style="position: relative;">
+																<c:choose>
+																	<c:when test="${y_w >=1 }">
+																	${totaly_w }년 전
+																	
+																	</c:when>
+
+																	<c:when test="${totald_w >= 30 }">
+																	${totalmo_w }달 전
+																	
+																	</c:when>
+
+																	<c:when test="${totalH_w >= 24 }">
+																		<c:choose>
+																			<c:when test="${totald_w < 2 }">
+																				하루 전
+																			</c:when>
+																			<c:otherwise>
+													
+																			${totald_w }일 전
+																		
+																		</c:otherwise>
+
+																		</c:choose>
+
+																	</c:when>
+
+
+																	<c:when test="${totalm_w >= 60}">
+																		${totalH_w }시간 전
+																	
+																	</c:when>
+																	<c:otherwise>
 											
-										
-										</c:choose>
-										</div>
-									</div>
-									
-								</div>
-								<div class="runes">
-<%-- 								<c:set var="runstestD" value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getPerks().getStyles().get(0).getDescription() }"/>
+																		${totalm_w }분 전
+																	
+																	</c:otherwise>
+
+																</c:choose>
+
+															</div>
+														</div>
+														<div class="bar"></div>
+														<div class="result">승리</div>
+														<div class="length">${MinInt}분${secWIN}초</div>
+
+													</div>
+													<div class="info">
+														<div>
+															<div class="champion">
+
+																<c:set var="ChampionNamew"
+																	value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getChampionName()}" />
+																<c:set var="FiddleSticks_w" value="FiddleSticks" />
+																<c:set var="Fiddlesticks_sw" value="Fiddlesticks" />
+
+																<div class="icon">
+																	<a href="/champions/lulu" target="_blank"
+																		rel="noreferrer"> <c:choose>
+																			<c:when test="${ChampionNamew eq FiddleSticks}">
+																				<img
+																					src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/champion/${Fiddlesticks_s }.png"
+																					width="48" alt="제리" height="48">
+
+																			</c:when>
+
+																			<c:otherwise>
+																				<img
+																					src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/champion/${ChampionNamew }.png"
+																					width="48" alt="제리" height="48">
+
+																			</c:otherwise>
+
+																		</c:choose> <span class="champion-level">${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getChampLevel() }</span></a>
+																</div>
+
+																<div class="spells">
+
+																	<c:set var="spC1"
+																		value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getSummoner1Id() }" />
+																	<c:set var="spC2"
+																		value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getSummoner2Id() }" />
+																	<div class="spell">
+																		<div class="" style="position: relative;">
+
+																			<c:choose>
+																				<c:when test="${spC1 eq 1}">
+																					<img
+																						src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerBoost.png"
+																						width="22" alt="정화" height="22">
+
+																				</c:when>
+
+																				<c:when test="${spC1 eq 3}">
+																					<img
+																						src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerExhaust.png"
+																						width="22" alt="탈진" height="22">
+
+																				</c:when>
+
+																				<c:when test="${spC1 eq 4}">
+																					<img
+																						src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerFlash.png"
+																						width="22" alt="점멸" height="22">
+
+																				</c:when>
+
+																				<c:when test="${spC1 eq 6}">
+																					<img
+																						src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerHaste.png"
+																						width="22" alt="유체화" height="22">
+
+																				</c:when>
+
+																				<c:when test="${spC1 eq 7}">
+																					<img
+																						src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerHeal.png"
+																						width="22" alt="치유" height="22">
+
+																				</c:when>
+
+																				<c:when test="${spC1 eq 11}">
+																					<img
+																						src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerSmite.png"
+																						width="22" alt="강타" height="22">
+
+																				</c:when>
+
+																				<c:when test="${spC1 eq 12}">
+																					<img
+																						src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerTeleport.png"
+																						width="22" alt="순간이동" height="22">
+
+																				</c:when>
+
+																				<c:when test="${spC1 eq 13}">
+																					<img
+																						src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerMana.png"
+																						width="22" alt="총명" height="22">
+
+																				</c:when>
+
+																				<c:when test="${spC1 eq 14}">
+																					<img
+																						src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerDot.png"
+																						width="22" alt="점화" height="22">
+
+																				</c:when>
+
+																				<c:when test="${spC1 eq 21}">
+																					<img
+																						src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerBarrier.png"
+																						width="22" alt="방어막" height="22">
+
+																				</c:when>
+
+																				<c:when test="${spC1 eq 32}">
+																					<img
+																						src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerSnowball.png"
+																						width="22" alt="표식" height="22">
+
+																				</c:when>
+
+
+
+																			</c:choose>
+																		</div>
+																	</div>
+
+																	<div class="spell">
+																		<div class="" style="position: relative;">
+																			<c:choose>
+																				<c:when test="${spC2 eq 1}">
+																					<img
+																						src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerBoost.png"
+																						width="22" alt="정화" height="22">
+
+																				</c:when>
+
+																				<c:when test="${spC2 eq 3}">
+																					<img
+																						src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerExhaust.png"
+																						width="22" alt="탈진" height="22">
+
+																				</c:when>
+
+																				<c:when test="${spC2 eq 4}">
+																					<img
+																						src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerFlash.png"
+																						width="22" alt="점멸" height="22">
+
+																				</c:when>
+
+																				<c:when test="${spC2 eq 6}">
+																					<img
+																						src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerHaste.png"
+																						width="22" alt="유체화" height="22">
+
+																				</c:when>
+
+																				<c:when test="${spC2 eq 7}">
+																					<img
+																						src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerHeal.png"
+																						width="22" alt="치유" height="22">
+
+																				</c:when>
+
+																				<c:when test="${spC2 eq 11}">
+																					<img
+																						src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerSmite.png"
+																						width="22" alt="강타" height="22">
+
+																				</c:when>
+
+																				<c:when test="${spC2 eq 12}">
+																					<img
+																						src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerTeleport.png"
+																						width="22" alt="순간이동" height="22">
+
+																				</c:when>
+
+																				<c:when test="${spC2 eq 13}">
+																					<img
+																						src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerMana.png"
+																						width="22" alt="총명" height="22">
+
+																				</c:when>
+
+																				<c:when test="${spC2 eq 14}">
+																					<img
+																						src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerDot.png"
+																						width="22" alt="점화" height="22">
+
+																				</c:when>
+
+																				<c:when test="${spC2 eq 21}">
+																					<img
+																						src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerBarrier.png"
+																						width="22" alt="방어막" height="22">
+
+																				</c:when>
+
+																				<c:when test="${spC2 eq 32}">
+																					<img
+																						src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerSnowball.png"
+																						width="22" alt="표식" height="22">
+
+																				</c:when>
+
+
+
+																			</c:choose>
+																		</div>
+																	</div>
+
+																</div>
+																<div class="runes">
+																	<%-- 								<c:set var="runstestD" value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getPerks().getStyles().get(0).getDescription() }"/>
 								<c:set var="runstestN" value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getPerks().getStyles().get(0).getStyle() }"/> --%>
-								
-								<%-- <c:set var="runs_1_W_s" value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getPerks().getStyles().get(0).getSelections().get(0).getDescription() }"/> --%>
-								<c:set var="runs_1_W" value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getPerks().getStyles().get(0).getSelections().get(0).getPerk() }"/>
-								
-								<%-- ${runs_1_W_s} --%>
-								
-								
-									<div class="rune">
-									
-										<div class="" style="position: relative;">
-										<c:choose>
-											<c:when test="${runs_1_W eq 8010 }">
-												<img
-												src="${pageContext.request.contextPath }/resources/assets/img/lolez_perk/Precision/Conqueror.png"
-												width="22" alt="정복자" height="22">
-											
-											</c:when>
-											<c:when test="${runs_1_W eq 8008 }">
-												<img
-												src="${pageContext.request.contextPath }/resources/assets/img/lolez_perk/Precision/LethalTempoTemp.png"
-												width="22" alt="치명적 속도" height="22">
-											
-											</c:when>
-											<c:when test="${runs_1_W eq 8005 }">
-												<img
-												src="${pageContext.request.contextPath }/resources/assets/img/lolez_perk/Precision/PressTheAttack.png"
-												width="22" alt="집중공격" height="22">
-											
-											</c:when>
-											<c:when test="${runs_1_W eq 8021 }">
-												<img
-												src="${pageContext.request.contextPath }/resources/assets/img/lolez_perk/Precision/FleetFootwork.png"
-												width="22" alt="기민한 발놀림" height="22">
-											
-											</c:when>
-											
-											
-											
-											<c:when test="${runs_1_W eq 8112 }">
-												<img
-												src="${pageContext.request.contextPath }/resources/assets/img/lolez_perk/Domination/Electrocute.png"
-												width="22" alt="감전" height="22">
-											
-											</c:when>
-											<c:when test="${runs_1_W eq 9923 }">
-												<img
-												src="${pageContext.request.contextPath }/resources/assets/img/lolez_perk/Domination/HailOfBlades.png"
-												width="22" alt="칼날비" height="22">
-											
-											</c:when>
-											<c:when test="${runs_1_W eq 8128 }">
-												<img
-												src="${pageContext.request.contextPath }/resources/assets/img/lolez_perk/Domination/DarkHarvest.png"
-												width="22" alt="어둠의 수학" height="22">
-											
-											</c:when>
-											<c:when test="${runs_1_W eq 8124 }">
-												<img
-												src="${pageContext.request.contextPath }/resources/assets/img/lolez_perk/Domination/Predator.png"
-												width="22" alt="포식자" height="22">
-											
-											</c:when>
-											
-											
-											
-											<c:when test="${runs_1_W eq 8229 }">
-												<img
-												src="${pageContext.request.contextPath }/resources/assets/img/lolez_perk/Sorcery/ArcaneComet.png"
-												width="22" alt="신비한 유성" height="22">
-											
-											</c:when>
-											<c:when test="${runs_1_W eq 8230 }">
-												<img
-												src="${pageContext.request.contextPath }/resources/assets/img/lolez_perk/Sorcery/PhaseRush.png"
-												width="22" alt="난입" height="22">
-											
-											</c:when>
-											<c:when test="${runs_1_W eq 8214 }">
-												<img
-												src="${pageContext.request.contextPath }/resources/assets/img/lolez_perk/Sorcery/SummonAery.png"
-												width="22" alt="콩콩이 소환" height="22">
-											
-											</c:when>
-											
-											
-											
-											
-											<c:when test="${runs_1_W eq 8437 }">
-												<img
-												src="${pageContext.request.contextPath }/resources/assets/img/lolez_perk/Resolve/GraspOfTheUndying.png"
-												width="22" alt="착취의 손아귀" height="22">
-											
-											</c:when>
-											<c:when test="${runs_1_W eq 8439 }">
-												<img
-												src="${pageContext.request.contextPath }/resources/assets/img/lolez_perk/Resolve/VeteranAftershock.png"
-												width="22" alt="여진" height="22">
-											
-											</c:when>
-											<c:when test="${runs_1_W eq 8465 }">
-												<img
-												src="${pageContext.request.contextPath }/resources/assets/img/lolez_perk/Resolve/Guardian.png"
-												width="22" alt="수호자" height="22">
-											
-											</c:when>
-											
-											
-											
-											
-											
-											<c:when test="${runs_1_W eq 8351 }">
-												<img
-												src="${pageContext.request.contextPath }/resources/assets/img/lolez_perk/Inspiration/GlacialAugment.png"
-												width="22" alt="빙결강화" height="22">
-											
-											</c:when>
-											<c:when test="${runs_1_W eq 8369 }">
-												<img
-												src="${pageContext.request.contextPath }/resources/assets/img/lolez_perk/Inspiration/FirstStrike.png"
-												width="22" alt="선제공격" height="22">
-											
-											</c:when>
-											<c:when test="${runs_1_W eq 8360 }">
-												<img
-												src="${pageContext.request.contextPath }/resources/assets/img/lolez_perk/Inspiration/UnsealedSpellbook.png"
-												width="22" alt="봉인 풀린 주문서" height="22">
-											
-											</c:when>
-										
-										</c:choose>
-										
-										</div>
-									</div>
-									<div class="rune">
-									<c:set var="runs_2_W" value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getPerks().getStyles().get(1).getStyle() }"/>
-										<div class="" style="position: relative;">
-														<c:choose>
-														
-														
-															<c:when test="${runs_2_W eq 8000 }">
-															<img
-																src="${pageContext.request.contextPath }/resources/assets/img/lolez_SUB_PERK/7201_Precision.png"
-																width="22" alt="결의" height="22">
-															</c:when>	
-															
-															<c:when test="${runs_2_W eq 8100 }">	
-															<img
-																src="${pageContext.request.contextPath }/resources/assets/img/lolez_SUB_PERK/7200_Domination.png"
-																width="22" alt="결의" height="22">
-															</c:when>
-															
-															
-															<c:when test="${runs_2_W eq 8200 }">
-															<img
-																src="${pageContext.request.contextPath }/resources/assets/img/lolez_SUB_PERK/7202_Sorcery.png"
-																width="22" alt="결의" height="22">
-															</c:when>
-															
-															
-															<c:when test="${runs_2_W eq 8300 }">		
-															<img
-																src="${pageContext.request.contextPath }/resources/assets/img/lolez_SUB_PERK/7203_Whimsy.png"
-																width="22" alt="결의" height="22">
-															</c:when>
-															
-															
-															<c:when test="${runs_2_W eq 8400 }">		
-															<img
-																src="${pageContext.request.contextPath }/resources/assets/img/lolez_SUB_PERK/7204_Resolve.png"
-																width="22" alt="결의" height="22">
-															</c:when>
-														
-														</c:choose>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="kda">
-								<div class="k-d-a">
-									<span>${kill}</span> / <span class="d">${deaths}</span> / <span>${assists}</span>
-								</div>
-								<div class="ratio">
-								<c:set var="result" value="${(kill+assists)/deaths}"/>
-									<span>${String.format("%.2f", result)}:1</span> 평점
-								</div>
-							</div>
-							<div class="stats">
-							
-							<c:choose>
-								<c:when test="${teamID == 100 }">
-								<div class="p-kill">
-									<div class="" style="position: relative;">킬관여 ${KA_T_bule }%</div>
-								</div>
-								
-								</c:when>
-								
-								<c:when test="${teamID == 200 }">
-								<div class="p-kill">
-									<div class="" style="position: relative;">킬관여 ${KA_T_red }%</div>
-								</div>
-								
-								</c:when>
-							
-							
-							</c:choose>
-							
-								
-								
-								
-								<div class="ward">제어 와드 ${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getVisionWardsBoughtInGame() }</div>
-								<div class="cs">
-									<div class="" style="position: relative;">CS ${totalCSW} (${MINCSW })</div>
-								</div>
-<!-- 								<div class="average-tier">
+
+																	<%-- <c:set var="runs_1_W_s" value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getPerks().getStyles().get(0).getSelections().get(0).getDescription() }"/> --%>
+																	<c:set var="runs_1_W"
+																		value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getPerks().getStyles().get(0).getSelections().get(0).getPerk() }" />
+
+																	<%-- ${runs_1_W_s} --%>
+
+
+																	<div class="rune">
+
+																		<div class="" style="position: relative;">
+																			<c:choose>
+																				<c:when test="${runs_1_W eq 8010 }">
+																					<img
+																						src="${pageContext.request.contextPath }/resources/assets/img/lolez_perk/Precision/Conqueror.png"
+																						width="22" alt="정복자" height="22">
+
+																				</c:when>
+																				<c:when test="${runs_1_W eq 8008 }">
+																					<img
+																						src="${pageContext.request.contextPath }/resources/assets/img/lolez_perk/Precision/LethalTempoTemp.png"
+																						width="22" alt="치명적 속도" height="22">
+
+																				</c:when>
+																				<c:when test="${runs_1_W eq 8005 }">
+																					<img
+																						src="${pageContext.request.contextPath }/resources/assets/img/lolez_perk/Precision/PressTheAttack.png"
+																						width="22" alt="집중공격" height="22">
+
+																				</c:when>
+																				<c:when test="${runs_1_W eq 8021 }">
+																					<img
+																						src="${pageContext.request.contextPath }/resources/assets/img/lolez_perk/Precision/FleetFootwork.png"
+																						width="22" alt="기민한 발놀림" height="22">
+
+																				</c:when>
+
+
+
+																				<c:when test="${runs_1_W eq 8112 }">
+																					<img
+																						src="${pageContext.request.contextPath }/resources/assets/img/lolez_perk/Domination/Electrocute.png"
+																						width="22" alt="감전" height="22">
+
+																				</c:when>
+																				<c:when test="${runs_1_W eq 9923 }">
+																					<img
+																						src="${pageContext.request.contextPath }/resources/assets/img/lolez_perk/Domination/HailOfBlades.png"
+																						width="22" alt="칼날비" height="22">
+
+																				</c:when>
+																				<c:when test="${runs_1_W eq 8128 }">
+																					<img
+																						src="${pageContext.request.contextPath }/resources/assets/img/lolez_perk/Domination/DarkHarvest.png"
+																						width="22" alt="어둠의 수학" height="22">
+
+																				</c:when>
+																				<c:when test="${runs_1_W eq 8124 }">
+																					<img
+																						src="${pageContext.request.contextPath }/resources/assets/img/lolez_perk/Domination/Predator.png"
+																						width="22" alt="포식자" height="22">
+
+																				</c:when>
+
+
+
+																				<c:when test="${runs_1_W eq 8229 }">
+																					<img
+																						src="${pageContext.request.contextPath }/resources/assets/img/lolez_perk/Sorcery/ArcaneComet.png"
+																						width="22" alt="신비한 유성" height="22">
+
+																				</c:when>
+																				<c:when test="${runs_1_W eq 8230 }">
+																					<img
+																						src="${pageContext.request.contextPath }/resources/assets/img/lolez_perk/Sorcery/PhaseRush.png"
+																						width="22" alt="난입" height="22">
+
+																				</c:when>
+																				<c:when test="${runs_1_W eq 8214 }">
+																					<img
+																						src="${pageContext.request.contextPath }/resources/assets/img/lolez_perk/Sorcery/SummonAery.png"
+																						width="22" alt="콩콩이 소환" height="22">
+
+																				</c:when>
+
+
+
+
+																				<c:when test="${runs_1_W eq 8437 }">
+																					<img
+																						src="${pageContext.request.contextPath }/resources/assets/img/lolez_perk/Resolve/GraspOfTheUndying.png"
+																						width="22" alt="착취의 손아귀" height="22">
+
+																				</c:when>
+																				<c:when test="${runs_1_W eq 8439 }">
+																					<img
+																						src="${pageContext.request.contextPath }/resources/assets/img/lolez_perk/Resolve/VeteranAftershock.png"
+																						width="22" alt="여진" height="22">
+
+																				</c:when>
+																				<c:when test="${runs_1_W eq 8465 }">
+																					<img
+																						src="${pageContext.request.contextPath }/resources/assets/img/lolez_perk/Resolve/Guardian.png"
+																						width="22" alt="수호자" height="22">
+
+																				</c:when>
+
+
+
+
+
+																				<c:when test="${runs_1_W eq 8351 }">
+																					<img
+																						src="${pageContext.request.contextPath }/resources/assets/img/lolez_perk/Inspiration/GlacialAugment.png"
+																						width="22" alt="빙결강화" height="22">
+
+																				</c:when>
+																				<c:when test="${runs_1_W eq 8369 }">
+																					<img
+																						src="${pageContext.request.contextPath }/resources/assets/img/lolez_perk/Inspiration/FirstStrike.png"
+																						width="22" alt="선제공격" height="22">
+
+																				</c:when>
+																				<c:when test="${runs_1_W eq 8360 }">
+																					<img
+																						src="${pageContext.request.contextPath }/resources/assets/img/lolez_perk/Inspiration/UnsealedSpellbook.png"
+																						width="22" alt="봉인 풀린 주문서" height="22">
+
+																				</c:when>
+
+																			</c:choose>
+
+																		</div>
+																	</div>
+																	<div class="rune">
+																		<c:set var="runs_2_W"
+																			value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getPerks().getStyles().get(1).getStyle() }" />
+																		<div class="" style="position: relative;">
+																			<c:choose>
+
+
+																				<c:when test="${runs_2_W eq 8000 }">
+																					<img
+																						src="${pageContext.request.contextPath }/resources/assets/img/lolez_SUB_PERK/7201_Precision.png"
+																						width="22" alt="결의" height="22">
+																				</c:when>
+
+																				<c:when test="${runs_2_W eq 8100 }">
+																					<img
+																						src="${pageContext.request.contextPath }/resources/assets/img/lolez_SUB_PERK/7200_Domination.png"
+																						width="22" alt="결의" height="22">
+																				</c:when>
+
+
+																				<c:when test="${runs_2_W eq 8200 }">
+																					<img
+																						src="${pageContext.request.contextPath }/resources/assets/img/lolez_SUB_PERK/7202_Sorcery.png"
+																						width="22" alt="결의" height="22">
+																				</c:when>
+
+
+																				<c:when test="${runs_2_W eq 8300 }">
+																					<img
+																						src="${pageContext.request.contextPath }/resources/assets/img/lolez_SUB_PERK/7203_Whimsy.png"
+																						width="22" alt="결의" height="22">
+																				</c:when>
+
+
+																				<c:when test="${runs_2_W eq 8400 }">
+																					<img
+																						src="${pageContext.request.contextPath }/resources/assets/img/lolez_SUB_PERK/7204_Resolve.png"
+																						width="22" alt="결의" height="22">
+																				</c:when>
+
+																			</c:choose>
+																		</div>
+																	</div>
+																</div>
+															</div>
+															<div class="kda">
+																<div class="k-d-a">
+																	<span>${kill}</span> / <span class="d">${deaths}</span>
+																	/ <span>${assists}</span>
+																</div>
+																<div class="ratio">
+																	<c:set var="result" value="${(kill+assists)/deaths}" />
+																	<span>${String.format("%.2f", result)}:1</span> 평점
+																</div>
+															</div>
+															<div class="stats">
+
+																<c:choose>
+																	<c:when test="${teamID == 100 }">
+																		<div class="p-kill">
+																			<div class="" style="position: relative;">킬관여
+																				${KA_T_bule }%</div>
+																		</div>
+
+																	</c:when>
+
+																	<c:when test="${teamID == 200 }">
+																		<div class="p-kill">
+																			<div class="" style="position: relative;">킬관여
+																				${KA_T_red }%</div>
+																		</div>
+
+																	</c:when>
+
+
+																</c:choose>
+
+
+
+
+																<div class="ward">제어 와드
+																	${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getVisionWardsBoughtInGame() }</div>
+																<div class="cs">
+																	<div class="" style="position: relative;">CS
+																		${totalCSW} (${MINCSW })</div>
+																</div>
+																<!-- 								<div class="average-tier">
 									<div class="" style="position: relative;">gold 4</div>
 								</div> -->
-							</div>
-						</div>
-						<div>
-							<div class="items">
-							
-							
-							<c:set var="item0_win" value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getItem0() }"/>
-							<c:set var="item1_win" value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getItem1() }"/>
-							<c:set var="item2_win" value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getItem2() }"/>
-							<c:set var="item3_win" value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getItem3() }"/>
-							<c:set var="item4_win" value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getItem4() }"/>
-							<c:set var="item5_win" value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getItem5() }"/>
-							<c:set var="item6_win" value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getItem6() }"/>
-							<c:set var="zero" value="0"/>
-							
-							
-							<%-- <c:set var="items" value="${ {item0_win, item1_win, item2_win, item3_win, item4_win, item5_win} }"/> --%>
-							
-							<c:set var="itemList">${item0_win },${item1_win },${item2_win },${item3_win },${item4_win },${item5_win } </c:set>
-							
-								<ul>
+															</div>
+														</div>
+														<div>
+															<div class="items">
 
-								
-								
-								<c:forEach var="Item_i" items="${itemList }">
-								
-								
-								
-								
-								<c:if test="${Item_i != 0}">
-								
-											<li><div class="" style="position: relative;">
-											<img
-												src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/item/${Item_i}.png"
-												width="22" alt="${item_i}" height="22">
+
+																<c:set var="item0_win"
+																	value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getItem0() }" />
+																<c:set var="item1_win"
+																	value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getItem1() }" />
+																<c:set var="item2_win"
+																	value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getItem2() }" />
+																<c:set var="item3_win"
+																	value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getItem3() }" />
+																<c:set var="item4_win"
+																	value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getItem4() }" />
+																<c:set var="item5_win"
+																	value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getItem5() }" />
+																<c:set var="item6_win"
+																	value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getItem6() }" />
+																<c:set var="zero" value="0" />
+
+
+																<%-- <c:set var="items" value="${ {item0_win, item1_win, item2_win, item3_win, item4_win, item5_win} }"/> --%>
+
+																<c:set var="itemList">${item0_win },${item1_win },${item2_win },${item3_win },${item4_win },${item5_win } </c:set>
+
+																<ul>
+
+
+
+																	<c:forEach var="Item_i" items="${itemList }">
+
+
+
+
+																		<c:if test="${Item_i != 0}">
+
+																			<li><div class="" style="position: relative;">
+																					<img
+																						src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/item/${Item_i}.png"
+																						width="22" alt="${item_i}" height="22">
+																				</div></li>
+
+																		</c:if>
+																		<c:if test="${Item_i == 0}">
+
+																			<li></li>
+
+																		</c:if>
+
+
+																	</c:forEach>
+
+																</ul>
+																<div class="ward">
+																	<div class="" style="position: relative;">
+																		<img
+																			src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/item/${item6_win }.png"
+																			width="22" alt="${item6_win}" height="22">
+																	</div>
+																</div>
+															</div>
+
+															<c:set var="PentaKills"
+																value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getPentaKills()}" />
+															<c:set var="QuadraKills"
+																value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getQuadraKills()}" />
+															<c:set var="TripleKills"
+																value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getTripleKills()}" />
+															<c:set var="DoubleKills"
+																value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getDoubleKills()}" />
+
+															<c:choose>
+																<c:when test="${PentaKills >= 1 }">
+																	<div class="multi-kill">팬타킬</div>
+																</c:when>
+
+																<c:when test="${QuadraKills >= 1 }">
+																	<div class="multi-kill">쿼드라킬</div>
+																</c:when>
+
+																<c:when test="${TripleKills >= 1 }">
+																	<div class="multi-kill">트리플킬</div>
+																</c:when>
+
+																<c:when test="${DoubleKills >= 1 }">
+																	<div class="multi-kill">더블킬</div>
+																</c:when>
+
+
+
+															</c:choose>
+
+
+
+
+
+														</div>
+													</div>
+													<div class="participants">
+														<!-- 해당게임의 존재한 플레이어 목록 5:5 기준 총 10명 -->
+
+														<ul>
+
+															<c:forEach begin="0"
+																end="${MatchList.get(i).getInfo().getParticipants().size()- 6}"
+																var="member">
+																<c:set var="ChampionNameMember"
+																	value="${MatchList.get(i).getInfo().getParticipants().get(member).getChampionName()}" />
+
+																<li class="css-1ahqe5t e1iiyghw1"><div class="icon"
+																		style="position: relative;">
+
+																		<c:choose>
+																			<c:when test="${ChampionNameMember ==  FiddleSticks}">
+																				<img
+																					src="https://ddragon.leagueoflegends.com/cdn/13.4.1/img/champion/${ FiddleSticks_s}.png"
+																					width="16" alt="${ FiddleSticks_s}" height="16">
+																			</c:when>
+
+																			<c:otherwise>
+																				<img
+																					src="https://ddragon.leagueoflegends.com/cdn/13.4.1/img/champion/${ ChampionNameMember}.png"
+																					width="16" alt="${ ChampionNameMember}" height="16">
+
+
+																			</c:otherwise>
+
+
+
+																		</c:choose>
+
+
+
+																	</div>
+																	<div class="name">
+																		<a
+																			href="/summoners/kr/%EC%9D%91%EA%BC%AC%EC%8A%A4%ED%82%A4%EB%B2%84%ED%84%B0"
+																			target="_blank" rel="noreferrer">${MatchList.get(i).getInfo().getParticipants().get(member).getSummonerName() }</a>
+																	</div></li>
+
+															</c:forEach>
+
+
+
+
+
+
+														</ul>
+														<ul>
+															<c:forEach begin="5"
+																end="${MatchList.get(i).getInfo().getParticipants().size()- 1}"
+																var="member_u">
+																<c:set var="ChampionNameMember_two"
+																	value="${MatchList.get(i).getInfo().getParticipants().get(member_u).getChampionName()}" />
+
+																<li class="css-1ahqe5t e1iiyghw1"><div class="icon"
+																		style="position: relative;">
+																		<c:choose>
+																			<c:when
+																				test="${ChampionNameMember_two ==  FiddleSticks}">
+																				<img
+																					src="https://ddragon.leagueoflegends.com/cdn/13.4.1/img/champion/${ FiddleSticks_s}.png"
+																					width="16" alt="${ FiddleSticks_s}" height="16">
+																			</c:when>
+
+																			<c:otherwise>
+																				<img
+																					src="https://ddragon.leagueoflegends.com/cdn/13.4.1/img/champion/${ ChampionNameMember_two}.png"
+																					width="16" alt="${ ChampionNameMember_two}"
+																					height="16">
+
+
+																			</c:otherwise>
+
+
+
+																		</c:choose>
+																	</div>
+																	<div class="name">
+																		<a
+																			href="/summoners/kr/%EC%9D%91%EA%BC%AC%EC%8A%A4%ED%82%A4%EB%B2%84%ED%84%B0"
+																			target="_blank" rel="noreferrer">${MatchList.get(i).getInfo().getParticipants().get(member_u).getSummonerName() }</a>
+																	</div></li>
+
+															</c:forEach>
+														</ul>
+													</div>
+												</div>
+											</div>
+											<div class="action">
+												<button class="detail">
+													<img
+														src="https://s-lol-web.op.gg/images/icon/icon-arrow-down-blue.svg?v=1676969392397"
+														width="24" alt="More" height="24">
+												</button>
+											</div>
 										</div></li>
-								
+
+
 								</c:if>
-								<c:if test="${Item_i == 0}">
-								
-								<li></li>
-								
-								</c:if>
+								<c:if
+									test="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).isWin()  eq false }">
+									<c:set var="buleTeam_L" value="0" />
+									<c:set var="redTeam_L" value="1" />
 
-								
-								</c:forEach>
-
-								</ul>
-								<div class="ward">
-									<div class="" style="position: relative;">
-										<img
-											src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/item/${item6_win }.png"
-											width="22" alt="${item6_win}" height="22">
-									</div>
-								</div>
-							</div>
-							
-							<c:set var="PentaKills" value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getPentaKills()}"/>
-							<c:set var="QuadraKills" value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getQuadraKills()}"/>
-							<c:set var="TripleKills" value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getTripleKills()}"/>
-							<c:set var="DoubleKills" value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getDoubleKills()}"/>
-							
-							<c:choose>
-								<c:when test="${PentaKills >= 1 }">
-										<div class="multi-kill">
-										팬타킬
-										</div>
-								</c:when>
-								
-								<c:when test="${QuadraKills >= 1 }">
-										<div class="multi-kill">
-										쿼드라킬
-										</div>
-								</c:when>
-								
-								<c:when test="${TripleKills >= 1 }">
-										<div class="multi-kill">
-										트리플킬
-										</div>
-								</c:when>
-								
-								<c:when test="${DoubleKills >= 1 }">
-										<div class="multi-kill">
-										더블킬
-										</div>
-								</c:when>
-							
-							
-							
-							</c:choose>
+									<c:set var="teamID_L"
+										value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getTeamId()}" />
 
 
-	
-							
-							
-						</div>
-					</div>
-					<div class="participants">
-					<!-- 해당게임의 존재한 플레이어 목록 5:5 기준 총 10명 -->
-					
-						<ul>
-					
-						<c:forEach begin="0" end="${MatchList.get(i).getInfo().getParticipants().size()- 6}" var="member">
-						<c:set var="ChampionNameMember" value="${MatchList.get(i).getInfo().getParticipants().get(member).getChampionName()}"/>
 
-								<li class="css-1ahqe5t e1iiyghw1"><div class="icon"
-									style="position: relative;">
-									
-									<c:choose>
-										<c:when test="${ChampionNameMember ==  FiddleSticks}">
-										<img
-										src="https://ddragon.leagueoflegends.com/cdn/13.4.1/img/champion/${ FiddleSticks_s}.png"
-										width="16" alt="${ FiddleSticks_s}" height="16">
-										</c:when>
-										
-										<c:otherwise>
-										<img
-										src="https://ddragon.leagueoflegends.com/cdn/13.4.1/img/champion/${ ChampionNameMember}.png"
-										width="16" alt="${ ChampionNameMember}" height="16">
-										
-										
-										</c:otherwise>
-										
-										
-									
-									</c:choose>
-									
-										
-										
-								</div>
-								<div class="name">
-									<a
-										href="/summoners/kr/%EC%9D%91%EA%BC%AC%EC%8A%A4%ED%82%A4%EB%B2%84%ED%84%B0"
-										target="_blank" rel="noreferrer">${MatchList.get(i).getInfo().getParticipants().get(member).getSummonerName() }</a>
-								</div></li>						
-
-						</c:forEach>
-						
-
-						
-						
+									<c:set var="kill_L"
+										value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getKills() }" />
+									<c:set var="deaths_L"
+										value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getDeaths() }" />
+									<c:set var="assists_L"
+										value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getAssists() }" />
+									<c:set var="Gametype_L"
+										value="${MatchList.get(i).getInfo().getQueueId()}" />
 
 
-						</ul>
-						<ul>
-							<c:forEach begin="5" end="${MatchList.get(i).getInfo().getParticipants().size()- 1}" var="member_u">
-							<c:set var="ChampionNameMember_two" value="${MatchList.get(i).getInfo().getParticipants().get(member_u).getChampionName()}"/>
-							
-								<li class="css-1ahqe5t e1iiyghw1"><div class="icon"
-									style="position: relative;">
-									<c:choose>
-										<c:when test="${ChampionNameMember_two ==  FiddleSticks}">
-										<img
-										src="https://ddragon.leagueoflegends.com/cdn/13.4.1/img/champion/${ FiddleSticks_s}.png"
-										width="16" alt="${ FiddleSticks_s}" height="16">
-										</c:when>
-										
-										<c:otherwise>
-										<img
-										src="https://ddragon.leagueoflegends.com/cdn/13.4.1/img/champion/${ ChampionNameMember_two}.png"
-										width="16" alt="${ ChampionNameMember_two}" height="16">
-										
-										
-										</c:otherwise>
-										
-										
-									
-									</c:choose>
-								</div>
-								<div class="name">
-									<a
-										href="/summoners/kr/%EC%9D%91%EA%BC%AC%EC%8A%A4%ED%82%A4%EB%B2%84%ED%84%B0"
-										target="_blank" rel="noreferrer">${MatchList.get(i).getInfo().getParticipants().get(member_u).getSummonerName() }</a>
-								</div></li>						
 
-						</c:forEach>
-						</ul>
-					</div>
-				</div>
-			</div>
-			<div class="action">
-				<button class="detail">
-					<img
-						src="https://s-lol-web.op.gg/images/icon/icon-arrow-down-blue.svg?v=1676969392397"
-						width="24" alt="More" height="24">
-				</button>
-			</div>
-		</div></li>
-						
-						
-						</c:if>
-						<c:if test="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).isWin()  eq false }">
-								<c:set var="buleTeam_L" value="0"/>
-								<c:set var="redTeam_L" value="1"/>
-						
-						<c:set var="teamID_L" value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getTeamId()}"/>
-						
-						
-						
-						<c:set var="kill_L" value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getKills() }"/>
-						<c:set var="deaths_L" value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getDeaths() }"/>
-						<c:set var="assists_L" value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getAssists() }"/>
-						<c:set var="Gametype_L" value="${MatchList.get(i).getInfo().getQueueId()}"/>
-						
-						
-						
-								<c:set var="playTieml" value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getTimePlayed() }"/>
-								<c:set var="minl" value="${playTieml / 60 }"/>
-								<c:set var="secl" value="${playTieml % 60 }"/>
-								<c:set var ="totalCSL" value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getTotalMinionsKilled() + MatchList.get(i).getInfo().getParticipants().get(MIP_I).getNeutralMinionsKilled()}"/>
-								
-								<c:set var="MinIntL" value="${minl.intValue()}"/>
-								
-								
-								<c:set var="CS_Sec" value="${secl/100.0 }"/>
-								<c:set var="CStotal_tiem" value="${(MinIntL/1.0) + CS_Sec  }"/>
-								<c:set var="MINCS_stap" value="${totalCSL / CStotal_tiem}"/>
-								<fmt:formatNumber var="MINCS" value="${MINCS_stap }" pattern="0.0"/>
-								
-								
-							<c:set var="teamID_L" value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getTeamId()}"/>	
-								
-							<c:if test="${teamID_L == 100 }">
-								<c:set var="buleTEAM_Kill_L" value="${MatchList.get(i).getInfo().getTeams().get(buleTeam_L).getObjectives().getChampion().getKills()}"/>
-								<c:set var="KA_bule_L" value="${(kill_L +  assists_L) / buleTEAM_Kill_L * 100}"/>
-								
-								<fmt:formatNumber var="KA_T_bule_L" value="${KA_bule_L }" pattern="0"/>
-							</c:if>
-							
-							<c:if test="${teamID_L == 200 }">
-								<c:set var="RedTEAM_Kill_L" value="${MatchList.get(i).getInfo().getTeams().get(redTeam_L).getObjectives().getChampion().getKills()}"/>
-								<c:set var="KA_red_L" value="${(kill_L +  assists_L) / RedTEAM_Kill_L * 100}"/>
-								
-								<fmt:formatNumber var="KA_T_red_L" value="${KA_red_L }" pattern="0"/>
-							</c:if>
-								
-								
-								
-								
+									<c:set var="playTieml"
+										value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getTimePlayed() }" />
+									<c:set var="minl" value="${playTieml / 60 }" />
+									<c:set var="secl" value="${playTieml % 60 }" />
+									<c:set var="totalCSL"
+										value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getTotalMinionsKilled() + MatchList.get(i).getInfo().getParticipants().get(MIP_I).getNeutralMinionsKilled()}" />
 
-								
-															
-							<li class="css-1qq23jn e1iiyghw3"><div result="LOSE"
-							class="css-jc3q2t e1iiyghw2">
-							<div class="contents">
-								<div class="game-content">
-									<div class="game">
-										<div class="type">					<c:choose>
-						<c:when test="${Gametype_L == 420 }">
-						솔로 랭크
-						
-						</c:when>
-						
-						<c:when test="${Gametype_L == 440 }">
-						자유 5:5 랭크
-						
-						</c:when>
-						
-						<c:when test="${Gametype_L == 430 }">
-						일반
-						
-						</c:when>
-						
-						<c:when test="${Gametype_L == 450 }">
-						무작위 총력전
-						
-						</c:when>
-						
-						<c:when test="${Gametype_L == 900 }">
-						모두 무작위 U.R.F.
-						
-						</c:when>
-						<c:when test="${Gametype_L == 1900 }">
-						U.R.F
-						
-						</c:when>
-						
-					
-					
-					</c:choose></div>
-										<div class="time-stamp">
-											<div class="" style="position: relative;">9시간 전</div>
-										</div>
-										<div class="bar"></div>
-										<div class="result">패배</div>
-										<div class="length">${MinIntL}분 ${secl}초</div>
-									</div>
-									<div class="info">
-									<c:set var="ChampionName" value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getChampionName()}"/>
-										<div>
-											<div class="champion">
-												<div class="icon">
-													<a href="/champions/zeri" target="_blank" rel="noreferrer">
-													
-													<c:choose>
-														<c:when test="${ChampionName eq FiddleSticks}">
-														<img src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/champion/${Fiddlesticks_s }.png"	width="48" alt="제리" height="48">
-														
-														</c:when>
-														
-														<c:otherwise>
-														<img src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/champion/${ChampionName }.png"	width="48" alt="제리" height="48">
-														
-														</c:otherwise>
+									<c:set var="MinIntL" value="${minl.intValue()}" />
 
-													</c:choose>
-														
-														
-														<span
-														class="champion-level">${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getChampLevel() }</span></a>
-												</div>
-												<div class="spells">
-								<c:set var="spC1_L" value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getSummoner1Id() }"/>
-								<c:set var="spC2_L" value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getSummoner2Id() }"/>
-													<div class="spell">
-														<div class="" style="position: relative;">
-										<c:choose>
-											<c:when test="${spC1_L eq 1}">
-											<img
-												src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerBoost.png"
-												width="22" alt="정화" height="22">
-											
-											</c:when>
-											
-											<c:when test="${spC1_L eq 3}">
-											<img
-												src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerExhaust.png"
-												width="22" alt="탈진" height="22">
-											
-											</c:when>
-											
-											<c:when test="${spspC1_LC1 eq 4}">
-											<img
-												src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerFlash.png"
-												width="22" alt="점멸" height="22">
-											
-											</c:when>
-											
-											<c:when test="${spC1_L eq 6}">
-											<img
-												src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerHaste.png"
-												width="22" alt="유체화" height="22">
-											
-											</c:when>
-											
-											<c:when test="${spC1_L eq 7}">
-											<img
-												src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerHeal.png"
-												width="22" alt="치유" height="22">
-											
-											</c:when>
-											
-											<c:when test="${spC1_L eq 11}">
-											<img
-												src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerSmite.png"
-												width="22" alt="강타" height="22">
-											
-											</c:when>
-											
-											<c:when test="${spC1_L eq 12}">
-											<img
-												src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerTeleport.png"
-												width="22" alt="순간이동" height="22">
-											
-											</c:when>
-											
-											<c:when test="${spC1_L eq 13}">
-											<img
-												src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerMana.png"
-												width="22" alt="총명" height="22">
-											
-											</c:when>
-											
-											<c:when test="${spC1_L eq 14}">
-											<img
-												src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerDot.png"
-												width="22" alt="점화" height="22">
-											
-											</c:when>
-											
-											<c:when test="${spC1_L eq 21}">
-											<img
-												src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerBarrier.png"
-												width="22" alt="방어막" height="22">
-											
-											</c:when>
-											
-											<c:when test="${spC1_L eq 32}">
-											<img
-												src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerSnowball.png"
-												width="22" alt="표식" height="22">
-											
-											</c:when>
 
-											
-										
-										</c:choose>
+									<c:set var="CS_Sec" value="${secl/100.0 }" />
+									<c:set var="CStotal_tiem" value="${(MinIntL/1.0) + CS_Sec  }" />
+									<c:set var="MINCS_stap" value="${totalCSL / CStotal_tiem}" />
+									<fmt:formatNumber var="MINCS" value="${MINCS_stap }"
+										pattern="0.0" />
+
+
+									<c:set var="teamID_L" value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getTeamId()}" />
+
+									<c:if test="${teamID_L == 100 }">
+										<c:set var="buleTEAM_Kill_L" value="${MatchList.get(i).getInfo().getTeams().get(buleTeam_L).getObjectives().getChampion().getKills()}" />
+										<c:set var="KA_bule_L"	value="${(kill_L +  assists_L) / buleTEAM_Kill_L * 100}" />
+
+										<fmt:formatNumber var="KA_T_bule_L" value="${KA_bule_L }"
+											pattern="0" />
+									</c:if>
+
+									<c:if test="${teamID_L == 200 }">
+										<c:set var="RedTEAM_Kill_L"
+											value="${MatchList.get(i).getInfo().getTeams().get(redTeam_L).getObjectives().getChampion().getKills()}" />
+										<c:set var="KA_red_L"
+											value="${(kill_L +  assists_L) / RedTEAM_Kill_L * 100}" />
+
+										<fmt:formatNumber var="KA_T_red_L" value="${KA_red_L }"
+											pattern="0" />
+									</c:if>
+
+
+
+
+
+
+
+									<li class="css-1qq23jn e1iiyghw3"><div result="LOSE"
+											class="css-jc3q2t e1iiyghw2">
+											<div class="contents">
+												<div class="game-content">
+													<div class="game">
+														<div class="type">
+															<c:choose>
+																<c:when test="${Gametype_L == 420 }">
+																솔로 랭크
+																
+																</c:when>
+
+																<c:when test="${Gametype_L == 440 }">
+																자유 5:5 랭크
+																
+																</c:when>
+
+																<c:when test="${Gametype_L == 430 }">
+																일반
+																
+																</c:when>
+
+																<c:when test="${Gametype_L == 450 }">
+																무작위 총력전
+																
+																</c:when>
+
+																<c:when test="${Gametype_L == 900 }">
+																모두 무작위 U.R.F.
+																
+																</c:when>
+																<c:when test="${Gametype_L == 1900 }">
+																U.R.F
+																
+																</c:when>
+
+
+
+															</c:choose>
 														</div>
-													</div>
-													<div class="spell">
-														<div class="" style="position: relative;">
-										<c:choose>
-											<c:when test="${spC2_L eq 1}">
-											<img
-												src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerBoost.png"
-												width="22" alt="정화" height="22">
-											
-											</c:when>
-											
-											<c:when test="${spC2_L eq 3}">
-											<img
-												src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerExhaust.png"
-												width="22" alt="탈진" height="22">
-											
-											</c:when>
-											
-											<c:when test="${spC2_L eq 4}">
-											<img
-												src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerFlash.png"
-												width="22" alt="점멸" height="22">
-											
-											</c:when>
-											
-											<c:when test="${spC2_L eq 6}">
-											<img
-												src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerHaste.png"
-												width="22" alt="유체화" height="22">
-											
-											</c:when>
-											
-											<c:when test="${spC2_L eq 7}">
-											<img
-												src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerHeal.png"
-												width="22" alt="치유" height="22">
-											
-											</c:when>
-											
-											<c:when test="${spC2_L eq 11}">
-											<img
-												src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerSmite.png"
-												width="22" alt="강타" height="22">
-											
-											</c:when>
-											
-											<c:when test="${spC2_L eq 12}">
-											<img
-												src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerTeleport.png"
-												width="22" alt="순간이동" height="22">
-											
-											</c:when>
-											
-											<c:when test="${spC2_L eq 13}">
-											<img
-												src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerMana.png"
-												width="22" alt="총명" height="22">
-											
-											</c:when>
-											
-											<c:when test="${spC2_L eq 14}">
-											<img
-												src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerDot.png"
-												width="22" alt="점화" height="22">
-											
-											</c:when>
-											
-											<c:when test="${spC2_L eq 21}">
-											<img
-												src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerBarrier.png"
-												width="22" alt="방어막" height="22">
-											
-											</c:when>
-											
-											<c:when test="${spC2_L eq 32}">
-											<img
-												src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerSnowball.png"
-												width="22" alt="표식" height="22">
-											
-											</c:when>
+														<div class="time-stamp">
+															<c:set var="gameEndTimeStampex_L"
+																value="${MatchList.get(i).getInfo().getGameEndTimestampex()}" />
+															<c:set var="now_L"
+																value="<%=System.currentTimeMillis() / 1000%>" />
+															<c:set var="time2_L"
+																value="${now_L - gameEndTimeStampex_L}" />
 
+															<c:set var="y_L" value="${time2_L / 31104000 }" />
+															<c:set var="mo_L" value="${time2_L / 2592000 }" />
+															<c:set var="d_L" value="${time2_L / 86000 }" />
+															<c:set var="h_L" value="${time2_L / 3600 }" />
+															<c:set var="m_L" value="${time2_L / 60 }" />
+
+															<fmt:formatNumber var="totaly_L" value="${y_L }"
+																pattern="#" />
+															<fmt:formatNumber var="totalmo_L" value="${mo_L }"
+																pattern="#" />
+															<fmt:formatNumber var="totald_L" value="${d_L }"
+																pattern="#" />
+															<fmt:formatNumber var="totalH_L" value="${h_L }"
+																pattern="#" />
+															<fmt:formatNumber var="totalm_L" value="${m_L }"
+																pattern="#" />
+
+
+															<div class="" style="position: relative;">
+																<c:choose>
+																	<c:when test="${y_L >=1 }">
+																	${totaly_L }년 전
+																	
+																	</c:when>
+
+																	<c:when test="${totald_L >= 30 }">
+																	${totalmo_L }달 전
+																	
+																	</c:when>
+
+																	<c:when test="${totalH_L >= 24 }">
+																		<c:choose>
+																			<c:when test="${totald_L < 2 }">
+																				하루 전
+																			</c:when>
+																			<c:otherwise>
+													
+																				${totald_L }일 전
+																			
+																			</c:otherwise>
+
+																		</c:choose>
+
+																	</c:when>
+
+
+																	<c:when test="${totalm_L >= 60}">
+																		${totalH_L }시간 전
+																	
+																	</c:when>
+																	<c:otherwise>
 											
-										
-										</c:choose>
+																		${totalm_L }분 전
+																	
+																	</c:otherwise>
+
+																</c:choose>
+
+
+															</div>
 														</div>
+														<div class="bar"></div>
+														<div class="result">패배</div>
+														<div class="length">${MinIntL}분${secl}초</div>
 													</div>
-												</div>
-												<div class="runes">
-												<c:set var="runs_1" value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getPerks().getStyles().get(0).getSelections().get(0).getPerk() }"/>
-													<div class="rune">
-														<div class="" style="position: relative;">
-										<c:choose>
-											<c:when test="${runs_1 eq 8010 }">
-												<img
-												src="${pageContext.request.contextPath }/resources/assets/img/lolez_perk/Precision/Conqueror.png"
-												width="22" alt="정복자" height="22">
-											
-											</c:when>
-											<c:when test="${runs_1 eq 8008 }">
-												<img
-												src="${pageContext.request.contextPath }/resources/assets/img/lolez_perk/Precision/LethalTempoTemp.png"
-												width="22" alt="치명적 속도" height="22">
-											
-											</c:when>
-											<c:when test="${runs_1 eq 8005 }">
-												<img
-												src="${pageContext.request.contextPath }/resources/assets/img/lolez_perk/Precision/PressTheAttack.png"
-												width="22" alt="집중공격" height="22">
-											
-											</c:when>
-											<c:when test="${runs_1 eq 8021 }">
-												<img
-												src="${pageContext.request.contextPath }/resources/assets/img/lolez_perk/Precision/FleetFootwork.png"
-												width="22" alt="기민한 발놀림" height="22">
-											
-											</c:when>
-											
-											
-											
-											<c:when test="${runs_1 eq 8112 }">
-												<img
-												src="${pageContext.request.contextPath }/resources/assets/img/lolez_perk/Domination/Electrocute.png"
-												width="22" alt="감전" height="22">
-											
-											</c:when>
-											<c:when test="${runs_1 eq 9923 }">
-												<img
-												src="${pageContext.request.contextPath }/resources/assets/img/lolez_perk/Domination/HailOfBlades.png"
-												width="22" alt="칼날비" height="22">
-											
-											</c:when>
-											<c:when test="${runs_1 eq 8128 }">
-												<img
-												src="${pageContext.request.contextPath }/resources/assets/img/lolez_perk/Domination/DarkHarvest.png"
-												width="22" alt="어둠의 수학" height="22">
-											
-											</c:when>
-											<c:when test="${runs_1 eq 8124 }">
-												<img
-												src="${pageContext.request.contextPath }/resources/assets/img/lolez_perk/Domination/Predator.png"
-												width="22" alt="포식자" height="22">
-											
-											</c:when>
-											
-											
-											
-											<c:when test="${runs_1 eq 8229 }">
-												<img
-												src="${pageContext.request.contextPath }/resources/assets/img/lolez_perk/Sorcery/ArcaneComet.png"
-												width="22" alt="신비한 유성" height="22">
-											
-											</c:when>
-											<c:when test="${runs_1 eq 8230 }">
-												<img
-												src="${pageContext.request.contextPath }/resources/assets/img/lolez_perk/Sorcery/PhaseRush.png"
-												width="22" alt="난입" height="22">
-											
-											</c:when>
-											<c:when test="${runs_1 eq 8214 }">
-												<img
-												src="${pageContext.request.contextPath }/resources/assets/img/lolez_perk/Sorcery/SummonAery.png"
-												width="22" alt="콩콩이 소환" height="22">
-											
-											</c:when>
-											
-											
-											
-											
-											<c:when test="${runs_1 eq 8437 }">
-												<img
-												src="${pageContext.request.contextPath }/resources/assets/img/lolez_perk/Resolve/GraspOfTheUndying.png"
-												width="22" alt="착취의 손아귀" height="22">
-											
-											</c:when>
-											<c:when test="${runs_1 eq 8439 }">
-												<img
-												src="${pageContext.request.contextPath }/resources/assets/img/lolez_perk/Resolve/VeteranAftershock.png"
-												width="22" alt="여진" height="22">
-											
-											</c:when>
-											<c:when test="${runs_1 eq 8465 }">
-												<img
-												src="${pageContext.request.contextPath }/resources/assets/img/lolez_perk/Resolve/Guardian.png"
-												width="22" alt="수호자" height="22">
-											
-											</c:when>
-											
-											
-											
-											
-											
-											<c:when test="${runs_1 eq 8351 }">
-												<img
-												src="${pageContext.request.contextPath }/resources/assets/img/lolez_perk/Inspiration/GlacialAugment.png"
-												width="22" alt="빙결강화" height="22">
-											
-											</c:when>
-											<c:when test="${runs_1 eq 8369 }">
-												<img
-												src="${pageContext.request.contextPath }/resources/assets/img/lolez_perk/Inspiration/FirstStrike.png"
-												width="22" alt="선제공격" height="22">
-											
-											</c:when>
-											<c:when test="${runs_1 eq 8360 }">
-												<img
-												src="${pageContext.request.contextPath }/resources/assets/img/lolez_perk/Inspiration/UnsealedSpellbook.png"
-												width="22" alt="봉인 풀린 주문서" height="22">
-											
-											</c:when>
-										
-										</c:choose>
-														</div>
-													</div>
-													<div class="rune">
-													<c:set var="rune_ls" value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getPerks().getStyles().get(1).getSelections().get(1).getPerk() }"/>
-														${rune_ls }
-														
-														<c:choose>
-														
-															<c:when test="${rune_ls eq 8014 }">
-															<img
-																src="${pageContext.request.contextPath }/resources/assets/img/lolez_SUB_PERK/7201_Precision.png"
-																width="22" alt="정밀" height="22">
-															</c:when>	
-															
-															<c:when test="${rune_ls eq 8139 }">	
-															<img
-																src="${pageContext.request.contextPath }/resources/assets/img/lolez_SUB_PERK/7200_Domination.png"
-																width="22" alt="지배" height="22">
-															</c:when>
-															
-															
-															<c:when test="${rune_ls eq 8210 }">
-															<img
-																src="${pageContext.request.contextPath }/resources/assets/img/lolez_SUB_PERK/7202_Sorcery.png"
-																width="22" alt="마법" height="22">
-															</c:when>
-															
-															
-															<c:when test="${rune_ls eq 8345  }">		
-															<img
-																src="${pageContext.request.contextPath }/resources/assets/img/lolez_SUB_PERK/7203_Whimsy.png"
-																width="22" alt="영감" height="22">
-															</c:when>
-															
-															<c:when test="${rune_ls eq  8347 }">		
-															<img
-																src="${pageContext.request.contextPath }/resources/assets/img/lolez_SUB_PERK/7203_Whimsy.png"
-																width="22" alt="영감" height="22">
-															</c:when>
-															
-															<c:when test="${rune_ls eq 8304  }">		
-															<img
-																src="${pageContext.request.contextPath }/resources/assets/img/lolez_SUB_PERK/7203_Whimsy.png"
-																width="22" alt="영감" height="22">
-															</c:when>
-															
-															
-															<c:when test="${rune_ls eq 8451 }">		
-															<img
-																src="${pageContext.request.contextPath }/resources/assets/img/lolez_SUB_PERK/7204_Resolve.png"
-																width="22" alt="결의" height="22">
-															</c:when>
-														
-														</c:choose>
-													
-														<div class="" style="position: relative;">
-														</div>
-													</div>
-												</div>
-											</div>
-											
-											
-											<div class="kda">
-												<div class="k-d-a">
-													<span>${kill_L}</span> / <span class="d">${deaths_L}</span> / <span>${assists_L}</span>
-												</div>
-												<div class="ratio">
-												<c:set var="result_L" value="${(kill_L+assists_L)/deaths_L}"/>
-													<span>${String.format("%.2f", result_L)}:1</span> 평점
-												</div>
-											</div>
-											<div class="stats">
-												<c:choose>
-													<c:when test="${teamID_L == 100 }">
-													<div class="p-kill">
-														<div class="" style="position: relative;">킬관여 ${KA_T_bule_L }%</div>
-													</div>
-													
-													</c:when>
-													
-													<c:when test="${teamID_L == 200 }">
-													<div class="p-kill">
-														<div class="" style="position: relative;">킬관여 ${KA_T_red_L }%</div>
-													</div>
-													
-													</c:when>
-												
-												
-												</c:choose>
-												<div class="ward">제어 와드 ${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getVisionWardsBoughtInGame() }</div>
-												<div class="cs">
-													<div class="" style="position: relative;">CS ${totalCSL } (${MINCS})</div>
-												</div>
-<!-- 												<div class="average-tier">
+													<div class="info">
+														<c:set var="ChampionName"
+															value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getChampionName()}" />
+														<div>
+															<div class="champion">
+																<div class="icon">
+																	<a href="/champions/zeri" target="_blank"
+																		rel="noreferrer"> <c:choose>
+																			<c:when test="${ChampionName eq FiddleSticks}">
+																				<img
+																					src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/champion/${Fiddlesticks_s }.png"
+																					width="48" alt="제리" height="48">
+
+																			</c:when>
+
+																			<c:otherwise>
+																				<img
+																					src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/champion/${ChampionName }.png"
+																					width="48" alt="제리" height="48">
+
+																			</c:otherwise>
+
+																		</c:choose> <span class="champion-level">${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getChampLevel() }</span></a>
+																</div>
+																<div class="spells">
+																	<c:set var="spC1_L"
+																		value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getSummoner1Id() }" />
+																	<c:set var="spC2_L"
+																		value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getSummoner2Id() }" />
+																	<div class="spell">
+																		<div class="" style="position: relative;">
+																			<c:choose>
+																				<c:when test="${spC1_L eq 1}">
+																					<img
+																						src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerBoost.png"
+																						width="22" alt="정화" height="22">
+
+																				</c:when>
+
+																				<c:when test="${spC1_L eq 3}">
+																					<img
+																						src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerExhaust.png"
+																						width="22" alt="탈진" height="22">
+
+																				</c:when>
+
+																				<c:when test="${spspC1_LC1 eq 4}">
+																					<img
+																						src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerFlash.png"
+																						width="22" alt="점멸" height="22">
+
+																				</c:when>
+
+																				<c:when test="${spC1_L eq 6}">
+																					<img
+																						src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerHaste.png"
+																						width="22" alt="유체화" height="22">
+
+																				</c:when>
+
+																				<c:when test="${spC1_L eq 7}">
+																					<img
+																						src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerHeal.png"
+																						width="22" alt="치유" height="22">
+
+																				</c:when>
+
+																				<c:when test="${spC1_L eq 11}">
+																					<img
+																						src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerSmite.png"
+																						width="22" alt="강타" height="22">
+
+																				</c:when>
+
+																				<c:when test="${spC1_L eq 12}">
+																					<img
+																						src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerTeleport.png"
+																						width="22" alt="순간이동" height="22">
+
+																				</c:when>
+
+																				<c:when test="${spC1_L eq 13}">
+																					<img
+																						src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerMana.png"
+																						width="22" alt="총명" height="22">
+
+																				</c:when>
+
+																				<c:when test="${spC1_L eq 14}">
+																					<img
+																						src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerDot.png"
+																						width="22" alt="점화" height="22">
+
+																				</c:when>
+
+																				<c:when test="${spC1_L eq 21}">
+																					<img
+																						src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerBarrier.png"
+																						width="22" alt="방어막" height="22">
+
+																				</c:when>
+
+																				<c:when test="${spC1_L eq 32}">
+																					<img
+																						src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerSnowball.png"
+																						width="22" alt="표식" height="22">
+
+																				</c:when>
+
+
+
+																			</c:choose>
+																		</div>
+																	</div>
+																	<div class="spell">
+																		<div class="" style="position: relative;">
+																			<c:choose>
+																				<c:when test="${spC2_L eq 1}">
+																					<img
+																						src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerBoost.png"
+																						width="22" alt="정화" height="22">
+
+																				</c:when>
+
+																				<c:when test="${spC2_L eq 3}">
+																					<img
+																						src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerExhaust.png"
+																						width="22" alt="탈진" height="22">
+
+																				</c:when>
+
+																				<c:when test="${spC2_L eq 4}">
+																					<img
+																						src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerFlash.png"
+																						width="22" alt="점멸" height="22">
+
+																				</c:when>
+
+																				<c:when test="${spC2_L eq 6}">
+																					<img
+																						src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerHaste.png"
+																						width="22" alt="유체화" height="22">
+
+																				</c:when>
+
+																				<c:when test="${spC2_L eq 7}">
+																					<img
+																						src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerHeal.png"
+																						width="22" alt="치유" height="22">
+
+																				</c:when>
+
+																				<c:when test="${spC2_L eq 11}">
+																					<img
+																						src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerSmite.png"
+																						width="22" alt="강타" height="22">
+
+																				</c:when>
+
+																				<c:when test="${spC2_L eq 12}">
+																					<img
+																						src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerTeleport.png"
+																						width="22" alt="순간이동" height="22">
+
+																				</c:when>
+
+																				<c:when test="${spC2_L eq 13}">
+																					<img
+																						src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerMana.png"
+																						width="22" alt="총명" height="22">
+
+																				</c:when>
+
+																				<c:when test="${spC2_L eq 14}">
+																					<img
+																						src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerDot.png"
+																						width="22" alt="점화" height="22">
+
+																				</c:when>
+
+																				<c:when test="${spC2_L eq 21}">
+																					<img
+																						src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerBarrier.png"
+																						width="22" alt="방어막" height="22">
+
+																				</c:when>
+
+																				<c:when test="${spC2_L eq 32}">
+																					<img
+																						src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerSnowball.png"
+																						width="22" alt="표식" height="22">
+
+																				</c:when>
+
+
+
+																			</c:choose>
+																		</div>
+																	</div>
+																</div>
+																<div class="runes">
+																	<c:set var="runs_1"
+																		value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getPerks().getStyles().get(0).getSelections().get(0).getPerk() }" />
+																	<div class="rune">
+																		<div class="" style="position: relative;">
+																			<c:choose>
+																				<c:when test="${runs_1 eq 8010 }">
+																					<img
+																						src="${pageContext.request.contextPath }/resources/assets/img/lolez_perk/Precision/Conqueror.png"
+																						width="22" alt="정복자" height="22">
+
+																				</c:when>
+																				<c:when test="${runs_1 eq 8008 }">
+																					<img
+																						src="${pageContext.request.contextPath }/resources/assets/img/lolez_perk/Precision/LethalTempoTemp.png"
+																						width="22" alt="치명적 속도" height="22">
+
+																				</c:when>
+																				<c:when test="${runs_1 eq 8005 }">
+																					<img
+																						src="${pageContext.request.contextPath }/resources/assets/img/lolez_perk/Precision/PressTheAttack.png"
+																						width="22" alt="집중공격" height="22">
+
+																				</c:when>
+																				<c:when test="${runs_1 eq 8021 }">
+																					<img
+																						src="${pageContext.request.contextPath }/resources/assets/img/lolez_perk/Precision/FleetFootwork.png"
+																						width="22" alt="기민한 발놀림" height="22">
+
+																				</c:when>
+
+
+
+																				<c:when test="${runs_1 eq 8112 }">
+																					<img
+																						src="${pageContext.request.contextPath }/resources/assets/img/lolez_perk/Domination/Electrocute.png"
+																						width="22" alt="감전" height="22">
+
+																				</c:when>
+																				<c:when test="${runs_1 eq 9923 }">
+																					<img
+																						src="${pageContext.request.contextPath }/resources/assets/img/lolez_perk/Domination/HailOfBlades.png"
+																						width="22" alt="칼날비" height="22">
+
+																				</c:when>
+																				<c:when test="${runs_1 eq 8128 }">
+																					<img
+																						src="${pageContext.request.contextPath }/resources/assets/img/lolez_perk/Domination/DarkHarvest.png"
+																						width="22" alt="어둠의 수학" height="22">
+
+																				</c:when>
+																				<c:when test="${runs_1 eq 8124 }">
+																					<img
+																						src="${pageContext.request.contextPath }/resources/assets/img/lolez_perk/Domination/Predator.png"
+																						width="22" alt="포식자" height="22">
+
+																				</c:when>
+
+
+
+																				<c:when test="${runs_1 eq 8229 }">
+																					<img
+																						src="${pageContext.request.contextPath }/resources/assets/img/lolez_perk/Sorcery/ArcaneComet.png"
+																						width="22" alt="신비한 유성" height="22">
+
+																				</c:when>
+																				<c:when test="${runs_1 eq 8230 }">
+																					<img
+																						src="${pageContext.request.contextPath }/resources/assets/img/lolez_perk/Sorcery/PhaseRush.png"
+																						width="22" alt="난입" height="22">
+
+																				</c:when>
+																				<c:when test="${runs_1 eq 8214 }">
+																					<img
+																						src="${pageContext.request.contextPath }/resources/assets/img/lolez_perk/Sorcery/SummonAery.png"
+																						width="22" alt="콩콩이 소환" height="22">
+
+																				</c:when>
+
+
+
+
+																				<c:when test="${runs_1 eq 8437 }">
+																					<img
+																						src="${pageContext.request.contextPath }/resources/assets/img/lolez_perk/Resolve/GraspOfTheUndying.png"
+																						width="22" alt="착취의 손아귀" height="22">
+
+																				</c:when>
+																				<c:when test="${runs_1 eq 8439 }">
+																					<img
+																						src="${pageContext.request.contextPath }/resources/assets/img/lolez_perk/Resolve/VeteranAftershock.png"
+																						width="22" alt="여진" height="22">
+
+																				</c:when>
+																				<c:when test="${runs_1 eq 8465 }">
+																					<img
+																						src="${pageContext.request.contextPath }/resources/assets/img/lolez_perk/Resolve/Guardian.png"
+																						width="22" alt="수호자" height="22">
+
+																				</c:when>
+
+
+
+
+
+																				<c:when test="${runs_1 eq 8351 }">
+																					<img
+																						src="${pageContext.request.contextPath }/resources/assets/img/lolez_perk/Inspiration/GlacialAugment.png"
+																						width="22" alt="빙결강화" height="22">
+
+																				</c:when>
+																				<c:when test="${runs_1 eq 8369 }">
+																					<img
+																						src="${pageContext.request.contextPath }/resources/assets/img/lolez_perk/Inspiration/FirstStrike.png"
+																						width="22" alt="선제공격" height="22">
+
+																				</c:when>
+																				<c:when test="${runs_1 eq 8360 }">
+																					<img
+																						src="${pageContext.request.contextPath }/resources/assets/img/lolez_perk/Inspiration/UnsealedSpellbook.png"
+																						width="22" alt="봉인 풀린 주문서" height="22">
+
+																				</c:when>
+
+																			</c:choose>
+																		</div>
+																	</div>
+																	<div class="rune">
+																		<c:set var="rune_ls"
+																			value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getPerks().getStyles().get(1).getSelections().get(1).getPerk() }" />
+
+																		<c:choose>
+
+																			<c:when test="${rune_ls eq 8014 }">
+																				<img
+																					src="${pageContext.request.contextPath }/resources/assets/img/lolez_SUB_PERK/7201_Precision.png"
+																					width="22" alt="정밀" height="22">
+																			</c:when>
+
+																			<c:when test="${rune_ls eq 8139 }">
+																				<img
+																					src="${pageContext.request.contextPath }/resources/assets/img/lolez_SUB_PERK/7200_Domination.png"
+																					width="22" alt="지배" height="22">
+																			</c:when>
+
+
+																			<c:when test="${rune_ls eq 8210 }">
+																				<img
+																					src="${pageContext.request.contextPath }/resources/assets/img/lolez_SUB_PERK/7202_Sorcery.png"
+																					width="22" alt="마법" height="22">
+																			</c:when>
+
+
+																			<c:when test="${rune_ls eq 8345  }">
+																				<img
+																					src="${pageContext.request.contextPath }/resources/assets/img/lolez_SUB_PERK/7203_Whimsy.png"
+																					width="22" alt="영감" height="22">
+																			</c:when>
+
+																			<c:when test="${rune_ls eq  8347 }">
+																				<img
+																					src="${pageContext.request.contextPath }/resources/assets/img/lolez_SUB_PERK/7203_Whimsy.png"
+																					width="22" alt="영감" height="22">
+																			</c:when>
+
+																			<c:when test="${rune_ls eq 8304  }">
+																				<img
+																					src="${pageContext.request.contextPath }/resources/assets/img/lolez_SUB_PERK/7203_Whimsy.png"
+																					width="22" alt="영감" height="22">
+																			</c:when>
+
+
+																			<c:when test="${rune_ls eq 8451 }">
+																				<img
+																					src="${pageContext.request.contextPath }/resources/assets/img/lolez_SUB_PERK/7204_Resolve.png"
+																					width="22" alt="결의" height="22">
+																			</c:when>
+
+																		</c:choose>
+
+																		<div class="" style="position: relative;"></div>
+																	</div>
+																</div>
+															</div>
+
+
+															<div class="kda">
+																<div class="k-d-a">
+																	<span>${kill_L}</span> / <span class="d">${deaths_L}</span>
+																	/ <span>${assists_L}</span>
+																</div>
+																<div class="ratio">
+																	<c:set var="result_L"
+																		value="${(kill_L+assists_L)/deaths_L}" />
+																	<span>${String.format("%.2f", result_L)}:1</span> 평점
+																</div>
+															</div>
+															<div class="stats">
+																<c:choose>
+																	<c:when test="${teamID_L == 100 }">
+																		<div class="p-kill">
+																			<div class="" style="position: relative;">킬관여
+																				${KA_T_bule_L }%</div>
+																		</div>
+
+																	</c:when>
+
+																	<c:when test="${teamID_L == 200 }">
+																		<div class="p-kill">
+																			<div class="" style="position: relative;">킬관여
+																				${KA_T_red_L }%</div>
+																		</div>
+
+																	</c:when>
+
+
+																</c:choose>
+																<div class="ward">제어 와드
+																	${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getVisionWardsBoughtInGame() }</div>
+																<div class="cs">
+																	<div class="" style="position: relative;">CS
+																		${totalCSL } (${MINCS})</div>
+																</div>
+																<!-- 												<div class="average-tier">
 													<div class="" style="position: relative;">grandmaster</div>
 												</div> -->
-											</div>
-										</div>
-										<div>
-											<div class="items">
-							<c:set var="item0_L" value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getItem0() }"/>
-							<c:set var="item1_L" value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getItem1() }"/>
-							<c:set var="item2_L" value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getItem2() }"/>
-							<c:set var="item3_L" value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getItem3() }"/>
-							<c:set var="item4_L" value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getItem4() }"/>
-							<c:set var="item5_L" value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getItem5() }"/>
-							<c:set var="item6_L" value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getItem6() }"/>
-							<c:set var="zero_L" value="0"/>
-							<c:set var="itemList_L">${item0_L },${item1_L },${item2_L },${item3_L },${item4_L },${item5_L } </c:set>
-											
-												<ul>
-												
-								<c:forEach var="Item_i_L" items="${itemList_L }">
-								<c:if test="${Item_i_L != 0}">
-								
-											<li><div class="" style="position: relative;">
-											<img
-												src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/item/${Item_i_L}.png"
-												width="22" alt="${Item_i_L}" height="22">
-										</div></li>
-								
-								</c:if>
-								<c:if test="${Item_i_L == 0}">
-								
-								<li></li>
-								
-								</c:if>
+															</div>
+														</div>
+														<div>
+															<div class="items">
+																<c:set var="item0_L"
+																	value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getItem0() }" />
+																<c:set var="item1_L"
+																	value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getItem1() }" />
+																<c:set var="item2_L"
+																	value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getItem2() }" />
+																<c:set var="item3_L"
+																	value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getItem3() }" />
+																<c:set var="item4_L"
+																	value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getItem4() }" />
+																<c:set var="item5_L"
+																	value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getItem5() }" />
+																<c:set var="item6_L"
+																	value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getItem6() }" />
+																<c:set var="zero_L" value="0" />
+																<c:set var="itemList_L">${item0_L },${item1_L },${item2_L },${item3_L },${item4_L },${item5_L } </c:set>
 
-								
-								</c:forEach>
+																<ul>
 
-												</ul>
-												<div class="ward">
-													<div class="" style="position: relative;">
-														<img
-															src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/item/${item6_L}.png"
-															width="22" alt="${item6_L }" height="22">
+																	<c:forEach var="Item_i_L" items="${itemList_L }">
+																		<c:if test="${Item_i_L != 0}">
+
+																			<li><div class="" style="position: relative;">
+																					<img
+																						src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/item/${Item_i_L}.png"
+																						width="22" alt="${Item_i_L}" height="22">
+																				</div></li>
+
+																		</c:if>
+																		<c:if test="${Item_i_L == 0}">
+
+																			<li></li>
+
+																		</c:if>
+
+
+																	</c:forEach>
+
+																</ul>
+																<div class="ward">
+																	<div class="" style="position: relative;">
+																		<img
+																			src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/item/${item6_L}.png"
+																			width="22" alt="${item6_L }" height="22">
+																	</div>
+																</div>
+															</div>
+															<c:set var="PentaKills_L"
+																value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getPentaKills()}" />
+															<c:set var="QuadraKills_L"
+																value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getQuadraKills()}" />
+															<c:set var="TripleKills_L"
+																value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getTripleKills()}" />
+															<c:set var="DoubleKills_L"
+																value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getDoubleKills()}" />
+
+															<c:choose>
+																<c:when test="${PentaKills_L >= 1 }">
+																	<div class="multi-kill">팬타킬</div>
+																</c:when>
+
+																<c:when test="${QuadraKills_L >= 1 }">
+																	<div class="multi-kill">쿼드라킬</div>
+																</c:when>
+
+																<c:when test="${TripleKills_L >= 1 }">
+																	<div class="multi-kill">트리플킬</div>
+																</c:when>
+
+																<c:when test="${DoubleKills_L >= 1 }">
+																	<div class="multi-kill">더블킬</div>
+																</c:when>
+
+
+
+															</c:choose>
+
+
+														</div>
+													</div>
+
+
+													<div class="participants">
+														<ul>
+
+
+															<c:forEach begin="0"
+																end="${MatchList.get(i).getInfo().getParticipants().size()- 6}"
+																var="member_two">
+																<c:set var="ChampionNameMember_l"
+																	value="${MatchList.get(i).getInfo().getParticipants().get(member_two).getChampionName()}" />
+																<li class="css-1ahqe5t e1iiyghw1">
+																	<div class="icon" style="position: relative;">
+
+																		<c:choose>
+																			<c:when
+																				test="${ChampionNameMember_l ==  FiddleSticks}">
+																				<img
+																					src="https://ddragon.leagueoflegends.com/cdn/13.4.1/img/champion/${ FiddleSticks_s}.png"
+																					width="16" alt="${ FiddleSticks_s}" height="16">
+																			</c:when>
+
+																			<c:otherwise>
+																				<img
+																					src="https://ddragon.leagueoflegends.com/cdn/13.4.1/img/champion/${ ChampionNameMember_l}.png"
+																					width="16" alt="${ ChampionNameMember_l}"
+																					height="16">
+
+
+																			</c:otherwise>
+
+
+
+																		</c:choose>
+																	</div>
+																	<div class="name">
+																		<a
+																			href="/summoners/kr/%EC%9D%91%EA%BC%AC%EC%8A%A4%ED%82%A4%EB%B2%84%ED%84%B0"
+																			target="_blank" rel="noreferrer">${MatchList.get(i).getInfo().getParticipants().get(member_two).getSummonerName() }</a>
+																	</div>
+																</li>
+
+															</c:forEach>
+
+														</ul>
+														<ul>
+															<c:forEach begin="5"
+																end="${MatchList.get(i).getInfo().getParticipants().size()- 1}"
+																var="member_u_two">
+																<c:set var="ChampionNameMember_l_two"
+																	value="${MatchList.get(i).getInfo().getParticipants().get(member_u_two).getChampionName()}" />
+																<li class="css-1ahqe5t e1iiyghw1"><div class="icon"
+																		style="position: relative;">
+																		<c:choose>
+																			<c:when
+																				test="${ChampionNameMember_l_two ==  FiddleSticks}">
+																				<img
+																					src="https://ddragon.leagueoflegends.com/cdn/13.4.1/img/champion/${ FiddleSticks_s}.png"
+																					width="16" alt="${ FiddleSticks_s}" height="16">
+																			</c:when>
+
+																			<c:otherwise>
+																				<img
+																					src="https://ddragon.leagueoflegends.com/cdn/13.4.1/img/champion/${ ChampionNameMember_l_two}.png"
+																					width="16" alt="${ ChampionNameMember_l_two}"
+																					height="16">
+
+
+																			</c:otherwise>
+
+
+
+																		</c:choose>
+																	</div>
+																	<div class="name">
+																		<a
+																			href="/summoners/kr/%EC%9D%91%EA%BC%AC%EC%8A%A4%ED%82%A4%EB%B2%84%ED%84%B0"
+																			target="_blank" rel="noreferrer">${MatchList.get(i).getInfo().getParticipants().get(member_u_two).getSummonerName() }</a>
+																	</div></li>
+
+															</c:forEach>
+														</ul>
 													</div>
 												</div>
 											</div>
-							<c:set var="PentaKills_L" value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getPentaKills()}"/>
-							<c:set var="QuadraKills_L" value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getQuadraKills()}"/>
-							<c:set var="TripleKills_L" value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getTripleKills()}"/>
-							<c:set var="DoubleKills_L" value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getDoubleKills()}"/>
-							
-							<c:choose>
-								<c:when test="${PentaKills_L >= 1 }">
-										<div class="multi-kill">
-										팬타킬
-										</div>
-								</c:when>
-								
-								<c:when test="${QuadraKills_L >= 1 }">
-										<div class="multi-kill">
-										쿼드라킬
-										</div>
-								</c:when>
-								
-								<c:when test="${TripleKills_L >= 1 }">
-										<div class="multi-kill">
-										트리플킬
-										</div>
-								</c:when>
-								
-								<c:when test="${DoubleKills_L >= 1 }">
-										<div class="multi-kill">
-										더블킬
-										</div>
-								</c:when>
-							
-							
-							
-							</c:choose>
-											
-											
-										</div>
-									</div>
-								
-								
-									<div class="participants">
-										<ul>
-																	
-						
-										<c:forEach begin="0" end="${MatchList.get(i).getInfo().getParticipants().size()- 6}" var="member_two">
-						<c:set var="ChampionNameMember_l" value="${MatchList.get(i).getInfo().getParticipants().get(member_two).getChampionName()}"/>
-												<li class="css-1ahqe5t e1iiyghw1">
-												<div class="icon" style="position: relative;">
+											<div class="action">
+												<button class="detail">
+													<img
+														src="https://s-lol-web.op.gg/images/icon/icon-arrow-down-red.svg?v=1675751623266"
+														width="24" alt="More" height="24">
+												</button>
+											</div>
+										</div></li>
 
-									<c:choose>
-										<c:when test="${ChampionNameMember_l ==  FiddleSticks}">
-										<img
-										src="https://ddragon.leagueoflegends.com/cdn/13.4.1/img/champion/${ FiddleSticks_s}.png"
-										width="16" alt="${ FiddleSticks_s}" height="16">
-										</c:when>
-										
-										<c:otherwise>
-										<img
-										src="https://ddragon.leagueoflegends.com/cdn/13.4.1/img/champion/${ ChampionNameMember_l}.png"
-										width="16" alt="${ ChampionNameMember_l}" height="16">
-										
-										
-										</c:otherwise>
-										
-										
-									
-									</c:choose>
-												</div>
-												<div class="name">
-													<a
-														href="/summoners/kr/%EC%9D%91%EA%BC%AC%EC%8A%A4%ED%82%A4%EB%B2%84%ED%84%B0"
-														target="_blank" rel="noreferrer">${MatchList.get(i).getInfo().getParticipants().get(member_two).getSummonerName() }</a>
-												</div></li>						
-				
-										</c:forEach>
-						
-										</ul>
-										<ul>
-										<c:forEach begin="5" end="${MatchList.get(i).getInfo().getParticipants().size()- 1}" var="member_u_two">
-										<c:set var="ChampionNameMember_l_two" value="${MatchList.get(i).getInfo().getParticipants().get(member_u_two).getChampionName()}"/>
-												<li class="css-1ahqe5t e1iiyghw1"><div class="icon"
-													style="position: relative;">
-									<c:choose>
-										<c:when test="${ChampionNameMember_l_two ==  FiddleSticks}">
-										<img
-										src="https://ddragon.leagueoflegends.com/cdn/13.4.1/img/champion/${ FiddleSticks_s}.png"
-										width="16" alt="${ FiddleSticks_s}" height="16">
-										</c:when>
-										
-										<c:otherwise>
-										<img
-										src="https://ddragon.leagueoflegends.com/cdn/13.4.1/img/champion/${ ChampionNameMember_l_two}.png"
-										width="16" alt="${ ChampionNameMember_l_two}" height="16">
-										
-										
-										</c:otherwise>
-										
-										
-									
-									</c:choose>
-												</div>
-												<div class="name">
-													<a
-														href="/summoners/kr/%EC%9D%91%EA%BC%AC%EC%8A%A4%ED%82%A4%EB%B2%84%ED%84%B0"
-														target="_blank" rel="noreferrer">${MatchList.get(i).getInfo().getParticipants().get(member_u_two).getSummonerName() }</a>
-												</div></li>						
-				
-										</c:forEach>
-										</ul>
-									</div>
-								</div>
-							</div>
-							<div class="action">
-								<button class="detail">
-									<img
-										src="https://s-lol-web.op.gg/images/icon/icon-arrow-down-red.svg?v=1675751623266"
-										width="24" alt="More" height="24">
-								</button>
-							</div>
-						</div></li>	
-						
-						</c:if>
-						
-					</c:if>
+								</c:if>
+
+							</c:if>
+						</c:forEach>
+
 					</c:forEach>
-				
-				</c:forEach>
 				</div>
 				<button class="more">더 보기</button>
 			</div>
@@ -2093,204 +2351,222 @@
 	<!-- Page level custom scripts -->
 	<script
 		src="${pageContext.request.contextPath }/resources/assets/js/demo/datatables-demo.js"></script>
-		
-		
+
+
 </body>
 
 
-<script type="text/javascript">	
-	var tier=["IRON","BRONZE","SILVER","GOLD","PLATINUM","DIAMOND","MASTER","GRANDMASTER","CHALLENGER"]
-	var ran=["I","II","III","IV"]
+<script type="text/javascript">
+	var tier = [ "IRON", "BRONZE", "SILVER", "GOLD", "PLATINUM", "DIAMOND",
+			"MASTER", "GRANDMASTER", "CHALLENGER" ]
+	var ran = [ "I", "II", "III", "IV" ]
 	var checkSoloList = "${SoloList.tier}";
 	var checkDuoList = "${DuoList.tier}";
-	
-	
-/* 	console.log("${MatchList.get(1).getInfo().getParticipants().get(2).getTeamId()}");
-	console.log("${MatchList.get(1).getInfo().getTeams()}");
-	console.log("${MatchList.get(1).getInfo().getTeams().get(0).getObjectives()}"); */
-	
-	
-	console.log("${MatchList.get(0).getInfo().getParticipants().get(8).getItem0() }");
-	console.log("${MatchList.get(0).getInfo().getParticipants().get(8).getItem1() }");
-	console.log("${MatchList.get(0).getInfo().getParticipants().get(8).getItem2() }");
-	console.log("${MatchList.get(0).getInfo().getParticipants().get(8).getItem3() }");
-	console.log("${MatchList.get(0).getInfo().getParticipants().get(8).getItem4() }");
-	console.log("${MatchList.get(0).getInfo().getParticipants().get(8).getItem5() }");
-	console.log("${MatchList.get(0).getInfo().getParticipants().get(8).getItem6() }");
-	
-	
-/* 	console.log("${MatchList.get(0).getInfo().getParticipants().get(0).getPerks().getStyles().get(0).getSelections().get(0).getPerk() }");
-	console.log("${MatchList.get(0).getInfo().getParticipants().get(0).getPerks().getStyles().get(0).getSelections().get(0).getVar1() }");
-	console.log("${MatchList.get(0).getInfo().getParticipants().get(0).getPerks().getStyles().get(0).getSelections().get(0).getVar2() }");
+
+	/* 	console.log("${MatchList.get(1).getInfo().getParticipants().get(2).getTeamId()}");
+	 console.log("${MatchList.get(1).getInfo().getTeams()}");
+	 console.log("${MatchList.get(1).getInfo().getTeams().get(0).getObjectives()}"); */
+
+	console
+			.log("${MatchList.get(0).getInfo().getParticipants().get(8).getItem0() }");
+	console
+			.log("${MatchList.get(0).getInfo().getParticipants().get(8).getItem1() }");
+	console
+			.log("${MatchList.get(0).getInfo().getParticipants().get(8).getItem2() }");
+	console
+			.log("${MatchList.get(0).getInfo().getParticipants().get(8).getItem3() }");
+	console
+			.log("${MatchList.get(0).getInfo().getParticipants().get(8).getItem4() }");
+	console
+			.log("${MatchList.get(0).getInfo().getParticipants().get(8).getItem5() }");
+	console
+			.log("${MatchList.get(0).getInfo().getParticipants().get(8).getItem6() }");
+
+	/* 	console.log("${MatchList.get(0).getInfo().getParticipants().get(0).getPerks().getStyles().get(0).getSelections().get(0).getPerk() }");
+	 console.log("${MatchList.get(0).getInfo().getParticipants().get(0).getPerks().getStyles().get(0).getSelections().get(0).getVar1() }");
+	 console.log("${MatchList.get(0).getInfo().getParticipants().get(0).getPerks().getStyles().get(0).getSelections().get(0).getVar2() }");
 	 */
-	
+
 	console.log("스펠 확인");
-	console.log("${MatchList.get(1).getInfo().getParticipants().get(8).getSpell1Casts() }");
-	console.log("${MatchList.get(1).getInfo().getParticipants().get(8).getSpell2Casts() }");
-	
-	console.log("${MatchList.get(1).getInfo().getParticipants().get(8).getSummoner1Id() }");
-	console.log("${MatchList.get(1).getInfo().getParticipants().get(8).getSummoner2Id() }");
+	console
+			.log("${MatchList.get(1).getInfo().getParticipants().get(8).getSpell1Casts() }");
+	console
+			.log("${MatchList.get(1).getInfo().getParticipants().get(8).getSpell2Casts() }");
+
+	console
+			.log("${MatchList.get(1).getInfo().getParticipants().get(8).getSummoner1Id() }");
+	console
+			.log("${MatchList.get(1).getInfo().getParticipants().get(8).getSummoner2Id() }");
 	var Unrank = "${Unrank.unrankboolean}";
 	var SoloList = "${SoloList.soloboolean}";
 	var DuoList = "${DuoList.duoboolean}";
-	
-	var winSolo = ${SoloList.wins}+0;
-	var lossesSolo= ${SoloList.losses}+0;
-	
-	var WinDuo = ${DuoList.wins}+0;
-	var lossesDuo= ${DuoList.losses}+0;
-	
-	
 
-	if(Unrank){
+	var winSolo = $
+	{
+		SoloList.wins
+	}
+	+0;
+	var lossesSolo = $
+	{
+		SoloList.losses
+	}
+	+0;
+
+	var WinDuo = $
+	{
+		DuoList.wins
+	}
+	+0;
+	var lossesDuo = $
+	{
+		DuoList.losses
+	}
+	+0;
+
+	if (Unrank) {
 		// 언랭임
-		Unrank = true;	
-	}else{
+		Unrank = true;
+	} else {
 		// 언랭아님
 		Unrank = false;
-		
+
 	}
-	
-		if(!Unrank){
-			if(SoloList){
-				SoloList = true;
-			}else{
-				SoloList = false;
-			}
-			
-			if(DuoList){
-				DuoList = true;
-			}else{
-				DuoList = false;
-			}
+
+	if (!Unrank) {
+		if (SoloList) {
+			SoloList = true;
+		} else {
+			SoloList = false;
 		}
 
-/* 	console.log("결과 확인 test1u: " + Unrank);
-	console.log("결과 확인 test1s: " + SoloList);
-	console.log("결과 확인 test1d: " + DuoList);
- */
-	
-	if(SoloList){
-		
+		if (DuoList) {
+			DuoList = true;
+		} else {
+			DuoList = false;
+		}
+	}
+
+	/* 	console.log("결과 확인 test1u: " + Unrank);
+	 console.log("결과 확인 test1s: " + SoloList);
+	 console.log("결과 확인 test1d: " + DuoList);
+	 */
+
+	if (SoloList) {
+
 		/* console.log("솔랭 작동"); */
-		
-	var img_of_SoloList = document.getElementById("tierImg_of_SoloList");
-	
-	var userTier_of_SoloList = img_of_SoloList.alt;
-	var tierNum_of_SoloList;
-	
-	for(var i=0; i<tier.length; i++){
-		if(userTier_of_SoloList.indexOf(tier[i])!= -1  )
-			tierNum_of_SoloList = i;
 
-	}
-	
-	
-	switch (tierNum_of_SoloList) {
-	case 0:
-		img_of_SoloList.src="${pageContext.request.contextPath }/resources/assets/img/tier/06022022_TFTDevArticle_0000_TFT_Iron.jpg";
-		break;
-	case 1:
-		img_of_SoloList.src="${pageContext.request.contextPath }/resources/assets/img/tier/06022022_TFTDevArticle_0001_TFT_Bronze.jpg";
-		break;
+		var img_of_SoloList = document.getElementById("tierImg_of_SoloList");
 
-	case 2:
-		img_of_SoloList.src="${pageContext.request.contextPath }/resources/assets/img/tier/06022022_TFTDevArticle_0002_TFT_Silver.jpg";
-		break;
+		var userTier_of_SoloList = img_of_SoloList.alt;
+		var tierNum_of_SoloList;
 
-	case 3:
-		img_of_SoloList.src="${pageContext.request.contextPath }/resources/assets/img/tier/06022022_TFTDevArticle_0003_TFT_Gold.jpg";
-		break;
-
-	case 4:
-		img_of_SoloList.src="${pageContext.request.contextPath }/resources/assets/img/tier/06022022_TFTDevArticle_0004_TFT_Platinum.jpg";
-		break;
-
-	case 5:
-		img_of_SoloList.src="${pageContext.request.contextPath }/resources/assets/img/tier/06022022_TFTDevArticle_0005_TFT_Diamon.jpg";
-		break;
-
-	case 6:
-		img_of_SoloList.src="${pageContext.request.contextPath }/resources/assets/img/tier/06022022_TFTDevArticle_0006_TFT_Master.jpg";
-		break;
-
-	case 7:
-		img_of_SoloList.src="${pageContext.request.contextPath }/resources/assets/img/tier/06022022_TFTDevArticle_0007_TFT_GrandMaster.jpg";
-		break;
-
-	case 8:
-		img_of_SoloList.src="${pageContext.request.contextPath }/resources/assets/img/tier/06022022_TFTDevArticle_0008_TFT_Challenger.jpg";
-		break;
-
+		for (var i = 0; i < tier.length; i++) {
+			if (userTier_of_SoloList.indexOf(tier[i]) != -1)
+				tierNum_of_SoloList = i;
 
 		}
-	
-	var result_of_SoloList = Math.round(winSolo/(winSolo + lossesSolo )*100); 
-	document.getElementById('winning_rate_of_SoloList').innerText ="승률 "+result_of_SoloList+"%"; 
-	
+
+		switch (tierNum_of_SoloList) {
+		case 0:
+			img_of_SoloList.src = "${pageContext.request.contextPath }/resources/assets/img/tier/06022022_TFTDevArticle_0000_TFT_Iron.jpg";
+			break;
+		case 1:
+			img_of_SoloList.src = "${pageContext.request.contextPath }/resources/assets/img/tier/06022022_TFTDevArticle_0001_TFT_Bronze.jpg";
+			break;
+
+		case 2:
+			img_of_SoloList.src = "${pageContext.request.contextPath }/resources/assets/img/tier/06022022_TFTDevArticle_0002_TFT_Silver.jpg";
+			break;
+
+		case 3:
+			img_of_SoloList.src = "${pageContext.request.contextPath }/resources/assets/img/tier/06022022_TFTDevArticle_0003_TFT_Gold.jpg";
+			break;
+
+		case 4:
+			img_of_SoloList.src = "${pageContext.request.contextPath }/resources/assets/img/tier/06022022_TFTDevArticle_0004_TFT_Platinum.jpg";
+			break;
+
+		case 5:
+			img_of_SoloList.src = "${pageContext.request.contextPath }/resources/assets/img/tier/06022022_TFTDevArticle_0005_TFT_Diamon.jpg";
+			break;
+
+		case 6:
+			img_of_SoloList.src = "${pageContext.request.contextPath }/resources/assets/img/tier/06022022_TFTDevArticle_0006_TFT_Master.jpg";
+			break;
+
+		case 7:
+			img_of_SoloList.src = "${pageContext.request.contextPath }/resources/assets/img/tier/06022022_TFTDevArticle_0007_TFT_GrandMaster.jpg";
+			break;
+
+		case 8:
+			img_of_SoloList.src = "${pageContext.request.contextPath }/resources/assets/img/tier/06022022_TFTDevArticle_0008_TFT_Challenger.jpg";
+			break;
+
+		}
+
+		var result_of_SoloList = Math.round(winSolo / (winSolo + lossesSolo)
+				* 100);
+		document.getElementById('winning_rate_of_SoloList').innerText = "승률 "
+				+ result_of_SoloList + "%";
+
 	}
-	
-	
-	
-	
-	
-	if(DuoList){
-		
+
+	if (DuoList) {
+
 		/* console.log("자랭 작동"); */
-		
-	var img_of_DuoList = document.getElementById("tierImg_of_DuoList");	
-	var userTier_of_DuoList = img_of_DuoList.alt;
-	var tierNum_of_DuoList;
-	for(var i=0; i<tier.length; i++){
-		if(userTier_of_DuoList.indexOf(tier[i])!= -1  )
-			tierNum_of_DuoList = i;
 
-	}
-	switch (tierNum_of_DuoList) {
-	case 0:
-		img_of_DuoList.src="${pageContext.request.contextPath }/resources/assets/img/tier/06022022_TFTDevArticle_0000_TFT_Iron.jpg";
-		break;
-	case 1:
-		img_of_DuoList.src="${pageContext.request.contextPath }/resources/assets/img/tier/06022022_TFTDevArticle_0001_TFT_Bronze.jpg";
-		break;
+		var img_of_DuoList = document.getElementById("tierImg_of_DuoList");
+		var userTier_of_DuoList = img_of_DuoList.alt;
+		var tierNum_of_DuoList;
+		for (var i = 0; i < tier.length; i++) {
+			if (userTier_of_DuoList.indexOf(tier[i]) != -1)
+				tierNum_of_DuoList = i;
 
-	case 2:
-		img_of_DuoList.src="${pageContext.request.contextPath }/resources/assets/img/tier/06022022_TFTDevArticle_0002_TFT_Silver.jpg";
-		break;
+		}
+		switch (tierNum_of_DuoList) {
+		case 0:
+			img_of_DuoList.src = "${pageContext.request.contextPath }/resources/assets/img/tier/06022022_TFTDevArticle_0000_TFT_Iron.jpg";
+			break;
+		case 1:
+			img_of_DuoList.src = "${pageContext.request.contextPath }/resources/assets/img/tier/06022022_TFTDevArticle_0001_TFT_Bronze.jpg";
+			break;
 
-	case 3:
-		img_of_DuoList.src="${pageContext.request.contextPath }/resources/assets/img/tier/06022022_TFTDevArticle_0003_TFT_Gold.jpg";
-		break;
+		case 2:
+			img_of_DuoList.src = "${pageContext.request.contextPath }/resources/assets/img/tier/06022022_TFTDevArticle_0002_TFT_Silver.jpg";
+			break;
 
-	case 4:
-		img_of_DuoList.src="${pageContext.request.contextPath }/resources/assets/img/tier/06022022_TFTDevArticle_0004_TFT_Platinum.jpg";
-		break;
+		case 3:
+			img_of_DuoList.src = "${pageContext.request.contextPath }/resources/assets/img/tier/06022022_TFTDevArticle_0003_TFT_Gold.jpg";
+			break;
 
-	case 5:
-		img_of_DuoList.src="${pageContext.request.contextPath }/resources/assets/img/tier/06022022_TFTDevArticle_0005_TFT_Diamon.jpg";
-		break;
+		case 4:
+			img_of_DuoList.src = "${pageContext.request.contextPath }/resources/assets/img/tier/06022022_TFTDevArticle_0004_TFT_Platinum.jpg";
+			break;
 
-	case 6:
-		img_of_DuoList.src="${pageContext.request.contextPath }/resources/assets/img/tier/06022022_TFTDevArticle_0006_TFT_Master.jpg";
-		break;
+		case 5:
+			img_of_DuoList.src = "${pageContext.request.contextPath }/resources/assets/img/tier/06022022_TFTDevArticle_0005_TFT_Diamon.jpg";
+			break;
 
-	case 7:
-		img_of_DuoList.src="${pageContext.request.contextPath }/resources/assets/img/tier/06022022_TFTDevArticle_0007_TFT_GrandMaster.jpg";
-		break;
+		case 6:
+			img_of_DuoList.src = "${pageContext.request.contextPath }/resources/assets/img/tier/06022022_TFTDevArticle_0006_TFT_Master.jpg";
+			break;
 
-	case 8:
-		img_of_DuoList.src="${pageContext.request.contextPath }/resources/assets/img/tier/06022022_TFTDevArticle_0008_TFT_Challenger.jpg";
-		break;
+		case 7:
+			img_of_DuoList.src = "${pageContext.request.contextPath }/resources/assets/img/tier/06022022_TFTDevArticle_0007_TFT_GrandMaster.jpg";
+			break;
 
+		case 8:
+			img_of_DuoList.src = "${pageContext.request.contextPath }/resources/assets/img/tier/06022022_TFTDevArticle_0008_TFT_Challenger.jpg";
+			break;
 
-	}
-	 var result_of_DuoList = Math.round(WinDuo/(WinDuo + lossesDuo )*100); 
-	 document.getElementById('winning_rate_of_DuoList').innerText ="승률 "+result_of_DuoList+"%";
+		}
+		var result_of_DuoList = Math.round(WinDuo / (WinDuo + lossesDuo) * 100);
+		document.getElementById('winning_rate_of_DuoList').innerText = "승률 "
+				+ result_of_DuoList + "%";
 
-	
 	}
 </script>
-	
-					
-						
+
+
+
 </html>
