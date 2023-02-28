@@ -1,11 +1,8 @@
 package com.lolez.dao;
 
-
-import org.apache.ibatis.annotations.Select;
+import java.time.LocalDateTime;
 
 import org.apache.ibatis.annotations.Param;
-
-
 import com.lolez.dto.MemberDto;
 
 public interface MemberDao {
@@ -16,18 +13,13 @@ public interface MemberDao {
 	
 	MemberDto selectMemberLogin(@Param("memail")String inputMemail, @Param("mpw")String inputMpw);
 
-	String checkNickname(String inputNickname);
+	String checkNickname(@Param("inputNickname") String inputNickname);
 
-	/*
-	 * String selectMaxMemberCode();
-	 * 
-	 * 
-	 * ArrayList<Map<String, String>> selectReserveList(@Param("remid") String
-	 * loginId);
-	 * 
-	 * int deleteReserve(String recode);
-	 * 
-	 * int deletePayInfo(String recode);
-	 */
+	int updatepoint(@Param("mname") String mname);
+
+	int updatedaily(@Param("i") int i);
+
+	int selectdailycheck(@Param("mname") String mname);
+
 
 }

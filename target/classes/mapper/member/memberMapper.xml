@@ -4,9 +4,9 @@
 <mapper namespace="com.lolez.dao.MemberDao">
 
 	<insert id="insertMemberJoin" parameterType="member">
-		INSERT INTO MEMBERS(MEMAIL,MNAME, MPW, MDATE, MSTATE, MACCESS, MPOINT)
+		INSERT INTO MEMBERS(MEMAIL,MNAME, MPW, MDATE, MSTATE, MACCESS, MPOINT, MATTENDANCE)
 		VALUES(#{memail}, #{mname},#{mpw},
-		TO_DATE(#{mdate}, 'YYYY-MM-DD'),1,1, 300)
+		TO_DATE(#{mdate}, 'YYYY-MM-DD'),1,1, 300, 0)
 	</insert>
 	
 	<select id="checkEmail" resultType="String">
@@ -22,7 +22,19 @@
 		WHERE MEMAIL = #{memail} AND MPW = #{mpw}
 	</select>
 	
-
+	<update id="updatepoint" parameterType="String">
+		UPDATE MEMBERS SET
+		MPOINT = MPOINT + 50 WHERE MNAME = #{mname}
+	</update>
+	
+	<update id="updatedaily" parameterType="int">
+		UPDATE MEMBERS SET MATTENDANCE = #{i}
+	</update>
+	
+	<select id="selectdailycheck" resultType="int">
+		SELECT MATTENDANCE FROM MEMBERS WHERE MNAME = #{mname}
+	</select>
+	
 	<!-- <select id="selectMaxMemberCode" resultType="String">
 		SELECT MAX(MCODE) FROM MEMBERS
 	</select>

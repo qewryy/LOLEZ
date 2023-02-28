@@ -62,7 +62,7 @@
 	
 	<update id="updatePoint" parameterType="int">
 		UPDATE MEMBERS SET
-		MPOINT = MPOINT + 25 WHERE MNAME = #{bwriter}
+		MPOINT = MPOINT + 10 WHERE MNAME = #{bwriter}
 	</update>
 	
 </mapper> 

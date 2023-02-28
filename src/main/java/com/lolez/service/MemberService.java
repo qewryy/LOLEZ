@@ -2,6 +2,7 @@ package com.lolez.service;
 
 import java.io.File;
 import java.io.IOException;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.UUID;
@@ -21,6 +22,7 @@ public class MemberService {
 	private MemberDao memdao;
 
 	public int memberJoin_svc(MemberDto joinInfo) throws IOException {
+		System.out.println("MemberService memberJoin_svc() 실행");
 		int insertResult = 0;
 		try {
 			insertResult = memdao.insertMemberJoin(joinInfo);
@@ -36,6 +38,7 @@ public class MemberService {
 	
 	
 	public String checkEmail(String inputEmail) {
+		System.out.println("MemberService checkEmail() 실행");
 		System.out.println("Member Service : checkEmail = " + inputEmail);
 		String checkEmail = memdao.checkEmail(inputEmail);
 		
@@ -51,6 +54,7 @@ public class MemberService {
 	}
 	
 	public String checkNickname(String inputNickname) {
+		System.out.println("MemberService checkNickname() 실행");
 		System.out.println("Member Service : checkNickname = " + inputNickname);
 		String checkEmail = memdao.checkNickname(inputNickname);
 		
@@ -65,30 +69,36 @@ public class MemberService {
 	}
 
 	public MemberDto memberLogin(String inputMemail, String inputMpw) {
+		System.out.println("MemberService memberLogin() 실행");
 		MemberDto loginInfo = memdao.selectMemberLogin(inputMemail, inputMpw); 
 		return loginInfo;
 	}
 
 
+	public int updatepoint(String mname) {
+		System.out.println("MemberService updatepoint() 실행");
+		int ur = memdao.updatepoint(mname);
+		if(ur != 1) {
+			System.out.println("일일 출석 포인트 지급에 오류가 발생했습니다.");
+		}
+		return ur;
+	}
 
-	/*
-	 * public MemberDto memberLogin_svc(String mid, String mpw) { MemberDto
-	 * loginInfo = memdao.selectMemberLogin(mid, mpw); return loginInfo; }
-	 * 
-	 * public ArrayList<Map<String, String>> getReserveList(String loginId) {
-	 * System.out.println("SERVICE ?��매내?�� 조회"); ArrayList<Map<String, String>>
-	 * reserveList = memdao.selectReserveList(loginId);
-	 * System.out.println(reserveList); return reserveList; }
-	 * 
-	 * public int reserveCancel_svc(String recode) {
-	 * System.out.println("SERVICE ?���? 취소"); int deleteResult = 0; try {
-	 * deleteResult = memdao.deletePayInfo(recode); deleteResult =
-	 * memdao.deleteReserve(recode);
-	 * 
-	 * } catch (Exception e) { e.printStackTrace();
-	 * System.out.println("\n?���? 취소 ?��?��"); }
-	 * 
-	 * return deleteResult; }
-	 */
+
+	public int updatedaily(int i) {
+		System.out.println("MemberService updatedaily() 실행");
+		int ur = memdao.updatedaily(i);
+		if(ur != 1) {
+			System.out.println("일일 출석 초기화에 오류가 발생했습니다.");
+		}
+		return ur;
+	}
+
+
+	public int selectdailycheck(String mname) {
+		System.out.println("MemberService selectdailycheck() 실행");
+		int sr = memdao.selectdailycheck(mname);
+		return sr;
+	}
 
 }
