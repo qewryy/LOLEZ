@@ -68,11 +68,58 @@ public class TimeTest {
 		
 		
 		System.out.println("===============================================");
-		long ux1 = 1677469405788L / 1000 ;
+		long ux1 = 1674198793   ;
 		System.out.println(ux1);
 		
-		long ux2 = 1677548130 - ux1 ; 
+		long ux2 = 1677551974 - ux1 ; 
 		System.out.println(ux2 + "현재 시간 - 게임 종료 당시 시간");
+		
+		
+		if (ux2 != 0) {
+			
+			long total1 = ux2 / 60;
+			System.out.println("60초(1분) 을 나누었을때 결과 " + total1 );
+			
+			if (total1 >= 60) {
+				
+				long totalh = ux2 / 3600;
+				System.out.println("1시간 (3600 초) 를 나누었을때 " + totalh);
+				
+				
+				if(totalh >= 8760) {
+					System.out.println("1년 경과");
+				}else if(totalh >=7920){
+					System.out.println("11달 경과");
+				}
+				
+				
+				if(totalh >=2160){
+					System.out.println("3달 경과");
+				}
+				else if(totalh >= 1440) {
+					System.out.println("2달 경과");
+				}
+				else if (totalh >= 720) {
+					System.out.println("1달 경과");
+				}else if(totalh >= 672) {
+					System.out.println("4주 이상 경과");
+				}
+				else if(totalh >= 504){
+					System.out.println("3주 이상 경과");
+				}else if(totalh >= 336) {
+					System.out.println("2주 이상 경과");
+				}else if(totalh >=168){
+					System.out.println("1주 이상 경과");
+				}else if(totalh >= 24) {
+					System.out.println("하루 경과");
+				}
+				
+			
+				
+			}
+		}
+		
+		
 		
 		
 		
