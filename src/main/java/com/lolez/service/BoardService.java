@@ -50,9 +50,12 @@ public class BoardService {
 		board.setBfilename(bfilename);
 
 		int insertResult = 0;
+		int updateResult = 0;
 		try {
 			// Board 테이블 insert 호출
 			insertResult = bdao.insertBoard(board);
+			updateResult = bdao.updatePoint(board.getBwriter());
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

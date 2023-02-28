@@ -33,5 +33,7 @@ public interface BoardDao {
 	ArrayList<ReplyDto> selectReplyList(@Param("rlbno") int rlbno);
 	
 	int selectReplyLikeCheck(@Param("rlno") int rlno,@Param("loginNickname")  String loginNickname);
+
+	int updatePoint(@Param("bwriter") String bwriter);
 	
 }

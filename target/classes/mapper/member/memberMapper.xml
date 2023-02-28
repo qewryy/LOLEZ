@@ -4,9 +4,9 @@
 <mapper namespace="com.lolez.dao.MemberDao">
 
 	<insert id="insertMemberJoin" parameterType="member">
-		INSERT INTO MEMBERS(MEMAIL,MNAME, MPW, MDATE, MSTATE, MACCESS)
-		VALUES(#{memail}, #{mname},#{mpw},TO_DATE(#{mdate}, 'YYYY-MM-DD'),1,
-		1)
+		INSERT INTO MEMBERS(MEMAIL,MNAME, MPW, MDATE, MSTATE, MACCESS, MPOINT)
+		VALUES(#{memail}, #{mname},#{mpw},
+		TO_DATE(#{mdate}, 'YYYY-MM-DD'),1,1, 200)
 	</insert>
 	
 	<select id="checkEmail" resultType="String">
