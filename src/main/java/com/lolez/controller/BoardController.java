@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.lolez.dto.BoardDto;
 import com.lolez.dto.ReplyDto;
@@ -112,12 +113,12 @@ public class BoardController {
 	}
 
 	@RequestMapping(value = "/boardLike")
-	public @ResponseBody String boardLike(int lbno, String lmid) {
+	public @ResponseBody String boardLike(int lbno, String lname) {
 		System.out.println("게시글 추천 처리 요청");
 		System.out.println("추천할 글번호 : " + lbno);
-		System.out.println("추천자 아이디 : " + lmid);
+		System.out.println("추천자 아이디 : " + lname);
 
-		String result = bsvc.boardLike(lbno, lmid);
+		String result = bsvc.boardLike(lbno, lname);
 
 		return result;
 	}
@@ -131,5 +132,68 @@ public class BoardController {
 		mav.setViewName("record/RecordPage");
 		return mav;
 	}
+	
+	@RequestMapping(value = "/replyList")
+	public @ResponseBody String replyList(int rbno) {
+		System.out.println("댓글 목록 조회 요청");
+		System.out.println("댓글을 조회할 글번호 : " + rbno);
+		
+		String loginNickname = (String)session.getAttribute("loginNickname");
+		String replyList = bsvc.replyList(rbno,loginNickname);
+		return replyList;
+	}	
+	
+	@RequestMapping(value = "/replyLike")
+	public @ResponseBody String replyLike(int rlbno, String rlname) {
+		System.out.println("댓글 추천 등록 요청");
+		System.out.println("추천할 댓글번호 : " + rlbno);
+		String likeResult = bsvc.replyLike(rlbno, rlname);
+		
+		return likeResult;
+	}
+	
+	@RequestMapping(value = "/boardModify")
+	public ModelAndView boardModify(BoardDto modBoard, RedirectAttributes ra) {
+		System.out.println("글수정 요청");
+		ModelAndView mav = new ModelAndView();
+		System.out.println(modBoard);
+		//1. 글 수정 기능 호출
+		int modifyResult = bsvc.boardModify(modBoard);
+		if(modifyResult > 0) {
+			ra.addFlashAttribute("boardMsg", "글이 수정 되었습니다.");
+		} else {
+			ra.addFlashAttribute("boardMsg", "글이 수정에 실패하였습니다.");
+		}
+		
+		mav.setViewName("redirect:/boardView?viewBno="+modBoard.getBno());
+		return mav;
+	}	
+	
+	@RequestMapping(value = "/replyWrite")
+	public @ResponseBody String replyWrite(ReplyDto rcontent) {
+		System.out.println("댓글 등록 요청");
+		System.out.println(rcontent);
+		int insertResult = bsvc.replyWrite(rcontent);
+		return insertResult+"";
+	}
+	
+	@RequestMapping(value = "/replyDelete_ajax")
+	public @ResponseBody String replyDelete_ajax(int rno) {
+		System.out.println("댓글 삭제 요청");
+		System.out.println("삭제할 댓글 번호 : " + rno);
+		int deleteResult = bsvc.replyDelete(rno);
+		return deleteResult + "";
+	}	
+	
+	
+	
+	@RequestMapping(value = "/boardLikeCount_ajax")
+	public @ResponseBody String boardLikeCount_ajax(int lbno, String lname) {
+		System.out.println("게시글 추천수 조회 요청");
+		
+		String likeInfo = bsvc.boardLikeInfo(lbno, lname);
+		
+		return likeInfo;
+	}	
 
 }

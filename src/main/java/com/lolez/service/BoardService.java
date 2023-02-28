@@ -81,10 +81,9 @@ public class BoardService {
 
 	// BoardService 상세보기 글 - 댓글목록 조회 기능
 
-	public ArrayList<ReplyDto> boardReplyList(int viewBno, String loginNickname) {
+	public ArrayList<ReplyDto> boardReplyList(int rbno, String loginNickname) {
 		System.out.println("BoardService boardReplyList()");
-		ArrayList<ReplyDto> replyList = bdao.selectReplyList(viewBno);
-		
+		ArrayList<ReplyDto> replyList = bdao.selectReplyList(rbno);
 		// 0번인덱스 댓글번호, 댓글작성자, 댓글내용, 댓글 작성일 + 추천수 + 추천확인
 
 		for (int i = 0; i < replyList.size(); i++) {
@@ -97,8 +96,8 @@ public class BoardService {
 			// 현재 페이지를 보는 사용자의 댓글 추천 여부 조회
 			if (loginNickname != null) {
 				// SELECT RLSTATE FROM REPLYLIKE WHERE RLNO = #{rlno} AND RLNAME = #{loginNickname};
-				int relikeCheck = bdao.selectReplyLikeCheck(rno, loginNickname);
-				replyList.get(i).setRstate(relikeCheck);
+				String relikeCheck = bdao.selectReplyLikeCheck(rno, loginNickname);
+				replyList.get(i).setRlikeCheck(relikeCheck);
 			}
 		}
 		return replyList;
@@ -130,5 +129,101 @@ public class BoardService {
 		System.out.println(gson.toJson(boardLike_json));
 		return gson.toJson(boardLike_json);
 	}
+	
+		//BoardService 상세보기 글 - 댓글목록 조회 기능_ajax
+		public String replyList(int rbno, String loginNickname) {
+			System.out.println("BoardService replyList()");
+			ArrayList<ReplyDto> reList = bdao.selectReplyList(rbno);
+			for(int i = 0; i < reList.size(); i++) {
+				System.out.println(reList.get(i).getRno());
+				int rno = reList.get(i).getRno();
+				int relikecount = bdao.selectReplyLikeCount(rno);
+				reList.get(i).setRrec(relikecount);
+				if(loginNickname != null) {
+					//SELECT Rlname FROM REPLYLIKE WHERE RLNUM = #{rno} AND Rlname = #{loginNickname};
+					String rlikeCheck = bdao.selectReplyLikeCheck(rno, loginNickname);
+					reList.get(i).setRlikeCheck(rlikeCheck);
+				}			
+			}
+			System.out.println(reList);
+			Gson gson = new Gson();
+			String reList_json = gson.toJson(reList);
+			System.out.println(reList_json);
+			
+			return reList_json;
+		}	
+		
+		
+
+		public int boardModify(BoardDto modBoard) {
+			System.out.println("BoardService boardModify()");
+			int updateResult = 0;
+			try {
+				updateResult = bdao.updateBoard(modBoard);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			return updateResult;
+		}
+		
+		public int replyWrite(ReplyDto reply) {
+			System.out.println("BoardService replyWrite()");
+			//1.댓글 번호 생성
+			int rno = bdao.selectMaxRno() + 1;
+			reply.setRno(rno);
+			//2.댓글 등록
+			int insertResult = 0;
+			try {
+				insertResult = bdao.insertReply(reply);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			return insertResult;
+		}
+
+
+
+		public int replyDelete(int rno) {
+			System.out.println("BoardService replyDelete()");
+			int deleteResult = bdao.deleteReply(rno);
+			return deleteResult;
+		}
+		
+		public String boardLikeInfo(int lbno, String lname) {
+			System.out.println("BoardService boardLikeInfo()");
+			int likeCount = bdao.selectLikeCount(lbno);
+			String likeMid = bdao.selectLikeCheck(lbno, lname);
+			Gson gson = new Gson();
+			JsonObject likeInfo_json = new JsonObject();
+			likeInfo_json.addProperty("likeCount", likeCount);
+			likeInfo_json.addProperty("likeCheck", likeMid);
+			
+			return gson.toJson(likeInfo_json);
+		}
+
+		public String replyLike(int rlno, String rlname) {
+			System.out.println("BoardService replyLike()");
+			Gson gson = new Gson();
+			JsonObject replyLike_json = new JsonObject();
+			//1. 추천유무 확인
+			String likeCheck = bdao.selectReplyLikeCheck(rlno, rlname);
+			
+			if(likeCheck == null) {
+				System.out.println("댓글 추천 입력");
+				bdao.insertReplyLike(rlno, rlname);
+				replyLike_json.addProperty("likeResult", "1");
+			} else {
+				System.out.println("추천 취소");
+				bdao.deleteReplyLike(rlno, rlname);
+				replyLike_json.addProperty("likeResult", "-1");
+			}
+			
+			//2. 추천 처리 이후 추천수 조회
+			int likeCount = bdao.selectReplyLikeCount(rlno);
+			replyLike_json.addProperty("likeCount", likeCount);
+			
+			System.out.println( gson.toJson(replyLike_json) );
+			return gson.toJson(replyLike_json);
+		}
 
 }

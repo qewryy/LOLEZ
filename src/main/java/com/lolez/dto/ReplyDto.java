@@ -12,13 +12,8 @@ public class ReplyDto {
 	private String rdate;
 	private int rrec;
 	private int rstate;
-	
-	@Override
-	public String toString() {
-		return "ReplyDto [rno=" + rno + ", rname=" + rname + ", rbno=" + rbno + ", rcontent=" + rcontent
-				+ ", rdate=" + rdate + ", rrec=" + rrec + ", rstate=" + rstate + "]";
-	}
-	
+	private String rlikeCheck;
+	private int rlikecount;
 	
 
 }

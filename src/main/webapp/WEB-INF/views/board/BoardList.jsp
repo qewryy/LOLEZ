@@ -109,7 +109,7 @@
 												<c:forEach items="${boardList }" var="board">
 													<tr>
 														<td>${board.bno }</td>
-														<td><a
+														<td><a style="color: black;"
 															href="${pageContext.request.contextPath }/boardView?viewBno=${board.bno }">
 																${board.btitle } </a></td>
 														<td>${board.bwriter }</td>

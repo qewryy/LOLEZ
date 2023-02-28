@@ -9,8 +9,11 @@
 	</select>
 
 	<select id="selectMaxBno" resultType="int">
-		SELECT NVL( MAX(BNO),0 )
-		FROM BOARDS
+		SELECT NVL( MAX(BNO),0 ) FROM BOARDS
+	</select>
+	
+	<select id="selectMaxRno" resultType="int">
+		SELECT NVL( MAX(RNO),0 ) FROM REPLYS
 	</select>
 
 	<insert id="insertBoard" parameterType="board">
@@ -32,7 +35,7 @@
 	
 	<insert id="insertBoardLike" parameterType="boardlike">
 		INSERT INTO BOARDLIKE(LBNO, LNAME, LSTATE) 
-		VALUES(#{lbno}, #{lname}, '0')
+		VALUES(#{lbno}, #{lname}, 1)
 	</insert>
 
 	<select id="selectBoardView" resultType="board">
@@ -52,11 +55,11 @@
 		SELECT COUNT(*) FROM REPLYLIKE WHERE RLNO = #{rlno}
 	</select>
 	
-	<select id="selectReplyList" resultType="replylike">
-		SELECT * FROM REPLYLIKE WHERE RLBNO = #{rlbno} ORDER BY RLNO
+	<select id="selectReplyList" resultType="reply">
+		SELECT * FROM REPLYS WHERE RBNO = #{rbno} ORDER BY RNO
 	</select>
 	
-	<select id="selectReplyLikeCheck" resultType="int">
+	<select id="selectReplyLikeCheck" resultType="String">
 		SELECT RLSTATE FROM REPLYLIKE WHERE RLNO = #{rlno} AND RLNAME = #{loginNickname}
 	</select>
 	
@@ -64,5 +67,27 @@
 		UPDATE MEMBERS SET
 		MPOINT = MPOINT + 10 WHERE MNAME = #{bwriter}
 	</update>
+	
+	<update id="updateBoard" parameterType="int">
+		UPDATE BOARDS SET BTITLE = #{btitle}, BCONTENT = #{bcontent} WHERE BNO = #{bno}
+	</update>
+	
+	<insert id="insertReply" parameterType="reply">
+		INSERT INTO REPLYS(RNO, RBNO, RNAME, RCONTENT, RDATE, RSTATE,RREC ) 
+		VALUES( #{rno}, #{rbno}, #{rname}, #{rcontent}, SYSDATE, 1, 0 )
+	</insert>
+	
+	<delete id="deleteReply" parameterType="int">
+		DELETE FROM REPLYS WHERE RNO = #{rno}
+	</delete>
+	
+	<insert id="insertReplyLike" parameterType="replylike">
+		INSERT INTO REPLYLIKE(RLNO, RLNAME) VALUES( #{rlno}, #{rlname} )
+	</insert>
+	
+	<delete id="deleteReplyLike" parameterType="int">
+		DELETE FROM REPLYLIKE WHERE RLNO = #{rlno} AND RLNAME = #{rlname}
+	</delete>
+	
 	
 </mapper> 

@@ -13,12 +13,14 @@ public interface BoardDao {
 	ArrayList<BoardDto> selectBoardList();
 
 	int selectMaxBno();
+	
+	int selectMaxRno();
 
 	int insertBoard(BoardDto board);
 	
 	void updateBoardHits(int viewBno);
 	
-	String selectLikeCheck(@Param("lbno") int lbno,@Param("lname")  String lname);
+	String selectLikeCheck(@Param("lbno") int lbno,@Param("lname") String lname);
 	
 	int insertBoardLike(@Param("lbno") int lbno, @Param("lname") String lname);
 
@@ -30,10 +32,21 @@ public interface BoardDao {
 	
 	int selectReplyLikeCount(@Param("rlno") int rlno);
 	
-	ArrayList<ReplyDto> selectReplyList(@Param("rlbno") int rlbno);
+	ArrayList<ReplyDto> selectReplyList(@Param("rbno") int rbno);
 	
-	int selectReplyLikeCheck(@Param("rlno") int rlno,@Param("loginNickname")  String loginNickname);
+	String selectReplyLikeCheck(@Param("rlno") int rlno,@Param("loginNickname") String loginNickname);
 
 	int updatePoint(@Param("bwriter") String bwriter);
+
+	int updateBoard(BoardDto modBoard);
+
+	int insertReply(ReplyDto reply);
+
+	int deleteReply(@Param("rno") int rno);
+
+	void insertReplyLike(@Param("rlno") int rlno,@Param("rlname") String rlname);
+
+	void deleteReplyLike(@Param("rlno") int rlno,@Param("rlname") String rlname);
+
 	
 }
