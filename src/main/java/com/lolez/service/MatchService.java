@@ -77,8 +77,10 @@ public class MatchService {
 					gson = new Gson();
 
 					MatchDto match = gson.fromJson(responseJson, MatchDto.class);
+					match.getInfo().setGameEndTimestampex(match.getInfo().getGameEndTimestamp() / 1000L);
 					if (match.getMetadata() != null && match.getInfo() != null) {
 						System.out.println("게임 정보 불러오기 성공 : " + match.getMetadata().getMatchId());
+						
 						/*
 						 * System.out.println("\nDB에 Metadata Insert 실행"); String combined =
 						 * String.join(",", match.getMetadata().getParticipants());
@@ -240,7 +242,7 @@ public class MatchService {
 					gson = new Gson();
 
 					MatchDto match = gson.fromJson(responseJson, MatchDto.class);
-					
+					match.getInfo().setGameEndTimestampex(match.getInfo().getGameEndTimestamp() / 1000L);
 					matches.add(match);
 				}
 			}
