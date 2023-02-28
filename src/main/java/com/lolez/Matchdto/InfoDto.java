@@ -23,11 +23,6 @@ public class InfoDto {
 	private long gameEndTimestampex;
 	// 해당 게임이 끝난 변환한 Unix timestamp입니다.
 	
-	public void setGameEndTimestamp(long gameEndTimestamp) {
-        this.gameEndTimestamp = gameEndTimestamp;
-        this.gameEndTimestampex = gameEndTimestamp / 1000L;
-    }
-	
 	private String gameMode;
 	// 해당 게임의 게임 모드(소환사의 협곡, 칼바람, URF 등)입니다.
 	
@@ -39,11 +34,6 @@ public class InfoDto {
 	
 	private long gameStartTimestampex;
 	// 해당 게임이 시작된 변환한 Unix timestamp입니다.
-	
-	public void setGameStartTimestamp(long gameStartTimestamp) {
-        this.gameStartTimestamp = gameStartTimestamp;
-        this.gameStartTimestampex = gameStartTimestamp / 1000L;
-    }
 	
 	private String gameType;
 	// 해당 게임의 게임 유형(일반, 랭크, 커스텀)입니다.
