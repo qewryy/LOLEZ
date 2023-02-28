@@ -1,6 +1,8 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+
+<%@ page import="java.lang.Long" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!doctype html>
@@ -1427,7 +1429,17 @@
 					
 					
 					</c:choose></div>
-										<div class="time-stamp">
+										<div class="time-stamp">							
+										<c:set var="gameEndTimeStamp" value="${MatchList.get(i).getInfo().getGameEndTimestamp()}"/>	
+										
+										<c:set var="testTime" value="${gameEndTimeStamp / 1000 }"/>
+										<c:set var="now" value="<%=System.currentTimeMillis() / 1000%>"/>
+										${gameEndTimeStamp}
+										${testTime }
+										${now }
+										<%-- ${now } --%>
+										
+										
 											<div class="" style="position: relative;">9시간 전</div>
 										</div>
 										<div class="bar"></div>
@@ -1760,8 +1772,7 @@
 													</div>
 													<div class="rune">
 													<c:set var="rune_ls" value="${MatchList.get(i).getInfo().getParticipants().get(MIP_I).getPerks().getStyles().get(1).getSelections().get(1).getPerk() }"/>
-														${rune_ls }
-														
+
 														<c:choose>
 														
 															<c:when test="${rune_ls eq 8014 }">

@@ -67,6 +67,15 @@ public class TimeTest {
 		System.out.println(formattedDate2);
 		
 		
+		System.out.println("===============================================");
+		long ux1 = 1677469405788L / 1000 ;
+		System.out.println(ux1);
+		
+		long ux2 = 1677548130 - ux1 ; 
+		System.out.println(ux2 + "현재 시간 - 게임 종료 당시 시간");
+		
+		
+		
 	}
 
 }
