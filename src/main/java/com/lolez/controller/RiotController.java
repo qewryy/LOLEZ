@@ -1,15 +1,18 @@
 package com.lolez.controller;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpSession;
 
+import org.apache.http.client.ClientProtocolException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.google.gson.Gson;
 import com.lolez.Leaguedto.LeagueEntryDto;
 import com.lolez.Matchdto.MatchDto;
 import com.lolez.Spectatordto.CurrentGameInfoDto;
@@ -198,9 +201,30 @@ public class RiotController {
 		ArrayList<ProusersDto> prousers = spsvc.selectprousers();
 		ArrayList<CurrentGameInfoDto> current = spsvc.currentserch(prousers, apiKey);
 		mav.addObject("progameList", current);
+		
 
 		mav.setViewName("redirect:/");
 		return mav;
+	}
+	
+	@SuppressWarnings("null")
+	@RequestMapping(value = "/proListView")
+	public String proListView(ArrayList<CurrentGameInfoDto> progameList) throws ClientProtocolException, IOException {
+		System.out.println("프로게이머 승부예측 상세보기 요청");
+		ArrayList<LeagueEntryDto> Llist = null;
+		LeagueEntryDto Lresult;
+		for(CurrentGameInfoDto pl : progameList) {
+
+			Lresult = lsvc.leagueserch(pl.getGameId(), apiKey, 0);
+			
+			Llist.add(Lresult);
+		}
+		
+		Gson gson = new Gson();
+		String json = gson.toJson(Llist);
+		System.out.println(json);
+		
+		return json;
 	}
 
 	@RequestMapping(value = "/Leaguerenewal")

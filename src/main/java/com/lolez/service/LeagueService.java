@@ -1,8 +1,10 @@
 package com.lolez.service;
 
-import java.util.ArrayList;
+import java.io.IOException;
 import java.lang.reflect.Type;
+import java.util.ArrayList;
 
+import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.CloseableHttpClient;
@@ -17,7 +19,6 @@ import com.lolez.Leaguedto.LeagueEntryDto;
 import com.lolez.Summonerdto.SummonerDto;
 import com.lolez.dao.LeagueDao;
 
-
 @Service
 public class LeagueService {
 
@@ -28,9 +29,9 @@ public class LeagueService {
 		System.out.println("LeagueService leagueserch() 실행");
 
 		String url = "https://kr.api.riotgames.com//lol/league/v4/entries/by-summoner/" + sresult.getId();
-		
+
 		CloseableHttpClient httpClient = HttpClients.createDefault();
-		
+
 		HttpGet request = new HttpGet(url);
 
 		request.addHeader("X-Riot-Token", apiKey);
@@ -40,11 +41,10 @@ public class LeagueService {
 		String responseJson = EntityUtils.toString(response.getEntity());
 
 		Gson gson = new Gson();
-		Type type = new TypeToken<ArrayList<LeagueEntryDto>>(){}.getType();
+		Type type = new TypeToken<ArrayList<LeagueEntryDto>>() {
+		}.getType();
 		ArrayList<LeagueEntryDto> LeagueData = gson.fromJson(responseJson, type);
-		
-			
-		
+
 		// 받아온 데이터 유무 확인
 		// true : 기존 데이터 Select
 		// false : error return
@@ -100,39 +100,38 @@ public class LeagueService {
 			} else {
 				System.out.println("등록되지 않은 리그 기록입니다.");
 
-				if(LeagueData.get(i).getQueueType().equals("RANKED_SOLO_5x5") || LeagueData.get(i).getQueueType().equals("RANKED_FLEX_SR")) {
+				if (LeagueData.get(i).getQueueType().equals("RANKED_SOLO_5x5")
+						|| LeagueData.get(i).getQueueType().equals("RANKED_FLEX_SR")) {
 					int ir = ldao.insertleaguedata(LeagueData.get(i));
 					// insert 처리 유무
 					if (ir == 1) {
 						System.out.println("리그 정보가 정상적으로 추가되었습니다.");
-						if(LeagueData.get(i).getQueueType().equals("RANKED_FLEX_SR")) {
+						if (LeagueData.get(i).getQueueType().equals("RANKED_FLEX_SR")) {
 							LeagueData.get(i).setDuoboolean(true);
-						}else if(LeagueData.get(i).getQueueType().equals("RANKED_SOLO_5x5")){
+						} else if (LeagueData.get(i).getQueueType().equals("RANKED_SOLO_5x5")) {
 							LeagueData.get(i).setSoloboolean(true);
 						}
-						
+
 						LeagueData.get(i).setDatasize(LeagueData.size());
-						
+
 						return LeagueData.get(i);
 					} else {
 						System.out.println("오류가 발생했습니다.");
-						
+
 						return null;
-						
+
 					}
-				}else {
+				} else {
 					System.out.println("필요하지 않은 정보 ( TFT, 그 외 ) 입니다.");
 					System.out.println("그대로 종료합니다.");
-					
+
 					LeagueData.get(i).setDatasize(LeagueData.size());
-					
+
 					return LeagueData.get(i);
 				}
 
-
 			}
 
-			
 			System.out.println("기존 데이터에 승격전 기록이 있는지 확인");
 			// true : 여부에 따라 update, delete
 			// false : 여부에 따라 insert
@@ -216,29 +215,62 @@ public class LeagueService {
 			}
 
 		} else {
-			if(i == 0) {
+			if (i == 0) {
 				System.out.println("리그 정보가 존재하지 않습니다.");
 				LeagueEntryDto unrank = new LeagueEntryDto();
 				unrank.setDatasize(i);
 				unrank.setUnrankboolean(true);
 				return unrank;
-			}else {
+			} else {
 				System.out.println("이유 모를 오류발생");
-				
+
 				// error return
 				return null;
 			}
 		}
-		
-		if(LeagueData.get(i).getQueueType().equals("RANKED_FLEX_SR")) {
+
+		if (LeagueData.get(i).getQueueType().equals("RANKED_FLEX_SR")) {
 			LeagueData.get(i).setDuoboolean(true);
-		}else if(LeagueData.get(i).getQueueType().equals("RANKED_SOLO_5x5")){
-				LeagueData.get(i).setSoloboolean(true);
+		} else if (LeagueData.get(i).getQueueType().equals("RANKED_SOLO_5x5")) {
+			LeagueData.get(i).setSoloboolean(true);
 		}
-		
+
 		LeagueData.get(i).setDatasize(LeagueData.size());
-		
+
 		return LeagueData.get(i);
+	}
+
+	public LeagueEntryDto leagueserch(long gameId, String apiKey, int i) throws ClientProtocolException, IOException {
+		System.out.println("LeagueService leagueserch() 실행");
+		String url = "https://kr.api.riotgames.com//lol/league/v4/entries/by-summoner/" + gameId;
+
+		CloseableHttpClient httpClient = HttpClients.createDefault();
+
+		HttpGet request = new HttpGet(url);
+
+		request.addHeader("X-Riot-Token", apiKey);
+
+		CloseableHttpResponse response = httpClient.execute(request);
+
+		String responseJson = EntityUtils.toString(response.getEntity());
+
+		Gson gson = new Gson();
+		Type type = new TypeToken<ArrayList<LeagueEntryDto>>() {
+		}.getType();
+		ArrayList<LeagueEntryDto> LeagueData = gson.fromJson(responseJson, type);
+		
+		int check = 0;
+		for(int a = 0; a < LeagueData.size(); a++) {
+			if(LeagueData.get(a).getQueueType().equals("RANKED_SOLO_5x5")) {
+				check = a;
+				break;
+			}else {
+				LeagueData = null;
+			}
+			
+		}
+
+		return LeagueData.get(check);
 	}
 
 }

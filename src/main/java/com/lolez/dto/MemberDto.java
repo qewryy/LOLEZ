@@ -10,12 +10,8 @@ public class MemberDto {
 	private String mdate;
 	private int mstate;
 	private int maccess;
+	private int mpoint;
 
-	@Override
-	public String toString() {
-		return "MemberDto [memail=" + memail + ", mname=" + mname + ", mpw=" + mpw + ", mdate=" + mdate + ", mstate="
-				+ mstate + ", maccess=" + maccess + "]";
-	}
 	
 	
 	

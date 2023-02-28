@@ -60,4 +60,9 @@
 		SELECT RLSTATE FROM REPLYLIKE WHERE RLNO = #{rlno} AND RLNAME = #{loginNickname}
 	</select>
 	
+	<update id="updatePoint" parameterType="int">
+		UPDATE MEMBERS SET
+		MPOINT = MPOINT + 25 WHERE MNAME = #{bwriter}
+	</update>
+	
 </mapper> 
