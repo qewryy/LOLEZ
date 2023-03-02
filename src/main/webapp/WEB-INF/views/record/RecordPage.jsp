@@ -528,53 +528,175 @@
 				<c:set var="buleTeam_s" value="0" />
 				<c:set var="redTeam_s" value="1" />
 				
-					<c:forEach begin="0"     end="${MatchList.size()-1}"  var="s_i">
-						<c:forEach begin="0" end="${MatchList.get(s_i).getInfo().getParticipants().size()- 1}" var="si_i">
-							<c:if test="${uesr_SI eq MatchList.get(s_i).getInfo().getParticipants().get(si_i).getPuuid()}">
-							
-									<c:set var="teamID_s" value="${MatchList.get(s_i).getInfo().getParticipants().get(si_i).getTeamId()}" />
+					<c:forEach begin="0"     end="${MatchList.size()-1}"  var="s_i"> <!-- 총경기 만큼 반복 -->
+						<c:forEach begin="0" end="${MatchList.get(s_i).getInfo().getParticipants().size()- 1}" var="si_i"> <!--총 경기중 각 게임의 인원수 만큼 출력  -->
+							<c:if test="${uesr_SI eq MatchList.get(s_i).getInfo().getParticipants().get(si_i).getPuuid()}"> <!--해당 참가자가 속한 경기만 출력  -->
+							<c:set var="teamID_s" value="${MatchList.get(s_i).getInfo().getParticipants().get(si_i).getTeamId()}" /> <!-- 해당 참가자가 속한 팀  -->
 
-									<c:if test="${teamID_s == 100 }">
-										<c:set var="buleTEAM_Kill_s" value="${buleTEAM_Kill_s + MatchList.get(s_i).getInfo().getTeams().get(buleTeam_s).getObjectives().getChampion().getKills()}" />
-									</c:if>
-									
-									<c:if test="${teamID_s == 200 }">
-										<c:set var="redTEAM_Kill_s" value="${redTEAM_Kill_s + MatchList.get(s_i).getInfo().getTeams().get(redTeam_s).getObjectives().getChampion().getKills()}" />
-									</c:if>
-							
-							
-							
-							
-								<c:set var="kill_s"	    value="${kill_s + MatchList.get(s_i).getInfo().getParticipants().get(si_i).getKills() }" />
-								<c:set var="deaths_s"	value="${deaths_s + MatchList.get(s_i).getInfo().getParticipants().get(si_i).getDeaths() }" />
-								<c:set var="assists_s"  value="${assists_s +MatchList.get(s_i).getInfo().getParticipants().get(si_i).getAssists() }" />
-								<c:set var="Gametype_s" value="${MatchList.get(s_i).getInfo().getQueueId()}" />
-								${buleTEAM_Kill_s }
+
+
+
 								
+									<c:forEach begin="0" end="${MatchList.get(s_i).getInfo().getParticipants().size()- 1}" var="eI">
+											<c:if test="${MatchList.get(s_i).getInfo().getParticipants().get(eI).getTeamId() == teamID_s }">
+													
+														<c:set var="Team_Kill_BR" value="${Team_Kill_BR + MatchList.get(s_i).getInfo().getParticipants().get(eI).getKills() }"/>
+													</c:if>
+												
+												
+											</c:forEach>
+	
+								<c:set var="kill_s"	    value="${kill_s + MatchList.get(s_i).getInfo().getParticipants().get(si_i).getKills() }" /><!-- 해당 참가자가 얻은 모든 킬수 -->
+								<c:set var="deaths_s"	value="${deaths_s + MatchList.get(s_i).getInfo().getParticipants().get(si_i).getDeaths() }" /><!--해당 참가자가 얻은 모든 데스  -->
+								<c:set var="assists_s"  value="${assists_s +MatchList.get(s_i).getInfo().getParticipants().get(si_i).getAssists() }" /><!--해당 참가자가 얻은 모든 어시  -->
+								<c:set var="Gametype_s" value="${MatchList.get(s_i).getInfo().getQueueId()}" />
+								
+								
+								<c:set var="TOP" value="TOP"/>
+								<c:set var="JUNGLE " value="JUNGLE "/>
+								<c:set var="MIDDLE" value="MIDDLE"/>
+								<c:set var="BOTTOM" value="BOTTOM"/>
+								<c:set var="UTILITY" value="UTILITY"/>
+
+								
+								<c:if test="${Gametype_s eq 420 }">
+								
+								<c:set var="count420" value="${count420 + 1 }"/>
+								
+								<c:choose>
+									<c:when test="${MatchList.get(s_i).getInfo().getParticipants().get(si_i).getTeamPosition() eq TOP }">
+										<c:set var="TOPCount" value="${topCount + 1 }"/>
+									
+									
+									</c:when>
+									
+									<c:when test="${MatchList.get(s_i).getInfo().getParticipants().get(si_i).getTeamPosition() eq JUNGLE }">
+										<c:set var="JUNGLECount" value="${JUNGLECount + 1 }"/>	
+									
+									
+									</c:when>
+									
+									<c:when test="${MatchList.get(s_i).getInfo().getParticipants().get(si_i).getTeamPosition() eq MIDDLE }">
+										<c:set var="MIDDLECount" value="${MIDDLECount + 1 }"/>
+									
+									
+									</c:when>
+									
+									<c:when test="${MatchList.get(s_i).getInfo().getParticipants().get(si_i).getTeamPosition() eq BOTTOM }">
+										<c:set var="BOTTOMCount" value="${BOTTOMCount + 1 }"/>
+									
+									
+									</c:when>
+									
+									<c:when test="${MatchList.get(s_i).getInfo().getParticipants().get(si_i).getTeamPosition() eq UTILITY }">
+										
+										<c:set var="UTILITYCount" value="${UTILITYCount + 1 }"/>
+
+									
+									</c:when>
+								
+								
+								</c:choose>
+								
+								
+								
+								
+								</c:if>
+								
+								<c:if test="${Gametype_s eq 440 }">
+								<c:set var="count440" value="${count440 + 1 }"/>
+								<c:choose>
+									<c:when test="${MatchList.get(s_i).getInfo().getParticipants().get(si_i).getTeamPosition() eq TOP }">
+										<c:set var="TOPCount2" value="${TOPCount2 + 1 }"/>
+									
+									
+									</c:when>
+									
+									<c:when test="${MatchList.get(s_i).getInfo().getParticipants().get(si_i).getTeamPosition() eq JUNGLE }">
+										<c:set var="JUNGLECount2" value="${JUNGLECount2 + 1 }"/>	
+									
+									
+									</c:when>
+									
+									<c:when test="${MatchList.get(s_i).getInfo().getParticipants().get(si_i).getTeamPosition() eq MIDDLE }">
+										<c:set var="MIDDLECount2" value="${MIDDLECount2 + 1 }"/>
+									
+									
+									</c:when>
+									
+									<c:when test="${MatchList.get(s_i).getInfo().getParticipants().get(si_i).getTeamPosition() eq BOTTOM }">
+										<c:set var="BOTTOMCount2" value="${BOTTOMCount2 + 1 }"/>
+									
+									
+									</c:when>
+									
+									<c:when test="${MatchList.get(s_i).getInfo().getParticipants().get(si_i).getTeamPosition() eq UTILITY }">
+										
+										<c:set var="UTILITYCount2" value="${UTILITYCount2 + 1 }"/>
+									
+									</c:when>
+								
+								
+								</c:choose>
+								
+								
+								
+								
+								</c:if>
 							</c:if>
 						
 						</c:forEach>
 					
 					</c:forEach>
-					<c:set var="allKills" value="${buleTEAM_Kill_s + teamID_s }"/>
+					<c:set var="allKills" value="${kill_s + assists_s}"/>
+					<c:set var="KS" value="${kill_s / MatchList.size()}"/>
+					<c:set var="DS" value="${deaths_s / MatchList.size()}"/>
+					<c:set var="AS" value="${assists_s / MatchList.size()}"/>
+					<c:set var="KA_D" value="${allKills / deaths_s }"/>
 					
-				${buleTEAM_Kill_s }
-				${redTEAM_Kill_s }
+					<c:set var="Ki" value="${(allKills / Team_Kill_BR) * 100 }"/>
+
+					<fmt:formatNumber var="grade" value="${KA_D }" pattern="0.00"/>
+					<fmt:formatNumber var="Killinvolved" value="${Ki }" pattern="0"/>
+					
+					
+					
+					<c:set var="TOPCount12" value="${TOPCount + TOPCount2 }"/>
+					<c:set var="JUNGLECount12" value="${JUNGLECount + JUNGLECount2 }"/>
+					<c:set var="MIDDLECount12" value="${MIDDLECount + MIDDLECount2 }"/>
+					<c:set var="BOTTOMCount12" value="${BOTTOMCount + BOTTOMCount2 }"/>
+					<c:set var="UTILITYCount12" value="${UTILITYCount + UTILITYCount2 }"/>
+					<c:set var="allrank" value="${count420 + count440 }"/>
+					
+					
+					<c:set var="t" value="${(TOPCount12 /allrank)* 100}"/>
+					<c:set var="j" value="${(JUNGLECount12 /allrank)* 100}"/>
+					<c:set var="m" value="${(MIDDLECount12 /allrank)* 100}"/>
+					<c:set var="b" value="${(BOTTOMCount12 /allrank)* 100}"/>
+					<c:set var="u" value="${(UTILITYCount12 /allrank)* 100}"/>
+					
+<%-- 					${t }
+					${j }
+					${m }
+					${b }
+					${u } --%>
+
+<%-- 				${Team_Kill_BR }
 					${kill_s }
 					${deaths_s }
 					${assists_s } 
 					${allKills }
-								
-				
-				
+					${grade }
+					${Killinvolved } --%>
+
 					<div class="stats">
 						<div class="kda">
 							<div class="info">
 								<div class="k-d-a">
-									<span>12.5</span> / <span class="death">7.1</span> / <span>11.3</span>
+									<span>${KS }</span> / <span class="death">${DS }</span> / <span>${AS }</span>
 								</div>
-								<div class="ratio">3.35:1</div>
-								<div class="kill-participantion">킬관여 65%</div>
+								<div class="ratio">${grade }:1</div>
+								<div class="kill-participantion">킬관여 ${Killinvolved }%</div>
 							</div>
 						</div>
 					</div>
@@ -615,9 +737,11 @@
 					</div>
 					<div class="positions">
 						<div class="title">선호 포지션 (랭크)</div>
+						
+						
 						<ul>
 							<li><div class="bar">
-									<div class="gauge" style="height: 25%;"></div>
+									<div class="gauge" style= "height: ${t }%;" ></div>
 								</div>
 								<div class="position">
 									<img
@@ -625,7 +749,7 @@
 										width="16" alt="TOP">
 								</div></li>
 							<li><div class="bar">
-									<div class="gauge" style="height: 0%;"></div>
+									<div class="gauge" style="height: ${j }%;"></div>
 								</div>
 								<div class="position">
 									<img
@@ -633,7 +757,7 @@
 										width="16" alt="JUNGLE">
 								</div></li>
 							<li><div class="bar">
-									<div class="gauge" style="height: 0%;"></div>
+									<div class="gauge" style="height: ${m }%;"></div>
 								</div>
 								<div class="position">
 									<img
@@ -641,7 +765,7 @@
 										width="16" alt="MID">
 								</div></li>
 							<li><div class="bar">
-									<div class="gauge" style="height: 75%;"></div>
+									<div class="gauge" style="height: ${b }%;"></div>
 								</div>
 								<div class="position">
 									<img
@@ -649,7 +773,7 @@
 										width="16" alt="ADC">
 								</div></li>
 							<li><div class="bar">
-									<div class="gauge" style="height: 0%;"></div>
+									<div class="gauge" style="height: ${u }%;"></div>
 								</div>
 								<div class="position">
 									<img
@@ -657,6 +781,8 @@
 										width="16" alt="SUPPORT">
 								</div></li>
 						</ul>
+						
+						
 					</div>
 				</div>
 
@@ -1396,11 +1522,9 @@
 
 														<ul>
 
-															<c:forEach begin="0"
-																end="${MatchList.get(i).getInfo().getParticipants().size()- 6}"
+															<c:forEach begin="0" end="${MatchList.get(i).getInfo().getParticipants().size()- 6}"
 																var="member">
-																<c:set var="ChampionNameMember"
-																	value="${MatchList.get(i).getInfo().getParticipants().get(member).getChampionName()}" />
+																<c:set var="ChampionNameMember"	value="${MatchList.get(i).getInfo().getParticipants().get(member).getChampionName()}" />
 
 																<li class="css-1ahqe5t e1iiyghw1"><div class="icon"
 																		style="position: relative;">
@@ -1435,15 +1559,9 @@
 
 															</c:forEach>
 
-
-
-
-
-
 														</ul>
 														<ul>
-															<c:forEach begin="5"
-																end="${MatchList.get(i).getInfo().getParticipants().size()- 1}"
+															<c:forEach begin="5" end="${MatchList.get(i).getInfo().getParticipants().size()- 1}"
 																var="member_u">
 																<c:set var="ChampionNameMember_two"
 																	value="${MatchList.get(i).getInfo().getParticipants().get(member_u).getChampionName()}" />
@@ -2357,72 +2475,30 @@
 
 
 <script type="text/javascript">
+
+	console.log("${MatchList.get(0).getInfo().getTeams().get(0).getObjectives().getChampion().getKills()}");
+	console.log("${MatchList.get(1).getInfo().getTeams().get(1).getObjectives().getChampion().getKills()}");
+	console.log("${MatchList.get(2).getInfo().getTeams().get(0).getObjectives().getChampion().getKills()}");
+	console.log("${MatchList.get(3).getInfo().getTeams().get(0).getObjectives().getChampion().getKills()}");
+	console.log("${MatchList.get(4).getInfo().getTeams().get(1).getObjectives().getChampion().getKills()}");
+	
+	
 	var tier = [ "IRON", "BRONZE", "SILVER", "GOLD", "PLATINUM", "DIAMOND",
 			"MASTER", "GRANDMASTER", "CHALLENGER" ]
 	var ran = [ "I", "II", "III", "IV" ]
 	var checkSoloList = "${SoloList.tier}";
 	var checkDuoList = "${DuoList.tier}";
 
-	/* 	console.log("${MatchList.get(1).getInfo().getParticipants().get(2).getTeamId()}");
-	 console.log("${MatchList.get(1).getInfo().getTeams()}");
-	 console.log("${MatchList.get(1).getInfo().getTeams().get(0).getObjectives()}"); */
 
-	console
-			.log("${MatchList.get(0).getInfo().getParticipants().get(8).getItem0() }");
-	console
-			.log("${MatchList.get(0).getInfo().getParticipants().get(8).getItem1() }");
-	console
-			.log("${MatchList.get(0).getInfo().getParticipants().get(8).getItem2() }");
-	console
-			.log("${MatchList.get(0).getInfo().getParticipants().get(8).getItem3() }");
-	console
-			.log("${MatchList.get(0).getInfo().getParticipants().get(8).getItem4() }");
-	console
-			.log("${MatchList.get(0).getInfo().getParticipants().get(8).getItem5() }");
-	console
-			.log("${MatchList.get(0).getInfo().getParticipants().get(8).getItem6() }");
-
-	/* 	console.log("${MatchList.get(0).getInfo().getParticipants().get(0).getPerks().getStyles().get(0).getSelections().get(0).getPerk() }");
-	 console.log("${MatchList.get(0).getInfo().getParticipants().get(0).getPerks().getStyles().get(0).getSelections().get(0).getVar1() }");
-	 console.log("${MatchList.get(0).getInfo().getParticipants().get(0).getPerks().getStyles().get(0).getSelections().get(0).getVar2() }");
-	 */
-
-	console.log("스펠 확인");
-	console
-			.log("${MatchList.get(1).getInfo().getParticipants().get(8).getSpell1Casts() }");
-	console
-			.log("${MatchList.get(1).getInfo().getParticipants().get(8).getSpell2Casts() }");
-
-	console
-			.log("${MatchList.get(1).getInfo().getParticipants().get(8).getSummoner1Id() }");
-	console
-			.log("${MatchList.get(1).getInfo().getParticipants().get(8).getSummoner2Id() }");
 	var Unrank = "${Unrank.unrankboolean}";
 	var SoloList = "${SoloList.soloboolean}";
 	var DuoList = "${DuoList.duoboolean}";
 
-	var winSolo = $
-	{
-		SoloList.wins
-	}
-	+0;
-	var lossesSolo = $
-	{
-		SoloList.losses
-	}
-	+0;
+	var winSolo = ${SoloList.wins}+0;
+	var lossesSolo = ${SoloList.losses}+0;
 
-	var WinDuo = $
-	{
-		DuoList.wins
-	}
-	+0;
-	var lossesDuo = $
-	{
-		DuoList.losses
-	}
-	+0;
-
+	var WinDuo = ${DuoList.wins}+0;
+	var lossesDuo = ${DuoList.losses}+0;
 	if (Unrank) {
 		// 언랭임
 		Unrank = true;

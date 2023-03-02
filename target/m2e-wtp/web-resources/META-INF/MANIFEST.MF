@@ -1,5 +1,9 @@
 Manifest-Version: 1.0
+<<<<<<< HEAD
 Built-By: 82104
+=======
+Built-By: pashu
+>>>>>>> fe31c5f20c81649beea86abc3de640b95b628feb
 Build-Jdk: 11.0.16
 Created-By: Maven Integration for Eclipse
 
