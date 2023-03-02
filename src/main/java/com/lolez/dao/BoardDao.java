@@ -34,7 +34,7 @@ public interface BoardDao {
 	
 	ArrayList<ReplyDto> selectReplyList(@Param("rbno") int rbno);
 	
-	String selectReplyLikeCheck(@Param("rlno") int rlno,@Param("loginNickname") String loginNickname);
+	String selectReplyLikeCheck(@Param("rlno") int rlno,@Param("loginNickname") String loginNickname,@Param("rlbno") int rlbno);
 
 	int updatePoint(@Param("bwriter") String bwriter);
 
@@ -42,11 +42,13 @@ public interface BoardDao {
 
 	int insertReply(ReplyDto reply);
 
-	int deleteReply(@Param("rno") int rno);
+	int deleteReply(@Param("rno") int rno,@Param("rbno")  int rbno);
 
-	void insertReplyLike(@Param("rlno") int rlno,@Param("rlname") String rlname);
+	void insertReplyLike(@Param("rlno") int rlno,@Param("rlname") String rlname,@Param("rlbno") int rlbno);
 
-	void deleteReplyLike(@Param("rlno") int rlno,@Param("rlname") String rlname);
+	void deleteReplyLike(@Param("rlno") int rlno,@Param("rlname") String rlname,@Param("rlbno") int rlbno);
+
+	int deletereplylike(@Param("rno") int rno,@Param("rbno")  int rbno);
 
 	
 }

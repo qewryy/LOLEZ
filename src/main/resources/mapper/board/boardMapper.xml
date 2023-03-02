@@ -42,7 +42,7 @@
 		SELECT * FROM BOARDS WHERE BNO = #{viewBno}
 	</select>
 
-	<delete id="deleteBoardLike" parameterType="int">
+	<delete id="deleteBoardLike" parameterType="boardlike">
 		DELETE FROM BOARDLIKE 
 		WHERE LBNO = #{lbno} AND LNAME = #{lname}
 	</delete>
@@ -60,7 +60,8 @@
 	</select>
 	
 	<select id="selectReplyLikeCheck" resultType="String">
-		SELECT RLSTATE FROM REPLYLIKE WHERE RLNO = #{rlno} AND RLNAME = #{loginNickname}
+		SELECT RLSTATE FROM REPLYLIKE WHERE RLNO = #{rlno} 
+		AND RLNAME = #{loginNickname} AND RLBNO = #{rlbno}
 	</select>
 	
 	<update id="updatePoint" parameterType="int">
@@ -68,7 +69,7 @@
 		MPOINT = MPOINT + 10 WHERE MNAME = #{bwriter}
 	</update>
 	
-	<update id="updateBoard" parameterType="int">
+	<update id="updateBoard" parameterType="board">
 		UPDATE BOARDS SET BTITLE = #{btitle}, BCONTENT = #{bcontent} WHERE BNO = #{bno}
 	</update>
 	
@@ -77,16 +78,21 @@
 		VALUES( #{rno}, #{rbno}, #{rname}, #{rcontent}, SYSDATE, 1, 0 )
 	</insert>
 	
-	<delete id="deleteReply" parameterType="int">
-		DELETE FROM REPLYS WHERE RNO = #{rno}
+	<delete id="deleteReply" parameterType="reply">
+		DELETE FROM REPLYS WHERE RNO = #{rno} AND RBNO = #{rbno}
+	</delete>
+	
+	<delete id="deletereplylike" parameterType="replylike">
+		DELETE FROM REPLYLIKE WHERE RLNO = #{rno} AND RLBNO = #{rbno}
 	</delete>
 	
 	<insert id="insertReplyLike" parameterType="replylike">
-		INSERT INTO REPLYLIKE(RLNO, RLNAME) VALUES( #{rlno}, #{rlname} )
+		INSERT INTO REPLYLIKE(RLNO, RLNAME, RLBNO, RLSTATE) VALUES( #{rlno}, #{rlname}, #{rlbno}, 1 )
 	</insert>
 	
-	<delete id="deleteReplyLike" parameterType="int">
-		DELETE FROM REPLYLIKE WHERE RLNO = #{rlno} AND RLNAME = #{rlname}
+	<delete id="deleteReplyLike" parameterType="replylike">
+		DELETE FROM REPLYLIKE WHERE RLNO = #{rlno} 
+		AND RLNAME = #{rlname} AND RLBNO = #{rlbno}
 	</delete>
 	
 	

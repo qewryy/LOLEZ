@@ -144,10 +144,10 @@ public class BoardController {
 	}	
 	
 	@RequestMapping(value = "/replyLike")
-	public @ResponseBody String replyLike(int rlbno, String rlname) {
+	public @ResponseBody String replyLike(int rlno, String rlname, int rlbno) {
 		System.out.println("댓글 추천 등록 요청");
-		System.out.println("추천할 댓글번호 : " + rlbno);
-		String likeResult = bsvc.replyLike(rlbno, rlname);
+		System.out.println("추천할 댓글번호 : " + rlno);
+		String likeResult = bsvc.replyLike(rlno, rlname, rlbno);
 		
 		return likeResult;
 	}
@@ -178,10 +178,11 @@ public class BoardController {
 	}
 	
 	@RequestMapping(value = "/replyDelete_ajax")
-	public @ResponseBody String replyDelete_ajax(int rno) {
+	public @ResponseBody String replyDelete_ajax(int rno, int rbno) {
 		System.out.println("댓글 삭제 요청");
 		System.out.println("삭제할 댓글 번호 : " + rno);
-		int deleteResult = bsvc.replyDelete(rno);
+		System.out.println("삭제할 댓글의 글 번호 : " + rbno);
+		int deleteResult = bsvc.replyDelete(rno, rbno);
 		return deleteResult + "";
 	}	
 	

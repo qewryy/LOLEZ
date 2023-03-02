@@ -96,7 +96,7 @@ public class BoardService {
 			// 현재 페이지를 보는 사용자의 댓글 추천 여부 조회
 			if (loginNickname != null) {
 				// SELECT RLSTATE FROM REPLYLIKE WHERE RLNO = #{rlno} AND RLNAME = #{loginNickname};
-				String relikeCheck = bdao.selectReplyLikeCheck(rno, loginNickname);
+				String relikeCheck = bdao.selectReplyLikeCheck(rno, loginNickname, rbno);
 				replyList.get(i).setRlikeCheck(relikeCheck);
 			}
 		}
@@ -141,7 +141,7 @@ public class BoardService {
 				reList.get(i).setRrec(relikecount);
 				if(loginNickname != null) {
 					//SELECT Rlname FROM REPLYLIKE WHERE RLNUM = #{rno} AND Rlname = #{loginNickname};
-					String rlikeCheck = bdao.selectReplyLikeCheck(rno, loginNickname);
+					String rlikeCheck = bdao.selectReplyLikeCheck(rno, loginNickname, rbno);
 					reList.get(i).setRlikeCheck(rlikeCheck);
 				}			
 			}
@@ -183,9 +183,10 @@ public class BoardService {
 
 
 
-		public int replyDelete(int rno) {
+		public int replyDelete(int rno, int rbno) {
 			System.out.println("BoardService replyDelete()");
-			int deleteResult = bdao.deleteReply(rno);
+			int deletelikeResult = bdao.deletereplylike(rno, rbno);
+			int deleteResult = bdao.deleteReply(rno, rbno);
 			return deleteResult;
 		}
 		
@@ -201,20 +202,20 @@ public class BoardService {
 			return gson.toJson(likeInfo_json);
 		}
 
-		public String replyLike(int rlno, String rlname) {
+		public String replyLike(int rlno, String rlname, int rlbno) {
 			System.out.println("BoardService replyLike()");
 			Gson gson = new Gson();
 			JsonObject replyLike_json = new JsonObject();
 			//1. 추천유무 확인
-			String likeCheck = bdao.selectReplyLikeCheck(rlno, rlname);
+			String likeCheck = bdao.selectReplyLikeCheck(rlno, rlname, rlbno);
 			
 			if(likeCheck == null) {
 				System.out.println("댓글 추천 입력");
-				bdao.insertReplyLike(rlno, rlname);
+				bdao.insertReplyLike(rlno, rlname, rlbno);
 				replyLike_json.addProperty("likeResult", "1");
 			} else {
 				System.out.println("추천 취소");
-				bdao.deleteReplyLike(rlno, rlname);
+				bdao.deleteReplyLike(rlno, rlname, rlbno);
 				replyLike_json.addProperty("likeResult", "-1");
 			}
 			
