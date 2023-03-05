@@ -178,5 +178,38 @@ public class MemberController {
 		}
 		return mav;
 	}
+	
+	@RequestMapping(value = "/MemberInfoForm")
+	public ModelAndView MemberInfoForm() {
+		System.out.println("회원정보 페이지 이동 요청");
+		ModelAndView mav = new ModelAndView();
+//		mav.setViewName("Member/JoinForm");
+		mav.setViewName("redirect:/");
+		return mav;
+	}
+	
+	@RequestMapping(value = "/MemberInfoModify")
+	public ModelAndView MemberInfoModify(String mname,String mpw) {
+		System.out.println("회원정보수정 요청");
+		System.out.println("수정할 닉네임 : "  + mname);
+		System.out.println("수정할 비밀번호 : "  + mpw);
+		ModelAndView mav = new ModelAndView();
+		// service 작업
+		
+		mav.setViewName("redirect:/");
+		return mav;
+	}
+	
+	@RequestMapping(value = "/MemberInfoWithdrawal")
+	public ModelAndView MemberInfoWithdrawal(String mname,String memail) {
+		System.out.println("회원정보 삭제 요청");
+		System.out.println("삭제할 닉네임 : "  + mname);
+		System.out.println("삭제할 이메일 : "  + memail);
+		ModelAndView mav = new ModelAndView();
+		// service 작업
+		
+		mav.setViewName("redirect:/");
+		return mav;
+	}
 
 }
