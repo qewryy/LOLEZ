@@ -52,7 +52,7 @@ public class RiotController {
 		SummonerDto Sresult = ssvc.summoneserch(summoneName, apiKey);
 
 		if (Sresult != null) {
-			if (Sresult.getMessage() != null) {
+			if (Sresult.getName() == null) {
 				System.out.println("404 에러 페이지 이동");
 				mav.setViewName("redirect:/");
 
@@ -174,6 +174,7 @@ public class RiotController {
 					
 					System.out.println("매치 정보 검색 정상 처리 완료");
 
+					mav.setViewName("record/RecordPage");
 				} else {
 					System.out.println("오류가 발생했습니다.");
 					mav.setViewName("redirect:/");
@@ -183,7 +184,6 @@ public class RiotController {
 			}
 			
 
-			mav.setViewName("record/RecordPage");
 		} else {
 			System.out.println("오류가 발생했습니다.");
 			mav.setViewName("redirect:/");
