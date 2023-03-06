@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!doctype html>
 <html class="no-js" lang="zxx">
 <head>
@@ -69,7 +70,7 @@
                                     <nav> 
                                         <ul id="navigation">                                                                                          
                                             <li><a href="${pageContext.request.contextPath }/">홈</a></li>
-                                            <li><a href="about.html">챔피언 분석</a></li>
+                                           <!-- <li><a href="about.html">챔피언 분석</a></li>
                                             <li><a href="services.html">통계</a></li>
                                             <li><a href="blog.html">랭킹</a>
                                             <li><a href="${pageContext.request.contextPath }/testPage_OF_record">전적페이지 테스트 창</a>
@@ -77,15 +78,22 @@
                                                     <li><a href="blog.html">Blog</a></li>
                                                     <li><a href="blog_details.html">Blog Details</a></li>
                                                     <li><a href="elements.html">Element</a></li>
-                                                </ul> -->
-                                            </li>
-                                            <li><a href="${pageContext.request.contextPath }/boardList">커뮤니티</a></li>
+                                                </ul> 
+                                            </li> -->
+                                            <li><a href="${pageContext.request.contextPath }/boardList">커뮤니티</a></li> 
                                         </ul>
                                     </nav>
                                 </div>
                                 <!-- Header-btn -->
                                 <div class="header-right-btn d-none d-lg-block ml-20">
-                                    <a href="${pageContext.request.contextPath }/LoginForm" class="btn header-btn">로그인</a>
+                                <c:choose>
+										<c:when test="${board.bwriter == sessionScope.loginNickname }">
+                                  			  <a href="${pageContext.request.contextPath }/LoginForm" class="btn header-btn">로그인</a>
+										</c:when>
+										<c:otherwise>
+                                  			  <a href="${pageContext.request.contextPath }/Logout" class="btn header-btn">로그아웃</a>
+										</c:otherwise>
+									</c:choose>
                                 </div>
                             </div>
                         </div> 
@@ -137,10 +145,6 @@
    <%@ include file="/WEB-INF/views/includes/footer.jsp"%>
     <!-- Footer End-->
 </footer>
-<!-- Scroll Up -->
-<div id="back-top" >
-    <a title="Go to Top" href="#"> <i class="fas fa-level-up-alt"></i></a>
-</div>
 
     <!-- JS here -->
 
