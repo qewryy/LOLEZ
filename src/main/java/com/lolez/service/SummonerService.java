@@ -43,7 +43,6 @@ public class SummonerService {
 		// gson을 Dto객체에 담기
 		
 		String summonerid = summoner.getId();
-
 		if (summoner.getName() == null) {
 			System.out.println("존재하지 않는 소환자 입니다.");
 			//에러 메세지 전송

@@ -7,5 +7,6 @@ public class MatchDto {
 
 	private MetadataDto metadata;
 	private InfoDto info;
+
 	
 }

@@ -41,7 +41,7 @@ public class RiotController {
 	@Autowired
 	private SpectatorService spsvc;
 
-	private String apiKey = "RGAPI-52b277af-c08d-4373-b63c-5f5c1277a6dc";
+	private String apiKey = "RGAPI-ae61f882-33c5-427a-817e-390b1320e5c8";
 
 	@RequestMapping(value = "/SummoneSerch")
 	public ModelAndView SummoneSerch(String summoneName) throws Exception {
@@ -170,6 +170,7 @@ public class RiotController {
 					
 					
 					session.setAttribute("MatchList", Mresult); 
+					session.setAttribute("Listcount", Mresult.size()); 
 					
 					
 					System.out.println("매치 정보 검색 정상 처리 완료");
@@ -335,6 +336,8 @@ public class RiotController {
 		System.out.println("리그 정보로 최근 " + (j * 5 - 5) + "~" + (j * 5) + "게임 정보 검색 요청");
 
 		ArrayList<MatchDto> Mresult = msvc.matchserch(Sresult, apiKey, j); 
+		session.setAttribute("MatchList", Mresult); 
+		session.setAttribute("Listcount", Mresult.size()); 
 		return Mresult; 
 	}
 

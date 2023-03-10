@@ -39,7 +39,7 @@ public class EmailService {
 
 		messageHelper.setFrom("loleasy2023@gmail.com"); // 보내는사람 생략하거나 하면 정상작동을 안함
 		messageHelper.setTo(email); // 받는사람 이메일
-		messageHelper.setSubject("회원가입 이메일 인증 안내"); // 메일제목은 생략이 가능하다
+		messageHelper.setSubject("회원가입 이메일 인증 안내"); 
 		messageHelper.setText(contect, true); // 메일 내용
 
 		mailSender.send(message);

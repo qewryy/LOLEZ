@@ -212,7 +212,7 @@
 								<h1 class="summoner-name">${Summoner.name}</h1>
 							</div>
 							<div class="buttons">
-								<button class="css-4e9tnt eapd0am1">전적 갱신</button>
+								<button class="css-4e9tnt eapd0am1" onclick="location.reload()">전적 갱신</button>
 							</div>
 							<div class="last-update">
 								<div class="" style="position: relative;">최근 업데이트: 5분 전</div>
@@ -321,11 +321,9 @@
 				</c:if>
 
 
-				<div class="css-e9xk5o e1g7spwk3">
+				 <!-- <div class="css-e9xk5o e1g7spwk3">
 					<ul>
-						<!-- 						<li class="css-1lteyi9 e1g7spwk2"><button>S2023 전체</button></li> -->
 						<li class="css-s6qg8 e1g7spwk2"><button>솔로랭크</button></li>
-						<!-- 						<li class="css-s6qg8 e1g7spwk2"><button>자유랭크</button></li> -->
 					</ul>
 					<div>
 						<div class="champion-box">
@@ -504,7 +502,7 @@
 							</div>
 						</div>
 					</div>
-				</div>
+				</div> -->
 			</div>
 			<div class="css-150oaqg e1shm8tx0">
 				<div class="css-jizu2z emr8enm3">
@@ -700,7 +698,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="champions">
+					<%-- <div class="champions">
 						<div class="title">플레이한 챔피언 (최근 ${MatchList.size()}게임)</div>
 						<ul class="">
 							<li><img
@@ -734,7 +732,7 @@
 								</div>
 								<div class="css-18ljion ehasqiv1">1.82 평점</div></li>
 						</ul>
-					</div>
+					</div> --%>
 					<div class="positions">
 						<div class="title">선호 포지션 (랭크)</div>
 						
@@ -798,6 +796,8 @@
 
 
 					<c:forEach begin="0" end="${MatchList.size()-1}" var="i">
+					<c:if test="${MatchList.get(i).getInfo().getParticipants().size() >= 10}">
+														
 						<!-- 20개의 전적을 반복문으로  수행 -->
 						<c:forEach begin="0" end="${MatchList.get(i).getInfo().getParticipants().size()- 1}"	var="MIP_I">
 							<!-- 20개의 전적중 각 판마다 의 게임 인원 10명 (0~9) 근거로 수행  -->
@@ -868,8 +868,14 @@
 													<div class="game">
 														<div class="type">
 															<c:choose>
+																<c:when test="${empty Gametype}">
+																사용자 설정 게임
+																
+																</c:when>
+															
 																<c:when test="${Gametype == 420 }">
 																솔로 랭크
+																
 																
 																</c:when>
 
@@ -1521,7 +1527,7 @@
 														<!-- 해당게임의 존재한 플레이어 목록 5:5 기준 총 10명 -->
 
 														<ul>
-
+														
 															<c:forEach begin="0" end="${MatchList.get(i).getInfo().getParticipants().size()- 6}"
 																var="member">
 																<c:set var="ChampionNameMember"	value="${MatchList.get(i).getInfo().getParticipants().get(member).getChampionName()}" />
@@ -1600,13 +1606,13 @@
 													</div>
 												</div>
 											</div>
-											<div class="action">
+											<!-- <div class="action">
 												<button class="detail">
 													<img
 														src="https://s-lol-web.op.gg/images/icon/icon-arrow-down-blue.svg?v=1676969392397"
 														width="24" alt="More" height="24">
 												</button>
-											</div>
+											</div> -->
 										</div></li>
 
 
@@ -2383,23 +2389,25 @@
 													</div>
 												</div>
 											</div>
-											<div class="action">
+											<!-- <div class="action">
 												<button class="detail">
 													<img
 														src="https://s-lol-web.op.gg/images/icon/icon-arrow-down-red.svg?v=1675751623266"
 														width="24" alt="More" height="24">
 												</button>
-											</div>
+											</div> --> <!-- 더 보기 란 -->
 										</div></li>
 
 								</c:if>
 
 							</c:if>
 						</c:forEach>
-
+					</c:if>
 					</c:forEach>
 				</div>
-				<button class="more">더 보기</button>
+				<c:if test="${Listcount == 5 }">
+				<button class="more" onclick="more_ajax()">더 보기</button>
+				</c:if>
 			</div>
 		</div>
 	</div>
@@ -2639,6 +2647,32 @@
 		var result_of_DuoList = Math.round(WinDuo / (WinDuo + lossesDuo) * 100);
 		document.getElementById('winning_rate_of_DuoList').innerText = "승률 "
 				+ result_of_DuoList + "%";
+		
+		var count = 0;
+		
+		function more_ajax() {
+				$.ajax({
+					type : "get",
+					url : "${pageContext.request.contextPath }/Matchrenewal",
+					data : {
+						"Sresult" : #{Summoner },
+						"j" : count
+					},
+					async : false,
+					dataType : "json",
+					success : function(result) {
+						
+						
+						
+						
+						
+
+					}
+				});
+				
+				count++;
+				
+		}
 
 	}
 </script>

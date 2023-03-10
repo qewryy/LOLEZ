@@ -31,12 +31,12 @@ public class HomeController {
 		if(i) {
 			 // 애플리케이션 시작 시 출석체크 초기화 로직 구현
 			int ur = msvc.updatedaily(0);
-	    	if(ur != 1) {
+	    	if(ur < 1) {
 				System.out.println("일일 출석 초기화에 오류가 발생했습니다.");
 			}else {
 				System.out.println("정상적으로 처리되었습니다.");
-				i = false;
 			}
+	    	i = false;
 		}
 		return "index";
 	}

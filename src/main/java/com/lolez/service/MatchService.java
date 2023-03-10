@@ -58,28 +58,46 @@ public class MatchService {
 			String matchId = null;
 			for (String fm : matchIdList) {
 
-				matchId = mdao.selectmatchId(fm);
+//				matchId = mdao.selectmatchId(fm);
 
-				if (!(fm.equals(matchId))) {
-
-					httpClient = HttpClients.createDefault();
-
-					url = "https://asia.api.riotgames.com/lol/match/v5/matches/" + fm;
-
-					request = new HttpGet(url);
-
-					request.addHeader("X-Riot-Token", apiKey);
-
-					response = httpClient.execute(request);
-
-					responseJson = EntityUtils.toString(response.getEntity());
-
-					gson = new Gson();
-
-					MatchDto match = gson.fromJson(responseJson, MatchDto.class);
-					match.getInfo().setGameEndTimestampex(match.getInfo().getGameEndTimestamp() / 1000L);
-					if (match.getMetadata() != null && match.getInfo() != null) {
-						System.out.println("게임 정보 불러오기 성공 : " + match.getMetadata().getMatchId());
+				httpClient = HttpClients.createDefault();
+				
+				url = "https://asia.api.riotgames.com/lol/match/v5/matches/" + fm;
+				
+				request = new HttpGet(url);
+				
+				request.addHeader("X-Riot-Token", apiKey);
+				
+				response = httpClient.execute(request);
+				
+				responseJson = EntityUtils.toString(response.getEntity());
+				
+				gson = new Gson();
+				
+				MatchDto match = gson.fromJson(responseJson, MatchDto.class);
+				match.getInfo().setGameEndTimestampex(match.getInfo().getGameEndTimestamp() / 1000L);
+				matches.add(match);
+				System.out.println("게임 정보 불러오기 성공 : " + match.getMetadata().getMatchId());
+//				if (!(fm.equals(matchId))) {
+//
+//					httpClient = HttpClients.createDefault();
+//
+//					url = "https://asia.api.riotgames.com/lol/match/v5/matches/" + fm;
+//
+//					request = new HttpGet(url);
+//
+//					request.addHeader("X-Riot-Token", apiKey);
+//
+//					response = httpClient.execute(request);
+//
+//					responseJson = EntityUtils.toString(response.getEntity());
+//
+//					gson = new Gson();
+//
+//					MatchDto match = gson.fromJson(responseJson, MatchDto.class);
+//					match.getInfo().setGameEndTimestampex(match.getInfo().getGameEndTimestamp() / 1000L);
+//					if (match.getMetadata() != null && match.getInfo() != null) {
+//						System.out.println("게임 정보 불러오기 성공 : " + match.getMetadata().getMatchId());
 						
 						/*
 						 * System.out.println("\nDB에 Metadata Insert 실행"); String combined =
@@ -220,35 +238,36 @@ public class MatchService {
 						 * } else { System.out.println("Metadata DB Insert 실패"); return null; }
 						 */
 
-					} else {
-						System.out.println("게임 상세내용 불러오기 실패 : " + match.getMetadata().getMatchId());
-					}
-					matches.add(match);
-				} else {
-					System.out.println("이미 등록된 Match 입니다 : " + fm);
-					
-					httpClient = HttpClients.createDefault();
-
-					url = "https://asia.api.riotgames.com/lol/match/v5/matches/" + fm;
-
-					request = new HttpGet(url);
-
-					request.addHeader("X-Riot-Token", apiKey);
-
-					response = httpClient.execute(request);
-
-					responseJson = EntityUtils.toString(response.getEntity());
-
-					gson = new Gson();
-
-					MatchDto match = gson.fromJson(responseJson, MatchDto.class);
-					match.getInfo().setGameEndTimestampex(match.getInfo().getGameEndTimestamp() / 1000L);
-					matches.add(match);
-				}
+//					} else {
+//						System.out.println("게임 상세내용 불러오기 실패 : " + match.getMetadata().getMatchId());
+//					}
+//					matches.add(match);
+//				} else {
+//					System.out.println("이미 등록된 Match 입니다 : " + fm);
+//					
+//					httpClient = HttpClients.createDefault();
+//
+//					url = "https://asia.api.riotgames.com/lol/match/v5/matches/" + fm;
+//
+//					request = new HttpGet(url);
+//
+//					request.addHeader("X-Riot-Token", apiKey);
+//
+//					response = httpClient.execute(request);
+//
+//					responseJson = EntityUtils.toString(response.getEntity());
+//
+//					gson = new Gson();
+//
+//					MatchDto match = gson.fromJson(responseJson, MatchDto.class);
+//					match.getInfo().setGameEndTimestampex(match.getInfo().getGameEndTimestamp() / 1000L);
+//					matches.add(match);
+//				}
 			}
 
 			return matches;
 		}
+		
 		
 		
 		

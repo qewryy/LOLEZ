@@ -76,6 +76,7 @@ public class BoardService {
 	public int boardLikeCount(int viewBno) {
 		System.out.println("BoardService boardLike()");
 		int likeCount = bdao.selectLikeCount(viewBno);
+		
 		return likeCount;
 	}
 
@@ -109,6 +110,8 @@ public class BoardService {
 		Gson gson = new Gson();
 		JsonObject boardLike_json = new JsonObject();
 
+		
+		
 		// 1. 추천유무 확인
 		String likeName = bdao.selectLikeCheck(lbno, lname);
 
@@ -126,6 +129,13 @@ public class BoardService {
 		int likeCount = bdao.selectLikeCount(lbno);
 		boardLike_json.addProperty("likeCount", likeCount);
 
+		int updatelike = bdao.updateLikeCount(lbno, likeCount);
+		if(updatelike != 1) {
+			System.out.println("추천수 업데이트에 오류가 발생했습니다.");
+		}else {
+			System.out.println(lbno + "번 게시글의 추천수가 업데이트 되었습니다.");
+		}
+		
 		System.out.println(gson.toJson(boardLike_json));
 		return gson.toJson(boardLike_json);
 	}

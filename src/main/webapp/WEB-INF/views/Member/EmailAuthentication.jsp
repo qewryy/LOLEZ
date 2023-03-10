@@ -65,7 +65,7 @@
 								<button type="button" class="member-button link-button"
 									style="position: relative; color: #1ea1f7; text-decoration: underline; padding: 0; background-color: transparent; border: 0; margin-left: 12px;">다시
 									보내기</button>
-								<a href="${pageContext.request.contextPath }/done"
+								<%-- <a href="${pageContext.request.contextPath }/done"
 									class="member-button link-button" target="_blank"
 									style="position: relative; color: #1ea1f7; text-decoration: underline; padding: 0; background-color: transparent; border: 0; margin-left: 12px;">테스트
 									done</a> <a
@@ -76,7 +76,7 @@
 									href="${pageContext.request.contextPath }/error"
 									class="member-button link-button"
 									style="position: relative; color: #1ea1f7; text-decoration: underline; padding: 0; background-color: transparent; border: 0; margin-left: 12px;">테스트
-									error</a>
+									error</a> --%>
 							</div>
 						</div>
 					</div>

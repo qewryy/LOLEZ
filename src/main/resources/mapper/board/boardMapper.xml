@@ -95,5 +95,10 @@
 		AND RLNAME = #{rlname} AND RLBNO = #{rlbno}
 	</delete>
 	
+	<update id="updateLikeCount" parameterType="int">
+		UPDATE BOARDS SET
+		BREC = #{count} WHERE BNO = #{bno}
+	</update>
+	
 	
 </mapper> 

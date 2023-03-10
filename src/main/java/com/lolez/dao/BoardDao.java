@@ -50,5 +50,7 @@ public interface BoardDao {
 
 	int deletereplylike(@Param("rno") int rno,@Param("rbno")  int rbno);
 
+	int updateLikeCount(@Param("bno")int lbno,@Param("count") int likeCount);
+
 	
 }

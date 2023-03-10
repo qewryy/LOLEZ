@@ -46,10 +46,10 @@
 							LOL.EZ</h1>
 						<div class="login">
 
-								<h2 class="login__fb-title h2_mg0">간편 로그인</h2>
+								<h2 class="login__fb-title h2_mg0">이메일 로그인</h2>
 								<!-- 간편로그인 표시부  -->
-
-								<!-- 페이스북 버튼 시작 -->
+<!-- 
+								페이스북 버튼 시작
 								<button type="button" style="background-color: #3c5a99;"
 									class="member-button facebook-button login__fb-btn">
 									<span class="facebook-button__inner"><img
@@ -58,9 +58,9 @@
 										alt="facebook"><span class="facebook-button__txt">페이스북으로
 											로그인</span></span>
 								</button>
-								<!-- 페이스북 버튼 종료 -->
+								페이스북 버튼 종료
 
-								<!-- 애플 버튼 시작 -->
+								애플 버튼 시작
 								<button type="button" style="background-color: #212529;"
 									class="member-button apple-button login__apple-btn">
 									<span class="apple-button__inner"><img
@@ -68,17 +68,16 @@
 										class="apple-button__img" width="24" height="24" alt="apple"><span
 										class="apple-button__txt">Apple로 로그인</span></span>
 								</button>
-								<!-- 애플 버튼 종료 -->
-
+								애플 버튼 종료
+ -->
 							<form  action="${pageContext.request.contextPath }/memberLogin" 
 							onsubmit="return LoginFormCheck(this)" method="post">
 
-								<div class="login__l-or" style="">OR</div>
+								<div class="login__l-or" style="">E-MAIL</div>
 								<!--로그인 경계부   -->
 
 
 								<!--로그인 (이메일 시작부분)   -->
-								<h2 class="login__email-title h2_mg0">이메일 로그인</h2>
 								<div class="member-input">
 									<div class="member-input__state">
 										<input id="inputEmail" class="member-input__box" type="text"
@@ -93,7 +92,7 @@
 											style="border: 0; padding: 0"> <span id="PwMsg"></span>
 									</div>
 								</div>
-								<div class="login__l">
+							<!-- 	<div class="login__l">
 									<div class="login__checkbox">
 										<div class="member-checkbox">
 											<span class="member-checkbox__state"><input
@@ -107,7 +106,7 @@
 										잊으셨나요?</a></span>
 										</div>
 									</div>
-								</div>
+								</div> -->
 								<button type="submit" class="member-button login__btn"
 									style="margin-top: 40px; width: 100%;">로그인</button>
 
