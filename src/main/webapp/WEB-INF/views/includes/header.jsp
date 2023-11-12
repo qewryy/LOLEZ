@@ -60,7 +60,7 @@
                                 <!-- Header-btn -->
                                 <div class="header-right-btn d-none d-lg-block ml-20">
                                 <c:choose>
-										<c:when test="${board.bwriter == sessionScope.loginNickname }">
+										<c:when test="${sessionScope.loginNickname == null }">
                                   			  <a href="${pageContext.request.contextPath }/LoginForm" class="btn header-btn">로그인</a>
 										</c:when>
 										<c:otherwise>

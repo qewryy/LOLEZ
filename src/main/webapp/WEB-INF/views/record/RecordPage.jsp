@@ -201,7 +201,7 @@
 					<div class="header-profile-info">
 						<div class="profile-icon">
 							<img
-								src="http://ddragon.leagueoflegends.com/cdn/13.3.1/img/profileicon/${Summoner.profileIconId}.png"
+								src="http://ddragon.leagueoflegends.com/cdn/13.22.1/img/profileicon/${Summoner.profileIconId}.png"
 								alt="profile image">
 							<div class="level">
 								<span class="level">${Summoner.summonerLevel}</span>
@@ -263,8 +263,7 @@
 						<div class="header">솔로랭크</div>
 						<div class="contents">
 							<div class="" style="position: relative;">
-								<img id="tierImg_of_SoloList" src="" width="72"
-									alt="${SoloList.tier }">
+							<img id="tierImg_of_SoloList" src="https://opgg-static.akamaized.net/images/medals_new/${SoloList.tier}.png?image=q_auto,f_webp,w_144&v=1699604245072" width="72" alt="${SoloList.tier}">
 							</div>
 							<div class="info">
 								<div class="tier">${SoloList.tier}${SoloList.rank}</div>
@@ -1002,14 +1001,14 @@
 																		rel="noreferrer"> <c:choose>
 																			<c:when test="${ChampionNamew eq FiddleSticks}">
 																				<img
-																					src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/champion/${Fiddlesticks_s }.png"
+																					src="http://ddragon.leagueoflegends.com/cdn/13.22.1/img/champion/${Fiddlesticks_s }.png"
 																					width="48" alt="제리" height="48">
 
 																			</c:when>
 
 																			<c:otherwise>
 																				<img
-																					src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/champion/${ChampionNamew }.png"
+																					src="http://ddragon.leagueoflegends.com/cdn/13.22.1/img/champion/${ChampionNamew }.png"
 																					width="48" alt="제리" height="48">
 
 																			</c:otherwise>
@@ -1029,77 +1028,77 @@
 																			<c:choose>
 																				<c:when test="${spC1 eq 1}">
 																					<img
-																						src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerBoost.png"
+																						src="http://ddragon.leagueoflegends.com/cdn/13.22.1/img/spell/SummonerBoost.png"
 																						width="22" alt="정화" height="22">
 
 																				</c:when>
 
 																				<c:when test="${spC1 eq 3}">
 																					<img
-																						src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerExhaust.png"
+																						src="http://ddragon.leagueoflegends.com/cdn/13.22.1/img/spell/SummonerExhaust.png"
 																						width="22" alt="탈진" height="22">
 
 																				</c:when>
 
 																				<c:when test="${spC1 eq 4}">
 																					<img
-																						src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerFlash.png"
+																						src="http://ddragon.leagueoflegends.com/cdn/13.22.1/img/spell/SummonerFlash.png"
 																						width="22" alt="점멸" height="22">
 
 																				</c:when>
 
 																				<c:when test="${spC1 eq 6}">
 																					<img
-																						src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerHaste.png"
+																						src="http://ddragon.leagueoflegends.com/cdn/13.22.1/img/spell/SummonerHaste.png"
 																						width="22" alt="유체화" height="22">
 
 																				</c:when>
 
 																				<c:when test="${spC1 eq 7}">
 																					<img
-																						src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerHeal.png"
+																						src="http://ddragon.leagueoflegends.com/cdn/13.22.1/img/spell/SummonerHeal.png"
 																						width="22" alt="치유" height="22">
 
 																				</c:when>
 
 																				<c:when test="${spC1 eq 11}">
 																					<img
-																						src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerSmite.png"
+																						src="http://ddragon.leagueoflegends.com/cdn/13.22.1/img/spell/SummonerSmite.png"
 																						width="22" alt="강타" height="22">
 
 																				</c:when>
 
 																				<c:when test="${spC1 eq 12}">
 																					<img
-																						src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerTeleport.png"
+																						src="http://ddragon.leagueoflegends.com/cdn/13.22.1/img/spell/SummonerTeleport.png"
 																						width="22" alt="순간이동" height="22">
 
 																				</c:when>
 
 																				<c:when test="${spC1 eq 13}">
 																					<img
-																						src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerMana.png"
+																						src="http://ddragon.leagueoflegends.com/cdn/13.22.1/img/spell/SummonerMana.png"
 																						width="22" alt="총명" height="22">
 
 																				</c:when>
 
 																				<c:when test="${spC1 eq 14}">
 																					<img
-																						src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerDot.png"
+																						src="http://ddragon.leagueoflegends.com/cdn/13.22.1/img/spell/SummonerDot.png"
 																						width="22" alt="점화" height="22">
 
 																				</c:when>
 
 																				<c:when test="${spC1 eq 21}">
 																					<img
-																						src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerBarrier.png"
+																						src="http://ddragon.leagueoflegends.com/cdn/13.22.1/img/spell/SummonerBarrier.png"
 																						width="22" alt="방어막" height="22">
 
 																				</c:when>
 
 																				<c:when test="${spC1 eq 32}">
 																					<img
-																						src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerSnowball.png"
+																						src="http://ddragon.leagueoflegends.com/cdn/13.22.1/img/spell/SummonerSnowball.png"
 																						width="22" alt="표식" height="22">
 
 																				</c:when>
@@ -1115,77 +1114,77 @@
 																			<c:choose>
 																				<c:when test="${spC2 eq 1}">
 																					<img
-																						src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerBoost.png"
+																						src="http://ddragon.leagueoflegends.com/cdn/13.22.1/img/spell/SummonerBoost.png"
 																						width="22" alt="정화" height="22">
 
 																				</c:when>
 
 																				<c:when test="${spC2 eq 3}">
 																					<img
-																						src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerExhaust.png"
+																						src="http://ddragon.leagueoflegends.com/cdn/13.22.1/img/spell/SummonerExhaust.png"
 																						width="22" alt="탈진" height="22">
 
 																				</c:when>
 
 																				<c:when test="${spC2 eq 4}">
 																					<img
-																						src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerFlash.png"
+																						src="http://ddragon.leagueoflegends.com/cdn/13.22.1/img/spell/SummonerFlash.png"
 																						width="22" alt="점멸" height="22">
 
 																				</c:when>
 
 																				<c:when test="${spC2 eq 6}">
 																					<img
-																						src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerHaste.png"
+																						src="http://ddragon.leagueoflegends.com/cdn/13.22.1/img/spell/SummonerHaste.png"
 																						width="22" alt="유체화" height="22">
 
 																				</c:when>
 
 																				<c:when test="${spC2 eq 7}">
 																					<img
-																						src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerHeal.png"
+																						src="http://ddragon.leagueoflegends.com/cdn/13.22.1/img/spell/SummonerHeal.png"
 																						width="22" alt="치유" height="22">
 
 																				</c:when>
 
 																				<c:when test="${spC2 eq 11}">
 																					<img
-																						src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerSmite.png"
+																						src="http://ddragon.leagueoflegends.com/cdn/13.22.1/img/spell/SummonerSmite.png"
 																						width="22" alt="강타" height="22">
 
 																				</c:when>
 
 																				<c:when test="${spC2 eq 12}">
 																					<img
-																						src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerTeleport.png"
+																						src="http://ddragon.leagueoflegends.com/cdn/13.22.1/img/spell/SummonerTeleport.png"
 																						width="22" alt="순간이동" height="22">
 
 																				</c:when>
 
 																				<c:when test="${spC2 eq 13}">
 																					<img
-																						src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerMana.png"
+																						src="http://ddragon.leagueoflegends.com/cdn/13.22.1/img/spell/SummonerMana.png"
 																						width="22" alt="총명" height="22">
 
 																				</c:when>
 
 																				<c:when test="${spC2 eq 14}">
 																					<img
-																						src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerDot.png"
+																						src="http://ddragon.leagueoflegends.com/cdn/13.22.1/img/spell/SummonerDot.png"
 																						width="22" alt="점화" height="22">
 
 																				</c:when>
 
 																				<c:when test="${spC2 eq 21}">
 																					<img
-																						src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerBarrier.png"
+																						src="http://ddragon.leagueoflegends.com/cdn/13.22.1/img/spell/SummonerBarrier.png"
 																						width="22" alt="방어막" height="22">
 
 																				</c:when>
 
 																				<c:when test="${spC2 eq 32}">
 																					<img
-																						src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerSnowball.png"
+																						src="http://ddragon.leagueoflegends.com/cdn/13.22.1/img/spell/SummonerSnowball.png"
 																						width="22" alt="표식" height="22">
 
 																				</c:when>
@@ -1463,7 +1462,7 @@
 
 																			<li><div class="" style="position: relative;">
 																					<img
-																						src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/item/${Item_i}.png"
+																						src="http://ddragon.leagueoflegends.com/cdn/13.22.1/img/item/${Item_i}.png"
 																						width="22" alt="${item_i}" height="22">
 																				</div></li>
 
@@ -1481,7 +1480,7 @@
 																<div class="ward">
 																	<div class="" style="position: relative;">
 																		<img
-																			src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/item/${item6_win }.png"
+																			src="http://ddragon.leagueoflegends.com/cdn/13.22.1/img/item/${item6_win }.png"
 																			width="22" alt="${item6_win}" height="22">
 																	</div>
 																</div>
@@ -1538,13 +1537,13 @@
 																		<c:choose>
 																			<c:when test="${ChampionNameMember ==  FiddleSticks}">
 																				<img
-																					src="https://ddragon.leagueoflegends.com/cdn/13.4.1/img/champion/${ FiddleSticks_s}.png"
+																					src="https://ddragon.leagueoflegends.com/cdn/13.22.1/img/champion/${ FiddleSticks_s}.png"
 																					width="16" alt="${ FiddleSticks_s}" height="16">
 																			</c:when>
 
 																			<c:otherwise>
 																				<img
-																					src="https://ddragon.leagueoflegends.com/cdn/13.4.1/img/champion/${ ChampionNameMember}.png"
+																					src="https://ddragon.leagueoflegends.com/cdn/13.22.1/img/champion/${ ChampionNameMember}.png"
 																					width="16" alt="${ ChampionNameMember}" height="16">
 
 
@@ -1578,13 +1577,13 @@
 																			<c:when
 																				test="${ChampionNameMember_two ==  FiddleSticks}">
 																				<img
-																					src="https://ddragon.leagueoflegends.com/cdn/13.4.1/img/champion/${ FiddleSticks_s}.png"
+																					src="https://ddragon.leagueoflegends.com/cdn/13.22.1/img/champion/${ FiddleSticks_s}.png"
 																					width="16" alt="${ FiddleSticks_s}" height="16">
 																			</c:when>
 
 																			<c:otherwise>
 																				<img
-																					src="https://ddragon.leagueoflegends.com/cdn/13.4.1/img/champion/${ ChampionNameMember_two}.png"
+																					src="https://ddragon.leagueoflegends.com/cdn/13.22.1/img/champion/${ ChampionNameMember_two}.png"
 																					width="16" alt="${ ChampionNameMember_two}"
 																					height="16">
 
@@ -1804,14 +1803,14 @@
 																		rel="noreferrer"> <c:choose>
 																			<c:when test="${ChampionName eq FiddleSticks}">
 																				<img
-																					src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/champion/${Fiddlesticks_s }.png"
+																					src="http://ddragon.leagueoflegends.com/cdn/13.22.1/img/champion/${Fiddlesticks_s }.png"
 																					width="48" alt="제리" height="48">
 
 																			</c:when>
 
 																			<c:otherwise>
 																				<img
-																					src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/champion/${ChampionName }.png"
+																					src="http://ddragon.leagueoflegends.com/cdn/13.22.1/img/champion/${ChampionName }.png"
 																					width="48" alt="제리" height="48">
 
 																			</c:otherwise>
@@ -1828,77 +1827,77 @@
 																			<c:choose>
 																				<c:when test="${spC1_L eq 1}">
 																					<img
-																						src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerBoost.png"
+																						src="http://ddragon.leagueoflegends.com/cdn/13.22.1/img/spell/SummonerBoost.png"
 																						width="22" alt="정화" height="22">
 
 																				</c:when>
 
 																				<c:when test="${spC1_L eq 3}">
 																					<img
-																						src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerExhaust.png"
+																						src="http://ddragon.leagueoflegends.com/cdn/13.22.1/img/spell/SummonerExhaust.png"
 																						width="22" alt="탈진" height="22">
 
 																				</c:when>
 
 																				<c:when test="${spspC1_LC1 eq 4}">
 																					<img
-																						src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerFlash.png"
+																						src="http://ddragon.leagueoflegends.com/cdn/13.22.1/img/spell/SummonerFlash.png"
 																						width="22" alt="점멸" height="22">
 
 																				</c:when>
 
 																				<c:when test="${spC1_L eq 6}">
 																					<img
-																						src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerHaste.png"
+																						src="http://ddragon.leagueoflegends.com/cdn/13.22.1/img/spell/SummonerHaste.png"
 																						width="22" alt="유체화" height="22">
 
 																				</c:when>
 
 																				<c:when test="${spC1_L eq 7}">
 																					<img
-																						src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerHeal.png"
+																						src="http://ddragon.leagueoflegends.com/cdn/13.22.1/img/spell/SummonerHeal.png"
 																						width="22" alt="치유" height="22">
 
 																				</c:when>
 
 																				<c:when test="${spC1_L eq 11}">
 																					<img
-																						src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerSmite.png"
+																						src="http://ddragon.leagueoflegends.com/cdn/13.22.1/img/spell/SummonerSmite.png"
 																						width="22" alt="강타" height="22">
 
 																				</c:when>
 
 																				<c:when test="${spC1_L eq 12}">
 																					<img
-																						src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerTeleport.png"
+																						src="http://ddragon.leagueoflegends.com/cdn/13.22.1/img/spell/SummonerTeleport.png"
 																						width="22" alt="순간이동" height="22">
 
 																				</c:when>
 
 																				<c:when test="${spC1_L eq 13}">
 																					<img
-																						src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerMana.png"
+																						src="http://ddragon.leagueoflegends.com/cdn/13.22.1/img/spell/SummonerMana.png"
 																						width="22" alt="총명" height="22">
 
 																				</c:when>
 
 																				<c:when test="${spC1_L eq 14}">
 																					<img
-																						src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerDot.png"
+																						src="http://ddragon.leagueoflegends.com/cdn/13.22.1/img/spell/SummonerDot.png"
 																						width="22" alt="점화" height="22">
 
 																				</c:when>
 
 																				<c:when test="${spC1_L eq 21}">
 																					<img
-																						src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerBarrier.png"
+																						src="http://ddragon.leagueoflegends.com/cdn/13.22.1/img/spell/SummonerBarrier.png"
 																						width="22" alt="방어막" height="22">
 
 																				</c:when>
 
 																				<c:when test="${spC1_L eq 32}">
 																					<img
-																						src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerSnowball.png"
+																						src="http://ddragon.leagueoflegends.com/cdn/13.22.1/img/spell/SummonerSnowball.png"
 																						width="22" alt="표식" height="22">
 
 																				</c:when>
@@ -1913,77 +1912,77 @@
 																			<c:choose>
 																				<c:when test="${spC2_L eq 1}">
 																					<img
-																						src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerBoost.png"
+																						src="http://ddragon.leagueoflegends.com/cdn/13.22.1/img/spell/SummonerBoost.png"
 																						width="22" alt="정화" height="22">
 
 																				</c:when>
 
 																				<c:when test="${spC2_L eq 3}">
 																					<img
-																						src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerExhaust.png"
+																						src="http://ddragon.leagueoflegends.com/cdn/13.22.1/img/spell/SummonerExhaust.png"
 																						width="22" alt="탈진" height="22">
 
 																				</c:when>
 
 																				<c:when test="${spC2_L eq 4}">
 																					<img
-																						src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerFlash.png"
+																						src="http://ddragon.leagueoflegends.com/cdn/13.22.1/img/spell/SummonerFlash.png"
 																						width="22" alt="점멸" height="22">
 
 																				</c:when>
 
 																				<c:when test="${spC2_L eq 6}">
 																					<img
-																						src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerHaste.png"
+																						src="http://ddragon.leagueoflegends.com/cdn/13.22.1/img/spell/SummonerHaste.png"
 																						width="22" alt="유체화" height="22">
 
 																				</c:when>
 
 																				<c:when test="${spC2_L eq 7}">
 																					<img
-																						src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerHeal.png"
+																						src="http://ddragon.leagueoflegends.com/cdn/13.22.1/img/spell/SummonerHeal.png"
 																						width="22" alt="치유" height="22">
 
 																				</c:when>
 
 																				<c:when test="${spC2_L eq 11}">
 																					<img
-																						src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerSmite.png"
+																						src="http://ddragon.leagueoflegends.com/cdn/13.22.1/img/spell/SummonerSmite.png"
 																						width="22" alt="강타" height="22">
 
 																				</c:when>
 
 																				<c:when test="${spC2_L eq 12}">
 																					<img
-																						src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerTeleport.png"
+																						src="http://ddragon.leagueoflegends.com/cdn/13.22.1/img/spell/SummonerTeleport.png"
 																						width="22" alt="순간이동" height="22">
 
 																				</c:when>
 
 																				<c:when test="${spC2_L eq 13}">
 																					<img
-																						src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerMana.png"
+																						src="http://ddragon.leagueoflegends.com/cdn/13.22.1/img/spell/SummonerMana.png"
 																						width="22" alt="총명" height="22">
 
 																				</c:when>
 
 																				<c:when test="${spC2_L eq 14}">
 																					<img
-																						src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerDot.png"
+																						src="http://ddragon.leagueoflegends.com/cdn/13.22.1/img/spell/SummonerDot.png"
 																						width="22" alt="점화" height="22">
 
 																				</c:when>
 
 																				<c:when test="${spC2_L eq 21}">
 																					<img
-																						src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerBarrier.png"
+																						src="http://ddragon.leagueoflegends.com/cdn/13.22.1/img/spell/SummonerBarrier.png"
 																						width="22" alt="방어막" height="22">
 
 																				</c:when>
 
 																				<c:when test="${spC2_L eq 32}">
 																					<img
-																						src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/spell/SummonerSnowball.png"
+																						src="http://ddragon.leagueoflegends.com/cdn/13.22.1/img/spell/SummonerSnowball.png"
 																						width="22" alt="표식" height="22">
 
 																				</c:when>
@@ -2248,7 +2247,7 @@
 
 																			<li><div class="" style="position: relative;">
 																					<img
-																						src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/item/${Item_i_L}.png"
+																						src="http://ddragon.leagueoflegends.com/cdn/13.22.1/img/item/${Item_i_L}.png"
 																						width="22" alt="${Item_i_L}" height="22">
 																				</div></li>
 
@@ -2266,7 +2265,7 @@
 																<div class="ward">
 																	<div class="" style="position: relative;">
 																		<img
-																			src="http://ddragon.leagueoflegends.com/cdn/13.4.1/img/item/${item6_L}.png"
+																			src="http://ddragon.leagueoflegends.com/cdn/13.22.1/img/item/${item6_L}.png"
 																			width="22" alt="${item6_L }" height="22">
 																	</div>
 																</div>
@@ -2322,13 +2321,13 @@
 																			<c:when
 																				test="${ChampionNameMember_l ==  FiddleSticks}">
 																				<img
-																					src="https://ddragon.leagueoflegends.com/cdn/13.4.1/img/champion/${ FiddleSticks_s}.png"
+																					src="https://ddragon.leagueoflegends.com/cdn/13.22.1/img/champion/${ FiddleSticks_s}.png"
 																					width="16" alt="${ FiddleSticks_s}" height="16">
 																			</c:when>
 
 																			<c:otherwise>
 																				<img
-																					src="https://ddragon.leagueoflegends.com/cdn/13.4.1/img/champion/${ ChampionNameMember_l}.png"
+																					src="https://ddragon.leagueoflegends.com/cdn/13.22.1/img/champion/${ ChampionNameMember_l}.png"
 																					width="16" alt="${ ChampionNameMember_l}"
 																					height="16">
 
@@ -2361,13 +2360,13 @@
 																			<c:when
 																				test="${ChampionNameMember_l_two ==  FiddleSticks}">
 																				<img
-																					src="https://ddragon.leagueoflegends.com/cdn/13.4.1/img/champion/${ FiddleSticks_s}.png"
+																					src="https://ddragon.leagueoflegends.com/cdn/13.22.1/img/champion/${ FiddleSticks_s}.png"
 																					width="16" alt="${ FiddleSticks_s}" height="16">
 																			</c:when>
 
 																			<c:otherwise>
 																				<img
-																					src="https://ddragon.leagueoflegends.com/cdn/13.4.1/img/champion/${ ChampionNameMember_l_two}.png"
+																					src="https://ddragon.leagueoflegends.com/cdn/13.22.1/img/champion/${ ChampionNameMember_l_two}.png"
 																					width="16" alt="${ ChampionNameMember_l_two}"
 																					height="16">
 
@@ -2655,7 +2654,7 @@
 					type : "get",
 					url : "${pageContext.request.contextPath }/Matchrenewal",
 					data : {
-						"Sresult" : #{Summoner },
+						"Sresult" : ${Summoner },
 						"j" : count
 					},
 					async : false,

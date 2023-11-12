@@ -42,11 +42,11 @@
 			<div class="member-card-layout">
 				<div class="member-card-layout__container">
 					<div class="member-card-layout__inner">
-						<h1 class="member-card-layout__logo" style="font-size: xxx-large;">
-							LOL.EZ</h1>
+						<a href="${pageContext.request.contextPath }/"><h1 class="member-card-layout__logo" style="font-size: xxx-large;">
+							LOL.EZ</h1></a>
 						<div class="login">
 
-								<h2 class="login__fb-title h2_mg0">이메일 로그인</h2>
+								<h2 class="login__fb-title h2_mg0" style="text-align:center; font-size:2em;">이메일 로그인</h2>
 								<!-- 간편로그인 표시부  -->
 <!-- 
 								페이스북 버튼 시작

@@ -234,7 +234,11 @@
 		</div>
 
 	</main> --%>
-
+<footer>
+    <!--? Footer Start-->
+   <%@ include file="/WEB-INF/views/includes/footer.jsp"%>
+    <!-- Footer End-->
+</footer>
 
 	<!-- JS here -->
 

@@ -1,8 +1,10 @@
 package com.lolez.Leaguedto;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.ToString;
 
-@Data
+@Getter
+@ToString
 public class LeagueEntryDto {
 	
 	private String summonerId;
@@ -55,5 +57,79 @@ public class LeagueEntryDto {
 	public int convertBooleanToInt(boolean value) {
 		return value ? 1 : 0;
 	}
+
+	public void setSummonerId(String summonerId) {
+		this.summonerId = summonerId;
+	}
+
+	public void setLeagueId(String leagueId) {
+		this.leagueId = leagueId;
+	}
+
+	public void setSummonerName(String summonerName) {
+		this.summonerName = summonerName;
+	}
+
+	public void setQueueType(String queueType) {
+		this.queueType = queueType;
+	}
+
+	public void setTier(String tier) {
+        this.tier = tier.toLowerCase();
+    }
+
+	public void setRank(String rank) {
+		this.rank = rank;
+	}
+
+	public void setLeaguePoints(int leaguePoints) {
+		this.leaguePoints = leaguePoints;
+	}
+
+	public void setWins(int wins) {
+		this.wins = wins;
+	}
+
+	public void setLosses(int losses) {
+		this.losses = losses;
+	}
+
+	public void setHotStreak(boolean hotStreak) {
+		this.hotStreak = hotStreak;
+	}
+
+	public void setVeteran(boolean veteran) {
+		this.veteran = veteran;
+	}
+
+	public void setFreshBlood(boolean freshBlood) {
+		this.freshBlood = freshBlood;
+	}
+
+	public void setInactive(boolean inactive) {
+		this.inactive = inactive;
+	}
+
+	public void setMiniSeriesDto(MiniSeriesDto miniSeriesDto) {
+		MiniSeriesDto = miniSeriesDto;
+	}
+
+	public void setDuoboolean(boolean duoboolean) {
+		this.duoboolean = duoboolean;
+	}
+
+	public void setSoloboolean(boolean soloboolean) {
+		this.soloboolean = soloboolean;
+	}
+
+	public void setUnrankboolean(boolean unrankboolean) {
+		this.unrankboolean = unrankboolean;
+	}
+
+	public void setDatasize(int datasize) {
+		this.datasize = datasize;
+	}
+	
+	
 
 }
