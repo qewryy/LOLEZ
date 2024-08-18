@@ -1,7 +1,7 @@
 # 게임전적검색(커뮤니티)프로젝트
 <p align="center"><img src="https://github.com/qewryy/LOLEZ/assets/110925305/760442b5-113a-4156-bea0-a2208f69ee1f" width="400" height="400" /></p>
 <blockquote>
-<p dir="auto"><strong>게임 전적검색(커뮤니티)프로젝트</strong> <br>RIOT 게임의 API를 활용한 전적 검색 및 커뮤니티 사이트 <br><strong>개발기간: 2023.01 ~ 2023.02(3주)</strong></p>
+<p dir="auto"><strong>게임 전적검색(커뮤니티)프로젝트</strong> <br>RIOT 게임의 API를 활용한 전적 검색 및 커뮤니티 사이트 <br><strong>개발기간: 2023.01 ~ 2023.02(6주)</strong></p>
 </blockquote>
 
 ## 개발환경
